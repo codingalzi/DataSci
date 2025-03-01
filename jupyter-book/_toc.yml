@@ -7,24 +7,5 @@ options:
   numbered: True
 #  only_build_toc_files: true
 chapters:
-- file: programming
-- file: starting
-- file: values_variables
-- file: expressions_dataTypes
-# - file: functions
-# - file: modules
-# - file: conditionals
-# - file: iterations
-# - file: turtle_graphics
-# - file: exception_handling
-# - file: strings
-# - file: lists_tuples
-# - file: dicts_sets
-# - file: files
-# - file: oop
-# - file: classes_instances_objects
-# - file: inheritance
-# - file: modules_advanced
-# - file: iterator_generator
-# - file: recursion
-# - file: type_annotations
+- file: about_data
+# - file: starting
