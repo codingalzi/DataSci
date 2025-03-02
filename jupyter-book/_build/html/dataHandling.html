@@ -442,7 +442,11 @@ document.write(`
 <h2><span class="section-number">1.1. </span>데이터셋 불러오기<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>아래 이미지의 내용처럼 10명 학생의 체력 테스트 결과를 담은
 csv 파일로 저장된 태뷸러 데이터<font size='2'>tabular data</font>를 불러온다.</p>
-<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/ch01/sport_test.png" style="width:300px"></div></p><p>이를 위해 통계분석 라이브러리 Pandas의 <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> 함수를 이용한다.
+<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/ch01/sport_test.png" style="width:300px"></div></p><div class="tip admonition">
+<p class="admonition-title">태뷸러 데이터</p>
+<p>태뷸러 데이터는 엑셀 형식으로 표현되는 데이터를 가리킨다.</p>
+</div>
+<p>이를 위해 통계분석 라이브러리 Pandas의 <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> 함수를 이용한다.
 불러올 때 학생번호를 인덱스로 지정하고,
 불러들인 데이터프레임<font size='2'>DataFrame</font> 자료형 값을
 변수 <code class="docutils literal notranslate"><span class="pre">sports_df</span></code>에 할당한다.</p>
@@ -1491,8 +1495,12 @@ Name: 악력, dtype: float64
 </section>
 <section id="id8">
 <h2><span class="section-number">1.5. </span>연습문제<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>기본 데이터 저장소에 있는 <code class="docutils literal notranslate"><span class="pre">california_housing.csv</span></code> 파일은 미국 캘리포니아 주의 주택 정보를 담고 있다.</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sports_df</span></code>에 포함된 특성들을 아래 기준에 따라 구분하라.</p>
+<li><p>위 파일의 내용을 데이터프레임으로 불러와서 <code class="docutils literal notranslate"><span class="pre">housing_df</span></code> 변수에 할당하라.
+단, 인덱스는 별도로 지정하지 않는다.</p></li>
+<li><p>캘리포니아 주택 정보 데이터의 기초 정보를 확인하라.</p></li>
+<li><p>데이터셋에 포함된 특성을 다음 네 종류의 특성으로 구분하라.</p>
 <ul class="simple">
 <li><p>수치형 특성</p></li>
 <li><p>범주형 특성</p></li>
@@ -1500,6 +1508,9 @@ Name: 악력, dtype: float64
 <li><p>연속형 특성</p></li>
 </ul>
 </li>
+<li><p>99번 인덱스의 샘플을 구하라.</p></li>
+<li><p>ocean_proximity 특성값만 포함한 데이터프레임을 구하라.</p></li>
+<li><p>median_income, median_house_value, ocean_proximity 특성값만 데이터프레임을 구하라.</p></li>
 </ol>
 </section>
 </section>
