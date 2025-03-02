@@ -430,7 +430,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">2. </span>1차원 데이터<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p><strong>준비사항</strong></p>
+<p><strong>기본 환경 준비</strong></p>
 <p>Numpy와 Pandas 라이브러리를 각각 np와 pd로 불러온다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -901,6 +901,9 @@ document.write(`
 <section id="id3">
 <h2><span class="section-number">2.2. </span>넘파이 어레이 활용<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>아래 코드느 처음 10명의 영어 점수로 구성된 넘파이 어레이를 지정한다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">head()</span></code>/<code class="docutils literal notranslate"><span class="pre">tail()</span></code> 함수: 정수 인자를 지정하면 지정된 개수의 샘플로 구성된 데이터프레임 반환.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first10english</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -918,9 +921,13 @@ document.write(`
 </div>
 <div class="tip admonition">
 <p class="admonition-title">넘파이 어레이</p>
-<p>넘파이 어레이는 숫자로만 구성된 리스트와 유사하며, 데이터분석 분야에서 가장 중요한 자료형이다.</p>
+<ul class="simple">
+<li><p>넘파이 어레이: 숫자로만 구성된 리스트와 유사하며, 데이터 분석 분야에서 가장 중요한 자료형이다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.array()</span></code> 함수: 리스트, 시리즈 등의 값을 어레이 자료형으로 변환시킨다.</p></li>
+</ul>
 </div>
-<p>처음 열 명의 이름을 A, B, … J로 지정한 다음에 영어 점수로만 구성된 데이터프레임을 다음과 같이 지정한다.</p>
+<p>아래 코드는 처음 열 명의 이름을 A, B, C, …, J로 지정하면서
+열 명의 영어 점수로만 구성된 데이터프레임을 다음과 같이 지정한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;score&#39;</span><span class="p">:</span><span class="n">scores</span><span class="p">},</span>
