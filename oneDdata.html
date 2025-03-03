@@ -400,26 +400,24 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 넘파이 어레이 활용</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 데이터 대표값</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.4. 데이터 분포</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.4.1. 편차</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.4.2. 분산</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.4.3. 표준편차</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.4.4. 범위</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.4.5. 4분위수 범위</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.4.6. 데이터 분포 정리</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.4.1. 표준편차</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.4.2. 범위</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.4.3. 4분위수 범위</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.4.4. 데이터 분포 정리</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.5. 데이터의 정규화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.5.1. 표준화</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.5.2. 편차값</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.5. 데이터의 정규화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.5.1. 표준화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.5.2. 편차값</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.6. 데이터 시각화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.6.1. 도수분포표</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.6.2. 히스토그램</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.6.3. 상자 그림</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.6. 데이터 시각화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.6.1. 도수분포표</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.6.2. 히스토그램</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.6.3. 상자 그림</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.7. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.7. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -433,7 +431,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">2. </span>1차원 데이터<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p><strong>기본 환경 준비</strong></p>
+<p><strong>기본 설정</strong></p>
 <p>Numpy와 Pandas 라이브러리를 각각 np와 pd로 불러온다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1020,7 +1018,7 @@ document.write(`
 <p>평균값은 데이터를 모두 더한 뒤, 데이터의 개수로 나눈다.</p>
 <div class="math notranslate nohighlight">
 \[
-\bar x = \frac 1 n \sum_{i=1}^{n} \frac 1 n (x_1 + x_2 + \cdots + x_n)
+\bar x = \frac 1 n \sum_{i=1}^{n} x_i = \frac 1 n (x_1 + x_2 + \cdots + x_n)
 \]</div>
 <p>10 명의 평균값은 다음과 같으며 3가지 방식으로 계산할 수 있다.</p>
 <div class="math notranslate nohighlight">
@@ -1193,8 +1191,7 @@ dtype: float64
 </section>
 <section id="id5">
 <h2><span class="section-number">2.4. </span>데이터 분포<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<section id="id6">
-<h3><span class="section-number">2.4.1. </span>편차<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p><strong>편차</strong></p>
 <p>각 데이터가 평균으로부터 떨어져 있는 정도를 <strong>편차</strong><font size='2'>deviation</font>라 한다.
 즉, 편차는 데이터들이 평균값으로부터 떨어져 있는 정도를 평가한다.</p>
 <p>열 명 각 학생의 성적 편차는 다음과 같이 계산된다.</p>
@@ -1372,7 +1369,7 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">mean()</span></code> 메서드에 의해 편차들의 평균값이 0임이 확인된다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mean()</span></code> 메서드에 의해 편차들의 평균값이 0임이 다시 한 번 확인된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1387,9 +1384,22 @@ dtype: float64
 </div>
 </div>
 </div>
-</section>
-<section id="id7">
-<h3><span class="section-number">2.4.2. </span>분산<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p><strong>분산</strong></p>
+<p>편차들의 평균값이 항상 0이기에 데이터 분포도의 측정 용도로 사용하기에는 바람직하지 않다.
+편차는 음의 값도 갖는다.
+하지만 분포도는 평균값을 기준으로 데이터들이 떨어져 있는 정도를 측정해야 하기에
+항상 양의 값으로 측정되는 게 맞다.
+이런 의미에서 편차의 제곱의 평균값을 분포도 측정 기준으로 사용한다.</p>
+<p><strong>분산</strong><font size='2'>variance</font>는 편차의 제곱의 평균값을 가리킨다.</p>
+<div class="math notranslate nohighlight">
+\[
+S^2 = \frac 1 n \sum_{i=1}^{n} (x_i - \bar x)^2 = \frac 1 n \left\{(x_1 - \bar x)^2 + (x_2 - \bar x)^2 + \cdots + (x_n - \bar x)^2 \right \}
+\]</div>
+<p>예를 들어 <code class="docutils literal notranslate"><span class="pre">scores</span></code>에 포함된 데이터들의 분산은 다음과 같다.</p>
+<div class="math notranslate nohighlight">
+\[
+S^2 = \frac{1}{10} \left\{ (42-55)^2 + (69-55)^2 + \cdots + (58-55)^2 \right\} = 86
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">deviation</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
@@ -1402,6 +1412,9 @@ dtype: float64
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>넘파이의 <code class="docutils literal notranslate"><span class="pre">var()</span></code> 함수 활용</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
@@ -1414,6 +1427,24 @@ dtype: float64
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">var()</span></code> 메서드 활용. <code class="docutils literal notranslate"><span class="pre">ddof=0</span></code> 키워드 인자를 활용하여 표준분산을 계산함에 주의할 것.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>score    86.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ddof</span></code> 키워드 인자를 생략하거나 <code class="docutils literal notranslate"><span class="pre">ddof=1</span></code>로 지정하면 불편분산<font size='2'>unbiased variance</font>을 계산한다.
+불편분산의 용도는 나중에 배운다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
@@ -1427,6 +1458,20 @@ dtype: float64
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>score    95.555556
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드는 편차의 제곱을 새로운 변수 <code class="docutils literal notranslate"><span class="pre">summary_df</span></code>가 가리키는 데이터프레임의 새로운 특성(변인)으로 추가한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_df</span><span class="p">[</span><span class="s1">&#39;square of deviation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">deviation</span><span class="p">)</span>
@@ -1529,6 +1574,7 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>각 특성의 평균값을 계산하면 앞서 <code class="docutils literal notranslate"><span class="pre">scores</span></code>에 포함된 데이터들의 평균값, 편차 평균값, 분산이 확인된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1544,9 +1590,54 @@ dtype: float64
 </div>
 </div>
 </div>
-</section>
-<section id="id8">
-<h3><span class="section-number">2.4.3. </span>표준편차<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p><strong>분산과 정사각형의 면적</strong></p>
+<p>편차 제곱을 한 변의 길이가 편차인 정사각형의 면적으로 간주할 수 있다.
+그러면 분산은 정사각형 면적의 평균값이 된다.
+아래 그림은 A, B, C, D 명을 대상으로 하는 데이터의 평균점수와 분산을 보여준다.</p>
+<ul class="simple">
+<li><p>4개의 회색 정사각형: A, B, C, D 4개 데이터 각각에 대한 편차의 제곱</p></li>
+<li><p>옅은 하늘색 정사각형: 4개 데이터의 분산</p></li>
+</ul>
+<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/ch02/img-2-3.jpg" style="width:600px"></div></p><p>실제로 A, B, C, D의 평균값은 52이며 분산은 다음과 같이 계산된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ABCD</span> <span class="o">=</span> <span class="n">scores</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">ABCD</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([42, 69, 56, 41])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A, B, C, D의 평균값:&quot;</span><span class="p">,</span> <span class="n">ABCD</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A, B, C, D의 평균값: 52.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A, B, C, D의 평균값:&quot;</span><span class="p">,</span> <span class="n">ABCD</span><span class="o">.</span><span class="n">var</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A, B, C, D의 평균값: 131.5
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id6">
+<h3><span class="section-number">2.4.1. </span>표준편차<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
@@ -1572,8 +1663,8 @@ dtype: float64
 </div>
 </div>
 </section>
-<section id="id9">
-<h3><span class="section-number">2.4.4. </span>범위<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h3><span class="section-number">2.4.2. </span>범위<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
@@ -1602,11 +1693,11 @@ dtype: float64
 </div>
 </div>
 </section>
-<section id="id10">
-<h3><span class="section-number">2.4.5. </span>4분위수 범위<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<section id="id8">
+<h3><span class="section-number">2.4.3. </span>4분위수 범위<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 </section>
-<section id="id11">
-<h3><span class="section-number">2.4.6. </span>데이터 분포 정리<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h3><span class="section-number">2.4.4. </span>데이터 분포 정리<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -1629,10 +1720,10 @@ dtype: float64
 </div>
 </section>
 </section>
-<section id="id12">
-<h2><span class="section-number">2.5. </span>데이터의 정규화<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
-<section id="id13">
-<h3><span class="section-number">2.5.1. </span>표준화<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<section id="id10">
+<h2><span class="section-number">2.5. </span>데이터의 정규화<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<section id="id11">
+<h3><span class="section-number">2.5.1. </span>표준화<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">scores</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
@@ -1660,8 +1751,8 @@ dtype: float64
 </div>
 </div>
 </section>
-<section id="id14">
-<h3><span class="section-number">2.5.2. </span>편차값<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<section id="id12">
+<h3><span class="section-number">2.5.2. </span>편차값<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="mi">50</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="n">scores</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
@@ -1768,8 +1859,8 @@ dtype: float64
 </div>
 </section>
 </section>
-<section id="id15">
-<h2><span class="section-number">2.6. </span>데이터 시각화<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<section id="id13">
+<h2><span class="section-number">2.6. </span>데이터 시각화<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 50명의 영어 점수 array</span>
@@ -1793,8 +1884,8 @@ dtype: float64
 </div>
 </div>
 </div>
-<section id="id16">
-<h3><span class="section-number">2.6.1. </span>도수분포표<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<section id="id14">
+<h3><span class="section-number">2.6.1. </span>도수분포표<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">english_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
@@ -2063,8 +2154,8 @@ dtype: float64
 </div>
 </div>
 </section>
-<section id="id17">
-<h3><span class="section-number">2.6.2. </span>히스토그램<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<section id="id15">
+<h3><span class="section-number">2.6.2. </span>히스토그램<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matplotlib의 pyplot 모듈을 plt라는 이름으로 임포트</span>
@@ -2160,8 +2251,8 @@ dtype: float64
 </div>
 </div>
 </section>
-<section id="id18">
-<h3><span class="section-number">2.6.3. </span>상자 그림<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<section id="id16">
+<h3><span class="section-number">2.6.3. </span>상자 그림<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -2178,10 +2269,27 @@ dtype: float64
 </div>
 </section>
 </section>
-<section id="id19">
-<h2><span class="section-number">2.7. </span>연습문제<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<section id="id17">
+<h2><span class="section-number">2.7. </span>연습문제<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>…</p></li>
+<li><p>편차들의 평균값은 항상 0이다. 이에 대한 근거를 확인하세요.</p></li>
+<li><p>표준분산과 불편분산에 대해 알아보세요.</p></li>
+<li><p>아래 링크를 참고하여 넘파이 어레이에 대해 알아보세요.</p>
+<ul class="simple">
+<li><p>참고 문서: <a class="reference external" href="https://codingalzi.github.io/datapy/numpy_1.html">(코딩알지) 넘파이 어레이</a></p></li>
+<li><p>공부 제외: 12.2.3. ~ 12.2.4., 12.3., 12.5.</p></li>
+</ul>
+</li>
+<li><p>아래 링크의 연습문제를 구글 코랩을 이용하여 공부하세요.</p>
+<ul class="simple">
+<li><p>참고 문서: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_1.ipynb">(코딩알지 실습) 판다스 데이터프레임</a></p></li>
+</ul>
+</li>
+<li><p>아래 링크를 이용하여 matplotlib.pyplot 라이브러리의 기초 활용법을 알아보세요.</p>
+<ul class="simple">
+<li><p>참고 문서: <a class="reference external" href="https://codingalzi.github.io/datapy/visualization_1.html">(코딩알지) matplotlib.pyplot 1부</a></p></li>
+</ul>
+</li>
 </ol>
 </section>
 </section>
@@ -2245,26 +2353,24 @@ dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 넘파이 어레이 활용</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 데이터 대표값</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.4. 데이터 분포</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.4.1. 편차</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.4.2. 분산</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.4.3. 표준편차</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.4.4. 범위</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.4.5. 4분위수 범위</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.4.6. 데이터 분포 정리</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.4.1. 표준편차</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.4.2. 범위</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.4.3. 4분위수 범위</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.4.4. 데이터 분포 정리</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.5. 데이터의 정규화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.5.1. 표준화</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.5.2. 편차값</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.5. 데이터의 정규화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.5.1. 표준화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.5.2. 편차값</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.6. 데이터 시각화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.6.1. 도수분포표</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.6.2. 히스토그램</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.6.3. 상자 그림</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.6. 데이터 시각화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.6.1. 도수분포표</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.6.2. 히스토그램</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.6.3. 상자 그림</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.7. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.7. 연습문제</a></li>
 </ul>
   </nav></div>
 
