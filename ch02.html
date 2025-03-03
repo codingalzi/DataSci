@@ -60,10 +60,10 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'oneDdata';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch02';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="1. 데이터 다루기" href="dataHandling.html" />
+    <link rel="prev" title="1. 데이터 다루기" href="ch01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -168,7 +168,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="dataHandling.html">1. 데이터 다루기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch01.html">1. 데이터 다루기</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. 1차원 데이터</a></li>
 </ul>
 
@@ -224,7 +224,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/jupyter-book/oneDdata.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/jupyter-book/ch02.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -272,7 +272,7 @@
       
       
       
-      <li><a href="https://github.com/codingalzi/DataSci/issues/new?title=Issue%20on%20page%20%2FoneDdata.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/codingalzi/DataSci/issues/new?title=Issue%20on%20page%20%2Fch02.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +302,7 @@
       
       
       
-      <li><a href="_sources/oneDdata.ipynb" target="_blank"
+      <li><a href="_sources/ch02.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -1709,8 +1709,18 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 </div>
 </div>
 </div>
-<p><strong>수염상자</strong></p>
-<p>수염상자는 데이터의 범위, 사분위수, 사분범위를 동시에 보여준다.</p>
+<p><strong>상자 그림</strong></p>
+<p>상자 그림은 데이터의 범위, 사분위수, 사분범위를 동시에 보여준다.
+상자 그림은 다음 값들을 다양한 방식으로 표시한다.
+위에서부터 사용된 값들은 다음과 같다.</p>
+<ul class="simple">
+<li><p>너무 큰 이상치에 해당하는 점들</p></li>
+<li><p>(Q3 + 1.5 * IQR) 해당하는 곳의 수평 선분</p></li>
+<li><p>Q3, Q2, Q1에 해당하는 값을 이용한 직사각형</p></li>
+<li><p>(Q1 - 1.5 * IQR) 해당하는 곳의 수평 선분</p></li>
+<li><p>너무 작은 이상치에 해당하는 점들</p></li>
+</ul>
+<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/ch02/img-2-8.jpg" style="width:300px"></div></p><p><code class="docutils literal notranslate"><span class="pre">scores</span></code>에 포함된 값들의 분포도를 아래 코드를 이용하여 상자 그림으로 그리면 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -2399,7 +2409,7 @@ dtype: float64
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="dataHandling.html"
+       href="ch01.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
