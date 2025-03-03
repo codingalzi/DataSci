@@ -1709,13 +1709,28 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 </div>
 </div>
 </div>
-<p><strong>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">describe()</span></code> 메서드</strong></p>
-<p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">describe()</span></code> 메서드는
-지금까지 설명한 데이터의 분포도 내용을 한꺼번에 확인해준다.</p>
+<p><strong>수염상자</strong></p>
+<p>수염상자는 데이터의 범위, 사분위수, 사분범위를 동시에 보여준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score_df</span> <span class="o">=</span> <span class="n">summary_df</span><span class="p">[[</span><span class="s1">&#39;score&#39;</span><span class="p">]]</span>
-<span class="n">score_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">summary_df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f1116d3b186b501a3fef16453112a336a643c945118b2ce2fcb481d6089fe0ff.png" src="_images/f1116d3b186b501a3fef16453112a336a643c945118b2ce2fcb481d6089fe0ff.png" />
+</div>
+</div>
+<p><strong>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">describe()</span></code> 메서드</strong></p>
+<p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">describe()</span></code> 메서드는
+지금까지 설명한 데이터의 분포도 내용을 요약해서 한꺼번에 확인해준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span> <span class="o">=</span> <span class="n">summary_df</span><span class="p">[[</span><span class="s1">&#39;score&#39;</span><span class="p">]]</span>
+<span class="n">scores_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1828,12 +1843,20 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="p">[</span><span class="s1">&#39;deviation value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;deviation value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span>
 <span class="n">scores_df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1622/3806758774.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  scores_df.loc[:, &#39;deviation value&#39;] = z
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
