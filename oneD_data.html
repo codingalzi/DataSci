@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -60,10 +60,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch02';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'oneD_data';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="1. 데이터 다루기" href="ch01.html" />
+    <link rel="next" title="3. 1차원 데이터 시각화" href="oneD_visualization.html" />
+    <link rel="prev" title="1. 데이터 다루기" href="data_handling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -168,8 +169,9 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="ch01.html">1. 데이터 다루기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_handling.html">1. 데이터 다루기</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. 1차원 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneD_visualization.html">3. 1차원 데이터 시각화</a></li>
 </ul>
 
     </div>
@@ -224,7 +226,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/jupyter-book/ch02.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/jupyter-book/oneD_data.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -272,7 +274,7 @@
       
       
       
-      <li><a href="https://github.com/codingalzi/DataSci/issues/new?title=Issue%20on%20page%20%2Fch02.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/codingalzi/DataSci/issues/new?title=Issue%20on%20page%20%2FoneD_data.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +304,7 @@
       
       
       
-      <li><a href="_sources/ch02.ipynb" target="_blank"
+      <li><a href="_sources/oneD_data.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -400,18 +402,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 넘파이 어레이 활용</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 데이터 대표값</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.4. 데이터 분포</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.5. 데이터의 정규화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.5.1. 표준화</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.5.2. 편차값</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.6. 데이터 시각화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.6.1. 도수분포표</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.6.2. 히스토그램</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.6.3. 상자 그림</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.7. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.5. 데이터 정규화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.6. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -1731,7 +1723,7 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f1116d3b186b501a3fef16453112a336a643c945118b2ce2fcb481d6089fe0ff.png" src="_images/f1116d3b186b501a3fef16453112a336a643c945118b2ce2fcb481d6089fe0ff.png" />
+<img alt="_images/dd5a5e4c9df8980df249441ca75fc37961cc5f9832844371a9af2cdf02590c68.png" src="_images/dd5a5e4c9df8980df249441ca75fc37961cc5f9832844371a9af2cdf02590c68.png" />
 </div>
 </div>
 <p><strong>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">describe()</span></code> 메서드</strong></p>
@@ -1805,9 +1797,60 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 </div>
 </section>
 <section id="id6">
-<h2><span class="section-number">2.5. </span>데이터의 정규화<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<section id="id7">
-<h3><span class="section-number">2.5.1. </span>표준화<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">2.5. </span>데이터 정규화<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>데이터 분석을 진행할 때 경우에 따라 데이터셋의 특성값들의
+<strong>스케일</strong><font size="2">scale</font>을 비슷하게 조정할 필요가 있다.
+특성의 스케일을 조정하는 과정을 <strong>스케일링</strong><font size="2">scaling</font>이다.</p>
+<p>스케일링은 보통 아래 두 가지 방식을 사용한다.</p>
+<ul class="simple">
+<li><p>min-max 스케일링</p></li>
+<li><p>표준화</p></li>
+</ul>
+<p><strong>min-max 스케일링</strong></p>
+<p>min-max 스케일링은 아래 식을 이용하여 특성값 <span class="math notranslate nohighlight">\(x\)</span>를 0에서 1 사이의 값으로 변환한다.
+<span class="math notranslate nohighlight">\(max\)</span> 와 <span class="math notranslate nohighlight">\(min\)</span> 은 각각 해당 특성값들의 최댓값과 최솟값을 가리킨다.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{x-min}{max-min}
+\]</div>
+<p>min-max 스케일링은 이상치에 매우 민감하다.
+예를 들어 이상치가 매우 크면 분모가 분자에 비해 훨씬 크게 되어 변환된 값이 0 근처에 몰리게 된다.</p>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">scores</span></code>에 포함된 10개의 점수에 대해 min-max 스케일링을 적용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mms</span> <span class="o">=</span> <span class="p">(</span><span class="n">scores</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span>
+<span class="n">mms</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.035714, 1.      , 0.535714, 0.      , 0.571429, 0.25    ,
+       0.857143, 0.285714, 0.857143, 0.607143])
+</pre></div>
+</div>
+</div>
+</div>
+<p>최솟값은 0, 최댓값은 1이 되었다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mms</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">mms</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.000000, 1.000000)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>표준화</strong></p>
+<p>표준화<font size='2'>standardization</font>는 아래식을 이용하여 특성값 <span class="math notranslate nohighlight">\(x\)</span>를 변환한다.
+<span class="math notranslate nohighlight">\(\bar x\)</span> 와 <span class="math notranslate nohighlight">\(S\)</span> 는 각각 해당 특성값들의 평균값과 표준편차를 가리킨다.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{x-\bar x}{S}
+\]</div>
+<p>변환된 특성은 평균값은 0, 표준편차는 1인 분포를 따르며, 이상치에 상대적으로 덜 영향을 받는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">scores</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
@@ -1822,6 +1865,7 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 </div>
 </div>
 </div>
+<p>평균값은 (거의) 0, 표준편차는 (거의) 1이 되었다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1834,527 +1878,11 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 </div>
 </div>
 </div>
+<p>위 결과에서 <code class="docutils literal notranslate"><span class="pre">-0.000000</span></code>로 표기된 이유는 평균값이 정확하게 0이 아니라 0에 매우 가까운 음의 유리수이기 때문이다.
+여기서는 소수점 이하 여섯째 자리까지 표기되고 그보다 더 적은 숫자는 무시됨에 주의한다.</p>
 </section>
-<section id="id8">
-<h3><span class="section-number">2.5.2. </span>편차값<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="mi">50</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="n">scores</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
-<span class="n">z</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([35.981739, 65.096588, 51.078328, 34.903412, 52.156655, 42.451706,
-       60.783277, 43.530034, 60.783277, 53.234983])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;deviation value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span>
-<span class="n">scores_df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>score</th>
-      <th>deviation value</th>
-    </tr>
-    <tr>
-      <th>student</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>A</th>
-      <td>42</td>
-      <td>35.981739</td>
-    </tr>
-    <tr>
-      <th>B</th>
-      <td>69</td>
-      <td>65.096588</td>
-    </tr>
-    <tr>
-      <th>C</th>
-      <td>56</td>
-      <td>51.078328</td>
-    </tr>
-    <tr>
-      <th>D</th>
-      <td>41</td>
-      <td>34.903412</td>
-    </tr>
-    <tr>
-      <th>E</th>
-      <td>57</td>
-      <td>52.156655</td>
-    </tr>
-    <tr>
-      <th>F</th>
-      <td>48</td>
-      <td>42.451706</td>
-    </tr>
-    <tr>
-      <th>G</th>
-      <td>65</td>
-      <td>60.783277</td>
-    </tr>
-    <tr>
-      <th>H</th>
-      <td>49</td>
-      <td>43.530034</td>
-    </tr>
-    <tr>
-      <th>I</th>
-      <td>65</td>
-      <td>60.783277</td>
-    </tr>
-    <tr>
-      <th>J</th>
-      <td>58</td>
-      <td>53.234983</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</section>
-</section>
-<section id="id9">
-<h2><span class="section-number">2.6. </span>데이터 시각화<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 50명의 영어 점수 array</span>
-<span class="n">english_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">])</span>
-<span class="c1"># Series로 변환하여 describe를 표시</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">english_scores</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    50.000000
-mean     58.380000
-std       9.799813
-min      37.000000
-25%      54.000000
-50%      57.500000
-75%      65.000000
-max      79.000000
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<section id="id10">
-<h3><span class="section-number">2.6.1. </span>도수분포표<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">english_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
-<span class="n">freq</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  0,  0,  2,  8, 16, 18,  6,  0,  0])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0~10, 10~20, ... 이라는 문자열의 리스트를 작성</span>
-<span class="n">freq_class</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">~</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">10</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
-<span class="c1"># freq_class를 인덱스로 DataFrame을 작성</span>
-<span class="n">freq_dist_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;frequency&#39;</span><span class="p">:</span><span class="n">freq</span><span class="p">},</span>
-                            <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">freq_class</span><span class="p">,</span>
-                                           <span class="n">name</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">))</span>
-<span class="n">freq_dist_df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>frequency</th>
-    </tr>
-    <tr>
-      <th>class</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0~10</th>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>10~20</th>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>20~30</th>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>30~40</th>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>40~50</th>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>50~60</th>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>60~70</th>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>70~80</th>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>80~90</th>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>90~100</th>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">class_value</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">10</span><span class="p">))</span><span class="o">//</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
-<span class="n">class_value</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 15, 25, 35, 45, 55, 65, 75, 85, 95]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rel_freq</span> <span class="o">=</span> <span class="n">freq</span> <span class="o">/</span> <span class="n">freq</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">rel_freq</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.  , 0.  , 0.  , 0.04, 0.16, 0.32, 0.36, 0.12, 0.  , 0.  ])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cum_rel_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">rel_freq</span><span class="p">)</span>
-<span class="n">cum_rel_freq</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.  , 0.  , 0.  , 0.04, 0.2 , 0.52, 0.88, 1.  , 1.  , 1.  ])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_dist_df</span><span class="p">[</span><span class="s1">&#39;class value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">class_value</span>
-<span class="n">freq_dist_df</span><span class="p">[</span><span class="s1">&#39;relative frequency&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rel_freq</span>
-<span class="n">freq_dist_df</span><span class="p">[</span><span class="s1">&#39;cumulative relative frequency&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cum_rel_freq</span>
-<span class="n">freq_dist_df</span> <span class="o">=</span> <span class="n">freq_dist_df</span><span class="p">[[</span><span class="s1">&#39;class value&#39;</span><span class="p">,</span> <span class="s1">&#39;frequency&#39;</span><span class="p">,</span>
-                             <span class="s1">&#39;relative frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;cumulative relative frequency&#39;</span><span class="p">]]</span>
-
-<span class="n">freq_dist_df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>class value</th>
-      <th>frequency</th>
-      <th>relative frequency</th>
-      <th>cumulative relative frequency</th>
-    </tr>
-    <tr>
-      <th>class</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0~10</th>
-      <td>5</td>
-      <td>0</td>
-      <td>0.00</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>10~20</th>
-      <td>15</td>
-      <td>0</td>
-      <td>0.00</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>20~30</th>
-      <td>25</td>
-      <td>0</td>
-      <td>0.00</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>30~40</th>
-      <td>35</td>
-      <td>2</td>
-      <td>0.04</td>
-      <td>0.04</td>
-    </tr>
-    <tr>
-      <th>40~50</th>
-      <td>45</td>
-      <td>8</td>
-      <td>0.16</td>
-      <td>0.20</td>
-    </tr>
-    <tr>
-      <th>50~60</th>
-      <td>55</td>
-      <td>16</td>
-      <td>0.32</td>
-      <td>0.52</td>
-    </tr>
-    <tr>
-      <th>60~70</th>
-      <td>65</td>
-      <td>18</td>
-      <td>0.36</td>
-      <td>0.88</td>
-    </tr>
-    <tr>
-      <th>70~80</th>
-      <td>75</td>
-      <td>6</td>
-      <td>0.12</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>80~90</th>
-      <td>85</td>
-      <td>0</td>
-      <td>0.00</td>
-      <td>1.00</td>
-    </tr>
-    <tr>
-      <th>90~100</th>
-      <td>95</td>
-      <td>0</td>
-      <td>0.00</td>
-      <td>1.00</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p><strong>최빈값 재검토</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_dist_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">freq_dist_df</span><span class="p">[</span><span class="s1">&#39;frequency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(),</span> <span class="s1">&#39;class value&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>65
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id11">
-<h3><span class="section-number">2.6.2. </span>히스토그램<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matplotlib의 pyplot 모듈을 plt라는 이름으로 임포트</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1"># 그래프가 notebook 위에 표시</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 캔버스를 생성</span>
-<span class="c1"># figsize로 가로・세로 크기를 지정</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="c1"># 켄버스 위에 그래프를 그리기 위한 영역을 지정</span>
-<span class="c1"># 인수는 영역을 1×1개 지정、하나의 영역에 그린다는 것을 의미</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-
-<span class="c1"># 계급수를 10으로 하여 히스토그램을 그림</span>
-<span class="n">freq</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">english_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
-<span class="c1"># X축에 레이블 부여</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">)</span>
-<span class="c1"># Y축에 레이블 부여</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;person number&#39;</span><span class="p">)</span>
-<span class="c1"># X축을 0, 10, 20, ..., 100 눈금으로 구분</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="c1"># Y축을 0, 1, 2, ...의 눈금으로 구분</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">freq</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="c1"># 그래프 표시</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/d9e16417dc5cabf1293b4b6ac973a78333ca5e09f522f431d42bc727da79d73c.png" src="_images/d9e16417dc5cabf1293b4b6ac973a78333ca5e09f522f431d42bc727da79d73c.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-
-<span class="n">freq</span><span class="p">,</span> <span class="n">_</span> <span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">english_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;person number&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">25</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">freq</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/888f68cf405ebce13a77b96c2191e5645c08792c5ac73e93e30358102dfaaf36.png" src="_images/888f68cf405ebce13a77b96c2191e5645c08792c5ac73e93e30358102dfaaf36.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="c1"># Y축의 스케일이 다른 그래프를 ax1과 동일한 영역에 생성</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-
-<span class="c1"># 상대도수의 히스토그램으로 하기 위해서는, 도수를 데이터의 수로 나눌 필요가 있음</span>
-<span class="c1"># 이것은 hist의 인수 weight를 지정하면 실현 가능</span>
-<span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">english_scores</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">english_scores</span><span class="p">)</span>
-<span class="n">rel_freq</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">english_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
-                          <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
-
-<span class="n">cum_rel_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">rel_freq</span><span class="p">)</span>
-<span class="n">class_value</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">4</span><span class="p">))</span><span class="o">//</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
-<span class="c1"># 꺾은선 그래프를 그림</span>
-<span class="c1"># 인수 ls를 &#39;--&#39;로 하면 점선이 그려짐</span>
-<span class="c1"># 인수 marker를 &#39;o&#39;으로 하면 데이터 점을 그람</span>
-<span class="c1"># 인수 color를 &#39;gray&#39;로 하면 회색으로 지정</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">class_value</span><span class="p">,</span> <span class="n">cum_rel_freq</span><span class="p">,</span>
-         <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
-<span class="c1"># 꺾은선 그래프의 눈금선을 제거</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;relative frequency&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;cumulative relative frequency&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">25</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/4923cecdc4750ae31d7b6ad523dfc7dba37b0362e7c12a285ac5205aa1de398a.png" src="_images/4923cecdc4750ae31d7b6ad523dfc7dba37b0362e7c12a285ac5205aa1de398a.png" />
-</div>
-</div>
-</section>
-<section id="id12">
-<h3><span class="section-number">2.6.3. </span>상자 그림<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">english_scores</span><span class="p">,</span> <span class="n">tick_labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/f0647fde77fd8b6692da9c66111568c1443c1f38c2335519891cd2dabe42d147.png" src="_images/f0647fde77fd8b6692da9c66111568c1443c1f38c2335519891cd2dabe42d147.png" />
-</div>
-</div>
-</section>
-</section>
-<section id="id13">
-<h2><span class="section-number">2.7. </span>연습문제<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<section id="id7">
+<h2><span class="section-number">2.6. </span>연습문제<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>편차들의 평균값은 항상 0이다. 이에 대한 근거를 확인하세요.</p></li>
 <li><p>표준분산과 불편분산에 대해 알아보세요.</p></li>
@@ -2367,11 +1895,6 @@ dtype: float64
 <li><p>아래 링크의 연습문제를 구글 코랩을 이용하여 공부하세요.</p>
 <ul class="simple">
 <li><p>참고 문서: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_1.ipynb">(코딩알지 실습) 판다스 데이터프레임</a></p></li>
-</ul>
-</li>
-<li><p>아래 링크를 이용하여 matplotlib.pyplot 라이브러리의 기초 활용법을 알아보세요.</p>
-<ul class="simple">
-<li><p>참고 문서: <a class="reference external" href="https://codingalzi.github.io/datapy/visualization_1.html">(코딩알지) matplotlib.pyplot 1부</a></p></li>
 </ul>
 </li>
 </ol>
@@ -2409,13 +1932,22 @@ dtype: float64
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ch01.html"
+       href="data_handling.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="section-number">1. </span>데이터 다루기</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="oneD_visualization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>1차원 데이터 시각화</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -2437,18 +1969,8 @@ dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 넘파이 어레이 활용</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 데이터 대표값</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.4. 데이터 분포</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.5. 데이터의 정규화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.5.1. 표준화</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.5.2. 편차값</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.6. 데이터 시각화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.6.1. 도수분포표</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.6.2. 히스토그램</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.6.3. 상자 그림</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.7. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.5. 데이터 정규화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.6. 연습문제</a></li>
 </ul>
   </nav></div>
 
