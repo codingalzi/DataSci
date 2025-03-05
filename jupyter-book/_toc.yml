@@ -7,5 +7,6 @@ options:
   numbered: True
 #  only_build_toc_files: true
 chapters:
-- file: ch01
-- file: ch02
+- file: data_handling
+- file: oneD_data
+- file: oneD_visualization
