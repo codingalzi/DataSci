@@ -10,3 +10,5 @@ chapters:
 - file: data_handling
 - file: oneD_data
 - file: oneD_visualization
+- file: twoD_data
+- file: twoD_visualization
