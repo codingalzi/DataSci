@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -423,6 +423,15 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>데이터프레임의 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy">chained indexing을 금지시키기 위한 설정</a>을 지정한다.
+Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">copy_on_write</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
 </div>
 </div>
@@ -1712,23 +1721,34 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 <li><p>(Q1 - 1.5 * IQR) 해당하는 곳의 수평 선분</p></li>
 <li><p>너무 작은 이상치에 해당하는 점들</p></li>
 </ul>
-<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/ch02/img-2-8.jpg" style="width:250px"></div></p><p><code class="docutils literal notranslate"><span class="pre">scores</span></code>에 포함된 값들의 분포도를 아래 코드를 이용하여 상자 그림으로 그리면 다음과 같다.</p>
+<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/ch02/img-2-8.jpg" style="width:250px"></div></p><p><code class="docutils literal notranslate"><span class="pre">scores</span></code>에 포함된 값들의 분포도를 아래 코드를 이용하여 상자 그림으로 그리면 다음과 같다.
+그래프를 그리기 위해 먼저 데이터 시각화 관련 라이브러리를 불러와야 한다.
+보통 <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>를 활용한다.
+아래 코드는 해당 라이브러리를 <code class="docutils literal notranslate"><span class="pre">plt</span></code>라는 별칭으로 불러온다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">summary_df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 데이터프레임의 <code class="docutils literal notranslate"><span class="pre">boxplot()</span></code> 메서드를 이용하여 상자 그림을 그릴 수 있다.
+아래 코드는 <code class="docutils literal notranslate"><span class="pre">summary_df</span></code>가 가리키는 데이터프레임의 <code class="docutils literal notranslate"><span class="pre">score</span></code> 특성에 포함된 값들을 대상으로
+상자 그림을 그린다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dd5a5e4c9df8980df249441ca75fc37961cc5f9832844371a9af2cdf02590c68.png" src="_images/dd5a5e4c9df8980df249441ca75fc37961cc5f9832844371a9af2cdf02590c68.png" />
+<img alt="_images/f1116d3b186b501a3fef16453112a336a643c945118b2ce2fcb481d6089fe0ff.png" src="_images/f1116d3b186b501a3fef16453112a336a643c945118b2ce2fcb481d6089fe0ff.png" />
 </div>
 </div>
 <p><strong>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">describe()</span></code> 메서드</strong></p>
 <p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">describe()</span></code> 메서드는
-지금까지 설명한 데이터의 분포도 내용을 요약해서 한꺼번에 확인해준다.</p>
+상자 그림에 포함된 정보를 담고있는 데이터프레임을 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span> <span class="o">=</span> <span class="n">summary_df</span><span class="p">[[</span><span class="s1">&#39;score&#39;</span><span class="p">]]</span>
@@ -1818,8 +1838,8 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 <p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">scores</span></code>에 포함된 10개의 점수에 대해 min-max 스케일링을 적용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mms</span> <span class="o">=</span> <span class="p">(</span><span class="n">scores</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span>
-<span class="n">mms</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minmax</span> <span class="o">=</span> <span class="p">(</span><span class="n">scores</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span>
+<span class="n">minmax</span>
 </pre></div>
 </div>
 </div>
@@ -1833,7 +1853,7 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 <p>최솟값은 0, 최댓값은 1이 되었다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mms</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">mms</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">minmax</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">minmax</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1878,8 +1898,222 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 </div>
 </div>
 </div>
-<p>위 결과에서 <code class="docutils literal notranslate"><span class="pre">-0.000000</span></code>로 표기된 이유는 평균값이 정확하게 0이 아니라 0에 매우 가까운 음의 유리수이기 때문이다.
-여기서는 소수점 이하 여섯째 자리까지 표기되고 그보다 더 적은 숫자는 무시됨에 주의한다.</p>
+<div class="note admonition">
+<p class="admonition-title">부동소수점 연산</p>
+<p>부동소수점 연산은 기본적으로 약간의 오차를 갖는다.
+예를 들어 위 결과에서 <code class="docutils literal notranslate"><span class="pre">-0.000000</span></code>로 표기된 이유는 평균값이 정확하게 0이 아니라 0에 매우 가까운 음의 유리수이기 때문이다.
+여기서는 소수점 이하 여섯째 자리까지 표기되어 그렇게 보이는 것뿐이지 정확히 0은 아니라는 의미다.</p>
+<p>반면에 이론적으로는 표준화된 데이터의 평균값은 정확히 0이어야 한다.
+하지만 컴퓨터를 이용한 부동소수점 연산은 수학 계산과 일반적으로 조금의 오차를 갖는 한계를 갖는다.
+이는 프로그래밍 언어의 문제가 아니라 컴퓨터 자체의 한계라는 정도만 기억해두면 좋다.
+부동소수점 연산의 오차 크기는 컴퓨터 사용환경에 따라 달라지며 이런 이유로 유리수가 아닌 부동소수점이라 불린다.</p>
+</div>
+<p><strong>데이터프레임 활용</strong></p>
+<p>아래 코드는 정규화된 값을 <code class="docutils literal notranslate"><span class="pre">scores_df</span></code> 데이터프레임에 새로운 특성으로 추가한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;score_minmax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minmax</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;score_standardized&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>추가된 특성을 확인하면 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>score</th>
+      <th>score_minmax</th>
+      <th>score_standardized</th>
+    </tr>
+    <tr>
+      <th>student</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>42</td>
+      <td>0.035714</td>
+      <td>-1.401826</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>69</td>
+      <td>1.000000</td>
+      <td>1.509659</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>56</td>
+      <td>0.535714</td>
+      <td>0.107833</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>41</td>
+      <td>0.000000</td>
+      <td>-1.509659</td>
+    </tr>
+    <tr>
+      <th>E</th>
+      <td>57</td>
+      <td>0.571429</td>
+      <td>0.215666</td>
+    </tr>
+    <tr>
+      <th>F</th>
+      <td>48</td>
+      <td>0.250000</td>
+      <td>-0.754829</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>65</td>
+      <td>0.857143</td>
+      <td>1.078328</td>
+    </tr>
+    <tr>
+      <th>H</th>
+      <td>49</td>
+      <td>0.285714</td>
+      <td>-0.646997</td>
+    </tr>
+    <tr>
+      <th>I</th>
+      <td>65</td>
+      <td>0.857143</td>
+      <td>1.078328</td>
+    </tr>
+    <tr>
+      <th>J</th>
+      <td>58</td>
+      <td>0.607143</td>
+      <td>0.323498</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">describe()</span></code> 메서드를 활용하면 정규화된 각각의 값들의 분포를 한 눈에 살펴볼 수 있다.
+특히 표준화된 데이터의 평균값이 정확히 0이 아니라 소수점 이하 17째 자리에 1이 위치함을 알 수 있다.</p>
+<p>참고로 <code class="docutils literal notranslate"><span class="pre">-1.665335e-17</span></code>은 <code class="docutils literal notranslate"><span class="pre">-1.665335</span> <span class="pre">*</span> <span class="pre">(10의</span> <span class="pre">-17승)</span></code>, 즉 <code class="docutils literal notranslate"><span class="pre">0.00000000000000001665335</span></code>을 의미하며
+매우 큰, 또는 0에 매우 가까운 숫자를 위한 과학적 표기법을 사용한다.
+과학적 표기법에 대한 간단한 설명은 <a class="reference external" href="https://velog.io/&#64;rudi/%EC%A7%80%EC%88%98-%ED%91%9C%EA%B8%B0%EB%B2%95Exponential-notation">지수 표기법</a>을 참고한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>score</th>
+      <th>score_minmax</th>
+      <th>score_standardized</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>10.000000</td>
+      <td>10.000000</td>
+      <td>1.000000e+01</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>55.000000</td>
+      <td>0.500000</td>
+      <td>-1.665335e-17</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>9.775252</td>
+      <td>0.349116</td>
+      <td>1.054093e+00</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>41.000000</td>
+      <td>0.000000</td>
+      <td>-1.509659e+00</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>48.250000</td>
+      <td>0.258929</td>
+      <td>-7.278712e-01</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>56.500000</td>
+      <td>0.553571</td>
+      <td>1.617492e-01</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>63.250000</td>
+      <td>0.794643</td>
+      <td>8.896204e-01</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>69.000000</td>
+      <td>1.000000</td>
+      <td>1.509659e+00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 <section id="id7">
 <h2><span class="section-number">2.6. </span>연습문제<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
@@ -1902,7 +2136,7 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 <li><p>위 파일의 내용을 데이터프레임으로 불러와서 <code class="docutils literal notranslate"><span class="pre">housing_df</span></code> 변수에 할당하라.
 단, 인덱스는 별도로 지정하지 않는다.</p></li>
 <li><p>total_rooms 특성값만으로 구성된 데이터프레임을 이용하여 평균값, 중앙값, 최빈값, 분산, 표준편차, 범위, 사분범위를 구하라.
-또한 상자그림을 그리고 정규화를 진행한다.</p></li>
+또한 상자 그림을 그리고 정규화를 진행한다.</p></li>
 </ol>
 </li>
 </ol>
