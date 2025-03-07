@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. 1차원 데이터 시각화 &#8212; 데이터 사이언스 기초</title>
+    <title>4. 2차원 데이터 &#8212; 데이터 사이언스 기초</title>
   
   
   
@@ -58,11 +58,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'oneD_visualization';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'twoD_data';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. 2차원 데이터" href="twoD_data.html" />
-    <link rel="prev" title="2. 1차원 데이터" href="oneD_data.html" />
+    <link rel="next" title="5. 2차원 데이터 시각화" href="twoD_visualization.html" />
+    <link rel="prev" title="3. 1차원 데이터 시각화" href="oneD_visualization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,8 +169,8 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="data_handling.html">1. 데이터 다루기</a></li>
 <li class="toctree-l1"><a class="reference internal" href="oneD_data.html">2. 1차원 데이터</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. 1차원 데이터 시각화</a></li>
-<li class="toctree-l1"><a class="reference internal" href="twoD_data.html">4. 2차원 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneD_visualization.html">3. 1차원 데이터 시각화</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. 2차원 데이터</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twoD_visualization.html">5. 2차원 데이터 시각화</a></li>
 </ul>
 
@@ -226,7 +226,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/jupyter-book/oneD_visualization.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/jupyter-book/twoD_data.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -274,7 +274,7 @@
       
       
       
-      <li><a href="https://github.com/codingalzi/DataSci/issues/new?title=Issue%20on%20page%20%2FoneD_visualization.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/codingalzi/DataSci/issues/new?title=Issue%20on%20page%20%2FtwoD_data.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +304,7 @@
       
       
       
-      <li><a href="_sources/oneD_visualization.ipynb" target="_blank"
+      <li><a href="_sources/twoD_data.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -388,7 +388,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>1차원 데이터 시각화</h1>
+    <h1>2차원 데이터</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -398,10 +398,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1. 도수분포표</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.2. 히스토그램</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.3. 시각화 상세</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.4. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 공분산</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 상관계수</a></li>
 </ul>
             </nav>
         </div>
@@ -414,7 +412,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">3. </span>1차원 데이터 시각화<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>2차원 데이터<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p><strong>기본 설정</strong></p>
 <p>Numpy와 Pandas 라이브러리를 각각 np와 pd로 불러온다.</p>
 <div class="cell docutils container">
@@ -474,10 +472,8 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">3.1. </span>도수분포표<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>공분산<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p><strong>데이터셋 불러오기</strong></p>
-<p>50명의 영어와 수학 점수를 담고 있는 csv 파일을 데이터프레임으로 불러온다.
-이때 학생번호를 인덱스로 지정한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="o">+</span><span class="s1">&#39;ch02_scores_em.csv&#39;</span><span class="p">,</span>
@@ -486,10 +482,17 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 </div>
-<p>앞 번호 다섯 명의 점수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">en_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">])[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">ma_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mathematics&#39;</span><span class="p">])[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="n">scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;english&#39;</span><span class="p">:</span><span class="n">en_scores</span><span class="p">,</span>
+                          <span class="s1">&#39;mathematics&#39;</span><span class="p">:</span><span class="n">ma_scores</span><span class="p">},</span>
+                         <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span>
+                                         <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">],</span>
+                                        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;student&#39;</span><span class="p">))</span>
+<span class="n">scores_df</span>
 </pre></div>
 </div>
 </div>
@@ -516,45 +519,76 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
       <th>mathematics</th>
     </tr>
     <tr>
-      <th>student number</th>
+      <th>student</th>
       <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
+      <th>A</th>
       <td>42</td>
       <td>65</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>B</th>
       <td>69</td>
       <td>80</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>C</th>
       <td>56</td>
       <td>63</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>D</th>
       <td>41</td>
       <td>63</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>E</th>
       <td>57</td>
       <td>76</td>
+    </tr>
+    <tr>
+      <th>F</th>
+      <td>48</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>65</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>H</th>
+      <td>49</td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <th>I</th>
+      <td>65</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>J</th>
+      <td>58</td>
+      <td>82</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>뒷 번호 다섯 명의 점수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_df</span> <span class="o">=</span> <span class="n">scores_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">summary_df</span><span class="p">[</span><span class="s1">&#39;english_deviation&#39;</span><span class="p">]</span> <span class="o">=</span>\
+    <span class="n">summary_df</span><span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">summary_df</span><span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">summary_df</span><span class="p">[</span><span class="s1">&#39;mathematics_deviation&#39;</span><span class="p">]</span> <span class="o">=</span>\
+    <span class="n">summary_df</span><span class="p">[</span><span class="s1">&#39;mathematics&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">summary_df</span><span class="p">[</span><span class="s1">&#39;mathematics&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">summary_df</span><span class="p">[</span><span class="s1">&#39;product of deviations&#39;</span><span class="p">]</span> <span class="o">=</span>\
+    <span class="n">summary_df</span><span class="p">[</span><span class="s1">&#39;english_deviation&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">summary_df</span><span class="p">[</span><span class="s1">&#39;mathematics_deviation&#39;</span><span class="p">]</span>
+<span class="n">summary_df</span>
 </pre></div>
 </div>
 </div>
@@ -579,212 +613,239 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
       <th></th>
       <th>english</th>
       <th>mathematics</th>
+      <th>english_deviation</th>
+      <th>mathematics_deviation</th>
+      <th>product of deviations</th>
     </tr>
     <tr>
-      <th>student number</th>
+      <th>student</th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>46</th>
-      <td>45</td>
-      <td>71</td>
+      <th>A</th>
+      <td>42</td>
+      <td>65</td>
+      <td>-13.0</td>
+      <td>-6.4</td>
+      <td>83.2</td>
     </tr>
     <tr>
-      <th>47</th>
-      <td>66</td>
+      <th>B</th>
+      <td>69</td>
       <td>80</td>
+      <td>14.0</td>
+      <td>8.6</td>
+      <td>120.4</td>
     </tr>
     <tr>
-      <th>48</th>
-      <td>55</td>
-      <td>77</td>
+      <th>C</th>
+      <td>56</td>
+      <td>63</td>
+      <td>1.0</td>
+      <td>-8.4</td>
+      <td>-8.4</td>
     </tr>
     <tr>
-      <th>49</th>
-      <td>64</td>
-      <td>83</td>
+      <th>D</th>
+      <td>41</td>
+      <td>63</td>
+      <td>-14.0</td>
+      <td>-8.4</td>
+      <td>117.6</td>
     </tr>
     <tr>
-      <th>50</th>
+      <th>E</th>
+      <td>57</td>
+      <td>76</td>
+      <td>2.0</td>
+      <td>4.6</td>
+      <td>9.2</td>
+    </tr>
+    <tr>
+      <th>F</th>
+      <td>48</td>
+      <td>60</td>
+      <td>-7.0</td>
+      <td>-11.4</td>
+      <td>79.8</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>65</td>
+      <td>81</td>
+      <td>10.0</td>
+      <td>9.6</td>
+      <td>96.0</td>
+    </tr>
+    <tr>
+      <th>H</th>
+      <td>49</td>
       <td>66</td>
-      <td>88</td>
+      <td>-6.0</td>
+      <td>-5.4</td>
+      <td>32.4</td>
+    </tr>
+    <tr>
+      <th>I</th>
+      <td>65</td>
+      <td>78</td>
+      <td>10.0</td>
+      <td>6.6</td>
+      <td>66.0</td>
+    </tr>
+    <tr>
+      <th>J</th>
+      <td>58</td>
+      <td>82</td>
+      <td>3.0</td>
+      <td>10.6</td>
+      <td>31.8</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>도수분포표를 설명하기 위해
-설명을 위해 50명의 영어 점수를 이용한다.
-아래 코드는 영어 전수만으로 구성된 어레이를 지정한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">english_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>넘파이의 <code class="docutils literal notranslate"><span class="pre">histogram()</span></code> 함수가 지정된 구간에 포함된 값들의 개수로 구성된 도수분포표의 정보를 생성한다.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">range=(0,</span> <span class="pre">100)</span></code>: 도수분포표에 사용될 전체 구간으로 0부터 100까지로 지정</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bins=10</span></code>: 전체 구간을 10 개의 구간으로 쪼갠 후 각 구간에 포함된 값들의 개수를 확인하도록 함</p></li>
-</ul>
-<p>함수의 반환값으로 각 구간에 포함된 값들의 개수로 구성된 어레이와
-구간을 구분하는 값들로 구성된 어레이가 지정된다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq10</span><span class="p">,</span> <span class="n">bin_edges10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">english_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">freq10</span></code> 변수는 10개 각각의 구간에 포함된 값들의 개수로 구성된 어레이를 가리킨다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq10</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_df</span><span class="p">[</span><span class="s1">&#39;product of deviations&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  0,  0,  2,  8, 16, 18,  6,  0,  0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>62.800000
 </pre></div>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">bin_edges10</span></code> 변수는 10개 구간을 지정하는 11개의 값들고 구성된 어레이를 가리킨다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bin_edges10</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">en_scores</span><span class="p">,</span> <span class="n">ma_scores</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cov_mat</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  0.,  10.,  20.,  30.,  40.,  50.,  60.,  70.,  80.,  90., 100.])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[86.  , 62.8 ],
+       [62.8 , 68.44]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov_mat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">cov_mat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(62.800000, 62.800000)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov_mat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cov_mat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(86.000000, 68.440000)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">en_scores</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ma_scores</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(86.000000, 68.440000)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">3.2. </span>히스토그램<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">matplotlib.pylot</span></code> 라이브러리의 <code class="docutils literal notranslate"><span class="pre">hist()</span></code> 함수는
-<code class="docutils literal notranslate"><span class="pre">np.hist()</span></code> 함수가 하는 일과 함께 도수분포표를 시각화한
-히스토그램 그래프를 그린다.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">rwidth=0.95</span></code>: 히스토그램에 사용딘 막대의 넓이를 조정하즌 비율. 1보다 작게하여 막대들을 구분하도록 하는 게 좋음.</p></li>
-</ul>
+<h2><span class="section-number">4.2. </span>상관계수<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq10</span><span class="p">,</span> <span class="n">bin_edges10</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">english_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">en_scores</span><span class="p">,</span> <span class="n">ma_scores</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span>\
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">en_scores</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ma_scores</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/75d4bf52d7b4f243af8c9d3a5a2afd2a835775d65feb43b1bff2d03f7035f377.png" src="_images/75d4bf52d7b4f243af8c9d3a5a2afd2a835775d65feb43b1bff2d03f7035f377.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.818569
+</pre></div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">rwidth</span></code> 키워드 옵션을 지정하지 않으면 기본값으로 지정된 1이 사용되어 막대들을 구분하기 어려워진다.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq10</span><span class="p">,</span> <span class="n">bin_edges10</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">english_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">en_scores</span><span class="p">,</span> <span class="n">ma_scores</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bc49532a9cbea1b16e6ac218e5d9e6ba14802c7f5e104e35e93b7df036a490d2.png" src="_images/bc49532a9cbea1b16e6ac218e5d9e6ba14802c7f5e104e35e93b7df036a490d2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.      , 0.818569],
+       [0.818569, 1.      ]])
+</pre></div>
 </div>
 </div>
-<p><strong>bins 키워드 인자의 중요성</strong></p>
-<p>쪼개는 구간을 다르게 하면 히스토그램도 다르게 보인다.
-아래 코드는 점수 구간을 20개 구간으로 쪼갠 결과를 보여준다.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq20</span><span class="p">,</span> <span class="n">bin_edges20</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">english_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/48342778587c719d09a0baa86978e141da0d526b6c253b427d5fb51459d89216.png" src="_images/48342778587c719d09a0baa86978e141da0d526b6c253b427d5fb51459d89216.png" />
-</div>
-</div>
-<p>구간의 개수와 구간별 항목의 개수가 달라진다.</p>
-<ul class="simple">
-<li><p>20개 구간별 항목 수</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq20</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  2.,  3.,  5.,  5., 11.,  8.,
-       10.,  4.,  2.,  0.,  0.,  0.,  0.])
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>20개 구간을 지정하는 21개의 값</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bin_edges20</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  0.,   5.,  10.,  15.,  20.,  25.,  30.,  35.,  40.,  45.,  50.,
-        55.,  60.,  65.,  70.,  75.,  80.,  85.,  90.,  95., 100.])
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id4">
-<h2><span class="section-number">3.3. </span>시각화 상세<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>히스토그램과 같은 그래프를 그릴 때 x-축과 y-축의 눈금 정보, 축에 사용된 데이터 특성,
-그래프의 타이틀 등을 지정할 수 있다.
-이를 위해 <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> 라이브러리의 다양한 기능을 활용한다.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">plt.xticks()</span></code>: x-축의 눈금 지정</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">plt.yticks()</span></code>: y-축의 눈금 지정</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">plt.xlabel()</span></code>: x-축의 특성명 지정</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">plt.ylabel()</span></code>: y-축의 특성명 지정</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">plt.title()</span></code>: 그래프 타이틀 지정</p></li>
-</ul>
-<p>코드 마지막 줄의 <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> 함수는 위쪽에서 지정된 그래프를 한꺼번에 그리라는 명령을 수행한다.
-여러 개의 그래프를 동시에 그릴 때 유용하다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">english_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;English score&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;English score histogram&quot;</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>english</th>
+      <th>mathematics</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>english</th>
+      <td>1.000000</td>
+      <td>0.818569</td>
+    </tr>
+    <tr>
+      <th>mathematics</th>
+      <td>0.818569</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/8e9ad64a23ffb2a89a7fbe0422951c688ce767649f15b7d416cc157b0447da7b.png" src="_images/8e9ad64a23ffb2a89a7fbe0422951c688ce767649f15b7d416cc157b0447da7b.png" />
-</div>
-</div>
-</section>
-<section id="id5">
-<h2><span class="section-number">3.4. </span>연습문제<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>아래 링크를 이용하여 matplotlib.pyplot 라이브러리의 기초 활용법을 알아보세요.</p>
-<ul class="simple">
-<li><p>참고 문서: <a class="reference external" href="https://codingalzi.github.io/datapy/visualization_1.html">(코딩알지) matplotlib.pyplot 1부</a></p></li>
-</ul>
-</li>
-</ol>
 </section>
 </section>
 
@@ -819,20 +880,20 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="oneD_data.html"
+       href="oneD_visualization.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>1차원 데이터</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>1차원 데이터 시각화</p>
       </div>
     </a>
     <a class="right-next"
-       href="twoD_data.html"
+       href="twoD_visualization.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>2차원 데이터</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>2차원 데이터 시각화</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -852,10 +913,8 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1. 도수분포표</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.2. 히스토그램</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.3. 시각화 상세</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.4. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 공분산</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 상관계수</a></li>
 </ul>
   </nav></div>
 
