@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -398,8 +398,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 공분산</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 상관계수</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 주요 내용</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 공분산</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.3. 상관계수</a></li>
 </ul>
             </nav>
         </div>
@@ -472,8 +473,11 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">4.1. </span>공분산<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>주요 내용<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>50명의 영어와 수학 시험 점수를 사용하여 2차원 데이터로부터 정보를 추출하는 방법을 다룬다.
+예를 들어 영와 점수와 수학 점수의 상관관계를 알아본다.</p>
 <p><strong>데이터셋 불러오기</strong></p>
+<p>50명의 영어와 수학 점수를 담고 있는 csv 파일을 데이터프레임으로 불러온다. 이때 학생번호를 인덱스로 지정한다</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="o">+</span><span class="s1">&#39;ch02_scores_em.csv&#39;</span><span class="p">,</span>
@@ -484,10 +488,46 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 50 entries, 1 to 50
+Data columns (total 2 columns):
+ #   Column       Non-Null Count  Dtype
+---  ------       --------------  -----
+ 0   english      50 non-null     int64
+ 1   mathematics  50 non-null     int64
+dtypes: int64(2)
+memory usage: 1.2 KB
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>10개 데이터 샘플 추출</strong></p>
+<p>보다 단순한 설명을 위해 처음 10개의 데이터만 이용해서
+두 종류의 데이터 사이의 상관관계를 설명한다.
+학생들의 이름을 활용할 수 있도록
+먼저 인덱스를 처음 열 명의 이름을 A, B, C, …, J로 지정한다.
+또한 인덱스 데이터의 이름을 student로 지정한다.</p>
+<p>방식 1: 넘파이 어레이 활용</p>
+<p>각각의 특성에서 처음 10개 데이터만 추출해서 어레이로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">en_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">])[:</span><span class="mi">10</span><span class="p">]</span>
 <span class="n">ma_scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mathematics&#39;</span><span class="p">])[:</span><span class="mi">10</span><span class="p">]</span>
-
-<span class="n">scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;english&#39;</span><span class="p">:</span><span class="n">en_scores</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>추출된 두 개의 데이터에 대해 각각 english, mathematics 특성명과 함께
+각 데이터 샘플의 인덱스를 언급된 알파벳으로 지정하면서
+새로운 데이터프레임을 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;english&#39;</span><span class="p">:</span><span class="n">en_scores</span><span class="p">,</span>
                           <span class="s1">&#39;mathematics&#39;</span><span class="p">:</span><span class="n">ma_scores</span><span class="p">},</span>
                          <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span>
                                          <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">],</span>
@@ -579,6 +619,210 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </table>
 </div></div></div>
 </div>
+<p>방식 2: 데이터프레임 슬라이싱 활용</p>
+<p>처음 10개의 데이터 샘플을 데이터프레임에서 슬라이싱을 이용하여 직접 추출할 수 있다.
+단, 원본을 그대로 유지하기 위해 슬라이싱 데이터프레임의 사본을 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">scores_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>english</th>
+      <th>mathematics</th>
+    </tr>
+    <tr>
+      <th>student number</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>42</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>69</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>56</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>41</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>57</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>48</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>65</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>49</td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>65</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>58</td>
+      <td>82</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>데이터프렘의 <code class="docutils literal notranslate"><span class="pre">index</span></code> 속성에 데이터셋의 크기에 해당하는 리스트를 지정하는
+방식으로 인덱스를 변경한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">index</span></code> 속성이 가리키는 <code class="docutils literal notranslate"><span class="pre">Index</span></code> 객체의 <code class="docutils literal notranslate"><span class="pre">name</span></code> 속성을 <code class="docutils literal notranslate"><span class="pre">student</span></code>로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;student&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>이전 방식과 동일한 결과를 얻는다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>english</th>
+      <th>mathematics</th>
+    </tr>
+    <tr>
+      <th>student</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>42</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>69</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>56</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>41</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>57</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>48</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>65</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>49</td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>65</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>58</td>
+      <td>82</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">4.2. </span>공분산<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>영어 점수와 수학 점수 사이의 선형 상관관계를 척도로 갖는 공분산을 설명한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_df</span> <span class="o">=</span> <span class="n">scores_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -774,8 +1018,8 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 </section>
-<section id="id3">
-<h2><span class="section-number">4.2. </span>상관계수<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h2><span class="section-number">4.3. </span>상관계수<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">en_scores</span><span class="p">,</span> <span class="n">ma_scores</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span>\
@@ -913,8 +1157,9 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 공분산</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 상관계수</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 주요 내용</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 공분산</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.3. 상관계수</a></li>
 </ul>
   </nav></div>
 
