@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -1424,9 +1424,9 @@ S^2 = \frac{1}{10} \left\{ (42-55)^2 + (69-55)^2 + \cdots + (58-55)^2 \right\} =
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">var()</span></code> 메서드 활용. <code class="docutils literal notranslate"><span class="pre">ddof=0</span></code> 키워드 인자를 활용하여 표준분산을 계산함에 주의할 것.</p></li>
-</ul>
+<p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">var()</span></code> 메서드 활용해도 된다.
+하지만 <code class="docutils literal notranslate"><span class="pre">ddof=0</span></code> 키워드 인자를 활용하여 (편향된) 표본 분산<font size='2'>sample variance</font>을 계산해야 함에 주의한다.
+표본 분산을 편향 분산<font size='2'>biased variance</font>이라 부르기도 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1440,8 +1440,9 @@ dtype: float64
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">ddof</span></code> 키워드 인자를 생략하거나 <code class="docutils literal notranslate"><span class="pre">ddof=1</span></code>로 지정하면 불편분산<font size='2'>unbiased variance</font>을 계산한다.
-불편분산의 용도는 나중에 배운다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ddof</span></code> 키워드 인자를 생략하면 <code class="docutils literal notranslate"><span class="pre">ddof=1</span></code>로 지정된 기본 옵션이 실행되며
+불편 분산<font size='2'>unbiased variance</font>, 즉 편향되지 않은 표본 분산을 계산한다.
+불편 분산의 용도는 나중에 배운다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_df</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
@@ -1467,6 +1468,37 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</div>
+<p>참고로 <code class="docutils literal notranslate"><span class="pre">np.var()</span></code> 함수 또한 <code class="docutils literal notranslate"><span class="pre">ddof</span></code> 키워드 인자를 사용하며 기본값은 데이터프레임의 경우와는 달리 0으로
+지정되어 있어서 기본적으로 편향 분산을 계산한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>86.000000
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ddof=1</span></code>로 지정하면 불편 분산을 계산한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95.555556
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">편향 분산 vs. 불편 분산</p>
+<p>불편 분산을 사용하는 이유는 <a class="reference external" href="https://wscode.tistory.com/74">‘불편 분산은 왜 n-1로 나누지?</a>를 참고한다.</p>
 </div>
 <p>아래 코드는 편차의 제곱을 새로운 변수 <code class="docutils literal notranslate"><span class="pre">summary_df</span></code>가 가리키는 데이터프레임의 새로운 특성(변인)으로 추가한다.</p>
 <div class="cell docutils container">
@@ -2121,7 +2153,7 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 <h2><span class="section-number">2.6. </span>연습문제<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>편차들의 평균값은 항상 0이다. 이에 대한 근거를 확인한다.</p></li>
-<li><p>표준분산과 불편분산에 대해 알아본다.</p></li>
+<li><p>표준분산과 불편 분산에 대해 알아본다.</p></li>
 <li><p>아래 링크를 참고하여 넘파이 어레이에 대해 알아본다.</p>
 <ul class="simple">
 <li><p>참고 문서: <a class="reference external" href="https://codingalzi.github.io/datapy/numpy_1.html">(코딩알지) 넘파이 어레이</a></p></li>
