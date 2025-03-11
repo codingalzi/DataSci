@@ -7,6 +7,8 @@ options:
   numbered: True
 #  only_build_toc_files: true
 chapters:
+- file: list_array
+- file: series_dataframe
 - file: data_handling
 - file: oneD_data
 - file: oneD_visualization

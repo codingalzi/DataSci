@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. 2차원 데이터 &#8212; 데이터 사이언스 기초</title>
+    <title>6. 2차원 데이터 &#8212; 데이터 사이언스 기초</title>
   
   
   
@@ -61,8 +61,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'twoD_data';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5. 2차원 데이터 시각화" href="twoD_visualization.html" />
-    <link rel="prev" title="3. 1차원 데이터 시각화" href="oneD_visualization.html" />
+    <link rel="next" title="7. 2차원 데이터 시각화" href="twoD_visualization.html" />
+    <link rel="prev" title="5. 1차원 데이터 시각화" href="oneD_visualization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -167,11 +167,13 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="data_handling.html">1. 데이터 다루기</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oneD_data.html">2. 1차원 데이터</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oneD_visualization.html">3. 1차원 데이터 시각화</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. 2차원 데이터</a></li>
-<li class="toctree-l1"><a class="reference internal" href="twoD_visualization.html">5. 2차원 데이터 시각화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_array.html">1. 리스트와 어레이</a></li>
+<li class="toctree-l1"><a class="reference internal" href="series_dataframe.html">2. 시리즈와 데이터프레임</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_handling.html">3. 데이터 다루기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneD_data.html">4. 1차원 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneD_visualization.html">5. 1차원 데이터 시각화</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. 2차원 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twoD_visualization.html">7. 2차원 데이터 시각화</a></li>
 </ul>
 
     </div>
@@ -398,9 +400,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 주요 내용</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 공분산</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.3. 상관계수</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. 주요 내용</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2. 공분산</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.3. 상관계수</a></li>
 </ul>
             </nav>
         </div>
@@ -413,7 +415,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">4. </span>2차원 데이터<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">6. </span>2차원 데이터<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p><strong>기본 설정</strong></p>
 <p>Numpy와 Pandas 라이브러리를 각각 np와 pd로 불러온다.</p>
 <div class="cell docutils container">
@@ -473,7 +475,7 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">4.1. </span>주요 내용<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.1. </span>주요 내용<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>50명의 영어와 수학 시험 점수를 사용하여 2차원 데이터로부터 정보를 추출하는 방법을 다룬다.
 예를 들어 영와 점수와 수학 점수의 상관관계를 알아본다.</p>
 <p><strong>데이터셋 불러오기</strong></p>
@@ -821,7 +823,7 @@ memory usage: 1.2 KB
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">4.2. </span>공분산<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.2. </span>공분산<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>영어 점수와 수학 점수 사이의 선형 상관관계를 척도로 갖는 공분산을 설명한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1019,7 +1021,7 @@ memory usage: 1.2 KB
 </div>
 </section>
 <section id="id4">
-<h2><span class="section-number">4.3. </span>상관계수<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.3. </span>상관계수<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">en_scores</span><span class="p">,</span> <span class="n">ma_scores</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span>\
@@ -1129,7 +1131,7 @@ memory usage: 1.2 KB
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>1차원 데이터 시각화</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>1차원 데이터 시각화</p>
       </div>
     </a>
     <a class="right-next"
@@ -1137,7 +1139,7 @@ memory usage: 1.2 KB
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>2차원 데이터 시각화</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>2차원 데이터 시각화</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1157,9 +1159,9 @@ memory usage: 1.2 KB
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 주요 내용</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 공분산</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.3. 상관계수</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. 주요 내용</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2. 공분산</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.3. 상관계수</a></li>
 </ul>
   </nav></div>
 
