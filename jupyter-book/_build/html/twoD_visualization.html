@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. 2차원 데이터 시각화 &#8212; 데이터 사이언스 기초</title>
+    <title>9. 2차원 데이터 시각화 &#8212; 데이터 사이언스 기초</title>
   
   
   
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -61,7 +61,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'twoD_visualization';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="6. 2차원 데이터" href="twoD_data.html" />
+    <link rel="prev" title="8. 2차원 데이터" href="twoD_data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -166,13 +166,15 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="list_array.html">1. 리스트와 어레이</a></li>
-<li class="toctree-l1"><a class="reference internal" href="series_dataframe.html">2. 시리즈와 데이터프레임</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_handling.html">3. 데이터 다루기</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oneD_data.html">4. 1차원 데이터</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oneD_visualization.html">5. 1차원 데이터 시각화</a></li>
-<li class="toctree-l1"><a class="reference internal" href="twoD_data.html">6. 2차원 데이터</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. 2차원 데이터 시각화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lists_dicts.html">1. 리스트와 사전</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">2. 넘파이 어레이</a></li>
+<li class="toctree-l1"><a class="reference internal" href="series.html">3. 판다스 시리즈</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes.html">4. 판다스 데이터프레임</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_handling.html">5. 데이터 다루기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneD_data.html">6. 1차원 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneD_visualization.html">7. 1차원 데이터 시각화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twoD_data.html">8. 2차원 데이터</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. 2차원 데이터 시각화</a></li>
 </ul>
 
     </div>
@@ -399,10 +401,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.1. 산점도</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.2. 회귀직선</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.3. 히트맵</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.4. 예제: 앤스컴의 데이터 4중주</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. 산점도</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2. 회귀직선</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.3. 히트맵</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">9.4. 예제: 앤스컴의 데이터 4중주</a></li>
 </ul>
             </nav>
         </div>
@@ -415,7 +417,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">7. </span>2차원 데이터 시각화<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>2차원 데이터 시각화<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p><strong>기본 설정</strong></p>
 <p>Numpy와 Pandas 라이브러리를 각각 np와 pd로 불러온다.</p>
 <div class="cell docutils container">
@@ -475,7 +477,7 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">7.1. </span>산점도<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>산점도<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p><strong>데이터셋 불러오기</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -613,7 +615,7 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">7.2. </span>회귀직선<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>회귀직선<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 계수β_0와β_1를 구한다</span>
@@ -645,7 +647,7 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </section>
 <section id="id4">
-<h2><span class="section-number">7.3. </span>히트맵<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.3. </span>히트맵<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -669,7 +671,7 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </section>
 <section id="id5">
-<h2><span class="section-number">7.4. </span>예제: 앤스컴의 데이터 4중주<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.4. </span>예제: 앤스컴의 데이터 4중주<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/anscombe_quartet.png" style="width:750px"></div></p><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># npy 형식으로 저장된 NumPy array를 읽어들인다</span>
@@ -1036,7 +1038,7 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>2차원 데이터</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>2차원 데이터</p>
       </div>
     </a>
 </div>
@@ -1055,10 +1057,10 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.1. 산점도</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.2. 회귀직선</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.3. 히트맵</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.4. 예제: 앤스컴의 데이터 4중주</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. 산점도</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2. 회귀직선</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.3. 히트맵</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">9.4. 예제: 앤스컴의 데이터 4중주</a></li>
 </ul>
   </nav></div>
 

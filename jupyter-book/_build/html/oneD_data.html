@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. 1차원 데이터 &#8212; 데이터 사이언스 기초</title>
+    <title>6. 1차원 데이터 &#8212; 데이터 사이언스 기초</title>
   
   
   
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'oneD_data';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5. 1차원 데이터 시각화" href="oneD_visualization.html" />
-    <link rel="prev" title="3. 데이터 다루기" href="data_handling.html" />
+    <link rel="next" title="7. 1차원 데이터 시각화" href="oneD_visualization.html" />
+    <link rel="prev" title="5. 데이터 다루기" href="data_handling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,13 +169,15 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="list_array.html">1. 리스트와 어레이</a></li>
-<li class="toctree-l1"><a class="reference internal" href="series_dataframe.html">2. 시리즈와 데이터프레임</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_handling.html">3. 데이터 다루기</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. 1차원 데이터</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oneD_visualization.html">5. 1차원 데이터 시각화</a></li>
-<li class="toctree-l1"><a class="reference internal" href="twoD_data.html">6. 2차원 데이터</a></li>
-<li class="toctree-l1"><a class="reference internal" href="twoD_visualization.html">7. 2차원 데이터 시각화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lists_dicts.html">1. 리스트와 사전</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">2. 넘파이 어레이</a></li>
+<li class="toctree-l1"><a class="reference internal" href="series.html">3. 판다스 시리즈</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes.html">4. 판다스 데이터프레임</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_handling.html">5. 데이터 다루기</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. 1차원 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneD_visualization.html">7. 1차원 데이터 시각화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twoD_data.html">8. 2차원 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twoD_visualization.html">9. 2차원 데이터 시각화</a></li>
 </ul>
 
     </div>
@@ -402,12 +404,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 데이터셋 불러오기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 넘파이 어레이 활용</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.3. 데이터 대표값</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.4. 데이터 분포</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.5. 데이터 정규화</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.6. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. 데이터셋 불러오기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2. 넘파이 어레이 활용</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.3. 데이터 대표값</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.4. 데이터 분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.5. 데이터 정규화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.6. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -420,7 +422,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">4. </span>1차원 데이터<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">6. </span>1차원 데이터<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p><strong>기본 설정</strong></p>
 <p>Numpy와 Pandas 라이브러리를 각각 np와 pd로 불러온다.</p>
 <div class="cell docutils container">
@@ -472,7 +474,7 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">4.1. </span>데이터셋 불러오기<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.1. </span>데이터셋 불러오기<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>50명의 영어와 수학 점수를 담고 있는 csv 파일을 데이터프레임으로 불러온다.
 이때 학생번호를 인덱스로 지정한다.</p>
 <div class="cell docutils container">
@@ -899,7 +901,7 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">4.2. </span>넘파이 어레이 활용<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.2. </span>넘파이 어레이 활용<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>아래 코드느 처음 10명의 영어 점수로 구성된 넘파이 어레이를 지정한다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">head()</span></code>/<code class="docutils literal notranslate"><span class="pre">tail()</span></code> 함수: 정수 인자를 지정하면 지정된 개수의 샘플로 구성된 데이터프레임 반환.</p></li>
@@ -1011,7 +1013,7 @@ Panddas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </section>
 <section id="id4">
-<h2><span class="section-number">4.3. </span>데이터 대표값<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.3. </span>데이터 대표값<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>주어진 데이터셋을 대표하는 값으로 평균값, 중앙값, 최빈값 등이 사용된다.</p>
 <p><strong>평균값</strong></p>
 <p>평균값은 데이터를 모두 더한 뒤, 데이터의 개수로 나눈다.</p>
@@ -1189,7 +1191,7 @@ dtype: float64
 </div>
 </section>
 <section id="id5">
-<h2><span class="section-number">4.4. </span>데이터 분포<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.4. </span>데이터 분포<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p><strong>편차</strong></p>
 <p>각 데이터가 평균으로부터 떨어져 있는 정도를 <strong>편차</strong><font size='2'>deviation</font>라 한다.
 즉, 편차는 데이터들이 평균값으로부터 떨어져 있는 정도를 평가한다.</p>
@@ -1867,7 +1869,7 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 </div>
 </section>
 <section id="id6">
-<h2><span class="section-number">4.5. </span>데이터 정규화<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.5. </span>데이터 정규화<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <p>데이터 분석을 진행할 때 경우에 따라 데이터셋의 특성값들의
 <strong>스케일</strong><font size="2">scale</font>을 비슷하게 조정할 필요가 있다.
 특성의 스케일을 조정하는 과정을 <strong>스케일링</strong><font size="2">scaling</font>이다.</p>
@@ -2166,7 +2168,7 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
 </div>
 </section>
 <section id="id7">
-<h2><span class="section-number">4.6. </span>연습문제<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.6. </span>연습문제<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>기본 데이터 저장소에 있는 <code class="docutils literal notranslate"><span class="pre">california_housing.csv</span></code> 파일은 미국 캘리포니아 주의 주택 정보를 담고 있다.</p>
 <ol class="arabic simple">
@@ -2216,7 +2218,7 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>데이터 다루기</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>데이터 다루기</p>
       </div>
     </a>
     <a class="right-next"
@@ -2224,7 +2226,7 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>1차원 데이터 시각화</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>1차원 데이터 시각화</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2244,12 +2246,12 @@ Q2는 앞서 살펴본 중앙값에 해당한다.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 데이터셋 불러오기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 넘파이 어레이 활용</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.3. 데이터 대표값</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.4. 데이터 분포</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.5. 데이터 정규화</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.6. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. 데이터셋 불러오기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2. 넘파이 어레이 활용</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.3. 데이터 대표값</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.4. 데이터 분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.5. 데이터 정규화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.6. 연습문제</a></li>
 </ul>
   </nav></div>
 
