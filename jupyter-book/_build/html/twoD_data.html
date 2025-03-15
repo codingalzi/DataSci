@@ -1319,13 +1319,15 @@ S_{xy} &amp; = \frac 1 n \sum_{i=1}^{n} (x_i - \bar x)(y_i - \bar y) \\
 </div>
 <p>이렇듯 공분산은 계산된 값만 보고서는 상관관계가 얼마나 큰지를 판단할 수 있는 절대적인 기준을 갖지 못한다.
 이점을 보완하기 위해 공분산을 각 데이터의 표준편차로 나누어 데이터의 크기와 단위에 의존하지 않도록 지표를 정의하며,
-이를 <strong>상관계수</strong><font size='2'>correlation coefficient</font>라 부른다.</p>
+이를 <strong>상관계수</strong><font size='2'>correlation coefficient</font>라 부른다.
+엄밀히 말하면 <strong>피어슨 상관계수</strong><font size='2'>Pearson correlation coefficient</font>라고 한다.
+다른 방식으로 계산되는 상관계수도 있지만 여기서는 피어슨 상관계수만 사용한다.</p>
 <p>상관계수는 일반적으로 <span class="math notranslate nohighlight">\(r_{xy}\)</span>로 표기되며 다음과 같이 계산된다.</p>
 <div class="math notranslate nohighlight">
 \[
 r_{xy} = \frac{S_{xy}}{S_x \cdot S_y}
 \]</div>
-<p>두 데이터의 상관계수 <span class="math notranslate nohighlight">\(r_{xy}\)</span>는 항상 -1과 1 사이의 값을 가지며 단위는 무시된다.
+<p>두 데이터의 피어슨 상관계수 <span class="math notranslate nohighlight">\(r_{xy}\)</span>는 항상 -1과 1 사이의 값을 가지며 단위는 무시된다.
 상관계수의 의미는 다음과 같다.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1462,16 +1464,7 @@ r_{xy} = \frac{S_{xy}}{S_x \cdot S_y}
 </section>
 <section id="id7">
 <h2><span class="section-number">8.3. </span>연습문제<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>기본 데이터 저장소에 있는 <code class="docutils literal notranslate"><span class="pre">california_housing.csv</span></code> 파일은 미국 캘리포니아 주의 주택 정보를 담고 있다.</p>
-<ol class="arabic simple">
-<li><p>위 파일의 내용을 데이터프레임으로 불러와서 <code class="docutils literal notranslate"><span class="pre">housing_df</span></code> 변수에 할당하라.
-단, 인덱스는 별도로 지정하지 않는다.</p></li>
-<li><p>주택중위가격(median_house_value) 특성과 다른 특성 사이의 선형 상관계수를 나타내는 상관계수를 확인하라.</p></li>
-<li><p>확인된 상관계수를 바탕으로 주택중위가격과 가장 상관관계가 높은 특성을 확인하고 그 이유를 추정하라.</p></li>
-</ol>
-</li>
-</ol>
+<p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/practices/practice-twoD_data.ipynb">(연습) 2차원 데이터</a></p>
 </section>
 </section>
 
