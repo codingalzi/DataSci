@@ -58,6 +58,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'twoD_visualization';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -403,7 +405,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. 서브플롯 관리</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2. 선형 회귀</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.3. 히트맵</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.3. 2차워 히스토그램</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">9.4. 예제: 앤스컴의 데이터 4중주</a></li>
 </ul>
             </nav>
@@ -644,7 +646,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7f346df2869c98953fe2e3557094b6ac91df2f5e818d35df90afa57222a7b00d.png" src="_images/7f346df2869c98953fe2e3557094b6ac91df2f5e818d35df90afa57222a7b00d.png" />
+<img alt="_images/f5912428ced5cee049fe5bd854fe106f6a57c59661dba0e33f0b1840ac0b5099.png" src="_images/f5912428ced5cee049fe5bd854fe106f6a57c59661dba0e33f0b1840ac0b5099.png" />
 </div>
 </div>
 <p>반면에 아래 코드는 두 개의 서브플롯을 위 아래로 배치시킨다.
@@ -686,7 +688,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2f6644c47089f33ffed4ae404e51c84739b3dcb882f3bbdb001498f94b58b993.png" src="_images/2f6644c47089f33ffed4ae404e51c84739b3dcb882f3bbdb001498f94b58b993.png" />
+<img alt="_images/beda8e833c32d1df72d76ac3c5258b0b01c751751b0861df2af4c2d4670fc989.png" src="_images/beda8e833c32d1df72d76ac3c5258b0b01c751751b0861df2af4c2d4670fc989.png" />
 </div>
 </div>
 </section>
@@ -742,8 +744,8 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">eng_scores</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">eng_scores</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 
 <span class="c1"># xs에 대응하는 y-좌표 생성</span>
-<span class="n">poly_1d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">poly_fit</span><span class="p">)</span>
-<span class="n">ys</span> <span class="o">=</span> <span class="n">poly_1d</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">poly_eng_math</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">poly_fit</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">poly_eng_math</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -777,15 +779,137 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <img alt="_images/05e3359805c2ae0a5e5abe335005a2223171f670dc940b654eb3f4322d505924.png" src="_images/05e3359805c2ae0a5e5abe335005a2223171f670dc940b654eb3f4322d505924.png" />
 </div>
 </div>
+<p><strong>회귀 예측</strong></p>
+<p>44점과 59점은 50명의 영어 점수에 포함되지 않는다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eng_x</span> <span class="o">=</span> <span class="mi">44</span>
+<span class="n">eng_x</span> <span class="ow">in</span> <span class="n">eng_scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eng_y</span> <span class="o">=</span> <span class="mi">59</span>
+<span class="n">eng_y</span> <span class="ow">in</span> <span class="n">eng_scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>이때 두 학생의 수학 점수는 어느 정도일지 예측할 때 앞서 찾은 회귀 직선 <code class="docutils literal notranslate"><span class="pre">poly_eng_math</span></code>를 이용할 수 있다.</p>
+<ul class="simple">
+<li><p>영어 점수가 44점일 때 수학 점수 예측값</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math_x</span> <span class="o">=</span> <span class="n">poly_eng_math</span><span class="p">(</span><span class="n">eng_x</span><span class="p">)</span>
+<span class="n">math_x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>69.943937
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>영어 점수가 59점일 때 수학 점수 예측값</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math_y</span> <span class="o">=</span> <span class="n">poly_eng_math</span><span class="p">(</span><span class="n">eng_y</span><span class="p">)</span>
+<span class="n">math_y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>79.265282
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figure 객체 지정</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 산점도 그리기</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">eng_scores</span><span class="p">,</span> <span class="n">math_scores</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;score&#39;</span><span class="p">)</span>
+
+<span class="c1"># 회귀 직선 그리기</span>
+
+<span class="c1"># 직선 그리기</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">poly_fit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">+</span><span class="si">{</span><span class="n">poly_fit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">x&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;mathematics&#39;</span><span class="p">)</span>
+
+<span class="c1"># 영어 59점과 90점일 때의 예측값</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">eng_x</span><span class="p">,</span> <span class="n">eng_y</span><span class="p">],</span> <span class="p">[</span><span class="n">math_x</span><span class="p">,</span> <span class="n">math_y</span><span class="p">],</span> <span class="s1">&#39;+k&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 범례의 표시</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d4b147edbe41a17f9b6e86db9ef2c8070b6181ead4eff60e0b31f37bf626f560.png" src="_images/d4b147edbe41a17f9b6e86db9ef2c8070b6181ead4eff60e0b31f37bf626f560.png" />
+</div>
+</div>
 <p><strong>평균 제곱근 오차</strong></p>
 <p>앞서 찾은 직선 회귀가 50명의 영어 점수와 수학 점수 사이의 선형 상관관계를 <strong>가장 잘 보여준다</strong>고 하였다.
 그런데 어떤 기준으로 ‘가장 잘 보여준다’라고 했을까?</p>
+<p>평균 제곱근 오차<font size='2'>root mean squared error</font>가 기준으로 사용되며 아래 식으로 정의된다.</p>
+<div class="math notranslate nohighlight">
+\[
+RMSE = \sqrt{\frac 1 n \, \sum_{i=1}^{n} (y_i - \hat{y_i})^2}
+\]</div>
+<p>단, 다음이 성립한다.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span>: 실제 값</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y_i}\)</span>: 예측값</p></li>
+</ul>
+<p>아래 그래프는 7개의 실제 데이터와 예측값에 대해 오차의 제곱을 시각적으로 보여준다.</p>
+<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/rmse.png?raw=true" style="width:500px"></div></p>
+<p style='text-align:center;'>그림 출처: <a href='https://jmlb.github.io/flashcards/2018/07/01/mae_vs_rmse/'>Root Mean Squared Error Versus Mean Absolute Error</a></p><p><code class="docutils literal notranslate"><span class="pre">np.polyfit()</span></code> 함수는 평균 제곱근 오차를 기준으로 최적의 직선 정보를 찾아준다.
+정확한 근거는 여기서는 소개하지 않는다.</p>
 </section>
 <section id="id4">
-<h2><span class="section-number">9.3. </span>히트맵<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.3. </span>2차워 히스토그램<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>영어 점수와 수학 점수를 대상으로 동시에 구간별 빈도를
+격자무늬로 구분된 영역에 값의 크기를 색으로 구분하는
+<strong>히트맵</strong><font size='2'>heat map</font> 형식으로 표현한다.</p>
+<p>아래 코드는 영어 점수와 수학 점수 각각을 5점 간격으로 쪼갠 후 각 영역에 포함된 학생수를
+히트맵으로 표현한다.</p>
+<ul class="simple">
+<li><p>영어 점수 구간: 35점부터 80점, 총 45점 구간을 9개 구간으로 나눔.</p></li>
+<li><p>수학 점수 구간: 55점부터 95점, 총 40점 구간을 8개 구간으로 나눔.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">plt.hist2d()</span></code> 함수의 반환값: 길이가 4인 튜플</p>
+<ul class="simple">
+<li><p>첫째 항목: (9,8) 모양의 빈도 어레이</p></li>
+<li><p>둘째 항목: x-축 구간</p></li>
+<li><p>셋째 항목: y-축 구간</p></li>
+<li><p>넷째 항목: 히트맵 모양의 지도를 가리키는 객체</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
 <span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">eng_scores</span><span class="p">,</span>
@@ -796,10 +920,10 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;mathematics&#39;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># x-축 구간</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># y-축 구간</span>
 
-<span class="c1"># 컬러 바의 표시</span>
+<span class="c1"># 컬러바: 히트맵 정보 활용</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -807,17 +931,52 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b3d2309a8dc85a920222a32736a1258d48ccab8fa8bfd9366f08ff3b11f3263c.png" src="_images/b3d2309a8dc85a920222a32736a1258d48ccab8fa8bfd9366f08ff3b11f3263c.png" />
+<img alt="_images/18a76b2dc739eac2a4ad52726baca960ff1580a93e47d023d0aed3f9cbe75d9b.png" src="_images/18a76b2dc739eac2a4ad52726baca960ff1580a93e47d023d0aed3f9cbe75d9b.png" />
+</div>
+</div>
+<p><strong>seaborn 라이브러리</strong></p>
+<p>seaborn 라이브러리는 matplotlib 라이브러리를 확장하여 보다 다양한 기능을 제공한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드는 동일한 히트맵을 다른 느낌으로 전달한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mathematics&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/99647beb887bcbb02fa14b455fd5378637d0abc6f43df449160ef04d26d9b106.png" src="_images/99647beb887bcbb02fa14b455fd5378637d0abc6f43df449160ef04d26d9b106.png" />
 </div>
 </div>
 </section>
 <section id="id5">
 <h2><span class="section-number">9.4. </span>예제: 앤스컴의 데이터 4중주<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>주어진 데이터의 특성을 지금까지 분산, 상관계수 등 수치 지표를 이용하여 파악하였다.
+그런데 수치 지표가 동일하더라도 시각화를 진행하면 완전히 다른 데이터가 될 수 있다.
+설명을 위해 앤스컴의 4중주(Anscombe’s quartet)를 소개한다.</p>
+<div class="note admonition">
+<p class="admonition-title">프랜시스 앤스컴</p>
+<p>프랜시스 앤스컴<font size='2'>Francis J. Anscombe</font>는 영국 출식 통계학자이며,
+1973년에 앤스컴의 4중주라고 불리는 4개의 데이터셋을 소개하였다.</p>
+</div>
+<p><strong>데이터 불러오기</strong></p>
+<p>먼저 앤스컴의 4중주 데이터는 다양한 방식으로 저장되어 많은 인터넷 저장소로부터 구할 수 있다.
+여기서 사용하는 기본 저장소에서도 다운로드할 수 있으며 데이터프레임으로 불러온 결과는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="o">+</span><span class="s1">&#39;anscombe.csv&#39;</span><span class="p">)</span>
-
-<span class="n">anscombe_data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="o">+</span><span class="s1">&#39;anscombe.csv&#39;</span><span class="p">)</span>
+<span class="n">anscombe_df</span>
 </pre></div>
 </div>
 </div>
@@ -976,9 +1135,11 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </table>
 </div></div></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">x1</span></code>부터 <code class="docutils literal notranslate"><span class="pre">x4</span></code>까지, 그리고 <code class="docutils literal notranslate"><span class="pre">y1</span></code>부터 <code class="docutils literal notranslate"><span class="pre">y4</span></code>까지의 데이터가 각각
+평균편차, 분산, 4분위수가 모두 동일함에 주목한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1105,83 +1266,61 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div></div></div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">(xi,</span> <span class="pre">yi)</span></code> 를 담은 네 개의 어레이</strong></p>
-<ul class="simple">
-<li><p>방식 0: 네 개의 변수 선언</p></li>
-</ul>
+<p>(xi, yi)로 구성된 네 개의 데이터셋을 선언한다.
+다양한 방식이 가능하지만 여기서는 가장 단순하네 네 개의 변수를 선언한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">anscombe_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
-<span class="n">data2</span> <span class="o">=</span> <span class="n">anscombe_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
-<span class="n">data3</span> <span class="o">=</span> <span class="n">anscombe_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
-<span class="n">data4</span> <span class="o">=</span> <span class="n">anscombe_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>방식 1: 리스트 조건제시법<font size='2'>list comprehension</font> 활용</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">anscombe_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">4</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">anscombe_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="n">anscombe_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+<span class="n">data3</span> <span class="o">=</span> <span class="n">anscombe_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<span class="n">data4</span> <span class="o">=</span> <span class="n">anscombe_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">anscombe_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">data2</span> <span class="o">=</span> <span class="n">anscombe_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">data3</span> <span class="o">=</span> <span class="n">anscombe_arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">data4</span> <span class="o">=</span> <span class="n">anscombe_arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>방식 2: <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문 활용</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="n">anscombe_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">anscombe_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">4</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">anscombe_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">data2</span> <span class="o">=</span> <span class="n">anscombe_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">data3</span> <span class="o">=</span> <span class="n">anscombe_arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">data4</span> <span class="o">=</span> <span class="n">anscombe_arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">data3</span><span class="p">,</span> <span class="n">data4</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>산점도와 선형 회귀</strong></p>
+<p>네 데이터셋을 대상으로 산점도와 회귀 직선을 그린다.
+(2, 2) 모양의 서브플롯을 이용하여 네 개의 그래프를 그린다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> 함수: <code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체와 <code class="docutils literal notranslate"><span class="pre">Axes</span></code> 객체를 동시에 지정함.</p></li>
+<li><p>아래 코드에서 <code class="docutils literal notranslate"><span class="pre">axes</span></code>는 (2,2) 모양의 <code class="docutils literal notranslate"><span class="pre">Axes</span></code> 정보를 담는 어레를 가리킴.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 그래프를 그리기 위한 영역을 2x2개 생성</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-                         <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figure 객체와 Axes 지정</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+                         <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+                         <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+                         <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                         <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">anscombe_arr</span><span class="p">):</span>
-    <span class="n">poly_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">anscombe_data</span><span class="p">):</span>
+    <span class="c1"># 회귀 직선 데이터</span>
+    <span class="n">poly_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">poly_1d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">poly_fit</span><span class="p">)</span>
     <span class="n">ys</span> <span class="o">=</span> <span class="n">poly_1d</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-    <span class="c1"># 그리는 영역을 선택</span>
+    
+    <span class="c1"># 서브플롯 지정</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span>]
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+    <span class="c1"># x-축, y-축 범위 지정</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">13</span><span class="p">])</span>
-    <span class="c1"># 타이틀을 부여</span>
+
+    <span class="c1"># 타이틀</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;data</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 
 <span class="c1"># 그래프 사이의 간격을 좁힘</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -1190,9 +1329,12 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/da7420ebf308ea9c42fbbb059526ab7533063a334e351d6aa77bf2844200e4d3.png" src="_images/da7420ebf308ea9c42fbbb059526ab7533063a334e351d6aa77bf2844200e4d3.png" />
+<img alt="_images/2412a5dc5ad037799a5ebad4226f4263727a2a561b1cb70bb78d181c70401404.png" src="_images/2412a5dc5ad037799a5ebad4226f4263727a2a561b1cb70bb78d181c70401404.png" />
 </div>
 </div>
+<p><strong>결론</strong></p>
+<p>평균, 분산, 상관계수 등 모든 수치 지표가 동일하지만 네 개의 데이터는 완전히 다른 분포를 띠고 있다.
+따라서 수치 지표 뿐만 아니라 시각화된 그래프도 함께 확인하는 일이 매우 중요하다.</p>
 </section>
 </section>
 
@@ -1253,7 +1395,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">9.1. 서브플롯 관리</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">9.2. 선형 회귀</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.3. 히트맵</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">9.3. 2차워 히스토그램</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">9.4. 예제: 앤스컴의 데이터 4중주</a></li>
 </ul>
   </nav></div>
