@@ -531,7 +531,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c052848aa8fa15aaeebbd8a7a260c871b6b75574176424ef2f65ff46e0aab4ae.png" src="_images/c052848aa8fa15aaeebbd8a7a260c871b6b75574176424ef2f65ff46e0aab4ae.png" />
+<img alt="_images/34b70e8822a00b903ce8d2f79213a8f8bf40c6053bbeeda300be5ebeeeabf578.png" src="_images/34b70e8822a00b903ce8d2f79213a8f8bf40c6053bbeeda300be5ebeeeabf578.png" />
 </div>
 </div>
 <p><strong>그래프 코드 2</strong></p>
@@ -561,7 +561,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c052848aa8fa15aaeebbd8a7a260c871b6b75574176424ef2f65ff46e0aab4ae.png" src="_images/c052848aa8fa15aaeebbd8a7a260c871b6b75574176424ef2f65ff46e0aab4ae.png" />
+<img alt="_images/34b70e8822a00b903ce8d2f79213a8f8bf40c6053bbeeda300be5ebeeeabf578.png" src="_images/34b70e8822a00b903ce8d2f79213a8f8bf40c6053bbeeda300be5ebeeeabf578.png" />
 </div>
 </div>
 <p>두 그래프 코드의 차이점은 <code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체와 서브플롯의 활용에 있다.</p>
@@ -575,26 +575,23 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
-<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/figures.png?raw=true" style="width:550px"></div></p>
-<p>그림 출처: <a class="reference external" href="https://velog.io/&#64;regista/Matplotlib%EC%97%90%EC%84%9C-Figure%EC%99%80-Axes-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-Basic">Matplotlib에서 Figure와 Axes 이해하기 (Basic)</a></p>
-<p><strong>서브플롯 추가</strong></p>
+<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/figures.png?raw=true" style="width:500px"></div></p>
+<p style='text-align:center;'>그림 출처: <a href='https://velog.io/@regista/Matplotlib에서-Figure와-Axes-이해하기-Basic'>Matplotlib에서 Figure와 Axes 이해하기</a></p><p><strong>서브플롯 추가</strong></p>
 <p>서브플롯<font size='2'>subplot</font>은 그래프를 그릴 때 필요한 도화지에 해당한다.
 아래 코드는 준비된 <code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체에 하나의 서브플롯을 추가한다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>위 코드는 다음과 같이 액자에 한 장의 도화지를 준비한 것과 동일하다.</p>
-<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/figures_subplots.png?raw=true" style="width:670px"></div></p>
-<p>그림 출처: <a class="reference external" href="https://velog.io/&#64;regista/Matplotlib%EC%97%90%EC%84%9C-Figure%EC%99%80-Axes-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-Basic">Matplotlib에서 Figure와 Axes 이해하기 (Basic)</a></p>
-<p>반면에 아래 코드는 두 개의 서브플롯을 추가한다.</p>
+<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/figures_subplots.png?raw=true" style="width:600px"></div></p>
+<p style='text-align:center;'>그림 출처: <a href='https://velog.io/@regista/Matplotlib에서-Figure와-Axes-이해하기-Basic'>Matplotlib에서 Figure와 Axes 이해하기</a></p><p>반면에 아래 코드는 두 개의 서브플롯을 추가한다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>위 코드는 액자에 두 장의 도화지를 좌우로 배치시키는 효과를 낸다.</p>
-<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/figures_subplots121.png?raw=true" style="width:670px"></div></p>
-<p>그림 출처: <a class="reference external" href="https://velog.io/&#64;regista/Matplotlib%EC%97%90%EC%84%9C-Figure%EC%99%80-Axes-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-Basic">Matplotlib에서 Figure와 Axes 이해하기 (Basic)</a></p>
-<p><strong><code class="docutils literal notranslate"><span class="pre">add_subplot()</span></code> 메서드의 인자</strong></p>
+<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/figures_subplots121.png?raw=true" style="width:600px"></div></p>
+<p style='text-align:center;'>그림 출처: <a href='https://velog.io/@regista/Matplotlib에서-Figure와-Axes-이해하기-Basic'>Matplotlib에서 Figure와 Axes 이해하기</a></p><p><strong><code class="docutils literal notranslate"><span class="pre">add_subplot()</span></code> 메서드의 인자</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">add_subplot()</span></code> 함수는 서브플롯을 행렬 모양으로 배치시킬 때 필요한 세 개의 정보를 인자로 받는다.</p>
 <ul class="simple">
 <li><p>첫째와 둘째 인자: 도화지 배치를 지정하는 행렬의 크기</p></li>
@@ -606,7 +603,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">ax1</span></code>: (1, 2) 모양으로 배치된 두 개의 서브플롯 중에서 첫째, 즉 왼편에 위치한 서브플롯의 위치 정보</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ax2</span></code>: (1, 2) 모양으로 배치된 두 개의 서브플롯 중에서 둘째, 즉 오른편에 위치한 서브플롯의 위치 정보</p></li>
 </ul>
-<p><strong>그래프 삽입하기</strong></p>
+<p><strong>그래프 삽입</strong></p>
 <p>특정 서브플롯에 그래프를 그리려면 해당 서브플롯의 위치 정보를 가리키는
 <code class="docutils literal notranslate"><span class="pre">ax1</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">ax2</span></code>를 선택하여 <code class="docutils literal notranslate"><span class="pre">scatter()</span></code>와 같은 함수를 호출한다.
 예를 아래 코드는 10명 학생의 산점도와 함께 50명 전체의 산점도를 좌우로 나란히 배치시킨다.</p>
@@ -695,62 +692,94 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </section>
 <section id="id3">
 <h2><span class="section-number">9.2. </span>선형 회귀<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>50명의 영어와 수학 점수를 이용한 산점도만 따로 확인하면 다음과 같다.</p>
-<ul class="simple">
-<li><p>50명의 점수를 가장 잘 대변하는 직선은 다음과 같이 구한다.</p></li>
-</ul>
+<p>50명의 영어와 수학 점수를 이용한 산점도를 보면 두 점수 사이의 상관계수가 높아 보인다.
+실제로 0.72 정도로 확인된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">eng_scores</span><span class="p">,</span> <span class="n">math_scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.      , 0.723741],
+       [0.723741, 1.      ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>산점도를 보면 영어 점수가 높아질 수록 수학 점수도 일반적으로 상승하는 경향이 있다.
+그 경향이 0.72 정도라는 의미인데 이를 보다 직관적으로 표현하기 위해
+두 데이터의 상관관계를 시작적으로 보여주는 직선을 그릴 수 있다.</p>
+<p><strong>회귀 직선</strong></p>
+<p>50명의 점수를 가장 잘 대변하는 직선의 기울기와 절편을 구하기 위해
+여기서는 <code class="docutils literal notranslate"><span class="pre">np.polyfit()</span></code> 함수를 이용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">poly_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">eng_scores</span><span class="p">,</span> <span class="n">math_scores</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">poly_fit</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.621423, 42.601324])
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">poly_fit</span></code> 변수가 가리키는 어레이는 두 점수의 상관관계를 <strong>가장</strong> 잘 드러내는 직선의 기울기와 절편을 포함다.
+이 정보를 이용하여 산포도와 직선을 함께 그리면 찾아진 직선의 의미를 정확히 파악된다.</p>
+<p>직선을 그리기 위해 필요한 x-축, y-축 좌표를 지정한다.
+아래 코드에서 <code class="docutils literal notranslate"><span class="pre">np.poly1d()</span></code> 함수는 기울기와 절편을 이용한 1차 함수를 선언한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># x-좌표 생성</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">eng_scores</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">eng_scores</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="c1"># xs에 대응하는 y-좌표 생성</span>
+<span class="n">poly_1d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">poly_fit</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">poly_1d</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드는 산점도와 회귀 직선을 하나의 그래프에 동시에 그린다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figure 객체 지정</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="c1">## 왼편: 단순 산점도</span>
+<span class="c1"># 산점도 그리기</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">eng_scores</span><span class="p">,</span> <span class="n">math_scores</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;score&#39;</span><span class="p">)</span>
 
-<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">eng_scores</span><span class="p">,</span> <span class="n">math_scores</span><span class="p">)</span>
-
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;mathematics&#39;</span><span class="p">)</span>
-
-<span class="c1"># 산점도</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">eng_scores</span><span class="p">,</span> 
-            <span class="n">math_scores</span><span class="p">,</span> 
-            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;score&#39;</span><span class="p">)</span>
-
-<span class="c1"># 산점도 데이터를 가장 잘 대변하는 직선의 기울기와 절편</span>
-<span class="n">poly_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">eng_scores</span><span class="p">,</span> <span class="n">math_scores</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1">## 오른편: 산점도 + 회귀 직선</span>
-
-<span class="c1"># 기울기와 절편을 이용한 1차 함수 지정</span>
-<span class="n">poly_1d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">poly_fit</span><span class="p">)</span>
-
-<span class="c1"># 직선을 그리기 위해 x-좌표 생성</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">eng_scores</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">eng_scores</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-<span class="c1"># xs에 대응하는 y-좌표</span>
-<span class="n">ys</span> <span class="o">=</span> <span class="n">poly_1d</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="c1"># 회귀 직선 그리기</span>
 
 <span class="c1"># 직선 그리기</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> 
-         <span class="n">ys</span><span class="p">,</span> 
-         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> 
-         <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">poly_fit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">+</span><span class="si">{</span><span class="n">poly_fit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">poly_fit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">+</span><span class="si">{</span><span class="n">poly_fit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">x&#39;</span><span class="p">)</span>
 
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;mathematics&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;mathematics&#39;</span><span class="p">)</span>
 
 <span class="c1"># 범례의 표시</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6232ad0a2e41915c8f11f1c21a0e6f3fa424f83f290fd1ac66e29d70161a10e7.png" src="_images/6232ad0a2e41915c8f11f1c21a0e6f3fa424f83f290fd1ac66e29d70161a10e7.png" />
+<img alt="_images/05e3359805c2ae0a5e5abe335005a2223171f670dc940b654eb3f4322d505924.png" src="_images/05e3359805c2ae0a5e5abe335005a2223171f670dc940b654eb3f4322d505924.png" />
 </div>
 </div>
+<p><strong>평균 제곱근 오차</strong></p>
+<p>앞서 찾은 직선 회귀가 50명의 영어 점수와 수학 점수 사이의 선형 상관관계를 <strong>가장 잘 보여준다</strong>고 하였다.
+그런데 어떤 기준으로 ‘가장 잘 보여준다’라고 했을까?</p>
 </section>
 <section id="id4">
 <h2><span class="section-number">9.3. </span>히트맵<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
