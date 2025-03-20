@@ -841,6 +841,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 </div>
+<p>언급된 두 점을 <code class="docutils literal notranslate"><span class="pre">+</span></code> 기호로 표시하면 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figure 객체 지정</span>
@@ -874,8 +875,8 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 <p><strong>평균 제곱근 오차</strong></p>
 <p>앞서 찾은 직선 회귀가 50명의 영어 점수와 수학 점수 사이의 선형 상관관계를 <strong>가장 잘 보여준다</strong>고 하였다.
-그런데 어떤 기준으로 ‘가장 잘 보여준다’라고 했을까?</p>
-<p>평균 제곱근 오차<font size='2'>root mean squared error</font>가 기준으로 사용되며 아래 식으로 정의된다.</p>
+그런데 어떤 기준으로 “가장 잘 보여준다” 라고 했을까?</p>
+<p>평균 제곱근 오차<font size='2'>root mean squared error</font>(RMSE)가 기준으로 사용되며 아래 식으로 정의된다.</p>
 <div class="math notranslate nohighlight">
 \[
 RMSE = \sqrt{\frac 1 n \, \sum_{i=1}^{n} (y_i - \hat{y_i})^2}
@@ -885,16 +886,17 @@ RMSE = \sqrt{\frac 1 n \, \sum_{i=1}^{n} (y_i - \hat{y_i})^2}
 <li><p><span class="math notranslate nohighlight">\(y_i\)</span>: 실제 값</p></li>
 <li><p><span class="math notranslate nohighlight">\(\hat{y_i}\)</span>: 예측값</p></li>
 </ul>
-<p>아래 그래프는 7개의 실제 데이터와 예측값에 대해 오차의 제곱을 시각적으로 보여준다.</p>
-<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/rmse.png?raw=true" style="width:500px"></div></p>
+<p>아래 그래프는 8개의 실제 데이터와 예측값 각각에 대한 오차의 제곱을 시각적으로 보여준다.
+이 경우 RMSE는 파랑색 선분들의 길이의 제곱의 평균값이다.</p>
+<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/rmse.png?raw=true" style="width:600px"></div></p>
 <p style='text-align:center;'>그림 출처: <a href='https://jmlb.github.io/flashcards/2018/07/01/mae_vs_rmse/'>Root Mean Squared Error Versus Mean Absolute Error</a></p><p><code class="docutils literal notranslate"><span class="pre">np.polyfit()</span></code> 함수는 평균 제곱근 오차를 기준으로 최적의 직선 정보를 찾아준다.
-정확한 근거는 여기서는 소개하지 않는다.</p>
+이에 대한 엄말한 수학 증명은 여기서는 소개하지 않는다.</p>
 </section>
 <section id="id4">
 <h2><span class="section-number">9.3. </span>2차워 히스토그램<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>영어 점수와 수학 점수를 대상으로 동시에 구간별 빈도를
-격자무늬로 구분된 영역에 값의 크기를 색으로 구분하는
-<strong>히트맵</strong><font size='2'>heat map</font> 형식으로 표현한다.</p>
+<p>영어 점수와 수학 점수를 대상으로
+격자무늬로 구분된 영역에 포함된 값의 크기를 색으로 구분하는 <strong>히트맵</strong><font size='2'>heat map</font> 형식으로 표현한다.
+히스토그램의 2차원 버전이라 생각하면 된다.</p>
 <p>아래 코드는 영어 점수와 수학 점수 각각을 5점 간격으로 쪼갠 후 각 영역에 포함된 학생수를
 히트맵으로 표현한다.</p>
 <ul class="simple">
@@ -916,7 +918,8 @@ RMSE = \sqrt{\frac 1 n \, \sum_{i=1}^{n} (y_i - \hat{y_i})^2}
 <span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">eng_scores</span><span class="p">,</span>
               <span class="n">math_scores</span><span class="p">,</span>
               <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> 
-              <span class="nb">range</span><span class="o">=</span><span class="p">[(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> <span class="p">(</span><span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">)])</span>
+              <span class="nb">range</span><span class="o">=</span><span class="p">[(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> <span class="p">(</span><span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">)],</span> 
+              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;mathematics&#39;</span><span class="p">)</span>
@@ -935,8 +938,99 @@ RMSE = \sqrt{\frac 1 n \, \sum_{i=1}^{n} (y_i - \hat{y_i})^2}
 <img alt="_images/18a76b2dc739eac2a4ad52726baca960ff1580a93e47d023d0aed3f9cbe75d9b.png" src="_images/18a76b2dc739eac2a4ad52726baca960ff1580a93e47d023d0aed3f9cbe75d9b.png" />
 </div>
 </div>
+<p><strong>색지도</strong></p>
+<p>matplotlib 라이브러리에서 이미지를 출력할 때 색지도<font size='2'>color map</font>를 선택해야 한다.
+색지도는 <code class="docutils literal notranslate"><span class="pre">cmap</span></code> 옵션으로 지정한다.</p>
+<p><div align="center" border="1px"><img src="https://matplotlib.org/stable/_images/sphx_glr_colormaps_002_2_00x.png" style="width:80%;"></div></p>
+<p>보다 다양한 색지도 정보는 <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Matplotlib: Choosing Colormaps</a>를
+참고한다.</p>
+<p>아래는 색지도를 다르게 설정하는 경우를 보여준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">eng_scores</span><span class="p">,</span>
+              <span class="n">math_scores</span><span class="p">,</span>
+              <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> 
+              <span class="nb">range</span><span class="o">=</span><span class="p">[(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> <span class="p">(</span><span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">)],</span>
+              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;mathematics&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># x-축 구간</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># y-축 구간</span>
+
+<span class="c1"># 컬러바: 히트맵 정보 활용</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/950441b5c5f3825337b8e4fdb23bb61f3b476db9c400bbe6a481960d4a3773f7.png" src="_images/950441b5c5f3825337b8e4fdb23bb61f3b476db9c400bbe6a481960d4a3773f7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">eng_scores</span><span class="p">,</span>
+              <span class="n">math_scores</span><span class="p">,</span>
+              <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> 
+              <span class="nb">range</span><span class="o">=</span><span class="p">[(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> <span class="p">(</span><span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">)],</span>
+              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;mathematics&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># x-축 구간</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># y-축 구간</span>
+
+<span class="c1"># 컬러바: 히트맵 정보 활용</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/264e1e3880a1425a019860e5d958e565e583473d0e17c9c98e60cdbd9a04f2ce.png" src="_images/264e1e3880a1425a019860e5d958e565e583473d0e17c9c98e60cdbd9a04f2ce.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">eng_scores</span><span class="p">,</span>
+              <span class="n">math_scores</span><span class="p">,</span>
+              <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> 
+              <span class="nb">range</span><span class="o">=</span><span class="p">[(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> <span class="p">(</span><span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">)],</span>
+              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;mathematics&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># x-축 구간</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># y-축 구간</span>
+
+<span class="c1"># 컬러바: 히트맵 정보 활용</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2b7244f663f9e4c806a239885310c4983e749c3f99dea66d5395c175ee3c9b43.png" src="_images/2b7244f663f9e4c806a239885310c4983e749c3f99dea66d5395c175ee3c9b43.png" />
+</div>
+</div>
 <p><strong>seaborn 라이브러리</strong></p>
-<p>seaborn 라이브러리는 matplotlib 라이브러리를 확장하여 보다 다양한 기능을 제공한다.</p>
+<p>seaborn 라이브러리는 matplotlib 라이브러리를 확장하여 보다 다양한 기능과 섬세한 설정을 지원한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -965,15 +1059,15 @@ RMSE = \sqrt{\frac 1 n \, \sum_{i=1}^{n} (y_i - \hat{y_i})^2}
 <h2><span class="section-number">9.4. </span>앤스컴의 데이터 4중주<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p>주어진 데이터의 특성을 지금까지 분산, 상관계수 등 수치 지표를 이용하여 파악하였다.
 그런데 수치 지표가 동일하더라도 시각화를 진행하면 완전히 다른 데이터가 될 수 있다.
-설명을 위해 앤스컴의 4중주(Anscombe’s quartet)를 소개한다.</p>
+설명을 위해 앤스컴의 데이터 4중주(Anscombe’s quartet)를 소개한다.</p>
 <div class="note admonition">
 <p class="admonition-title">프랜시스 앤스컴</p>
 <p>프랜시스 앤스컴<font size='2'>Francis J. Anscombe</font>는 영국 출식 통계학자이며,
-1973년에 앤스컴의 4중주라고 불리는 4개의 데이터셋을 소개하였다.</p>
+1973년에 앤스컴의 데이터 4중주라고 불리는 4개의 데이터셋을 소개하였다.</p>
 </div>
 <p><strong>데이터 불러오기</strong></p>
-<p>먼저 앤스컴의 4중주 데이터는 다양한 방식으로 저장되어 많은 인터넷 저장소로부터 구할 수 있다.
-여기서 사용하는 기본 저장소에서도 다운로드할 수 있으며 데이터프레임으로 불러온 결과는 다음과 같다.</p>
+<p>앤스컴의 데이터 4중주를 위한 데이터셋은 다양한 방식으로 저장되어 많은 인터넷 저장소로부터 구할 수 있다.
+여기서는 제공되는 기본 저장소로부터 데이터프레임으로 불러온다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="o">+</span><span class="s1">&#39;anscombe.csv&#39;</span><span class="p">)</span>
@@ -1267,8 +1361,9 @@ RMSE = \sqrt{\frac 1 n \, \sum_{i=1}^{n} (y_i - \hat{y_i})^2}
 </div></div></div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">(xi,</span> <span class="pre">yi)</span></code> 를 담은 네 개의 어레이</strong></p>
-<p>(xi, yi)로 구성된 네 개의 데이터셋을 선언한다.
-다양한 방식이 가능하지만 여기서는 가장 단순하네 네 개의 변수를 선언한다.</p>
+<p>각각의 <code class="docutils literal notranslate"><span class="pre">i</span></code>에 대해 <code class="docutils literal notranslate"><span class="pre">(xi,</span> <span class="pre">yi)</span></code>로 구성된 네 개의 데이터셋을 선언한다.
+다양한 방식이 가능하지만 여기서는 가장 단순하네 네 개의 변수 각각이
+가리키는 데이터프레임으로 선언한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">anscombe_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
@@ -1279,19 +1374,43 @@ RMSE = \sqrt{\frac 1 n \, \sum_{i=1}^{n} (y_i - \hat{y_i})^2}
 </div>
 </div>
 </div>
+<p>네 개의 데이터프레임을 묶어 하나의 리스트로 선언한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">data3</span><span class="p">,</span> <span class="n">data4</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">data3</span><span class="p">,</span> <span class="n">data4</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>참고로 (4, 11, 2) 모양의 3차원 어레이가 생성된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_arr</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 11, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>(4, 11, 2) 모양의 3차원 어레이는
+4 개의 (11, 2) 모양의 어레이로 구성된 어레이로 이해하면 된다.
+3차원 어레이에 대한 보다 자세한 설명은 여기서는 하지 않는다.</p>
 <p><strong>산점도와 선형 회귀</strong></p>
-<p>네 데이터셋을 대상으로 산점도와 회귀 직선을 그린다.
-(2, 2) 모양의 서브플롯을 이용하여 네 개의 그래프를 그린다.</p>
+<p>네 데이터셋 각각을 대상으로 산점도와 회귀 직선을 그리기 위해
+(2, 2) 모양의 서브플롯을 이용한다.</p>
+<p>서브플롯을 구성하기 위해 사용된, 하지만 앞서 설명에서는 언급하지 않은
+<code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> 함수와 함수의 키워드 인자의 기능은 다음과 같다.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> 함수: <code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체와 <code class="docutils literal notranslate"><span class="pre">Axes</span></code> 객체를 동시에 지정함.</p></li>
-<li><p>아래 코드에서 <code class="docutils literal notranslate"><span class="pre">axes</span></code>는 (2,2) 모양의 <code class="docutils literal notranslate"><span class="pre">Axes</span></code> 정보를 담는 어레를 가리킴.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> 함수: 반환값으로 <code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체와 <code class="docutils literal notranslate"><span class="pre">Axes</span></code> 객체 동시 지정.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">fig</span></code> 변수: 액자 역할 담당의 <code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">axes</span></code> 변수: (2,2) 모양으로 지정된 도화지들의 <code class="docutils literal notranslate"><span class="pre">Axes</span></code> 정보를 담은 어레이</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sharex</span></code>와 <code class="docutils literal notranslate"><span class="pre">sharey</span></code> 키워드 인자: 도화지들이 x-축, y-축 눈금의 공유 여부 지정</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1304,16 +1423,16 @@ RMSE = \sqrt{\frac 1 n \, \sum_{i=1}^{n} (y_i - \hat{y_i})^2}
 
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">anscombe_data</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">anscombe_arr</span><span class="p">):</span>
     <span class="c1"># 회귀 직선 데이터</span>
-    <span class="n">poly_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">poly_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">poly_1d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">poly_fit</span><span class="p">)</span>
     <span class="n">ys</span> <span class="o">=</span> <span class="n">poly_1d</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
     
     <span class="c1"># 서브플롯 지정</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span>]
     
-    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 
     <span class="c1"># x-축, y-축 범위 지정</span>
@@ -1333,7 +1452,7 @@ RMSE = \sqrt{\frac 1 n \, \sum_{i=1}^{n} (y_i - \hat{y_i})^2}
 <img alt="_images/2412a5dc5ad037799a5ebad4226f4263727a2a561b1cb70bb78d181c70401404.png" src="_images/2412a5dc5ad037799a5ebad4226f4263727a2a561b1cb70bb78d181c70401404.png" />
 </div>
 </div>
-<p><strong>결론</strong></p>
+<p><strong>데이터 시각화의 중요성</strong></p>
 <p>평균, 분산, 상관계수 등 모든 수치 지표가 동일하지만 네 개의 데이터는 완전히 다른 분포를 띠고 있다.
 따라서 수치 지표 뿐만 아니라 시각화된 그래프도 함께 확인하는 일이 매우 중요하다.</p>
 </section>
