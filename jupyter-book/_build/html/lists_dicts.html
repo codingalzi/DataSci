@@ -859,15 +859,6 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="note admonition">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">range</span></code> 객체와 이터레이터</p>
-<p><code class="docutils literal notranslate"><span class="pre">range</span></code> 객체는 리스트와는 달리 필요한 항목을 미리 한꺼번에 생성하지 않고 필요에 따라
-하나씩 생성하기 때문이다.
-이런 자료형을 이터레이터라고 하는데
-자세한 설명은 여기서는 하지 않는다.
-파이썬 프로그래밍에 보다 관심이 있는 경우 <a class="reference external" href="https://codingalzi.github.io/pybook/iterator_generator.html">(코딩알지) 이터러블, 이터레이터, 제너레이터</a>를
-읽어 보기를 권장한다.</p>
-</div>
 <p>리스트로 형변환을 하면 <code class="docutils literal notranslate"><span class="pre">range</span></code> 객체에 포함하는 항목들이 확인된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -881,7 +872,18 @@ document.write(`
 </div>
 </div>
 </div>
-<p>슬라이싱처럼 스텝을 사용할 수 있다.
+<div class="note admonition">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">range</span></code> 객체와 이터레이터</p>
+<p><code class="docutils literal notranslate"><span class="pre">range</span></code> 객체는 리스트와는 달리 필요한 항목을 미리 한꺼번에 생성하지 않고 필요에 따라
+하나씩 생성하기 때문에 항목을 미리 보여줄 수 없고, 리스트로 형변환을 시도하면
+그제서야 필요한 항목들을 생성해서 리스트로 변환해서 보여준다.</p>
+<p>이런 자료형을 이터레이터라고 하는데
+자세한 설명은 생략한다.
+파이썬 프로그래밍에 보다 관심이 있는 경우 <a class="reference external" href="https://codingalzi.github.io/pybook/iterator_generator.html">(코딩알지) 이터러블, 이터레이터, 제너레이터</a>를
+읽어 보기를 권장한다.</p>
+</div>
+<p><strong>스텝 활용</strong></p>
+<p>리스트 슬라이싱에서처럼 스텝을 사용할 수 있다.
 예를 들어, 0에서 19까지의 정수중에서 짝수만으로 이루어진 <code class="docutils literal notranslate"><span class="pre">range</span></code> 객체는 다음과 같이
 스텝(step) 크기 2를 셋째 인자로 지정하여 생성한다.</p>
 <div class="cell docutils container">
@@ -936,7 +938,7 @@ document.write(`
 <p><strong><strong><code class="docutils literal notranslate"><span class="pre">range()</span></code> 함수 주요 활용법 2</strong></strong></p>
 <p>매우 많은 항목을 담은 리스트 대신에 <code class="docutils literal notranslate"><span class="pre">range</span></code> 객체를 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문과 함께 사용한다.
 이유는 <code class="docutils literal notranslate"><span class="pre">range</span></code> 객체가 리스트보다 훨씬 적은 메모리를 사용하기 때문이다.
-(이에 대한 근거는 여기서는 다루지 않는다.)</p>
+(이에 대한 근거는 생략한다.)</p>
 <p>예를 들어, 아래 코드는 0부터 99,999 까지의 정수 중에서 3 또는 5의 배수를 모두 더한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1001,23 +1003,22 @@ document.write(`
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> 함수는 리스트를 받아서
-리스트의 항목과 인덱스를 쌍으로 갖는 모음 자료형의 객체를 준비시킨다.
-이렇게 준비된 객체를 직접 확인할 수는 없다.</p>
+리스트의 항목과 인덱스의 정보를 제공하는 객체를 지정한다.
+하지만 <code class="docutils literal notranslate"><span class="pre">range</span></code> 객체처럼 이렇게 준비된 객체의 내부를 미리 들여다보지는 못한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">enumerate</span><span class="p">(</span><span class="n">some_list</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">some_list</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;enumerate at 0x7fd646585440&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;enumerate object at 0x7f9cff372610&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>하지만 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문을 이용하여 그 내용을 확인하고 활용할 수 있다.
+<p>또한 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문을 이용하여 그 내용을 확인하고 활용할 수 있다.
 예를 들어, 아래 코드는 짝수 인덱스의 값들만 출력하도록 한다.</p>
-<p><strong>주의사항:</strong> <code class="docutils literal notranslate"><span class="pre">i</span></code>와 <code class="docutils literal notranslate"><span class="pre">v</span></code> 두 변수를 활용하는 방식은 튜플 헤치기 방식이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">some_list</span><span class="p">):</span>
@@ -1034,8 +1035,8 @@ thon
 </div>
 </div>
 </div>
-<p>아래 코드는 리스트의 항목을 키(key)로, 인덱스는 값(value)으로 하는 항목들로 이루어진 사전 자료형 객체를
-생성한다.</p>
+<p>반면에 아래 코드는 리스트의 항목을 키(key)로, 인덱스는 값(value)으로 하는 항목들로 이루어진
+사전 객체를 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1063,7 +1064,7 @@ thon
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zip at 0x7fd646582bc0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zip at 0x7f9cff3761c0&gt;
 </pre></div>
 </div>
 </div>
@@ -1145,8 +1146,8 @@ thon
 </div>
 <p>사전 객체는 중괄호를 사용한다.
 집합에 사용되는 기호와 동일하지만 항목이 <code class="docutils literal notranslate"><span class="pre">키:값</span></code> 형식이라면 사전 객체로 인식된다.</p>
-<p><strong>빈 사전</strong></p>
-<p>항목이 전혀 없는 빈 사전은 아래와 같이 표기한다.</p>
+<p><strong>비어있는 사전</strong></p>
+<p>항목이 전혀 없는 비어있는 사전은 아래와 같이 표기한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">empty_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1391,7 +1392,7 @@ thon
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-8047266708400455642
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4607751262378353522
 </pre></div>
 </div>
 </div>
@@ -1460,7 +1461,7 @@ thon
 </section>
 <section id="id8">
 <h2><span class="section-number">1.5. </span>예제<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
-<p><strong>예제 1</strong></p>
+<p>준비중 …</p>
 </section>
 </section>
 
