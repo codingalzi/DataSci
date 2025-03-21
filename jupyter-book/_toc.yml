@@ -16,3 +16,4 @@ chapters:
 - file: oneD_visualization
 - file: twoD_data
 - file: twoD_visualization
+- file: sampling
