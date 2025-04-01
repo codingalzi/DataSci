@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -402,11 +402,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 모집단과 표본</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2. 표본추출</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.3. 계층 샘플링</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs">10.4. 모평균 vs. 표본평균</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.5. 표본평균의 분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 모집단과 표본</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.1.1. 모집단</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.1.2. 표본</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.2. 계층 샘플링</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs">10.3. 무작위 샘플링 vs. 계층 샘플링</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.4. 모평균 vs. 표본평균</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.5. 표본평균의 분포</a></li>
 </ul>
             </nav>
         </div>
@@ -490,7 +494,9 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </ul>
 <section id="id2">
 <h2><span class="section-number">10.1. </span>모집단과 표본<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/ch04/img-4-1.jpg?raw=true" style="width:600px"></div></p><p><strong>모집단 예제: 캘리포니아 주택가격 데이터</strong></p>
+<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/ch04/img-4-1.jpg?raw=true" style="width:600px"></div></p><section id="id3">
+<h3><span class="section-number">10.1.1. </span>모집단<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p><strong>모집단 예제: 캘리포니아 주택가격 데이터</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="o">+</span><span class="s2">&quot;california_housing.csv&quot;</span><span class="p">)</span>
@@ -678,6 +684,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <p>20640 rows × 10 columns</p>
 </div></div></div>
 </div>
+<p><strong>가구중위소득과 주택중위가격 활용</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;median_income&#39;</span><span class="p">,</span> <span class="s1">&#39;median_house_value&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -775,6 +782,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <p>20640 rows × 2 columns</p>
 </div></div></div>
 </div>
+<p><strong>산점도 확인</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;median_income&#39;</span><span class="p">,</span> <span class="s1">&#39;median_house_value&#39;</span><span class="p">)</span>
@@ -785,9 +793,11 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;median_income&#39;, ylabel=&#39;median_house_value&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/173730ed13d36b1d75fde22afebd8998099de415253831809ede70d904571638.png" src="_images/173730ed13d36b1d75fde22afebd8998099de415253831809ede70d904571638.png" />
+<img alt="_images/efe28e22bcd56a21aea88129564fc8b2b30b165cf8658762e38b3fa39db96821.png" src="_images/efe28e22bcd56a21aea88129564fc8b2b30b165cf8658762e38b3fa39db96821.png" />
 </div>
 </div>
+<p>주택중위가격이 500,000인 경우에 직선 형태의 산포도가 보이는데, 매우 부자연스럽다.
+데이터 분포를 요약해서 확인해본다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -862,7 +872,14 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </table>
 </div></div></div>
 </div>
+<p>500,001이 중위주택가격의 최댓값인데 자연스럽지 못하다.
+아마도 50만 달러 이상은 50만1 달러로 지정한 것으로 보인다.
+따라서 이런 데이터는 부자연스러운 것으로 판단하여 제거해 본다.</p>
 <p><strong>마스크와 부울 인덱싱</strong></p>
+<p>주택중위가격이 50만 달러를 초과하는 경우 데이터에서 삭제하기 위해 부울 인덱싱을 활용한다.
+먼저 주택중위가격이 50만 달러를 초과하는 경우에만 <code class="docutils literal notranslate"><span class="pre">True</span></code> 값을 갖는 1차원 어레이를
+지정한다.
+이런 어레이를 마스크<font size='2'>mask</font>라고 부른다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">house_value_max</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -878,7 +895,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">house_value_max</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">house_value_max</span>
 <span class="n">mask</span>
 </pre></div>
 </div>
@@ -900,6 +917,7 @@ Name: median_house_value, Length: 20640, dtype: bool
 </div>
 </div>
 </div>
+<p>총 965개의 <code class="docutils literal notranslate"><span class="pre">True</span></code>가 포함되어 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -912,16 +930,17 @@ Name: median_house_value, Length: 20640, dtype: bool
 </div>
 </div>
 </div>
+<p>이제 50만 달러 이하의 경우만 남기기 위해 <code class="docutils literal notranslate"><span class="pre">mask</span></code>를 다음과 같이 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing_</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing_</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -931,9 +950,10 @@ Name: median_house_value, Length: 20640, dtype: bool
 </div>
 </div>
 </div>
+<p>산점도를 다시 그리면 이전과 달라졌다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing_</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;median_income&#39;</span><span class="p">,</span> <span class="s1">&#39;median_house_value&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;median_income&#39;</span><span class="p">,</span> <span class="s1">&#39;median_house_value&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -941,110 +961,14 @@ Name: median_house_value, Length: 20640, dtype: bool
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;median_income&#39;, ylabel=&#39;median_house_value&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/4ef86dd1738669680220e5d0fc5b5a903357730a908da7184725a33d91420a4a.png" src="_images/4ef86dd1738669680220e5d0fc5b5a903357730a908da7184725a33d91420a4a.png" />
+<img alt="_images/f9c40c3b824cfff713c2d80387569e971cd770f727dd55960f38fc26d32ece49.png" src="_images/f9c40c3b824cfff713c2d80387569e971cd770f727dd55960f38fc26d32ece49.png" />
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">housing_</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>median_income</th>
-      <th>median_house_value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>8.3252</td>
-      <td>452600.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>8.3014</td>
-      <td>358500.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7.2574</td>
-      <td>352100.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>5.6431</td>
-      <td>341300.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>3.8462</td>
-      <td>342200.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>20635</th>
-      <td>1.5603</td>
-      <td>78100.0</td>
-    </tr>
-    <tr>
-      <th>20636</th>
-      <td>2.5568</td>
-      <td>77100.0</td>
-    </tr>
-    <tr>
-      <th>20637</th>
-      <td>1.7000</td>
-      <td>92300.0</td>
-    </tr>
-    <tr>
-      <th>20638</th>
-      <td>1.8672</td>
-      <td>84700.0</td>
-    </tr>
-    <tr>
-      <th>20639</th>
-      <td>2.3886</td>
-      <td>89400.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>19675 rows × 2 columns</p>
-</div></div></div>
 </div>
 </section>
-<section id="id3">
-<h2><span class="section-number">10.2. </span>표본추출<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3><span class="section-number">10.1.2. </span>표본<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p><strong>무작위 샘플링</strong></p>
+<p>전체 데이터의 10%를 무작위로 선택한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
@@ -1136,6 +1060,7 @@ Name: median_house_value, Length: 20640, dtype: bool
 <p>1968 rows × 2 columns</p>
 </div></div></div>
 </div>
+<p>무작위로 선택된 1968개 샘플들의 기초 통계정보는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_sampling</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -1210,6 +1135,9 @@ Name: median_house_value, Length: 20640, dtype: bool
 </table>
 </div></div></div>
 </div>
+<ul class="simple">
+<li><p>불편분산</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_sampling</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
@@ -1224,6 +1152,9 @@ dtype: float64
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>표본분산(편향분산)</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_sampling</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1238,9 +1169,118 @@ dtype: float64
 </div>
 </div>
 </div>
+<p>모집단 분포와 약간 차이가 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>19675.000000</td>
+      <td>19675.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>3.676717</td>
+      <td>192477.921017</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.570272</td>
+      <td>97711.509613</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.499900</td>
+      <td>14999.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>2.526800</td>
+      <td>116600.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>3.450000</td>
+      <td>173800.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>4.582600</td>
+      <td>248200.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>15.000100</td>
+      <td>500000.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income         2.465753e+00
+median_house_value    9.547539e+09
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income         2.465628e+00
+median_house_value    9.547054e+09
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="id4">
-<h2><span class="section-number">10.3. </span>계층 샘플링<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+</section>
+<section id="id5">
+<h2><span class="section-number">10.2. </span>계층 샘플링<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p><strong>소득 구간 지정</strong></p>
+<p>주택가격은 소득과 밀접하게 연관된다.
+그래서 소득별 구간을 지정한 다음에 구간별 샘플 수를 확인해볼 필요가 있다.</p>
+<p>아래 코드는 소득을 5개 구간으로 쪼개면서 동시에 1부터 5의 정수를 구간 이름으로 지정하고,
+이를 <code class="docutils literal notranslate"><span class="pre">housing</span></code> 데이터프레임에 특성으로 추가한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="p">[</span><span class="s2">&quot;income_cat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">housing</span><span class="p">[</span><span class="s2">&quot;median_income&quot;</span><span class="p">],</span>
@@ -1352,6 +1392,7 @@ dtype: float64
 <p>19675 rows × 3 columns</p>
 </div></div></div>
 </div>
+<p>소득구간을 기준으로 히스토그램을 그리면 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="p">[</span><span class="s2">&quot;income_cat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1364,9 +1405,14 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Number of districts&#39;)
 </pre></div>
 </div>
-<img alt="_images/da92a45ab9765e4201bf60c17010140ebe47bdfcb9f36f7cbaf45914f914c891.png" src="_images/da92a45ab9765e4201bf60c17010140ebe47bdfcb9f36f7cbaf45914f914c891.png" />
+<img alt="_images/98caf49fcc1f513cd34694275d150763b0d97db7f77e2bdea4e73ec0dcf53ca7.png" src="_images/98caf49fcc1f513cd34694275d150763b0d97db7f77e2bdea4e73ec0dcf53ca7.png" />
 </div>
 </div>
+<p><strong>소득 구간별 샘플 수</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 메서드 활용</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 메서드는 지정된 구간을 기준으로 데이터를 그룹화한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratification</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;income_cat&#39;</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1374,6 +1420,21 @@ dtype: float64
 </div>
 </div>
 </div>
+<p>생성된 <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> 객체는 내부를 보여주지는 않는다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratification</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f7f426cc5c0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>그 대신 생성된 그룹별로 통계 관련 메서드를 적용할 수는 있다.
+예를 들어 아래 코드는 그룹별 샘플 수를 계산한 결과를 데이터프레임으로 보여준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_count</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -1439,7 +1500,288 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_count</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">stratified_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>income_cat
+1     814
+2    6552
+3    7103
+4    3502
+5    1704
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_count</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">stratified_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+    <tr>
+      <th>income_cat</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>988.6214</td>
+      <td>8.816690e+07</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>15234.0468</td>
+      <td>8.840968e+08</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>26161.8582</td>
+      <td>1.377902e+09</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17960.4249</td>
+      <td>8.714170e+08</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>11994.4543</td>
+      <td>5.654208e+08</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_count</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">stratified_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+    <tr>
+      <th>income_cat</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1.214523</td>
+      <td>108313.143735</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.325099</td>
+      <td>134935.408730</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.683212</td>
+      <td>193988.680698</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.128619</td>
+      <td>248834.094803</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7.038999</td>
+      <td>331819.718310</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_count</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">stratified_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+    <tr>
+      <th>income_cat</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.233626</td>
+      <td>69314.530601</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.406648</td>
+      <td>69001.703453</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.426619</td>
+      <td>81583.050538</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.410023</td>
+      <td>80596.339192</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.070536</td>
+      <td>80536.125453</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_count</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="n">stratified_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+    <tr>
+      <th>income_cat</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.054581</td>
+      <td>4.804504e+09</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.165363</td>
+      <td>4.761235e+09</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.182003</td>
+      <td>6.655794e+09</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.168119</td>
+      <td>6.495770e+09</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.146047</td>
+      <td>6.486068e+09</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 <p><strong>계층 샘플링</strong></p>
+<p>그룹별로 샘플링을 진행하려면 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드를 이용한다.
+아래 코드는 그룹별로 10%의 샘플을 무작위로 추출한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_sampling</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">),</span> <span class="n">include_groups</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1541,6 +1883,7 @@ dtype: float64
 <p>1966 rows × 2 columns</p>
 </div></div></div>
 </div>
+<p>아래 코드는 샘플링 결과를 소득구간 기준으로 그룹화를 진행한 다음에 각 구간별로 선택된 샘플의 개수를 확인한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_sampling_count</span> <span class="o">=</span> <span class="n">stratified_sampling</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -1620,7 +1963,10 @@ dtype: int64
 </div>
 </div>
 </div>
-<p><strong>샘플링 결과 비교</strong></p>
+</section>
+<section id="vs">
+<h2><span class="section-number">10.3. </span>무작위 샘플링 vs. 계층 샘플링<a class="headerlink" href="#vs" title="Link to this heading">#</a></h2>
+<p>구간 정보를 기억하면서 무작위 샘플링을 다시 진행한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
@@ -1724,6 +2070,7 @@ dtype: int64
 <p>1968 rows × 3 columns</p>
 </div></div></div>
 </div>
+<p>구간별 무작위 샘플링된 그룹의 크기를 확인한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_sampling_count</span> <span class="o">=</span> <span class="n">random_sampling</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;income_cat&#39;</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -1789,6 +2136,7 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
+<p>총 1968개의 데이터가 무작위로 선택되었다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_sampling_count</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1804,6 +2152,11 @@ dtype: int64
 </div>
 </div>
 <p><strong>오류율 비교표</strong></p>
+<p>무작위 샘플링과 계층 샘플링의 결과를 비교해본다.
+기준은 각 구간별 비율을 사용한다.</p>
+<ul class="simple">
+<li><p>두 샘플링에 사용된 샘플 수</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_total</span> <span class="o">=</span> <span class="n">random_sampling_count</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1834,6 +2187,9 @@ dtype: int64
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>선택된 샘플 대비 그룹별 크기 비율</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_sampling_ratio</span> <span class="o">=</span> <span class="n">random_sampling_count</span> <span class="o">/</span> <span class="n">random_total</span>
@@ -1964,6 +2320,7 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
+<p>전체 데이터의 구간별 비율</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_ratio</span> <span class="o">=</span> <span class="n">stratified_count</span><span class="o">/</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">shape</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -2002,28 +2359,28 @@ dtype: int64
   <tbody>
     <tr>
       <th>1</th>
-      <td>0.041372</td>
-      <td>0.041372</td>
+      <td>0.000003</td>
+      <td>244193.349555</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.333011</td>
-      <td>0.333011</td>
+      <td>0.000008</td>
+      <td>241994.159052</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.361017</td>
-      <td>0.361017</td>
+      <td>0.000009</td>
+      <td>338286.868369</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.177992</td>
-      <td>0.177992</td>
+      <td>0.000009</td>
+      <td>330153.488752</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.086607</td>
-      <td>0.086607</td>
+      <td>0.000058</td>
+      <td>329660.355930</td>
     </tr>
   </tbody>
 </table>
@@ -2075,31 +2432,31 @@ dtype: int64
   <tbody>
     <tr>
       <th>1</th>
-      <td>0.041372</td>
+      <td>244193.349555</td>
       <td>0.041200</td>
       <td>0.038618</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.333011</td>
+      <td>241994.159052</td>
       <td>0.333164</td>
       <td>0.339431</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.361017</td>
+      <td>338286.868369</td>
       <td>0.361139</td>
       <td>0.351118</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.177992</td>
+      <td>330153.488752</td>
       <td>0.178026</td>
       <td>0.179370</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.086607</td>
+      <td>329660.355930</td>
       <td>0.086470</td>
       <td>0.091463</td>
     </tr>
@@ -2158,43 +2515,43 @@ dtype: int64
   <tbody>
     <tr>
       <th>1</th>
-      <td>0.041372</td>
+      <td>244193.349555</td>
       <td>0.041200</td>
       <td>0.038618</td>
-      <td>-0.004155</td>
-      <td>-0.066576</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.333011</td>
+      <td>241994.159052</td>
       <td>0.333164</td>
       <td>0.339431</td>
-      <td>0.000457</td>
-      <td>0.019277</td>
+      <td>-0.999999</td>
+      <td>-0.999999</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.361017</td>
+      <td>338286.868369</td>
       <td>0.361139</td>
       <td>0.351118</td>
-      <td>0.000340</td>
-      <td>-0.027419</td>
+      <td>-0.999999</td>
+      <td>-0.999999</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.177992</td>
+      <td>330153.488752</td>
       <td>0.178026</td>
       <td>0.179370</td>
-      <td>0.000191</td>
-      <td>0.007739</td>
+      <td>-0.999999</td>
+      <td>-0.999999</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.086607</td>
+      <td>329660.355930</td>
       <td>0.086470</td>
       <td>0.091463</td>
-      <td>-0.001586</td>
-      <td>0.056070</td>
+      <td>-1.000000</td>
+      <td>-1.000000</td>
     </tr>
   </tbody>
 </table>
@@ -2244,43 +2601,43 @@ dtype: int64
   <tbody>
     <tr>
       <th>1</th>
-      <td>4.14</td>
+      <td>24419334.96</td>
       <td>4.12</td>
       <td>3.86</td>
-      <td>-0.42</td>
-      <td>-6.66</td>
+      <td>-100.0</td>
+      <td>-100.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>33.30</td>
+      <td>24199415.91</td>
       <td>33.32</td>
       <td>33.94</td>
-      <td>0.05</td>
-      <td>1.93</td>
+      <td>-100.0</td>
+      <td>-100.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>36.10</td>
+      <td>33828686.84</td>
       <td>36.11</td>
       <td>35.11</td>
-      <td>0.03</td>
-      <td>-2.74</td>
+      <td>-100.0</td>
+      <td>-100.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>17.80</td>
+      <td>33015348.88</td>
       <td>17.80</td>
       <td>17.94</td>
-      <td>0.02</td>
-      <td>0.77</td>
+      <td>-100.0</td>
+      <td>-100.0</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>8.66</td>
+      <td>32966035.59</td>
       <td>8.65</td>
       <td>9.15</td>
-      <td>-0.16</td>
-      <td>5.61</td>
+      <td>-100.0</td>
+      <td>-100.0</td>
     </tr>
   </tbody>
 </table>
@@ -2491,12 +2848,12 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;median_income&#39;, ylabel=&#39;median_house_value&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/86f7589eb0d84be00dbdef98bb59376f526df6444a290e78594517bf39baedc0.png" src="_images/86f7589eb0d84be00dbdef98bb59376f526df6444a290e78594517bf39baedc0.png" />
+<img alt="_images/47e3b6b77e7d6c328e6073695b6a289100a6f2e6c542a1959352e37651da002b.png" src="_images/47e3b6b77e7d6c328e6073695b6a289100a6f2e6c542a1959352e37651da002b.png" />
 </div>
 </div>
 </section>
-<section id="vs">
-<h2><span class="section-number">10.4. </span>모평균 vs. 표본평균<a class="headerlink" href="#vs" title="Link to this heading">#</a></h2>
+<section id="id6">
+<h2><span class="section-number">10.4. </span>모평균 vs. 표본평균<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -2701,8 +3058,8 @@ dtype: float64
 </div>
 </div>
 </section>
-<section id="id5">
-<h2><span class="section-number">10.5. </span>표본평균의 분포<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="id7">
+<h2><span class="section-number">10.5. </span>표본평균의 분포<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -2849,29 +3206,29 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>5149</th>
-      <td>4.9250</td>
-      <td>409800.0</td>
+      <th>5918</th>
+      <td>2.1062</td>
+      <td>176700.0</td>
     </tr>
     <tr>
-      <th>11604</th>
-      <td>3.1020</td>
-      <td>111300.0</td>
+      <th>10888</th>
+      <td>4.2165</td>
+      <td>234600.0</td>
     </tr>
     <tr>
-      <th>13396</th>
-      <td>3.5987</td>
-      <td>91400.0</td>
+      <th>91</th>
+      <td>0.7500</td>
+      <td>162500.0</td>
     </tr>
     <tr>
-      <th>7108</th>
-      <td>2.5966</td>
-      <td>170900.0</td>
+      <th>1842</th>
+      <td>1.7245</td>
+      <td>92200.0</td>
     </tr>
     <tr>
-      <th>1036</th>
-      <td>2.6078</td>
-      <td>116700.0</td>
+      <th>7486</th>
+      <td>4.0230</td>
+      <td>157700.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2879,29 +3236,29 @@ dtype: float64
       <td>...</td>
     </tr>
     <tr>
-      <th>1798</th>
-      <td>2.6750</td>
-      <td>22500.0</td>
+      <th>15994</th>
+      <td>3.2250</td>
+      <td>166900.0</td>
     </tr>
     <tr>
-      <th>3100</th>
-      <td>3.5391</td>
-      <td>81900.0</td>
+      <th>18536</th>
+      <td>2.6346</td>
+      <td>100600.0</td>
     </tr>
     <tr>
-      <th>4197</th>
-      <td>1.8576</td>
-      <td>193800.0</td>
+      <th>16167</th>
+      <td>3.8413</td>
+      <td>372200.0</td>
     </tr>
     <tr>
-      <th>15649</th>
-      <td>3.1779</td>
-      <td>97300.0</td>
+      <th>9358</th>
+      <td>4.3000</td>
+      <td>226400.0</td>
     </tr>
     <tr>
-      <th>10684</th>
-      <td>3.7201</td>
-      <td>183100.0</td>
+      <th>12268</th>
+      <td>2.5550</td>
+      <td>72700.0</td>
     </tr>
   </tbody>
 </table>
@@ -2918,13 +3275,15 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income              3.672965
-median_house_value    189696.796645
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income              3.660496
+median_house_value    191712.099644
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>샘플링 반복</strong></p>
+<p>아래 코드는 무작위 샘플링을 5번 반복한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -2939,47 +3298,34 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1번째 샘플링:
-median_income              3.672481
-median_house_value    191358.057956
+median_income              3.615153
+median_house_value    190130.655821
 dtype: float64
 
 2번째 샘플링:
-median_income              3.637189
-median_house_value    189475.241484
+median_income              3.681252
+median_house_value    195994.966446
 dtype: float64
 
 3번째 샘플링:
-median_income              3.680434
-median_house_value    191375.699034
+median_income              3.701265
+median_house_value    195305.134723
 dtype: float64
 
 4번째 샘플링:
-median_income              3.742474
-median_house_value    199356.380275
+median_income              3.676589
+median_house_value    192960.244026
 dtype: float64
 
 5번째 샘플링:
-median_income              3.696744
-median_house_value    195126.690391
+median_income              3.680634
+median_house_value    189979.816980
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income              3.676717
-median_house_value    192477.921017
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
+<p>아래 코드는 무작위 샘플링 10,000 반복하면서 표본평균을 모든다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampling_count</span> <span class="o">=</span> <span class="mi">10000</span>
@@ -2991,13 +3337,45 @@ dtype: float64
 
     <span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ten_percent</span><span class="p">]</span>
     <span class="n">income_mean</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling</span><span class="p">[</span><span class="s1">&#39;median_income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">income_mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>모아진 10,000개의 표본평균 자체로 새로운 분포를 가지며 표본평균의 평균값은 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">income_mean</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.677673
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.676775
+</pre></div>
+</div>
+</div>
+</div>
+<p>표본평균의 분산이 매우 작다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">income_mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.001251
+</pre></div>
+</div>
+</div>
+</div>
+<p>모집단의 평균값과 표본평균의 평균값이 매우 유사하다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="p">[</span><span class="s1">&#39;median_income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.676717
 </pre></div>
 </div>
 </div>
@@ -3060,11 +3438,15 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 모집단과 표본</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2. 표본추출</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.3. 계층 샘플링</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs">10.4. 모평균 vs. 표본평균</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.5. 표본평균의 분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 모집단과 표본</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.1.1. 모집단</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.1.2. 표본</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.2. 계층 샘플링</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs">10.3. 무작위 샘플링 vs. 계층 샘플링</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.4. 모평균 vs. 표본평균</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.5. 표본평균의 분포</a></li>
 </ul>
   </nav></div>
 
