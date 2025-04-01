@@ -1428,7 +1428,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f7f426cc5c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f21439607d0&gt;
 </pre></div>
 </div>
 </div>
@@ -1502,27 +1502,8 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_count</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-<span class="n">stratified_count</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>income_cat
-1     814
-2    6552
-3    7103
-4    3502
-5    1704
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_count</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">stratified_count</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_sum</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">stratified_sum</span>
 </pre></div>
 </div>
 </div>
@@ -1586,8 +1567,8 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_count</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">stratified_count</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_cmean</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">stratified_cmean</span>
 </pre></div>
 </div>
 </div>
@@ -1651,8 +1632,8 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_count</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-<span class="n">stratified_count</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_std</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">stratified_std</span>
 </pre></div>
 </div>
 </div>
@@ -1716,8 +1697,8 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_count</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
-<span class="n">stratified_count</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_var</span> <span class="o">=</span> <span class="n">stratification</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="n">stratified_var</span>
 </pre></div>
 </div>
 </div>
@@ -2323,6 +2304,70 @@ dtype: int64
 <p>전체 데이터의 구간별 비율</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+    <tr>
+      <th>income_cat</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>814</td>
+      <td>814</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6552</td>
+      <td>6552</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7103</td>
+      <td>7103</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3502</td>
+      <td>3502</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1704</td>
+      <td>1704</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_ratio</span> <span class="o">=</span> <span class="n">stratified_count</span><span class="o">/</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">shape</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">stratified_ratio</span>
 </pre></div>
@@ -2359,28 +2404,28 @@ dtype: int64
   <tbody>
     <tr>
       <th>1</th>
-      <td>0.000003</td>
-      <td>244193.349555</td>
+      <td>0.041372</td>
+      <td>0.041372</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.000008</td>
-      <td>241994.159052</td>
+      <td>0.333011</td>
+      <td>0.333011</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.000009</td>
-      <td>338286.868369</td>
+      <td>0.361017</td>
+      <td>0.361017</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.000009</td>
-      <td>330153.488752</td>
+      <td>0.177992</td>
+      <td>0.177992</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.000058</td>
-      <td>329660.355930</td>
+      <td>0.086607</td>
+      <td>0.086607</td>
     </tr>
   </tbody>
 </table>
@@ -2432,31 +2477,31 @@ dtype: int64
   <tbody>
     <tr>
       <th>1</th>
-      <td>244193.349555</td>
+      <td>0.041372</td>
       <td>0.041200</td>
       <td>0.038618</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>241994.159052</td>
+      <td>0.333011</td>
       <td>0.333164</td>
       <td>0.339431</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>338286.868369</td>
+      <td>0.361017</td>
       <td>0.361139</td>
       <td>0.351118</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>330153.488752</td>
+      <td>0.177992</td>
       <td>0.178026</td>
       <td>0.179370</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>329660.355930</td>
+      <td>0.086607</td>
       <td>0.086470</td>
       <td>0.091463</td>
     </tr>
@@ -2515,43 +2560,43 @@ dtype: int64
   <tbody>
     <tr>
       <th>1</th>
-      <td>244193.349555</td>
+      <td>0.041372</td>
       <td>0.041200</td>
       <td>0.038618</td>
-      <td>-1.000000</td>
-      <td>-1.000000</td>
+      <td>-0.004155</td>
+      <td>-0.066576</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>241994.159052</td>
+      <td>0.333011</td>
       <td>0.333164</td>
       <td>0.339431</td>
-      <td>-0.999999</td>
-      <td>-0.999999</td>
+      <td>0.000457</td>
+      <td>0.019277</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>338286.868369</td>
+      <td>0.361017</td>
       <td>0.361139</td>
       <td>0.351118</td>
-      <td>-0.999999</td>
-      <td>-0.999999</td>
+      <td>0.000340</td>
+      <td>-0.027419</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>330153.488752</td>
+      <td>0.177992</td>
       <td>0.178026</td>
       <td>0.179370</td>
-      <td>-0.999999</td>
-      <td>-0.999999</td>
+      <td>0.000191</td>
+      <td>0.007739</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>329660.355930</td>
+      <td>0.086607</td>
       <td>0.086470</td>
       <td>0.091463</td>
-      <td>-1.000000</td>
-      <td>-1.000000</td>
+      <td>-0.001586</td>
+      <td>0.056070</td>
     </tr>
   </tbody>
 </table>
@@ -2601,43 +2646,43 @@ dtype: int64
   <tbody>
     <tr>
       <th>1</th>
-      <td>24419334.96</td>
+      <td>4.14</td>
       <td>4.12</td>
       <td>3.86</td>
-      <td>-100.0</td>
-      <td>-100.0</td>
+      <td>-0.42</td>
+      <td>-6.66</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>24199415.91</td>
+      <td>33.30</td>
       <td>33.32</td>
       <td>33.94</td>
-      <td>-100.0</td>
-      <td>-100.0</td>
+      <td>0.05</td>
+      <td>1.93</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>33828686.84</td>
+      <td>36.10</td>
       <td>36.11</td>
       <td>35.11</td>
-      <td>-100.0</td>
-      <td>-100.0</td>
+      <td>0.03</td>
+      <td>-2.74</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>33015348.88</td>
+      <td>17.80</td>
       <td>17.80</td>
       <td>17.94</td>
-      <td>-100.0</td>
-      <td>-100.0</td>
+      <td>0.02</td>
+      <td>0.77</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>32966035.59</td>
+      <td>8.66</td>
       <td>8.65</td>
       <td>9.15</td>
-      <td>-100.0</td>
-      <td>-100.0</td>
+      <td>-0.16</td>
+      <td>5.61</td>
     </tr>
   </tbody>
 </table>
@@ -3206,29 +3251,29 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>5918</th>
-      <td>2.1062</td>
-      <td>176700.0</td>
+      <th>11090</th>
+      <td>4.4821</td>
+      <td>214100.0</td>
     </tr>
     <tr>
-      <th>10888</th>
-      <td>4.2165</td>
-      <td>234600.0</td>
+      <th>1497</th>
+      <td>7.4713</td>
+      <td>351200.0</td>
     </tr>
     <tr>
-      <th>91</th>
-      <td>0.7500</td>
-      <td>162500.0</td>
+      <th>8257</th>
+      <td>5.0594</td>
+      <td>346000.0</td>
     </tr>
     <tr>
-      <th>1842</th>
-      <td>1.7245</td>
-      <td>92200.0</td>
+      <th>6117</th>
+      <td>3.4375</td>
+      <td>151700.0</td>
     </tr>
     <tr>
-      <th>7486</th>
-      <td>4.0230</td>
-      <td>157700.0</td>
+      <th>12846</th>
+      <td>2.0750</td>
+      <td>95100.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -3236,29 +3281,29 @@ dtype: float64
       <td>...</td>
     </tr>
     <tr>
-      <th>15994</th>
-      <td>3.2250</td>
-      <td>166900.0</td>
+      <th>378</th>
+      <td>2.4962</td>
+      <td>91800.0</td>
     </tr>
     <tr>
-      <th>18536</th>
-      <td>2.6346</td>
-      <td>100600.0</td>
+      <th>636</th>
+      <td>3.8393</td>
+      <td>243500.0</td>
     </tr>
     <tr>
-      <th>16167</th>
-      <td>3.8413</td>
-      <td>372200.0</td>
+      <th>2585</th>
+      <td>2.6847</td>
+      <td>111300.0</td>
     </tr>
     <tr>
-      <th>9358</th>
-      <td>4.3000</td>
-      <td>226400.0</td>
+      <th>2508</th>
+      <td>1.8320</td>
+      <td>70500.0</td>
     </tr>
     <tr>
-      <th>12268</th>
-      <td>2.5550</td>
-      <td>72700.0</td>
+      <th>9347</th>
+      <td>3.5865</td>
+      <td>290000.0</td>
     </tr>
   </tbody>
 </table>
@@ -3275,8 +3320,8 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income              3.660496
-median_house_value    191712.099644
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income              3.692285
+median_house_value    192118.708693
 dtype: float64
 </pre></div>
 </div>
@@ -3298,28 +3343,28 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1번째 샘플링:
-median_income              3.615153
-median_house_value    190130.655821
+median_income              3.641687
+median_house_value    190382.613116
 dtype: float64
 
 2번째 샘플링:
-median_income              3.681252
-median_house_value    195994.966446
+median_income              3.693350
+median_house_value    190002.338587
 dtype: float64
 
 3번째 샘플링:
-median_income              3.701265
-median_house_value    195305.134723
+median_income              3.658276
+median_house_value    192230.910015
 dtype: float64
 
 4번째 샘플링:
-median_income              3.676589
-median_house_value    192960.244026
+median_income              3.691545
+median_house_value    193545.348246
 dtype: float64
 
 5번째 샘플링:
-median_income              3.680634
-median_house_value    189979.816980
+median_income              3.662307
+median_house_value    191832.130147
 dtype: float64
 </pre></div>
 </div>
@@ -3349,7 +3394,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.676775
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.676912
 </pre></div>
 </div>
 </div>
@@ -3362,7 +3407,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.001251
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.001286
 </pre></div>
 </div>
 </div>
