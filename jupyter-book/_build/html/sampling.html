@@ -58,6 +58,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sampling';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -402,15 +404,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 모집단과 표본</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.1.1. 모집단</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.1.2. 표본</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 모집단과 표본</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2. 표본추출</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.2.1. 무작위 샘플링</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.2.2. 계층 샘플링</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vs">10.2.3. 무작위 샘플링 vs. 계층 샘플링</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.2.4. 모평균 vs. 표본평균</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.2. 계층 샘플링</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs">10.3. 무작위 샘플링 vs. 계층 샘플링</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.4. 모평균 vs. 표본평균</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.5. 표본평균의 분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.3. 확률변수와 확률분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">10.4. 표본평균의 분포</a></li>
 </ul>
             </nav>
         </div>
@@ -486,17 +489,23 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <p>구할 수 있는 또는 구해진 몇 개의 데이터만을 이용하여
 전체 데이터에 대한 통계적 성질을 추측하는 추측통계의 기본 개념을 소개한다.</p>
 <ul class="simple">
-<li><p>모집단</p></li>
-<li><p>표본</p></li>
+<li><p>모집단과 표본</p></li>
 <li><p>표본추출</p></li>
 <li><p>확률분포</p></li>
 <li><p>확률변수</p></li>
 </ul>
 <section id="id2">
 <h2><span class="section-number">10.1. </span>모집단과 표본<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/ch04/img-4-1.jpg?raw=true" style="width:600px"></div></p><section id="id3">
-<h3><span class="section-number">10.1.1. </span>모집단<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p><strong>모집단 예제: 캘리포니아 주택가격 데이터</strong></p>
+<p>모집단<font size='2'>population</font>은 통계적 성질을 알고자 하는 관측 대상들의 집단 전체를 가리킨다.
+반면에 표본<font size='2'>sample</font>는 관측 대상 중에 실제로 측정 또는 관찰한 결과들의 집합이다.
+표본추출<font size='2'>sampling</font>은 모집단에서 표본을 선택하는 과정이며,
+이를 통해 얻어진 표본의 평균값, 분산 등이 (표본)통계량<font size='2'>statistic</font>이다.</p>
+<p>반면에 모집단에 대한 평균값과 분산인 모평균, 모분산 등의 모수<font size='2'>parameter</font>는
+파악하는 일은 일반적으로 매우 어렵거나 불가능하다.
+따라서 표본통계량을 이용하여 모수를 추정한다.
+이런 의미에서표본평균, 표본분산 등을 모수에 대한 추정값으로 부른다.
+아래 그림이 모집단, 표본, (표본)통계량, 모수의 관계를 잘 설명한다.</p>
+<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/ch04/img-4-1.jpg?raw=true" style="width:600px"></div></p><p><strong>모집단 예제: 캘리포니아 주택가격 데이터</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="o">+</span><span class="s2">&quot;california_housing.csv&quot;</span><span class="p">)</span>
@@ -687,7 +696,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <p><strong>가구중위소득과 주택중위가격 활용</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;median_income&#39;</span><span class="p">,</span> <span class="s1">&#39;median_house_value&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;median_income&#39;</span><span class="p">,</span> <span class="s1">&#39;median_house_value&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -793,7 +802,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;median_income&#39;, ylabel=&#39;median_house_value&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/efe28e22bcd56a21aea88129564fc8b2b30b165cf8658762e38b3fa39db96821.png" src="_images/efe28e22bcd56a21aea88129564fc8b2b30b165cf8658762e38b3fa39db96821.png" />
+<img alt="_images/173730ed13d36b1d75fde22afebd8998099de415253831809ede70d904571638.png" src="_images/173730ed13d36b1d75fde22afebd8998099de415253831809ede70d904571638.png" />
 </div>
 </div>
 <p>주택중위가격이 500,000인 경우에 직선 형태의 산포도가 보이는데, 매우 부자연스럽다.
@@ -961,13 +970,14 @@ Name: median_house_value, Length: 20640, dtype: bool
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;median_income&#39;, ylabel=&#39;median_house_value&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/f9c40c3b824cfff713c2d80387569e971cd770f727dd55960f38fc26d32ece49.png" src="_images/f9c40c3b824cfff713c2d80387569e971cd770f727dd55960f38fc26d32ece49.png" />
+<img alt="_images/4ef86dd1738669680220e5d0fc5b5a903357730a908da7184725a33d91420a4a.png" src="_images/4ef86dd1738669680220e5d0fc5b5a903357730a908da7184725a33d91420a4a.png" />
 </div>
 </div>
 </section>
+<section id="id3">
+<h2><span class="section-number">10.2. </span>표본추출<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <section id="id4">
-<h3><span class="section-number">10.1.2. </span>표본<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p><strong>무작위 샘플링</strong></p>
+<h3><span class="section-number">10.2.1. </span>무작위 샘플링<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>전체 데이터의 10%를 무작위로 선택한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1273,9 +1283,8 @@ dtype: float64
 </div>
 </div>
 </section>
-</section>
 <section id="id5">
-<h2><span class="section-number">10.2. </span>계층 샘플링<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.2.2. </span>계층 샘플링<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p><strong>소득 구간 지정</strong></p>
 <p>주택가격은 소득과 밀접하게 연관된다.
 그래서 소득별 구간을 지정한 다음에 구간별 샘플 수를 확인해볼 필요가 있다.</p>
@@ -1405,7 +1414,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Number of districts&#39;)
 </pre></div>
 </div>
-<img alt="_images/98caf49fcc1f513cd34694275d150763b0d97db7f77e2bdea4e73ec0dcf53ca7.png" src="_images/98caf49fcc1f513cd34694275d150763b0d97db7f77e2bdea4e73ec0dcf53ca7.png" />
+<img alt="_images/da92a45ab9765e4201bf60c17010140ebe47bdfcb9f36f7cbaf45914f914c891.png" src="_images/da92a45ab9765e4201bf60c17010140ebe47bdfcb9f36f7cbaf45914f914c891.png" />
 </div>
 </div>
 <p><strong>소득 구간별 샘플 수</strong></p>
@@ -1428,7 +1437,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f21439607d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f8fdba98fe0&gt;
 </pre></div>
 </div>
 </div>
@@ -1946,7 +1955,7 @@ dtype: int64
 </div>
 </section>
 <section id="vs">
-<h2><span class="section-number">10.3. </span>무작위 샘플링 vs. 계층 샘플링<a class="headerlink" href="#vs" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.2.3. </span>무작위 샘플링 vs. 계층 샘플링<a class="headerlink" href="#vs" title="Link to this heading">#</a></h3>
 <p>구간 정보를 기억하면서 무작위 샘플링을 다시 진행한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2893,12 +2902,12 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;median_income&#39;, ylabel=&#39;median_house_value&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/47e3b6b77e7d6c328e6073695b6a289100a6f2e6c542a1959352e37651da002b.png" src="_images/47e3b6b77e7d6c328e6073695b6a289100a6f2e6c542a1959352e37651da002b.png" />
+<img alt="_images/86f7589eb0d84be00dbdef98bb59376f526df6444a290e78594517bf39baedc0.png" src="_images/86f7589eb0d84be00dbdef98bb59376f526df6444a290e78594517bf39baedc0.png" />
 </div>
 </div>
 </section>
 <section id="id6">
-<h2><span class="section-number">10.4. </span>모평균 vs. 표본평균<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">10.2.4. </span>모평균 vs. 표본평균<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -2975,14 +2984,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;income_cat&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -3103,8 +3105,64 @@ dtype: float64
 </div>
 </div>
 </section>
+</section>
 <section id="id7">
-<h2><span class="section-number">10.5. </span>표본평균의 분포<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.3. </span>확률변수와 확률분포<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>모집단에서 임의로 표본을 선택하는 무작위추출<font size='2'>random sampling</font> 방식의
+결과는 미리 알 수 없다.
+또한 무작위추출을 실행할 때마다의 결과는 일반적으로 다르다.
+하지만 무작위추출을 실행할 때 어떤 값이 나올 확률을 계산할 수 있는 경우가 있다.</p>
+<p>예를 들어, 주사위를 던질 때 나오는 값은 1부터 6까지의 정수 중에서 무작위로 하나의 수를 선택하는
+무작위추출이다.
+주사위를 던지면 어떤 값이 나올지는 모르지만 1부터 6까지의 정수 각각이 1/6의 확률로 나온다는
+사실은 잘 알려져 있다.</p>
+<p><strong>확률변수</strong></p>
+<p>주사위를 던졌을 때 나올 수 있는 값을 가리키는 변수를 <code class="docutils literal notranslate"><span class="pre">X</span></code>라 하자.
+<code class="docutils literal notranslate"><span class="pre">X</span></code>가 가리키는 값이 나올 확률은 정상적인 주사위인 경우 항상 1/6이다.
+이처럼 무작위추출을 수행할 때 어떤 값이 나올지를 미리 알 수는 없지만
+어떤 값이 나올 확률이 알려진 값을 가리키는 변수를
+확률변수<font size='2'>random variable</font>라 부른다.</p>
+<p>확률변수 <code class="docutils literal notranslate"><span class="pre">X</span></code>가 가리키는 값이 <code class="docutils literal notranslate"><span class="pre">k</span></code>이고 <code class="docutils literal notranslate"><span class="pre">n</span></code>이 나올 확률이 <code class="docutils literal notranslate"><span class="pre">p</span></code>일 때 다음과 같이 표기한다.</p>
+<div class="math notranslate nohighlight">
+\[
+P(X=k) = p
+\]</div>
+<p>주사위를 던졌을 때 나오는 값을 가리키는 확률변수 <code class="docutils literal notranslate"><span class="pre">X</span></code>가
+1부터 6까지의 정수를 가리키는 확률이 동일하게 1/6이라는
+사실은 다음과 같이 표현된다.</p>
+<div class="math notranslate nohighlight">
+\[
+P(X=1) = P(X=2) = \cdots = P(X=6) = \frac1 6
+\]</div>
+<p><strong>확률분포</strong></p>
+<p>확률분포는 확률변수가 가리킬 수 있는 값들의 확률들의 구조를 가리킨다.
+예를 들어, 주사위를 던졌을 때 나오는 값을 가리키는 확률변수 <code class="docutils literal notranslate"><span class="pre">X</span></code>의 확률분포는 다음과 같다.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></th>
+<th class="head text-center"><p>1</p></th>
+<th class="head text-center"><p>2</p></th>
+<th class="head text-center"><p>3</p></th>
+<th class="head text-center"><p>4</p></th>
+<th class="head text-center"><p>5</p></th>
+<th class="head text-center"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>확률</p></td>
+<td class="text-center"><p>1/6</p></td>
+<td class="text-center"><p>1/6</p></td>
+<td class="text-center"><p>1/6</p></td>
+<td class="text-center"><p>1/6</p></td>
+<td class="text-center"><p>1/6</p></td>
+<td class="text-center"><p>1/6</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>확률변수 <code class="docutils literal notranslate"><span class="pre">X</span></code>의 확률분포가 알려졌을 때 ‘확률변수 <code class="docutils literal notranslate"><span class="pre">X</span></code>는 해당 확률분포를 따른다.’라고 말한다.
+예를 들어 주사위를 던졌을 때 나오는 값을 가리키는 변수 <code class="docutils literal notranslate"><span class="pre">X</span></code>는 위 확률분포를 따른다.</p>
+<p><strong>예제</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -3139,6 +3197,7 @@ dtype: float64
       <th></th>
       <th>median_income</th>
       <th>median_house_value</th>
+      <th>income_cat</th>
     </tr>
   </thead>
   <tbody>
@@ -3146,29 +3205,35 @@ dtype: float64
       <th>0</th>
       <td>8.3252</td>
       <td>452600.0</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>1</th>
       <td>8.3014</td>
       <td>358500.0</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>2</th>
       <td>7.2574</td>
       <td>352100.0</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>3</th>
       <td>5.6431</td>
       <td>341300.0</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>4</th>
       <td>3.8462</td>
       <td>342200.0</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>...</th>
+      <td>...</td>
       <td>...</td>
       <td>...</td>
     </tr>
@@ -3176,32 +3241,141 @@ dtype: float64
       <th>19670</th>
       <td>1.5603</td>
       <td>78100.0</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>19671</th>
       <td>2.5568</td>
       <td>77100.0</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>19672</th>
       <td>1.7000</td>
       <td>92300.0</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>19673</th>
       <td>1.8672</td>
       <td>84700.0</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>19674</th>
       <td>2.3886</td>
       <td>89400.0</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
-<p>19675 rows × 2 columns</p>
+<p>19675 rows × 3 columns</p>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_category</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="s1">&#39;income_cat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">income_category</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        5
+1        5
+2        5
+3        4
+4        3
+        ..
+19670    2
+19671    2
+19672    2
+19673    2
+19674    2
+Name: income_cat, Length: 19675, dtype: category
+Categories (5, int64): [1 &lt; 2 &lt; 3 &lt; 4 &lt; 5]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_stratified</span> <span class="o">=</span> <span class="n">income_category</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">income_category</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">income_stratified</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7f8fdba095b0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_stratified_count</span> <span class="o">=</span> <span class="n">income_stratified</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">income_stratified_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>income_cat
+1     814
+2    6552
+3    7103
+4    3502
+5    1704
+Name: income_cat, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_stratified_ratio</span> <span class="o">=</span> <span class="n">income_stratified_count</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">income_category</span><span class="p">)</span>
+<span class="n">income_stratified_ratio</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>income_cat
+1    0.041372
+2    0.333011
+3    0.361017
+4    0.177992
+5    0.086607
+Name: income_cat, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>변수 <code class="docutils literal notranslate"><span class="pre">X</span></code>를 소득범주를 가리키도록 하면 <code class="docutils literal notranslate"><span class="pre">X</span></code>는 아래 확률분포를 따르는 확률변수가 된다.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></th>
+<th class="head text-center"><p>1</p></th>
+<th class="head text-center"><p>2</p></th>
+<th class="head text-center"><p>3</p></th>
+<th class="head text-center"><p>4</p></th>
+<th class="head text-center"><p>5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>확률</p></td>
+<td class="text-center"><p>0.041372</p></td>
+<td class="text-center"><p>0.333011</p></td>
+<td class="text-center"><p>0.361017</p></td>
+<td class="text-center"><p>0.177992</p></td>
+<td class="text-center"><p>0.086607</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>모의실험</strong></p>
+<p>모의실험을 통해 위 확률분포가 실재성을 확인한다.</p>
+<p>…</p>
+</section>
+<section id="id8">
+<h2><span class="section-number">10.4. </span>표본평균의 분포<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p><strong>무작위 추출 활용</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3247,81 +3421,93 @@ dtype: float64
       <th></th>
       <th>median_income</th>
       <th>median_house_value</th>
+      <th>income_cat</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>11090</th>
-      <td>4.4821</td>
-      <td>214100.0</td>
+      <th>6572</th>
+      <td>3.1892</td>
+      <td>214700.0</td>
+      <td>3</td>
     </tr>
     <tr>
-      <th>1497</th>
-      <td>7.4713</td>
-      <td>351200.0</td>
+      <th>13690</th>
+      <td>1.9010</td>
+      <td>120300.0</td>
+      <td>2</td>
     </tr>
     <tr>
-      <th>8257</th>
-      <td>5.0594</td>
-      <td>346000.0</td>
+      <th>5918</th>
+      <td>2.1062</td>
+      <td>176700.0</td>
+      <td>2</td>
     </tr>
     <tr>
-      <th>6117</th>
-      <td>3.4375</td>
-      <td>151700.0</td>
+      <th>9315</th>
+      <td>5.5469</td>
+      <td>378800.0</td>
+      <td>4</td>
     </tr>
     <tr>
-      <th>12846</th>
-      <td>2.0750</td>
-      <td>95100.0</td>
+      <th>3139</th>
+      <td>1.9066</td>
+      <td>54600.0</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>378</th>
-      <td>2.4962</td>
-      <td>91800.0</td>
+      <th>9953</th>
+      <td>3.9875</td>
+      <td>346500.0</td>
+      <td>3</td>
     </tr>
     <tr>
-      <th>636</th>
-      <td>3.8393</td>
-      <td>243500.0</td>
+      <th>16167</th>
+      <td>3.8413</td>
+      <td>372200.0</td>
+      <td>3</td>
     </tr>
     <tr>
-      <th>2585</th>
-      <td>2.6847</td>
-      <td>111300.0</td>
+      <th>7484</th>
+      <td>3.2031</td>
+      <td>180700.0</td>
+      <td>3</td>
     </tr>
     <tr>
-      <th>2508</th>
-      <td>1.8320</td>
-      <td>70500.0</td>
+      <th>16263</th>
+      <td>5.5902</td>
+      <td>417000.0</td>
+      <td>4</td>
     </tr>
     <tr>
-      <th>9347</th>
-      <td>3.5865</td>
-      <td>290000.0</td>
+      <th>4275</th>
+      <td>5.4122</td>
+      <td>397500.0</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
-<p>1967 rows × 2 columns</p>
+<p>1967 rows × 3 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ten_percent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">total_number</span><span class="p">,</span> <span class="n">total_number</span><span class="o">//</span><span class="mi">10</span><span class="p">)</span>
 
-<span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ten_percent</span><span class="p">]</span>
+<span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ten_percent</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">sampling</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income              3.692285
-median_house_value    192118.708693
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income              3.70116
+median_house_value    190856.12608
 dtype: float64
 </pre></div>
 </div>
@@ -3334,7 +3520,7 @@ dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="n">ten_percent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">total_number</span><span class="p">,</span> <span class="n">total_number</span><span class="o">//</span><span class="mi">10</span><span class="p">)</span>
 
-    <span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ten_percent</span><span class="p">]</span>
+    <span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ten_percent</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">번째 샘플링:&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sampling</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
     <span class="nb">print</span><span class="p">()</span>
@@ -3343,28 +3529,28 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1번째 샘플링:
-median_income              3.641687
-median_house_value    190382.613116
+median_income              3.674352
+median_house_value    193076.614133
 dtype: float64
 
 2번째 샘플링:
-median_income              3.693350
-median_house_value    190002.338587
+median_income              3.676059
+median_house_value    194623.945094
 dtype: float64
 
 3번째 샘플링:
-median_income              3.658276
-median_house_value    192230.910015
+median_income              3.738226
+median_house_value    193266.700559
 dtype: float64
 
 4번째 샘플링:
-median_income              3.691545
-median_house_value    193545.348246
+median_income              3.714453
+median_house_value    196464.971530
 dtype: float64
 
 5번째 샘플링:
-median_income              3.662307
-median_house_value    191832.130147
+median_income              3.681576
+median_house_value    193582.256228
 dtype: float64
 </pre></div>
 </div>
@@ -3380,7 +3566,7 @@ dtype: float64
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sampling_count</span><span class="p">):</span>
     <span class="n">ten_percent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">total_number</span><span class="p">,</span> <span class="n">total_number</span><span class="o">//</span><span class="mi">10</span><span class="p">)</span>
 
-    <span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ten_percent</span><span class="p">]</span>
+    <span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ten_percent</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">income_mean</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling</span><span class="p">[</span><span class="s1">&#39;median_income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3394,7 +3580,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.676912
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.676097
 </pre></div>
 </div>
 </div>
@@ -3407,7 +3593,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.001286
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.001253
 </pre></div>
 </div>
 </div>
@@ -3483,15 +3669,16 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 모집단과 표본</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.1.1. 모집단</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.1.2. 표본</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.1. 모집단과 표본</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2. 표본추출</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.2.1. 무작위 샘플링</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.2.2. 계층 샘플링</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vs">10.2.3. 무작위 샘플링 vs. 계층 샘플링</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.2.4. 모평균 vs. 표본평균</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.2. 계층 샘플링</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs">10.3. 무작위 샘플링 vs. 계층 샘플링</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.4. 모평균 vs. 표본평균</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.5. 표본평균의 분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.3. 확률변수와 확률분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">10.4. 표본평균의 분포</a></li>
 </ul>
   </nav></div>
 
