@@ -17,3 +17,4 @@ chapters:
 - file: twoD_data
 - file: twoD_visualization
 - file: sampling
+- file: probability
