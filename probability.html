@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -1177,7 +1177,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div></div></div>
 </div>
 <ul class="simple">
-<li><p>무작위 추출된 표본의 수득구간별 그룹 크기</p></li>
+<li><p>무작위 추출된 표본의 소득구간별 그룹 크기</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1650,7 +1650,7 @@ P(X=1) = P(X=2) = \cdots = P(X=6) = \frac1 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bb7de06a2ace92389723915b5e21912f61eed7ef0e1a7d203a2ac9a95d4b6d14.png" src="_images/bb7de06a2ace92389723915b5e21912f61eed7ef0e1a7d203a2ac9a95d4b6d14.png" />
+<img alt="_images/b922550cd43054508e2272260dd8408971b83d0a7f71b5df51d261f18140f6df.png" src="_images/b922550cd43054508e2272260dd8408971b83d0a7f71b5df51d261f18140f6df.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">random_sampling</span></code> 표본의 크기가 1,968이고, 인덱스의 범위를 50개 구간으로 쪼갰기에
@@ -1690,13 +1690,14 @@ P(X=1) = P(X=2) = \cdots = P(X=6) = \frac1 6
 </div>
 </div>
 </div>
-<p>변수 <code class="docutils literal notranslate"><span class="pre">Y</span></code>가 <code class="docutils literal notranslate"><span class="pre">sampling_index</span></code>에 포함된 정수가 50개 구간 어디에 속할 확률을 가리키는 확률변수라 하자.
+<p>변수 <code class="docutils literal notranslate"><span class="pre">Y</span></code>가 <code class="docutils literal notranslate"><span class="pre">sampling_index</span></code>에 포함된 정수가 50개 구간 어디에 속하는지 확률을 가리키는 확률변수라 하자.
 그러면 <code class="docutils literal notranslate"><span class="pre">Y</span></code>가 임의의 구간 <code class="docutils literal notranslate"><span class="pre">k</span></code>를 가리킬 확률은 평균적으로 2%이어야 한다.
 즉 다음이 성립한다.</p>
 <div class="math notranslate nohighlight">
 \[
 P(Y = k) \simeq 0.02
 \]</div>
+<p>이유는 2000여개의 데이터가 50개 구간에 균등하게 40여개씩 나뉘어서 분류되었기 때문이다.</p>
 <p>이를 실제 데이터로 확인할 수 있다.</p>
 <ul class="simple">
 <li><p>구간별 상대도수</p></li>
@@ -1742,11 +1743,11 @@ P(Y = k) \simeq 0.02
 <h3><span class="section-number">11.2.1. </span><code class="docutils literal notranslate"><span class="pre">np.random.choice()</span></code> 함수<a class="headerlink" href="#np-random-choice" title="Link to this heading">#</a></h3>
 <p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">sample()</span></code> 메서드는 앞서 설명한대로 모집단 전체에서 소득구간에 상관없이
 인덱스를 기준으로 균등하게 표본을 추출한다.
-실제로 <code class="docutils literal notranslate"><span class="pre">np.random.choice()</span></code> 함수를 동일한 결과를 얻을 수 있다.</p>
+실제로 <code class="docutils literal notranslate"><span class="pre">np.random.choice()</span></code> 함수를 이용하여 동일한 결과를 얻을 수 있다.</p>
 <p>아래 코드는 0부터 19,674까지의 정수 중에서 무작위로 1,968개의 정수를
 중복 없이 추출한다.
 무작위 추출의 시드를 42로 지정함에 주의한다.
-이유는 앞서 <code class="docutils literal notranslate"><span class="pre">sample()</span></code>를 활용할 때 역시 <code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> 키워드 인자를 사용했기 때문이다.</p>
+이유는 앞서 <code class="docutils literal notranslate"><span class="pre">sample()</span></code>를 활용할 때 <code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> 키워드 인자를 사용여 동일한 시드를 지정했기 때문이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
@@ -1781,7 +1782,7 @@ P(Y = k) \simeq 0.02
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">random_sampling</span></code> 데이터프레임의 인덱스를 크기순으로 정렬한 다음에 처음 10개의 값과 동일하다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">random_sampling</span></code> 데이터프레임의 인덱스를 크기순으로 정렬한 다음에 확인되는 처음 10개의 값과 동일하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">random_sampling</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
@@ -1816,7 +1817,7 @@ P(Y = k) \simeq 0.02
 <p>앞서 보았듯이
 <code class="docutils literal notranslate"><span class="pre">np.random.choice()</span></code> 함수는 균등분포를 따른다.</p>
 <p>예를 들어 1부터 5까지의 정수에 대해 실행하면 각각의 정수가 1/5의 확률로 선택된다.
-이또한 모의실험으로 확인할 수 있다.
+이 또한 모의실험으로 확인할 수 있다.
 아래 코드는 <code class="docutils literal notranslate"><span class="pre">np.random.choice()</span></code> 함수를 이용하여 1부터 5까지의 정수를 무작위로 1만 개 선택한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1834,7 +1835,8 @@ P(Y = k) \simeq 0.02
 </div>
 </div>
 </div>
-<p>아래 코드는 도수분포표를 작성한다.</p>
+<p>아래 코드는 선택된 표본을 대상으로 도수분포표를 작성한다.
+<code class="docutils literal notranslate"><span class="pre">bins=5</span></code>로 지정하였기에 각각 구간에 1, 2, 3, 4, 5 중에 하나만 포함된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -1913,14 +1915,21 @@ P(Y = k) \simeq 0.02
 </table>
 </div></div></div>
 </div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">p=확률분포</span></code> 키워드 인자</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">np.random.choice()</span></code> 함수가 특정 확률분포를 따르도록 할 수 있다.
 예를 들어 1부터 5까지의 정수를 앞서 확인한
-캘리포니아 주택가격의 소득범주를 따르도록 하면서 무작위로 하나의 정수를 선택하게 하려면
+캘리포니아 주택가격의 소득범주의 확률분포를 따르도록 하면서 무작위로 하나의 정수를 선택하게 하려면
 다음과 같이 한다.</p>
 <p>먼저 소득범주를 가리키는 확률변수 <code class="docutils literal notranslate"><span class="pre">X</span></code>의 확률분포를 아래와 같이 1차원 어레이로 지정한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prob_X</span> <span class="o">=</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;전체&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">prob_X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.041372, 0.333011, 0.361017, 0.177992, 0.086607])
 </pre></div>
 </div>
 </div>
@@ -1942,7 +1951,8 @@ P(Y = k) \simeq 0.02
 </div>
 </div>
 </div>
-<p>다시 한 번 도수분포표를 확인하면 다음과 같다.</p>
+<p>다시 한 번 도수분포표를 확인하면 다음과 같다.
+계산된 상대도수를 보면 <code class="docutils literal notranslate"><span class="pre">prob_X</span></code>와 매우 유사함이 확인된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -2008,19 +2018,6 @@ P(Y = k) \simeq 0.02
 </table>
 </div></div></div>
 </div>
-<p>상대도수를 보면 <code class="docutils literal notranslate"><span class="pre">prob_X</span></code>와 매우 유사함이 확인된다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prob_X</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.041372, 0.333011, 0.361017, 0.177992, 0.086607])
-</pre></div>
-</div>
-</div>
-</div>
 <p>위 결과를 히스토그램으로 확인한다.
 아래 그림에서 5개의 빨간선은 <code class="docutils literal notranslate"><span class="pre">prob_X</span></code>의 구간별 상대도수를 표시한다.</p>
 <div class="cell docutils container">
@@ -2028,7 +2025,7 @@ P(Y = k) \simeq 0.02
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span> <span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
-<span class="n">_</span> <span class="o">=</span> <span class="n">income_cat_freq10000</span><span class="p">[</span><span class="s1">&#39;상대도수&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">income_cat_freq10000</span><span class="p">[</span><span class="s1">&#39;상대도수&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span> <span class="c1"># 막대그래프</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">prob_X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Income category&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative frequency&#39;</span><span class="p">)</span>
@@ -2037,12 +2034,12 @@ P(Y = k) \simeq 0.02
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f0afdaf92c4b5121f5fabde4c3ba38d5dc2438ea6670da6f951aeadaa5e89ecb.png" src="_images/f0afdaf92c4b5121f5fabde4c3ba38d5dc2438ea6670da6f951aeadaa5e89ecb.png" />
+<img alt="_images/f4adb3ce5ef5b1aaea9cf9f7fab4ff8f6925aff5088b5d97bdb73ba9cc623979.png" src="_images/f4adb3ce5ef5b1aaea9cf9f7fab4ff8f6925aff5088b5d97bdb73ba9cc623979.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수 활용</strong></p>
-<p>동일한 그림을 표본 데이터를 이용하여 그릴 수도 있다.
-<code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수를 호출할 때 <code class="docutils literal notranslate"><span class="pre">density=True</span></code>를 지정하면 도수 대신에 상대도수를 막대그래프 형식으로 그린다.</p>
+<p>동일한 그림을 추출된 표본 데이터 자체를 이용하여 그릴 수도 있다.
+<code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수를 호출할 때 <code class="docutils literal notranslate"><span class="pre">density=True</span></code>를 지정하면 도수 대신에 상대도수를 막대그래프 형식으로 그림에 주의한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span> <span class="p">))</span>
