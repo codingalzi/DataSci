@@ -1824,7 +1824,7 @@ P(Y = k) \simeq 0.02
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="n">random_trial</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">random_trial</span><span class="p">)</span>
 <span class="n">sample</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
@@ -1940,7 +1940,7 @@ P(Y = k) \simeq 0.02
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="n">random_trial</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">prob_X</span><span class="p">)</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">random_trial</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">prob_X</span><span class="p">)</span>
 <span class="n">sample</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
