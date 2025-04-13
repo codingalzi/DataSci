@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'probability';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="12. 표본 분포" href="sampling_distribution.html" />
+    <link rel="next" title="12. 표본분포" href="sampling_distribution.html" />
     <link rel="prev" title="10. 모집단과 표본" href="sampling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,7 +180,7 @@
 <li class="toctree-l1"><a class="reference internal" href="twoD_visualization.html">9. 2차원 데이터 시각화</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sampling.html">10. 모집단과 표본</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">11. 확률분포</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sampling_distribution.html">12. 표본 분포</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sampling_distribution.html">12. 표본분포</a></li>
 </ul>
 
     </div>
@@ -2071,6 +2071,114 @@ P(Y = k) \simeq 0.02
 <img alt="_images/c83f7807f043b3464b950c75ef8e0b787a8e3c115dd328b27f63865ec97b45e1.png" src="_images/c83f7807f043b3464b950c75ef8e0b787a8e3c115dd328b27f63865ec97b45e1.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+      <th>income_cat</th>
+    </tr>
+    <tr>
+      <th>district</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8.3252</td>
+      <td>452600.0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>8.3014</td>
+      <td>358500.0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.2574</td>
+      <td>352100.0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.6431</td>
+      <td>341300.0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.8462</td>
+      <td>342200.0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19670</th>
+      <td>1.5603</td>
+      <td>78100.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>19671</th>
+      <td>2.5568</td>
+      <td>77100.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>19672</th>
+      <td>1.7000</td>
+      <td>92300.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>19673</th>
+      <td>1.8672</td>
+      <td>84700.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>19674</th>
+      <td>2.3886</td>
+      <td>89400.0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>19675 rows × 3 columns</p>
+</div></div></div>
+</div>
 </section>
 </section>
 <section id="id7">
@@ -2123,7 +2231,7 @@ P(Y = k) \simeq 0.02
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>표본 분포</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>표본분포</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
