@@ -18,3 +18,4 @@ chapters:
 - file: twoD_visualization
 - file: sampling
 - file: probability
+- file: sampling_distribution
