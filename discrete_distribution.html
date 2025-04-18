@@ -1840,6 +1840,9 @@ P(A, B) = P(A\mid B)\cdot P(B)
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(X=4\mid Y=5) \cdot P(Y=5)\)</span></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_x4_y5</span> <span class="o">*</span> <span class="n">p_y5_all</span>
@@ -1853,6 +1856,9 @@ P(A, B) = P(A\mid B)\cdot P(B)
 </div>
 </div>
 <p>아래 값과 동일하다.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(X=4\cap Y=5)\)</span></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cats_crossed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">/</span> <span class="n">cats_crossed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="s1">&#39;All&#39;</span><span class="p">]</span>
