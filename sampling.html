@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -178,7 +178,7 @@
 <li class="toctree-l1"><a class="reference internal" href="twoD_visualization.html">9. 2차원 데이터 시각화</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">10. 모집단과 표본</a></li>
 <li class="toctree-l1"><a class="reference internal" href="probability.html">11. 확률 분포</a></li>
-<li class="toctree-l1"><a class="reference internal" href="discrete_distribution.html">12. 이산 확률 분포(준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="discrete_distribution.html">12. 이산 확률 분포</a></li>
 <li class="toctree-l1"><a class="reference internal" href="continuous_distribution.html">13. 연속 확률분포(준비중)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sample_distribution.html">14. 표본분포(준비중)</a></li>
 </ul>
@@ -1619,7 +1619,7 @@ dtype: float64
 <p>주택가격은 소득과 밀접하게 연관된다.
 따라서 주택가격에 대한 표본통계량을 확인하고자 할 때
 표본이 소득별로 적절한 비율을 유지하는지 확인할 필요가 있다.</p>
-<p><strong>소득구간 지정</strong></p>
+<p><strong>소득 범주 지정</strong></p>
 <p>중위소득을 아래 표에 언급된 5개 구간으로 쪼개면서 동시에 1부터 5까지의 정수를 구간 이름으로 지정한다.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1675,7 +1675,7 @@ Categories (5, int64): [1 &lt; 2 &lt; 3 &lt; 4 &lt; 5]
 </div>
 </div>
 </div>
-<p>이제 구역의 중위소득구간을 새로운 특성으로 추가한다.</p>
+<p>이제 구역의 중위소득 범주를 새로운 특성으로 추가한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="p">[</span><span class="s2">&quot;income_cat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">housing</span><span class="p">[</span><span class="s2">&quot;median_income&quot;</span><span class="p">],</span>
@@ -1792,7 +1792,7 @@ Categories (5, int64): [1 &lt; 2 &lt; 3 &lt; 4 &lt; 5]
 <p>중위소득 구간별로 지정된 비율의 표본을 추출하려 한다.
 이를 위해 데이터프레임의 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 메서드를 활용한다.</p>
 <p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 메서드는 지정된 구간을 기준으로 데이터를 그룹화한다.
-아래 코드는 <code class="docutils literal notranslate"><span class="pre">income_cat</span></code> 특성에 포함된 소득구간 값들을 기준으로 소득구간별로 데이터를 묶는다,
+아래 코드는 <code class="docutils literal notranslate"><span class="pre">income_cat</span></code> 특성에 포함된 소득 범주 값들을 기준으로 소득 범주별로 데이터를 묶는다,
 즉 5개의 그룹으로 묶는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2336,7 +2336,7 @@ district
 </div></div></div>
 </div>
 <p>총 1,966개 구역의 데이터를 담은 데이터프레임이 생성되었으며,
-각 구역이 속한 소득구간이 인덱스로 추가되었다.
+각 구역이 속한 소득 범주가 인덱스로 추가되었다.
 즉, 위 데이터프레임은 <code class="docutils literal notranslate"><span class="pre">income_cat</span></code>과 <code class="docutils literal notranslate"><span class="pre">disstrict</span></code> 두 종류의 인덱스를 포함하는
 다중 인덱스를 사용한다.</p>
 <p>다중 인덱스는 인덱스 각각의 이름 또는 레벨 <code class="docutils literal notranslate"><span class="pre">level</span></code>로 구분된다.
@@ -2563,7 +2563,7 @@ district
 <p>1966 rows × 3 columns</p>
 </div></div></div>
 </div>
-<p>아래 코드는 표본추출 결과를 소득구간 기준으로 그룹화를 진행한 다음에 각 구간별로 선택된 샘플의 개수를 확인한다.</p>
+<p>아래 코드는 표본추출 결과를 소득 범주 기준으로 그룹화를 진행한 다음에 각 구간별로 선택된 샘플의 개수를 확인한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_sampling_count</span> <span class="o">=</span> <span class="n">stratified_sampling</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;income_cat&#39;</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -2698,7 +2698,7 @@ district
 </section>
 <section id="vs">
 <h3><span class="section-number">10.2.3. </span>무작위 추출 vs. 층화표집<a class="headerlink" href="#vs" title="Link to this heading">#</a></h3>
-<p>소득구간 정보를 기억하면서 무작위 추출을 다시 진행하면
+<p>소득 범주 정보를 기억하면서 무작위 추출을 다시 진행하면
 크기가 1,968인 표본이 생성된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2809,7 +2809,7 @@ district
 <p>1968 rows × 3 columns</p>
 </div></div></div>
 </div>
-<p>소득구간별 그룹의 크기를 확인한다.</p>
+<p>소득 범주별 그룹의 크기를 확인한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_sampling_count</span> <span class="o">=</span> <span class="n">random_sampling</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;income_cat&#39;</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -2876,7 +2876,7 @@ district
 </div></div></div>
 </div>
 <p><strong>오차율 비교표</strong></p>
-<p>무작위 추출과 층화표집의 결과를 소득구간별 상대도수를 기준으로 비교한다.</p>
+<p>무작위 추출과 층화표집의 결과를 소득 범주별 상대도수를 기준으로 비교한다.</p>
 <ul class="simple">
 <li><p>두 표본의 크기: 모집단의 10%에 매우 근접한다.</p></li>
 </ul>
@@ -2911,7 +2911,7 @@ dtype: int64
 </div>
 </div>
 <ul class="simple">
-<li><p>소득구간별 상대도수: 차이가 어느 정도 있다.</p></li>
+<li><p>소득 범주별 상대도수: 차이가 어느 정도 있다.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3043,7 +3043,7 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-<p>참고로 모집단에서의 소득구간별 상대도수는 다음과 같다.</p>
+<p>참고로 모집단에서의 소득 범주별 상대도수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stratified_ratio</span> <span class="o">=</span> <span class="n">stratified_count</span><span class="o">/</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">shape</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -3109,7 +3109,7 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-<p>아래 코드는 두 표본과 모집단의 소득구간별 상대도수를 하나로 묶어 데이터프레임을 생성한다.</p>
+<p>아래 코드는 두 표본과 모집단의 소득 범주별 상대도수를 하나로 묶어 데이터프레임을 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proportions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">stratified_ratio</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]],</span> 
@@ -3118,7 +3118,7 @@ dtype: int64
                         <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">proportions</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;전체&#39;</span><span class="p">,</span> <span class="s1">&#39;층화표집&#39;</span><span class="p">,</span> <span class="s1">&#39;무작위 추출&#39;</span><span class="p">]</span>
-<span class="n">proportions</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;소득구간&#39;</span>
+<span class="n">proportions</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;소득 범주&#39;</span>
 <span class="n">proportions</span>
 </pre></div>
 </div>
@@ -3188,7 +3188,7 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-<p>모집단의 소득구간별 상대도수를 기준으로 표본 각각에서의 상대도수와의 오차율을 추가한다.</p>
+<p>모집단의 소득 범주별 상대도수를 기준으로 표본 각각에서의 상대도수와의 오차율을 추가한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proportions</span><span class="p">[</span><span class="s2">&quot;층화표집 오차율&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">proportions</span><span class="p">[</span><span class="s2">&quot;층화표집&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">proportions</span><span class="p">[</span><span class="s2">&quot;전체&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
@@ -3277,7 +3277,7 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-<p>결과적으로 층화표집을 사용할 경우 표본의 소득구간별 상대도수가 모집단의 그것에 매우 근접함을 알 수 있다.
+<p>결과적으로 층화표집을 사용할 경우 표본의 소득 범주별 상대도수가 모집단의 그것에 매우 근접함을 알 수 있다.
 참고로 층화표집으로 생성된 표본을 이용한 산점도는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
