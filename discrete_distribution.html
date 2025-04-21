@@ -1164,20 +1164,20 @@ F(x) = P(X \le x) = \sum_{x_k \le x} f(x_k)
 여기서는 두 개의 이산 확률 변수가 결합된 다변량 분포를 소개한다.</p>
 <section id="id4">
 <h3><span class="section-number">12.2.1. </span>이산 결합 확률 분포<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p><span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> 두 개의 이산 확률 변수가 주어졌을 때 <code class="docutils literal notranslate"><span class="pre">(X,</span> <span class="pre">Y)</span></code>는 각각의 확률 변수가 취할 수 있는 값들의 조합이 발생할
+<p><span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> 두 개의 이산 확률 변수가 주어졌을 때 <span class="math notranslate nohighlight">\((X, Y)\)</span>는 각각의 확률 변수가 취할 수 있는 값들의 조합이 발생할
 가능성의 확률 분포를
 <strong>이산 결합 확률 분포</strong><font size='2'>discrete joint probability distribution</font>라 부른다.
-이산 결합 확률 분포의 확률 질량 합수는 <strong>결합 확률 질량 함수</strong><font size='2'>joint probability mass function</font>로 정의된다.
+이산 결합 확률 분포의 확률 질량 합수는 <strong>결합 확률 질량 함수</strong><font size='2'>joint probability mass function</font>로 정의되며,
 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>는 <span class="math notranslate nohighlight">\(x\)</span>를, 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>는 <span class="math notranslate nohighlight">\(y\)</span>를 취할 확률을</p>
 <div class="math notranslate nohighlight">
 \[
-P(X=x, Y=y) = p
+f_{XY}(x, y) = P(X=x, Y=y) = p
 \]</div>
 <p>로 표현한다.
 경우에 따라 아래처럼 표현된다.</p>
 <div class="math notranslate nohighlight">
 \[
-P(X=x \cap Y=y) = p
+f_{XY}(x, y) = P(X=x \cap Y=y) = p
 \]</div>
 <p><strong>예제: 소득 범주와 주택가격 범주</strong></p>
 <p>캘리포니아 주택가격에 데이터셋에 포함된 중위주택가격을 지정된 가격 구간으로 나눠 새로운 이산 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>를 선언한다.
@@ -2070,7 +2070,7 @@ Name: median_house_value, dtype: float64
 <p>대각선에 위치한 영역의 일반적으로 밝다.
 특히 중위소득의 범주가 3, 중위주택가격의 범주가 4인 영역의 확률이 가장 높다.
 일반적으로 소득 수준에 맞는 주택에 산다는 점과
-중산층이 적절한 가격의 주택에 산다는 상식에 부합하는 결과다.</p>
+중산층이 적절한 가격의 주택에 산다는 상식에 부합하는 결과를 보여준다.</p>
 </section>
 <section id="id5">
 <h3><span class="section-number">12.2.2. </span>조건부 확률<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
@@ -2266,7 +2266,186 @@ P(Y=y\mid X=x) = \frac{P(Y=y, X=x)}{P(X=x)} = \frac{P(X=x, Y=y)}{P(X=x)}
 </section>
 <section id="id6">
 <h3><span class="section-number">12.2.3. </span>주변 확률 분포<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
-<p>준비중 …</p>
+<p>확률 변수 <span class="math notranslate nohighlight">\((X, Y)\)</span>의 결합 확률 분포가 주어졌을 때
+각각의 확률 변수에 대한 확률 분포를
+<strong>주변 확률 분포</strong><font size='2'>marginal probability distribution</font>라 한다.</p>
+<p>확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 주변 확률 질량 함수는 다음과 같이 정의된다.</p>
+<div class="math notranslate nohighlight">
+\[
+f_X(x) = \sum_k f_{XY}(x, y_k) = \sum_k P(X=x, Y=y_k)
+\]</div>
+<p>반면에 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>의 주변 확률 질량 함수는 다음과 같이 정의된다.</p>
+<div class="math notranslate nohighlight">
+\[
+f_Y(y) = \sum_k f_{XY}(x_k, y) = \sum_k P(X=x_k, Y=y)
+\]</div>
+<p><span class="math notranslate nohighlight">\(f_X()\)</span>는 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>의 영향을 받지 않고 독립적으로 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 분포를,
+<span class="math notranslate nohighlight">\(f_Y()\)</span>는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 영향을 받지 않고 독립적으로 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>의 확률 분포를 계산한다.</p>
+<p>캘리포니아 주택가격 데이터셋에서 소득 분포를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>와 주택중위가격 분포를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>에 대해
+앞서 선언된 이산 결합 확률 분포의 결합 PMF가 <code class="docutils literal notranslate"><span class="pre">p_XY()</span></code> 함수를 이용하여
+각각의 확률 변수에 대한 주변 확률 밀도 함수를 구해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">prob_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">prob_x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_Y</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">prob_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">p_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">prob_y</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>그런데 <code class="docutils literal notranslate"><span class="pre">p_XY()</span></code> 함수의 정의가 다음과 같다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">p_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">cats_crossed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+    <span class="n">pop</span> <span class="o">=</span> <span class="n">cats_crossed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="s1">&#39;All&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">count</span> <span class="o">/</span> <span class="n">pop</span>
+</pre></div>
+</div>
+<p>따라서 각 확률 변수의 주변 확률 밀도 함수를 다음과 같이 정의해도 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_X1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">cats_crossed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;All&#39;</span><span class="p">]</span>
+    <span class="n">pop</span> <span class="o">=</span> <span class="n">cats_crossed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="s1">&#39;All&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">count</span> <span class="o">/</span> <span class="n">pop</span>   
+</pre></div>
+</div>
+</div>
+</div>
+<p>이유는 <code class="docutils literal notranslate"><span class="pre">cats_crossed.loc[x,</span> <span class="pre">'All']</span></code>가
+확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(x\)</span>를 가리킬 때의 모든 <span class="math notranslate nohighlight">\(y\)</span>에 대한 도수의 합을 가리키기 때문이다.
+동일한 이유로 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>의 주변 확률 분포를 다음과 같이 정의할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_Y1</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">cats_crossed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+    <span class="n">pop</span> <span class="o">=</span> <span class="n">cats_crossed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="s1">&#39;All&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">count</span> <span class="o">/</span> <span class="n">pop</span>   
+</pre></div>
+</div>
+</div>
+</div>
+<p>이전의 정의와 동일한 확률을 계산함을 다음과 같이 보인다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">([</span><span class="n">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)],</span> <span class="p">[</span><span class="n">f_X1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">([</span><span class="n">f_Y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)],</span> <span class="p">[</span><span class="n">f_Y1</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>참고로 <code class="docutils literal notranslate"><span class="pre">np.allclose()</span></code> 함수는 부동소수점으로 구성된 두 어레이에 대해
+동일한 인덱스의 두 부동소수점이 허용된 오차 범위 내에 위치하는가를 확인한다.
+이 함수를 사용하는 이유는 부동소수점의 동일여부를 물으면 다르다고 판정되기 때문이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">([</span><span class="n">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)],</span> <span class="p">[</span><span class="n">f_X1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>예를 들어 다음이 성립한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_X</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="n">f_X1</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>그런데 두 값을 개별적으로 확인하면 동일해 보인다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_X</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.361017
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_X1</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.361017
+</pre></div>
+</div>
+</div>
+</div>
+<p>이는 두 함수의 계산 방식의 차이로 인한 부동소수점의 연산 결과가 미세하게 다르기 때문이다.
+즉, 부동소수점 연산의 한계로 인한다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">f_X(x)</span></code>: 모든 <code class="docutils literal notranslate"><span class="pre">y</span></code>에 대해 먼저 <code class="docutils literal notranslate"><span class="pre">P(X=x,</span> <span class="pre">Y=y)</span></code>, 즉 확률을 계산한 다음에 더함.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">f_X1(x)</span></code>: <code class="docutils literal notranslate"><span class="pre">x</span></code>의 범주에 속하는 도수를 모두 더한 다음에 확률 계산.</p></li>
+</ul>
+<p>반면에 <code class="docutils literal notranslate"><span class="pre">f_X1()</span></code>과 <code class="docutils literal notranslate"><span class="pre">f_y1()</span></code>은 앞서 정의한 확률 밀도 함수 <code class="docutils literal notranslate"><span class="pre">p_X()</span></code>, <code class="docutils literal notranslate"><span class="pre">p_Y()</span></code>와 각각 완전히 동일한
+확률을 계산한다.
+이유는 <code class="docutils literal notranslate"><span class="pre">p_X()</span></code>, <code class="docutils literal notranslate"><span class="pre">p_Y()</span></code>또한 먼저 도수를 합한 다음에 확률을 계산하기 때문이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">([</span><span class="n">p_X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)],</span> <span class="p">[</span><span class="n">f_X1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">([</span><span class="n">p_Y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)],</span> <span class="p">[</span><span class="n">f_Y1</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>결론적으로 두 확률 변수의 확률 밀도 함수는 결합 확률 밀도 함수를 이용하여 정의된
+확률 밀도 함수와 동일하다.</p>
 </section>
 </section>
 <section id="id7">
