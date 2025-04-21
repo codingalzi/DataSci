@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -2071,6 +2071,31 @@ Name: median_house_value, dtype: float64
 특히 중위소득의 범주가 3, 중위주택가격의 범주가 4인 영역의 확률이 가장 높다.
 일반적으로 소득 수준에 맞는 주택에 산다는 점과
 중산층이 적절한 가격의 주택에 산다는 상식에 부합하는 결과를 보여준다.</p>
+<p>반면에 각 확률 변수의 확률 분포를 그래프로 그리면 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+
+<span class="n">prob_income</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Marginal probability distribution for X&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Income&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+
+<span class="n">prob_value</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Marginal probability distribution for Y&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;House value&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b1aaf7d2184f670b8ec5481f44dd691cf5b27fbdc59ab126cad9c494698e8160.png" src="_images/b1aaf7d2184f670b8ec5481f44dd691cf5b27fbdc59ab126cad9c494698e8160.png" />
+</div>
+</div>
 </section>
 <section id="id5">
 <h3><span class="section-number">12.2.2. </span>조건부 확률<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
@@ -2282,7 +2307,7 @@ f_Y(y) = \sum_k f_{XY}(x_k, y) = \sum_k P(X=x_k, Y=y)
 <p><span class="math notranslate nohighlight">\(f_X()\)</span>는 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>의 영향을 받지 않고 독립적으로 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 분포를,
 <span class="math notranslate nohighlight">\(f_Y()\)</span>는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 영향을 받지 않고 독립적으로 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>의 확률 분포를 계산한다.</p>
 <p>캘리포니아 주택가격 데이터셋에서 소득 분포를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>와 주택중위가격 분포를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>에 대해
-앞서 선언된 이산 결합 확률 분포의 결합 PMF가 <code class="docutils literal notranslate"><span class="pre">p_XY()</span></code> 함수를 이용하여
+앞서 선언된 이산 결합 확률 분포의 결합 PMF인 <code class="docutils literal notranslate"><span class="pre">p_XY()</span></code> 함수를 이용하여
 각각의 확률 변수에 대한 주변 확률 밀도 함수를 구해보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2360,7 +2385,7 @@ f_Y(y) = \sum_k f_{XY}(x_k, y) = \sum_k P(X=x_k, Y=y)
 </div>
 <p>참고로 <code class="docutils literal notranslate"><span class="pre">np.allclose()</span></code> 함수는 부동소수점으로 구성된 두 어레이에 대해
 동일한 인덱스의 두 부동소수점이 허용된 오차 범위 내에 위치하는가를 확인한다.
-이 함수를 사용하는 이유는 부동소수점의 동일여부를 물으면 다르다고 판정되기 때문이다.</p>
+이 함수를 사용하는 이유는 모든 항목에 대해 부동소수점의 동일여부를 물으면 다르다고 판정되기 때문이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">([</span><span class="n">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)],</span> <span class="p">[</span><span class="n">f_X1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
