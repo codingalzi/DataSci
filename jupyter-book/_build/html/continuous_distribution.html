@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -423,6 +423,18 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="ch-continuous-distribution">
 <span id="id1"></span><h1><span class="section-number">13. </span>연속 확률분포(준비중)<a class="headerlink" href="#ch-continuous-distribution" title="Link to this heading">#</a></h1>
 <p>준비중 …</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수의 <code class="docutils literal notranslate"><span class="pre">density</span></code> 키워드 인자에 주목할 것</p></li>
+<li><p>연속형 데이터의 히스토그램을 <code class="docutils literal notranslate"><span class="pre">density=True</span></code> 옵션으로 그리면 면적이 1이 되도록 높이가 조절됨.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">densitybool</span><span class="p">,</span> <span class="n">default</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="n">If</span> <span class="kc">True</span><span class="p">,</span> <span class="n">draw</span> <span class="ow">and</span> <span class="k">return</span> <span class="n">a</span> <span class="n">probability</span> <span class="n">density</span><span class="p">:</span> <span class="n">each</span> <span class="nb">bin</span> <span class="n">will</span> <span class="n">display</span> <span class="n">the</span> <span class="nb">bin</span><span class="s1">&#39;s raw count </span>
+    <span class="n">divided</span> <span class="n">by</span> <span class="n">the</span> <span class="n">total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">counts</span> <span class="ow">and</span> <span class="n">the</span> <span class="nb">bin</span> <span class="n">width</span> <span class="p">(</span><span class="n">density</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bins</span><span class="p">))),</span> 
+    <span class="n">so</span> <span class="n">that</span> <span class="n">the</span> <span class="n">area</span> <span class="n">under</span> <span class="n">the</span> <span class="n">histogram</span> <span class="n">integrates</span> <span class="n">to</span> <span class="mi">1</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">density</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bins</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span>
+
+    <span class="n">If</span> <span class="n">stacked</span> <span class="ow">is</span> <span class="n">also</span> <span class="kc">True</span><span class="p">,</span> <span class="n">the</span> <span class="nb">sum</span> <span class="n">of</span> <span class="n">the</span> <span class="n">histograms</span> <span class="ow">is</span> <span class="n">normalized</span> <span class="n">to</span> <span class="mf">1.</span>
+</pre></div>
+</div>
 <p><strong>기본 설정</strong></p>
 <p>Numpy와 Pandas 라이브러리를 각각 np와 pd로 불러온다.</p>
 <div class="cell docutils container">
@@ -481,13 +493,6 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 </div>
-<p><strong>주요 내용</strong></p>
-<p>표본 분포의 주요 개념을 소개한다.</p>
-<ul class="simple">
-<li><p>표본평균의 분포</p></li>
-<li><p>중심극한정리</p></li>
-<li><p>큰 수의 법칙</p></li>
-</ul>
 <p><strong>캘리포니아 주택가격 데이터셋</strong></p>
 <p>캘리포니아 주택가격 데이터셋을 계속해서 활용한다.</p>
 <ul class="simple">
