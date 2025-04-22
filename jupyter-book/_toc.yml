@@ -18,6 +18,6 @@ chapters:
 - file: twoD_visualization
 - file: sampling
 - file: probability
-- file: discrete_distribution
-- file: continuous_distribution
+- file: probability_discrete
+- file: probability_continuous
 - file: sample_distribution
