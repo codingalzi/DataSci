@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -1422,7 +1422,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
       <th>무작위 추출</th>
     </tr>
     <tr>
-      <th>소득구간</th>
+      <th>소득 범주</th>
       <th></th>
       <th></th>
     </tr>
@@ -1570,7 +1570,7 @@ P(X=1) = P(X=2) = \cdots = P(X=6) = \frac1 6
       <th>무작위 추출</th>
     </tr>
     <tr>
-      <th>소득구간</th>
+      <th>소득 범주</th>
       <th></th>
       <th></th>
     </tr>
@@ -1630,14 +1630,14 @@ P(X=1) = P(X=2) = \cdots = P(X=6) = \frac1 6
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Income category&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative frequency&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Ransom sampling&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Random sampling&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/03c27de498f86f920f1c90689a297dcb50b8833002cdcaf38f6b29af6bc38ae7.png" src="_images/03c27de498f86f920f1c90689a297dcb50b8833002cdcaf38f6b29af6bc38ae7.png" />
+<img alt="_images/d634d8bc92c637edcbaa755293ca8048a07598a3a7f93c39f46695cbf63c6994.png" src="_images/d634d8bc92c637edcbaa755293ca8048a07598a3a7f93c39f46695cbf63c6994.png" />
 </div>
 </div>
 <p>이렇듯 무작위 추출의 결과는 모집단의 확률 분포와 밀접하게 관련된다.
@@ -1688,7 +1688,7 @@ P(X=1) = P(X=2) = \cdots = P(X=6) = \frac1 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3cb0b47c9a65c5ee38609f98c3bb0b728287e78cc31338c3e38154ccc79c91a4.png" src="_images/3cb0b47c9a65c5ee38609f98c3bb0b728287e78cc31338c3e38154ccc79c91a4.png" />
+<img alt="_images/3eb9d9efc2e670f8cdc6989e72f049617dadccec3672ae8d9234a3cc88e27838.png" src="_images/3eb9d9efc2e670f8cdc6989e72f049617dadccec3672ae8d9234a3cc88e27838.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">random_sampling</span></code> 표본의 크기가 1,968이고, 인덱스의 범위를 50개 구간으로 쪼갰기에
@@ -2077,7 +2077,7 @@ P(Y = k) \simeq 0.02
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f0afdaf92c4b5121f5fabde4c3ba38d5dc2438ea6670da6f951aeadaa5e89ecb.png" src="_images/f0afdaf92c4b5121f5fabde4c3ba38d5dc2438ea6670da6f951aeadaa5e89ecb.png" />
+<img alt="_images/f4adb3ce5ef5b1aaea9cf9f7fab4ff8f6925aff5088b5d97bdb73ba9cc623979.png" src="_images/f4adb3ce5ef5b1aaea9cf9f7fab4ff8f6925aff5088b5d97bdb73ba9cc623979.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수 활용</strong></p>
@@ -2105,7 +2105,7 @@ P(Y = k) \simeq 0.02
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c07f853481279d703ecf9c84a011eb47ca9f1e2ca887392326ec575617e4464d.png" src="_images/c07f853481279d703ecf9c84a011eb47ca9f1e2ca887392326ec575617e4464d.png" />
+<img alt="_images/c83f7807f043b3464b950c75ef8e0b787a8e3c115dd328b27f63865ec97b45e1.png" src="_images/c83f7807f043b3464b950c75ef8e0b787a8e3c115dd328b27f63865ec97b45e1.png" />
 </div>
 </div>
 <div class="cell docutils container">
