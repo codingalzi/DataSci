@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -60,10 +60,10 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'discrete_distribution';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'probability_discrete';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="13. 연속 확률분포(준비중)" href="continuous_distribution.html" />
+    <link rel="next" title="13. 연속 확률분포(준비중)" href="probability_continuous.html" />
     <link rel="prev" title="11. 확률 분포" href="probability.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -181,7 +181,7 @@
 <li class="toctree-l1"><a class="reference internal" href="sampling.html">10. 모집단과 표본</a></li>
 <li class="toctree-l1"><a class="reference internal" href="probability.html">11. 확률 분포</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">12. 이산 확률 분포</a></li>
-<li class="toctree-l1"><a class="reference internal" href="continuous_distribution.html">13. 연속 확률분포(준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probability_continuous.html">13. 연속 확률분포(준비중)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sample_distribution.html">14. 표본분포(준비중)</a></li>
 </ul>
 
@@ -237,7 +237,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/jupyter-book/discrete_distribution.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/jupyter-book/probability_discrete.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -285,7 +285,7 @@
       
       
       
-      <li><a href="https://github.com/codingalzi/DataSci/issues/new?title=Issue%20on%20page%20%2Fdiscrete_distribution.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/codingalzi/DataSci/issues/new?title=Issue%20on%20page%20%2Fprobability_discrete.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -315,7 +315,7 @@
       
       
       
-      <li><a href="_sources/discrete_distribution.ipynb" target="_blank"
+      <li><a href="_sources/probability_discrete.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -432,8 +432,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="ch-discrete-distribution">
-<span id="id1"></span><h1><span class="section-number">12. </span>이산 확률 분포<a class="headerlink" href="#ch-discrete-distribution" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ch-probability-discrete">
+<span id="id1"></span><h1><span class="section-number">12. </span>이산 확률 분포<a class="headerlink" href="#ch-probability-discrete" title="Link to this heading">#</a></h1>
 <p><strong>기본 설정</strong></p>
 <p>Numpy와 Pandas 라이브러리를 각각 np와 pd로 불러온다.</p>
 <div class="cell docutils container">
@@ -2118,7 +2118,7 @@ P(A\mid B) = \frac{A\cap B}{B} = \frac{\frac{A\cap B}{U}}{\frac{B}{U}} = \frac{P
 \]</div>
 <div class="example admonition">
 <p class="admonition-title">예제</p>
-<p>15명으로 구성된 동아리가 진행하는 행사에 참여하는 회원수가 다음과 같다고 가정한다.</p>
+<p>15명으로 구성된 동아리가 진행하는 행사에 참여하는 회원수가 다음과 같다.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p></p></th>
@@ -2519,7 +2519,7 @@ f_Y(y) = \sum_k f_{XY}(x_k, y) = \sum_k P(X=x_k, Y=y)
       </div>
     </a>
     <a class="right-next"
-       href="continuous_distribution.html"
+       href="probability_continuous.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
