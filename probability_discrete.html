@@ -2436,8 +2436,47 @@ f_Y(y) = \sum_k f_{XY}(x_k, y) = \sum_k P(X=x_k, Y=y)
 </div>
 </div>
 </div>
-<p>이는 두 함수의 계산 방식의 차이로 인한 부동소수점의 연산 결과가 미세하게 다르기 때문이다.
-즉, 부동소수점 연산의 한계때문이다.</p>
+<p>하지만 이는 부동소수점을 소수점 이하 여섯째 자리까지만 화면에 보이도록 설정했기 때문이다.
+소수점 이하 스무번째 자리까지 출력하면 두 함수의 결과가 소수점 이하 열일곱번째 자리에서 다르다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">precision</span> 20
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;%.20f&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_X</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.36101651842439647089
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_X1</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.36101651842439641538
+</pre></div>
+</div>
+</div>
+</div>
+<p>하지만 두 함수의 결과가 이론적으로 동일해야 함에도 불구하고
+다르게 계산되는 이뉴는 두 함수가 서로 다른 방식으로 부동소수점 연산을 실행하기 때문이다.
+즉, 부동소수점의 연산의 한계 때문이다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">f_X(x)</span></code>: 모든 <code class="docutils literal notranslate"><span class="pre">y</span></code>에 대해 먼저 <code class="docutils literal notranslate"><span class="pre">P(X=x,</span> <span class="pre">Y=y)</span></code>, 즉 확률을 계산한 다음에 더함.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">f_X1(x)</span></code>: <code class="docutils literal notranslate"><span class="pre">x</span></code>의 범주에 속하는 도수를 모두 더한 다음에 확률 계산.</p></li>
