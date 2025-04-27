@@ -502,7 +502,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <ul class="simple">
 <li><p>연속 확률 변수</p></li>
 <li><p>연속 확률 분포</p></li>
-<li><p>확률 분포 함수</p></li>
+<li><p>확률 밀도 함수</p></li>
 <li><p>누적 분포 함수</p></li>
 </ul>
 <section id="id2">
@@ -524,7 +524,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <p>연속 확률 변수가 따르는 확률 분포를 <strong>연속 확률 분포</strong><font size='2'>continuous probability distribution</font>라 한다.
 이산 확률 변수에 대한 확률 분포와는 달리 연속 확률 분포는 확률 변수가 특정 값을 취할 확률을 계산하지 않는다.
 대신 확률 변수가 취하는 값이 특정 구간에 속할 확률을 계산한다.</p>
-<p>이유는 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 특정 부동소수점 <span class="math notranslate nohighlight">\(x\)</span>를 취할 확률은 0이기 때문이다</p>
+<p>이유는 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 특정 부동소수점 <span class="math notranslate nohighlight">\(x\)</span>를 취할 확률은 항상 0이기 때문이다</p>
 <div class="math notranslate nohighlight">
 \[
 P(X=x) = 0
@@ -532,7 +532,7 @@ P(X=x) = 0
 <p>예를 들어 0과 1사이의 부동소수점 중에서 무작위로 하나의 값을 취했을 때 그 값이 정확히 0.5일 확률은 0이다.
 반면에 무작위로 선택한 값이 0.49에서 0.51 사이일 확률은 0.02, 즉 2%다.
 구간 전체의 크기가 1인데 0.49에서 0.51 사이 구간의 크기는 0.02이기 때문이다.</p>
-<p>이처럼 연속 확률 변수는 특정 값이 아닌 특정 구간의 값을 취할 확률을 계산한다.</p>
+<p>이처럼 연속 확률 변수는 특정 값이 아닌 아래 표현식처럼 특정 구간의 값을 취할 확률을 계산한다.</p>
 <div class="math notranslate nohighlight">
 \[
 P(a \le X \le b)
@@ -550,14 +550,13 @@ F(a) = P(X \le a)
 \[
 P(a \le X \le b) = F(b) - F(a)
 \]</div>
-<p>연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(x_0\)</span>에서 <span class="math notranslate nohighlight">\(x_1\)</span> 사이의 값을 취할 때
-<span class="math notranslate nohighlight">\(X\)</span>의 누적 분포 함수<span class="math notranslate nohighlight">\(F\)</span>는 다음 세 가지 성질을 만족한다.
+<p>연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(x_0\)</span>에서 <span class="math notranslate nohighlight">\(x_1\)</span> 사이에서만 값을 취한다고 가정하자.
+그러면 <span class="math notranslate nohighlight">\(X\)</span>의 누적 분포 함수<span class="math notranslate nohighlight">\(F\)</span>는 다음 세 가지 성질을 만족한다.
 단, <span class="math notranslate nohighlight">\(a, b \in [x_0, x_1]\)</span>과 <span class="math notranslate nohighlight">\(a \le b\)</span>를 가정한다.</p>
-<p><span class="math notranslate nohighlight">\((1)\)</span> <span class="math notranslate nohighlight">\(F(a) \le F(b)\)</span><br />
-<span class="math notranslate nohighlight">\((2)\)</span> <span class="math notranslate nohighlight">\(0 \le F(a) \le 1\)</span><br />
-<span class="math notranslate nohighlight">\((3)\)</span> <span class="math notranslate nohighlight">\(\displaystyle \lim_{a \to x_0} F(a) = 0\)</span> 와 <span class="math notranslate nohighlight">\(\displaystyle\lim_{a \to x_1} F(a) = 1\)</span></p>
-<p>위 식에서 경우에 따라 <span class="math notranslate nohighlight">\(x_0\)</span>는 음의 무한대를, <span class="math notranslate nohighlight">\(x_1\)</span>은 양의 무한대를 가리킬 수 있음에 주의한다.
-예를 들어 다음이 성립한다.</p>
+<p><span class="math notranslate nohighlight">\((1)\,\,\, F(a) \le F(b)\)</span><br />
+<span class="math notranslate nohighlight">\((2)\,\,\, 0 \le F(a) \le 1\)</span><br />
+<span class="math notranslate nohighlight">\((3)\,\,\, \displaystyle \lim_{a \to x_0} F(a) = 0\)</span> 와 <span class="math notranslate nohighlight">\(\displaystyle\lim_{a \to x_1} F(a) = 1\)</span></p>
+<p>위 식에서 경우에 따라 다음과 같이 <span class="math notranslate nohighlight">\(x_0\)</span>는 음의 무한대를, <span class="math notranslate nohighlight">\(x_1\)</span>은 양의 무한대를 가리킬 수 있다.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="infinity">
 <caption><span class="caption-number">Table 13.1 </span><span class="caption-text">무한대와 구간</span><a class="headerlink" href="#infinity" title="Link to this table">#</a></caption>
 <colgroup>
@@ -570,14 +569,14 @@ P(a \le X \le b) = F(b) - F(a)
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\([-\infty, 1]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(1\)</span>보다 같거나 작은 모든 실수들의 구간</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\([-\infty, \infty]\)</span></p></td>
+<td><p>모든 실수들의 구간</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\([0, \infty]\)</span></p></td>
 <td><p>음이 아닌 실수들의 구간</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\([-\infty, \infty]\)</span></p></td>
-<td><p>모든 실수들의 구간</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\([-\infty, 1]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span>보다 같거나 작은 모든 실수들의 구간</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\([0, 1]\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(0\)</span>과 <span class="math notranslate nohighlight">\(1\)</span> 사이의 모든 실수들의 구간</p></td>
@@ -589,36 +588,34 @@ P(a \le X \le b) = F(b) - F(a)
 </table>
 </div>
 <p><strong>확률 밀도 함수</strong></p>
-<p>앞서 설명한 대로 연속 확률 변수가 특정 값을 취할 확률은 0이기에 확률 질량 함수는 정의하지 않는다.
+<p>연속 확률 변수가 특정 값을 취할 확률은 0이기에
+이산 확률 변수에 대한 확률 질량 함수와 유사한 함수는 정의하지 않는다.
 반면에 연속 확률 변수가 특정 구간 내에서 값을 취할 확률은 계산할 수 있기에
-확률 변수가 특정 값 주변에 위치할 확률은 계산할 수 있다.</p>
-<p>예를 들어 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 구간 <span class="math notranslate nohighlight">\([x, x+h]\)</span>에서 값을 취할 확률은 다음과 같다.
-<span class="math notranslate nohighlight">\(h\)</span>는 임의의 양의 실수다.</p>
+확률 변수가 특정 값 주변의 값을 가리킬 확률은 계산할 수 있다.</p>
+<p>예를 들어 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 임의의 양수 <span class="math notranslate nohighlight">\(h\)</span>에 대해 구간 <span class="math notranslate nohighlight">\([x, x+h]\)</span>에서 값을 취할 확률은 다음과 같다.</p>
+<div class="math notranslate nohighlight">
+\[
+F(x + h) - F(x)
+\]</div>
+<p>위 값을 <span class="math notranslate nohighlight">\(h\)</span>로 나눈다.</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{F(x + h) - F(x)}{h}
 \]</div>
-<p>즉, 위 식은 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 값 <span class="math notranslate nohighlight">\(x\)</span> 주변에 위치할 상대적 가능성을 계산한다.
-그리고 만약 함수 <span class="math notranslate nohighlight">\(F\)</span>가 <span class="math notranslate nohighlight">\(x\)</span>에서 미분가능하다면
-위 값은 <span class="math notranslate nohighlight">\(h\)</span>가 충분히 작을 때 특정 값으로 수렴한다.
-즉, 다음을 만족시키는 값 <span class="math notranslate nohighlight">\(f(x)\)</span>가 존재한다.</p>
+<p>함수 <span class="math notranslate nohighlight">\(F\)</span>가 <span class="math notranslate nohighlight">\(x\)</span>에서 미분가능하다면
+다음을 만족시키는 값 <span class="math notranslate nohighlight">\(f(x)\)</span>가 존재한다.</p>
 <div class="math notranslate nohighlight">
 \[
-f(x) = \lim_{h \to 0}\frac{F(x + h) - F(x)}{h}
+f(x) = \lim_{h \to 0}\frac{F(x + h) - F(x)}{h} = F'(x)
 \]</div>
-<p>만약 함수 <span class="math notranslate nohighlight">\(F\)</span>가 구간 <span class="math notranslate nohighlight">\([x_0, x_1]\)</span>에서 미분가능하다면
-임의의 <span class="math notranslate nohighlight">\(x \in [x_0, x_1]\)</span>에 대해 다음이 성립한다.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-f(x) = \frac{dF(x)}{dx} = F'(x)\\[.5ex]
-\end{split}\]</div>
-<p>특히 다음 관계가 성립하기에 함수 <span class="math notranslate nohighlight">\(f\)</span>를 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의
-<strong>확률 밀도 함수</strong><font size='2'>probability density function</font>(PDF)라
-부른다.</p>
+<p>따라서 만약 <span class="math notranslate nohighlight">\(F\)</span>가 구간 <span class="math notranslate nohighlight">\([x_0, x_1]\)</span>에서 미분가능하다면
+임의의 <span class="math notranslate nohighlight">\(a \in [x_0, x_1]\)</span>에 대해 다음이 성립한다.</p>
 <div class="math notranslate nohighlight">
 \[
 F(a) = P(X \le a) = \int_{x_0}^{a} f(x)\, dx
 \]</div>
+<p>이런 의미에서 <span class="math notranslate nohighlight">\(f\)</span>를 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의
+<strong>확률 밀도 함수</strong><font size='2'>probability density function</font>(PDF)라 부른다.</p>
 <p><strong>예제: 캘리포니아 구역별 중위소득 연속 확률 분포</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
