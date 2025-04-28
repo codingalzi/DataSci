@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -509,7 +509,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <h2><span class="section-number">13.1. </span>연속 확률 변수<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="probability_discrete.html#ch-probability-discrete"><span class="std std-numref">12장</span></a>에서 살펴 본 이산 확률 변수는
 <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span> … 등의 형식으로 하나, 둘, 셋 하며 셀 수 있는
-<strong>이산형 값</strong><font size='2'>discrete value</font>을 가리킨다.</p>
+<strong>이산형 값</strong><font size='2'>discrete value</font>을 취한다.</p>
 <p>반면에 <strong>연속 확률 변수</strong><font size='2'>continuous random variable</font>는
 일정 구간에 속한 임의의 실수를 가리킨다.
 여기서 구간은 0과 1사이 등 구간의 크기가 유한할 수도 있지만
@@ -517,28 +517,32 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <div class="note admonition">
 <p class="admonition-title">실수와 부동소수점</p>
 <p>프로그래밍에서 실수는 부동소수점으로 표현된다.
-부동소수점은 엄밀히 말해 유한소수, 그것도 제한된 수준의 정확도만 보장한다.
-하지만 여기서는 소수점 이하 몇째 자리까지 정도로 표현된 소수만을 대상으로 하기에
-그런 한계는 고려하지 않는다.</p>
+부동소수점은 엄밀히 말해 유한소수만 다루지만 여기서는 특별한 의미 없이 실수라는 표현을 사용한다.</p>
 </div>
 <p>연속 확률 변수가 따르는 확률 분포를 <strong>연속 확률 분포</strong><font size='2'>continuous probability distribution</font>라 한다.
-이산 확률 변수에 대한 확률 분포와는 달리 연속 확률 분포는 확률 변수가 특정 값을 취할 확률을 계산하지 않는다.
-대신 확률 변수가 취하는 값이 특정 구간에 속할 확률을 계산한다.</p>
-<p>이유는 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 특정 부동소수점 <span class="math notranslate nohighlight">\(x\)</span>를 취할 확률은 항상 0이기 때문이다</p>
+이산 확률 변수에 대한 이산 확률 분포와는 달리 연속 확률 분포는 확률 변수가 특정 값을 취할 확률을 계산하지 않는다.
+대신 특정 구간에서 하나의 값을 취할 확률을 계산한다.</p>
+<p>이유는 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 특정 실수 <span class="math notranslate nohighlight">\(x\)</span>를 취할 확률은 항상 0이기 때문이다</p>
 <div class="math notranslate nohighlight">
 \[
 P(X=x) = 0
 \]</div>
-<p>예를 들어 0과 1사이의 부동소수점 중에서 무작위로 하나의 값을 취했을 때 그 값이 정확히 0.5일 확률은 0이다.
-반면에 무작위로 선택한 값이 0.49에서 0.51 사이일 확률은 0.02, 즉 2%다.
-구간 전체의 크기가 1인데 0.49에서 0.51 사이 구간의 크기는 0.02이기 때문이다.</p>
-<p>이처럼 연속 확률 변수는 특정 값이 아닌 아래 표현식처럼 특정 구간의 값을 취할 확률을 계산한다.</p>
+<p>예를 들어 0과 1사이의 부동소수점 중에서 무작위로 하나의 값을 취했을 때 그 값이 정확히 0.5일 확률은 0이다.</p>
+<p>반면에 무작위로 선택한 값이 0.49에서 0.51 사이일 확률은 0.02, 즉 2%다.
+구간 전체의 크기가 1인데 0.49에서 0.51 사이 구간의 크기는 0.02이기 때문이다.
+이처럼 연속 확률 변수는 아랙 표현식처럼 특정 구간의 값을 취할 확률을 계산한다.</p>
 <div class="math notranslate nohighlight">
 \[
 P(a \le X \le b)
 \]</div>
+<p>연속 확률 변수가 특정 값을 취할 확률은 0이기에 구간의 끝 포함 여부는 중요하지 않다.
+즉, 다음이 성립한다.</p>
+<div class="math notranslate nohighlight">
+\[
+P(a \le X \le b) = P(a &lt; X &lt; b) = P(a &lt; X \le b) = P(a \le X &lt; b)
+\]</div>
 <p><strong>누적 분포 함수</strong></p>
-<p>연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>보다 같거나 작은 값을 취할 확률을 반환하는 함수를 <span class="math notranslate nohighlight">\(F(a)\)</span>라 표기하고
+<p>연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>보다 같거나 작은 값을 취할 확률을 반환하는 함수를 <span class="math notranslate nohighlight">\(F(a)\)</span>라 표기하고,
 이산 확률 분포의 경우처럼 <strong>누적 분포 함수</strong><font size='2'>cumulative distribution function</font>(CDF)라 부른다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -602,20 +606,22 @@ F(x + h) - F(x)
 \[
 \frac{F(x + h) - F(x)}{h}
 \]</div>
-<p>함수 <span class="math notranslate nohighlight">\(F\)</span>가 <span class="math notranslate nohighlight">\(x\)</span>에서 미분가능하다면
-다음을 만족시키는 값 <span class="math notranslate nohighlight">\(f(x)\)</span>가 존재한다.</p>
+<p>함수 <span class="math notranslate nohighlight">\(F\)</span>가 <span class="math notranslate nohighlight">\(x\)</span>에서 미분가능하다면 <span class="math notranslate nohighlight">\(h\)</span>가 0에 수렴할 때 위 식도 특정 값에 수렴한다.
+즉, 다음을 만족시키는 값 <span class="math notranslate nohighlight">\(f(x)\)</span>가 존재한다.</p>
 <div class="math notranslate nohighlight">
 \[
-f(x) = \lim_{h \to 0}\frac{F(x + h) - F(x)}{h} = F'(x)
+f(x) = F'(x) = \lim_{h \to 0}\frac{F(x + h) - F(x)}{h}
 \]</div>
 <p>따라서 만약 <span class="math notranslate nohighlight">\(F\)</span>가 구간 <span class="math notranslate nohighlight">\([x_0, x_1]\)</span>에서 미분가능하다면
 임의의 <span class="math notranslate nohighlight">\(a \in [x_0, x_1]\)</span>에 대해 다음이 성립한다.</p>
 <div class="math notranslate nohighlight">
 \[
-F(a) = P(X \le a) = \int_{x_0}^{a} f(x)\, dx
+F(a) = P(X \le a) = P(x_0 \le X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, dx
 \]</div>
 <p>이런 의미에서 <span class="math notranslate nohighlight">\(f\)</span>를 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의
 <strong>확률 밀도 함수</strong><font size='2'>probability density function</font>(PDF)라 부른다.</p>
+<p>미분의 정의에 의해 <span class="math notranslate nohighlight">\(f(x)\)</span>는 누적 확룰 분포 함수 <span class="math notranslate nohighlight">\(F\)</span>의 <span class="math notranslate nohighlight">\(x\)</span>에서의 변화율을 계산하며
+따라서 함수 <span class="math notranslate nohighlight">\(f\)</span>는 확률 분포의 형태를 묘사한다.</p>
 <p><strong>예제: 캘리포니아 구역별 중위소득 연속 확률 분포</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
