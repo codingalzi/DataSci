@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -878,25 +878,30 @@ F(x + h) - F(x)
 \[
 \frac{F(x + h) - F(x)}{h}
 \]</div>
-<p>함수 <span class="math notranslate nohighlight">\(F\)</span>가 <span class="math notranslate nohighlight">\(x\)</span>에서 미분가능하다면 <span class="math notranslate nohighlight">\(h\)</span>가 0에 수렴할 때 위 식도 특정 값에 수렴한다.
-즉, <span class="math notranslate nohighlight">\(x\)</span>에서 누적 분포 함수의 변화율인 <span class="math notranslate nohighlight">\(F'(x)\)</span>가 존재한다.</p>
+<p>함수 <span class="math notranslate nohighlight">\(F\)</span>가 <span class="math notranslate nohighlight">\(x\)</span>에서 미분가능하다면 <span class="math notranslate nohighlight">\(h\)</span>가 0에 수렴할 때 위 식은
+<span class="math notranslate nohighlight">\(x\)</span>에서 누적 분포 함수의 변화율인 <span class="math notranslate nohighlight">\(F'(x)\)</span>로 수렴한다.</p>
 <div class="math notranslate nohighlight">
 \[
 F'(x) = \lim_{h \to 0}\frac{F(x + h) - F(x)}{h}
 \]</div>
 <p><span class="math notranslate nohighlight">\(F'\)</span>은 함수 <span class="math notranslate nohighlight">\(F\)</span>의 도함수를 가리키며, <span class="math notranslate nohighlight">\(F\)</span>가 단조증가함수이기에 <span class="math notranslate nohighlight">\(F'(x) \ge 0\)</span> 이다.</p>
-<p>만약 <span class="math notranslate nohighlight">\(F\)</span>가 구간 <span class="math notranslate nohighlight">\([x_0, x_1]\)</span> 전체에서 미분가능하다면 정적분의 정의에 의해
-임의의 <span class="math notranslate nohighlight">\(a \in [x_0, x_1]\)</span>에 대해 다음이 성립한다.
+<p>대부분의 누적 분포 함수 <span class="math notranslate nohighlight">\(F\)</span>는 지정된 구간에서 미분가능하다.
+그리고 <span class="math notranslate nohighlight">\(F\)</span>가 구간 <span class="math notranslate nohighlight">\([x_0, x_1]\)</span> 전체에서 미분가능하다면 정적분의 정의에 의해 다음이 성립한다.
 아래 식에서 <span class="math notranslate nohighlight">\(f\)</span>는 도함수 <span class="math notranslate nohighlight">\(F'\)</span>을 가리킨다.</p>
 <div class="math notranslate nohighlight">
 \[
 F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, dx
 \]</div>
-<p>즉, <span class="math notranslate nohighlight">\(F(a)\)</span>는 구간 <span class="math notranslate nohighlight">\([x_0, a]\)</span> 내에서 음이 아닌 값을 갖는 함수 <span class="math notranslate nohighlight">\(f\)</span>의 그래프와 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 면적을 가리킨다.
-이런 의미에서 <span class="math notranslate nohighlight">\(f\)</span>를 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의
+<p>아래 왼편 그림의 내용은 다음과 같다.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F(a)\)</span>: 빨강 영역. 구간 <span class="math notranslate nohighlight">\([x_0, a]\)</span> 내에서 음이 아닌 값을 갖는 함수 <span class="math notranslate nohighlight">\(f\)</span>의 그래프와 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 면적.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(a \le x \le b)\)</span>: 회색 영역. <span class="math notranslate nohighlight">\([a, b]\)</span> 구간 내에서 확률 밀도 함수 <span class="math notranslate nohighlight">\(f\)</span>의 그래프와 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 면적</p></li>
+</ul>
+<p>영역의 변화율을 가리킨다는 의미에서 <span class="math notranslate nohighlight">\(f\)</span>를 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의
 <strong>확률 밀도 함수</strong><font size='2'>probability density function</font>(PDF)라 부른다.</p>
-<p><span class="math notranslate nohighlight">\(P(a \le x \le b) = F(b) - F(a)\)</span>는 따라서 <span class="math notranslate nohighlight">\([a, b]\)</span> 구간 내에서 확률 밀도 함수 <span class="math notranslate nohighlight">\(f\)</span>의 그래프와 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 면적에 해당하며
-아래 그림이 이를 표현한다.</p>
+<p>아래 오른편 그림은 누적 분포 함수의 그래프를 보여준다.
+왼편 그림에서 빨간색 면적에 해당하는 값은 일반적으로 늘어진 S자 형태를 띄며
+<span class="math notranslate nohighlight">\(x\)</span>가 작아지면서 0에, 커지면서 1에 수렴한다.</p>
 <p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/pdf-cdf-1.png" style="width:100%"></div></p><div class="note admonition">
 <p class="admonition-title">확률 질량 함수 vs. 확률 밀도 함수</p>
 <p>확률 질량 함수(PMF)는 이산 확률 변수가 특정 값을 취할 확률을 계산한다.
