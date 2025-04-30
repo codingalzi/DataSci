@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -412,16 +412,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.1. 연속 확률 변수</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">13.1.1. 누적 분포 함수</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">13.1.2. 확률 밀도 함수</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">13.1.3. 연속 균등 분포</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">13.1.4. <strong>캘리포니아 주택가격 데이터셋: 중위소득</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">13.2. 균등 분포</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">13.3. 정규 분포</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">13.4. 다변량 분포</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">13.4.1. 연속 결합 확률 분포</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">13.4.2. 데이터 전처리: 표준화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">13.2. 다변량 분포</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">13.2.1. 연속 결합 확률 분포</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">13.2.2. 데이터 전처리: 표준화</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">13.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">13.3. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -476,10 +476,33 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 </div>
-<p>데이터 시각화를 위해 <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>를 <code class="docutils literal notranslate"><span class="pre">plt</span></code>라는 별칭으로 불러온다.</p>
+<p>데이터 시각화를 위해 <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>를 <code class="docutils literal notranslate"><span class="pre">plt</span></code>로,
+<code class="docutils literal notranslate"><span class="pre">seaborn</span></code>을 <code class="docutils literal notranslate"><span class="pre">sns</span></code>로 불러온다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -492,18 +515,6 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </pre></div>
 </div>
 </div>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수의 <code class="docutils literal notranslate"><span class="pre">density</span></code> 키워드 인자에 주목할 것</p></li>
-<li><p>연속형 데이터의 히스토그램을 <code class="docutils literal notranslate"><span class="pre">density=True</span></code> 옵션으로 그리면 면적이 1이 되도록 높이가 조절됨.</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">densitybool</span><span class="p">,</span> <span class="n">default</span><span class="p">:</span> <span class="kc">False</span>
-    <span class="n">If</span> <span class="kc">True</span><span class="p">,</span> <span class="n">draw</span> <span class="ow">and</span> <span class="k">return</span> <span class="n">a</span> <span class="n">probability</span> <span class="n">density</span><span class="p">:</span> <span class="n">each</span> <span class="nb">bin</span> <span class="n">will</span> <span class="n">display</span> <span class="n">the</span> <span class="nb">bin</span><span class="s1">&#39;s raw count </span>
-    <span class="n">divided</span> <span class="n">by</span> <span class="n">the</span> <span class="n">total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">counts</span> <span class="ow">and</span> <span class="n">the</span> <span class="nb">bin</span> <span class="n">width</span> <span class="p">(</span><span class="n">density</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bins</span><span class="p">))),</span> 
-    <span class="n">so</span> <span class="n">that</span> <span class="n">the</span> <span class="n">area</span> <span class="n">under</span> <span class="n">the</span> <span class="n">histogram</span> <span class="n">integrates</span> <span class="n">to</span> <span class="mi">1</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">density</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bins</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span>
-
-    <span class="n">If</span> <span class="n">stacked</span> <span class="ow">is</span> <span class="n">also</span> <span class="kc">True</span><span class="p">,</span> <span class="n">the</span> <span class="nb">sum</span> <span class="n">of</span> <span class="n">the</span> <span class="n">histograms</span> <span class="ow">is</span> <span class="n">normalized</span> <span class="n">to</span> <span class="mf">1.</span>
-</pre></div>
 </div>
 <p><strong>주요 내용</strong></p>
 <p>이산 확률 분포의 주요 개념을 소개한다.</p>
@@ -909,19 +920,231 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, 
 <p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/pmf-pdf-cdf.png" style="width:450px"></div></p>
 </div>
 </section>
-</section>
 <section id="id5">
-<h2><span class="section-number">13.2. </span>균등 분포<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>…</p>
+<h3><span class="section-number">13.1.3. </span>연속 균등 분포<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>특정 범위 내에서 균등하게 값을 취할 수 있는 연속 확률 변수의 분포를
+<strong>연속 균등 분포</strong><font size='2'>continuous uniform distribution</font>라 한다.
+<span class="math notranslate nohighlight">\(U(a, b)\)</span>는 구간 <span class="math notranslate nohighlight">\([a, b]\)</span>에서 값을 취하는 연속 균등 분포를 표현한다.</p>
+<p>연속 균등 분포 <span class="math notranslate nohighlight">\(U(a, b)\)</span>의 누적 분포 함수는 다음과 같이 직선의 기울기가 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>인 직선의 선분으로 표현된다.</p>
+<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/uniform-cdf.png" style="width:300px"></div></p>
+<p>따라서 연속 균등 분포 <span class="math notranslate nohighlight">\(U(a, b)\)</span>의 확률 밀도 함수는 구간 <span class="math notranslate nohighlight">\([a, b]\)</span>에서
+기울기가 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>인 직선의 미분 함수인 상수 함수 <span class="math notranslate nohighlight">\(f(x) = \frac{1}{b-a}\)</span>로 표현된다.</p>
+<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/uniform-pdf.png" style="width:300px"></div></p>
+<p>실제로 구간 <span class="math notranslate nohighlight">\([a, b]\)</span>에서 확률 밀도 함수 <span class="math notranslate nohighlight">\(f\)</span>와 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 영역인 직사각형의 넓이는 1이며,
+<span class="math notranslate nohighlight">\(x\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>에서 <span class="math notranslate nohighlight">\(b\)</span> 사이에 움직일 때의 밑변 <span class="math notranslate nohighlight">\(\overline{ax}\)</span>를 갖는 직사각형의 면적 <span class="math notranslate nohighlight">\(F(x)\)</span>는
+일정하게 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>의 비율로 증가한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">s</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">s</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">ignored</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">bins</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4b861bce181d3d19b18330736f8bf00d6d6408e93dc29191af139d89b144dec1.png" src="_images/4b861bce181d3d19b18330736f8bf00d6d6408e93dc29191af139d89b144dec1.png" />
+</div>
+</div>
 </section>
 <section id="id6">
-<h2><span class="section-number">13.3. </span>정규 분포<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<p>…</p>
+<h3><span class="section-number">13.1.4. </span><strong>캘리포니아 주택가격 데이터셋: 중위소득</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="o">+</span><span class="s2">&quot;california_housing.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># 중위주택가격이 50만1달러 이상인 구역 삭제</span>
+<span class="n">house_value_max</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="c1"># 500,001</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">house_value_max</span>
+<span class="n">housing</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="c1"># 인덱스 초기화</span>
+<span class="n">housing</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 중위소득 특성만 선택</span>
+<span class="n">housing</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;median_income&#39;</span><span class="p">]]</span>
+<span class="n">housing</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;district&#39;</span>
+<span class="n">housing</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>median_income</th>
+    </tr>
+    <tr>
+      <th>district</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8.3252</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>8.3014</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.2574</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.6431</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.8462</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>19670</th>
+      <td>1.5603</td>
+    </tr>
+    <tr>
+      <th>19671</th>
+      <td>2.5568</td>
+    </tr>
+    <tr>
+      <th>19672</th>
+      <td>1.7000</td>
+    </tr>
+    <tr>
+      <th>19673</th>
+      <td>1.8672</td>
+    </tr>
+    <tr>
+      <th>19674</th>
+      <td>2.3886</td>
+    </tr>
+  </tbody>
+</table>
+<p>19675 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">median_income</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">16.7</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.299</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e0ddb75f4b30cf7eddb45072e9f999a805a9e68b3c058cea633f51d772c7b1cf.png" src="_images/e0ddb75f4b30cf7eddb45072e9f999a805a9e68b3c058cea633f51d772c7b1cf.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="o">.</span><span class="n">median_income</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;density&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="o">.</span><span class="n">median_income</span><span class="p">,</span> <span class="n">bw_method</span><span class="o">=</span><span class="mf">.19</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/83e7897b46702af833d0f3da5db18d3aecf1840bba64c6841677c87a196c4e95.png" src="_images/83e7897b46702af833d0f3da5db18d3aecf1840bba64c6841677c87a196c4e95.png" />
+</div>
+</div>
+<p>참고:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/kde-plot-visualization-with-pandas-and-seaborn/">KDE Plot Visualization with Pandas and Seaborn</a></p></li>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/63258749/how-to-extract-density-function-probabilities-in-python-pandas-kde">How to extract density function probabilities in python (pandas kde)</a></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span>
+
+<span class="n">pdf_income</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">gaussian_kde</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">median_income</span><span class="p">,</span> <span class="n">bw_method</span><span class="o">=</span><span class="mf">.19</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">pdf_income</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">16.7</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.299</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8c297b511a8448483ef36377d25334707ab4690ebb10f537d46b22c845e4c127.png" src="_images/8c297b511a8448483ef36377d25334707ab4690ebb10f537d46b22c845e4c127.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="id7">
-<h2><span class="section-number">13.4. </span>다변량 분포<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.2. </span>다변량 분포<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <section id="id8">
-<h3><span class="section-number">13.4.1. </span>연속 결합 확률 분포<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.2.1. </span>연속 결합 확률 분포<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p><strong>보스턴 주택가격 데이터셋</strong></p>
 <p>보스턴 주택가격 데이터셋은
 1978년에 발표된 미국 보스턴 지녁의 총 506개 구역에서 주택 가격에 영향을 미치는 요소들을 수집한 자료를 담고 있다.
@@ -1262,7 +1485,7 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, 
 </div>
 </section>
 <section id="id9">
-<h3><span class="section-number">13.4.2. </span>데이터 전처리: 표준화<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.2.2. </span>데이터 전처리: 표준화<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>특성에 따라 사용되는 값들의 크기 정도<font size='2'>scale</font>가 다르다.
 어떤 특성은 0과 1사이의 값을, 다른 특성은 100단위의 값을 포함하기도 한다.
 그런데 머신러닝 모델은 기본적으로 모든 특성이 동일한 크기 정도의
@@ -1289,7 +1512,7 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, 
 </section>
 </section>
 <section id="id10">
-<h2><span class="section-number">13.5. </span>연습문제<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.3. </span>연습문제<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/practices/practice-probability_continuous.ipynb">(연습) 연속 확률 분포</a></p>
 </section>
 </section>
@@ -1361,16 +1584,16 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.1. 연속 확률 변수</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">13.1.1. 누적 분포 함수</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">13.1.2. 확률 밀도 함수</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">13.1.3. 연속 균등 분포</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">13.1.4. <strong>캘리포니아 주택가격 데이터셋: 중위소득</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">13.2. 균등 분포</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">13.3. 정규 분포</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">13.4. 다변량 분포</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">13.4.1. 연속 결합 확률 분포</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">13.4.2. 데이터 전처리: 표준화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">13.2. 다변량 분포</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">13.2.1. 연속 결합 확률 분포</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">13.2.2. 데이터 전처리: 표준화</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">13.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">13.3. 연습문제</a></li>
 </ul>
   </nav></div>
 
