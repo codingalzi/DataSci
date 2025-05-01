@@ -933,16 +933,24 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, 
 <p>실제로 구간 <span class="math notranslate nohighlight">\([a, b]\)</span>에서 확률 밀도 함수 <span class="math notranslate nohighlight">\(f\)</span>와 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 영역인 직사각형의 넓이는 1이며,
 <span class="math notranslate nohighlight">\(x\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>에서 <span class="math notranslate nohighlight">\(b\)</span> 사이에 움직일 때의 밑변 <span class="math notranslate nohighlight">\(\overline{ax}\)</span>를 갖는 직사각형의 면적 <span class="math notranslate nohighlight">\(F(x)\)</span>는
 일정하게 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>의 비율로 증가한다.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">np.random.uniform()</span></code> 함수</strong></p>
+<p>넘파이 라이브러리에서 제공하는 <code class="docutils literal notranslate"><span class="pre">np.random.uniform()</span></code> 함수는 지정된 구간 내에서
+균등 분포를 따르면서 무작위로 원하는 개수만큼의 부동소수점을 생성한다.
+단, 생성된 부동소수점은 지정된 모양<font size='2'>shape</font>의 어레이로 반환된다.</p>
+<p>예를 들어 아래 코드는 2와 5 사이에서 균등하게 선택된 1,000개의 부동소수점을 포함하는 1차원 어레이를 반환한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+
+<span class="n">uni1000</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>선택된 부동소수점이 2보다는 같거나 크고, 5보다는 작음이 확인된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">s</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">((</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">uni1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">uni1000</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -952,28 +960,80 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, 
 </div>
 </div>
 </div>
+<p>아래 코드는 선택된 1,000개의 부동소수점에 대해 히스토그램을 그린다.
+<code class="docutils literal notranslate"><span class="pre">bins=30</span></code> 키워드 인자는 전체 영역을 25 등분해서 각 구간별 도수크기에 해당하는 막대를 그린다.
+편차가 있기는 하지만 각 구간에 평균 <span class="math notranslate nohighlight">\(1000/25 = 40\)</span> 개의 데이터가 포함된다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수는 <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">bins,</span> <span class="pre">patches)</span></code> 형식의 튜플을 반환한다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: 구간별 도수 또는 밀도로 구성된 어레이</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code>: 구간의 양 끝을 가리키는 값들의 어레이</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">patches</span></code>: 막대그래프를 담당하는 <code class="docutils literal notranslate"><span class="pre">BarContainer</span></code> 객체</p></li>
+</ul>
+<p>이중에 <code class="docutils literal notranslate"><span class="pre">patches</span></code>에 해당하는 값인 <code class="docutils literal notranslate"><span class="pre">BarContainer</span></code> 객체는 신경쓰지 않는다.
+<code class="docutils literal notranslate"><span class="pre">n</span></code>이 가리키는 값이 도수인지 밀도인지 여부는 <code class="docutils literal notranslate"><span class="pre">density</span></code> 키워드의 인자가
+<code class="docutils literal notranslate"><span class="pre">False</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">True</span></code> 여부에 의해 결정된다.
+아래 코드에서는 <code class="docutils literal notranslate"><span class="pre">density=False</span></code> 기본 키워드 인자가 사용되기에
+각 구간별 도수가 <span class="math notranslate nohighlight">\(y\)</span>-축에 표시된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">s</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">ignored</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">bins</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">freqs</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">uni1000</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="c1"># 평균 도수: freqs.mean() = 40.0</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span> <span class="o">*</span> <span class="n">freqs</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4b861bce181d3d19b18330736f8bf00d6d6408e93dc29191af139d89b144dec1.png" src="_images/4b861bce181d3d19b18330736f8bf00d6d6408e93dc29191af139d89b144dec1.png" />
+<img alt="_images/786583a2f9d395f171ec88e61b1a87c5e7610a46528aa4f1846abc35d23726dd.png" src="_images/786583a2f9d395f171ec88e61b1a87c5e7610a46528aa4f1846abc35d23726dd.png" />
+</div>
+</div>
+<p>반면에 <code class="docutils literal notranslate"><span class="pre">density=True</span></code> 키워드 인자를 지정하면 각 구간별로 상대도수를 막대로 표현한다.
+그런데 전체 구역의 면적을 1로 만들기 위해 구간의 상대도수를 해당 구간의 크기로 나눈 값을 막대의 높이로 사용한다.</p>
+<p>균등 분포의 경우 막대 높이는 평균 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>이며, 이유는 다음과 같다.
+단, <span class="math notranslate nohighlight">\(t\)</span>를 데이터셋의 크기, <span class="math notranslate nohighlight">\(n\)</span>은 구간의 개수를 가리킨다고 할 때
+구간별 평균 상대도수는 <span class="math notranslate nohighlight">\(\frac t n\)</span>이고 구간의 크기는 <span class="math notranslate nohighlight">\(\frac{b-a}{n}\)</span>임에 주의한다.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\displaystyle\frac{t}{n}}{t} \cdot \frac{1}{\displaystyle \frac{b-a}{n}} = \frac 1 n \cdot \frac{n}{b-a} = \frac{1}{b-a}
+\]</div>
+<p>예를 들어 아래 코드는 전체 영역이 2부터 5까지를 대상으로 하기에
+막대로 구성된 영역의 면적을 1로 만들기 위해
+구간별 막대의 높이는 평균 약 <span class="math notranslate nohighlight">\(1/3 = 0.33\)</span>이다.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{5-2} \simeq 0.333333
+\]</div>
+<p>그래프에서 빨간 직선은 이론적 평균 밀도인 0.333333을,
+노란 직선은 주어진 데이터셋의 실제 평균 밀도인 0.334067을 가리킨다.
+이론과 실재가 사실상 동일한 결과를 보인다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">dens</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">uni1000</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 확률 밀도 함수 그래프: y = 1/(5-2) = 0.333333 (빨간 직선)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">5</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="c1"># 실제 평균 밀도: dens.mean() = 0.334067 (노란 직선)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span><span class="o">*</span><span class="n">dens</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3cfc885bd5ea852193230cbdbbf8e3a851839cb1341e09f14392ecd83ae14de8.png" src="_images/3cfc885bd5ea852193230cbdbbf8e3a851839cb1341e09f14392ecd83ae14de8.png" />
 </div>
 </div>
 </section>
