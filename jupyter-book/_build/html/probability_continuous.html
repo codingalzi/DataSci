@@ -924,15 +924,19 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, 
 <h3><span class="section-number">13.1.3. </span>연속 균등 분포<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>특정 범위 내에서 균등하게 값을 취할 수 있는 연속 확률 변수의 분포를
 <strong>연속 균등 분포</strong><font size='2'>continuous uniform distribution</font>라 한다.
-<span class="math notranslate nohighlight">\(U(a, b)\)</span>는 구간 <span class="math notranslate nohighlight">\([a, b]\)</span>에서 값을 취하는 연속 균등 분포를 표현한다.</p>
-<p>연속 균등 분포 <span class="math notranslate nohighlight">\(U(a, b)\)</span>의 누적 분포 함수는 다음과 같이 직선의 기울기가 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>인 직선의 선분으로 표현된다.</p>
-<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/uniform-cdf.png" style="width:300px"></div></p>
+<span class="math notranslate nohighlight">\(U(a, b)\)</span>는 구간 <span class="math notranslate nohighlight">\([a, b]\)</span>에서 값을 취하는 연속 균등 분포를 표현한다.
+연속 균등 분포 <span class="math notranslate nohighlight">\(U(a, b)\)</span>의 누적 분포 함수는 아래 그림에서 보여지는, 직선의 기울기가 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>인 직선의 선분으로 표현된다.</p>
+<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/uniform-cdf.png" style="width:300px"></div></p><p>이유는 <span class="math notranslate nohighlight">\(x\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>에서 <span class="math notranslate nohighlight">\(b\)</span> 사이의 값일 때 임의로 선택된 값이 구간 <span class="math notranslate nohighlight">\([a, x]\)</span>에
+위치할 확률은 다음과 같이 <span class="math notranslate nohighlight">\(x\)</span>에 대한 1차 함수로 표현되기 때문이다.</p>
+<div class="math notranslate nohighlight">
+\[
+F(x) = \frac{x-a}{b-a}
+\]</div>
 <p>따라서 연속 균등 분포 <span class="math notranslate nohighlight">\(U(a, b)\)</span>의 확률 밀도 함수는 구간 <span class="math notranslate nohighlight">\([a, b]\)</span>에서
 기울기가 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>인 직선의 미분 함수인 상수 함수 <span class="math notranslate nohighlight">\(f(x) = \frac{1}{b-a}\)</span>로 표현된다.</p>
-<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/uniform-pdf.png" style="width:300px"></div></p>
-<p>실제로 구간 <span class="math notranslate nohighlight">\([a, b]\)</span>에서 확률 밀도 함수 <span class="math notranslate nohighlight">\(f\)</span>와 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 영역인 직사각형의 넓이는 1이며,
-<span class="math notranslate nohighlight">\(x\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>에서 <span class="math notranslate nohighlight">\(b\)</span> 사이에 움직일 때의 밑변 <span class="math notranslate nohighlight">\(\overline{ax}\)</span>를 갖는 직사각형의 면적 <span class="math notranslate nohighlight">\(F(x)\)</span>는
-일정하게 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>의 비율로 증가한다.</p>
+<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/uniform-pdf.png" style="width:300px"></div></p><p>실제로 구간 <span class="math notranslate nohighlight">\([a, b]\)</span>에서 확률 밀도 함수 <span class="math notranslate nohighlight">\(f\)</span>와 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 영역인 직사각형의 넓이는 1이며,
+<span class="math notranslate nohighlight">\(x\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>에서 <span class="math notranslate nohighlight">\(b\)</span> 사이에 움직일 때의 밑변 <span class="math notranslate nohighlight">\(\overline{ax}\)</span>를 갖는 직사각형의 면적은
+<span class="math notranslate nohighlight">\(\frac{x-a}{b-a}\)</span>로 앞서 설명한 <span class="math notranslate nohighlight">\(F(x)\)</span>와 동일하다.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.random.uniform()</span></code> 함수</strong></p>
 <p>넘파이 라이브러리에서 제공하는 <code class="docutils literal notranslate"><span class="pre">np.random.uniform()</span></code> 함수는 지정된 구간 내에서
 균등 분포를 따르면서 무작위로 원하는 개수만큼의 부동소수점을 생성한다.
@@ -961,8 +965,8 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, 
 </div>
 </div>
 <p>아래 코드는 선택된 1,000개의 부동소수점에 대해 히스토그램을 그린다.
-<code class="docutils literal notranslate"><span class="pre">bins=30</span></code> 키워드 인자는 전체 영역을 25 등분해서 각 구간별 도수크기에 해당하는 막대를 그린다.
-편차가 있기는 하지만 각 구간에 평균 <span class="math notranslate nohighlight">\(1000/25 = 40\)</span> 개의 데이터가 포함된다.</p>
+<code class="docutils literal notranslate"><span class="pre">bins=25</span></code> 키워드 인자는 전체 영역을 25 등분해서 각 구간별 도수에 해당하는 막대를 그린다.
+구간별로 편차가 있지만 각 구간에 평균 <span class="math notranslate nohighlight">\(1000/25 = 40\)</span> 개의 데이터가 포함된다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수는 <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">bins,</span> <span class="pre">patches)</span></code> 형식의 튜플을 반환한다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: 구간별 도수 또는 밀도로 구성된 어레이</p></li>
@@ -970,8 +974,8 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, 
 <li><p><code class="docutils literal notranslate"><span class="pre">patches</span></code>: 막대그래프를 담당하는 <code class="docutils literal notranslate"><span class="pre">BarContainer</span></code> 객체</p></li>
 </ul>
 <p>이중에 <code class="docutils literal notranslate"><span class="pre">patches</span></code>에 해당하는 값인 <code class="docutils literal notranslate"><span class="pre">BarContainer</span></code> 객체는 신경쓰지 않는다.
-<code class="docutils literal notranslate"><span class="pre">n</span></code>이 가리키는 값이 도수인지 밀도인지 여부는 <code class="docutils literal notranslate"><span class="pre">density</span></code> 키워드의 인자가
-<code class="docutils literal notranslate"><span class="pre">False</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">True</span></code> 여부에 의해 결정된다.
+<code class="docutils literal notranslate"><span class="pre">n</span></code>이 가리키는 값이 도수 또는 밀도인지 여부는 <code class="docutils literal notranslate"><span class="pre">density</span></code> 키워드의 인자가
+<code class="docutils literal notranslate"><span class="pre">False</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">True</span></code>인지 여부에 의해 결정된다.
 아래 코드에서는 <code class="docutils literal notranslate"><span class="pre">density=False</span></code> 기본 키워드 인자가 사용되기에
 각 구간별 도수가 <span class="math notranslate nohighlight">\(y\)</span>-축에 표시된다.</p>
 <div class="cell docutils container">
@@ -995,13 +999,35 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, 
 </div>
 </div>
 <p>반면에 <code class="docutils literal notranslate"><span class="pre">density=True</span></code> 키워드 인자를 지정하면 각 구간별로 상대도수를 막대로 표현한다.
-그런데 전체 구역의 면적을 1로 만들기 위해 구간의 상대도수를 해당 구간의 크기로 나눈 값을 막대의 높이로 사용한다.</p>
-<p>균등 분포의 경우 막대 높이는 평균 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>이며, 이유는 다음과 같다.
-단, <span class="math notranslate nohighlight">\(t\)</span>를 데이터셋의 크기, <span class="math notranslate nohighlight">\(n\)</span>은 구간의 개수를 가리킨다고 할 때
-구간별 평균 도수는 <span class="math notranslate nohighlight">\(\frac t n\)</span>이고 구간의 크기는 <span class="math notranslate nohighlight">\(\frac{b-a}{n}\)</span>임에 주의한다.</p>
+또한 전체 구역의 면적을 1로 만들기 위해 구간의 상대도수를 해당 구간의 크기로 나눈 값을 막대의 높이로 사용한다.</p>
+<div class="note admonition">
+<p class="admonition-title">히스토그램의 막대 높이</p>
+<p><span class="math notranslate nohighlight">\(t\)</span> 개의 데이터 샘플을 <span class="math notranslate nohighlight">\(n\)</span>개의 구간으로 나누면서 히스토그램을 그린다고 하자.
+이때 <code class="docutils literal notranslate"><span class="pre">density=True</span></code> 키워드 인자를 사용하면 <span class="math notranslate nohighlight">\(i\)</span>-번째 구간의 막대 높이 <span class="math notranslate nohighlight">\(h_i\)</span>는 다음과 같다.
+단, <span class="math notranslate nohighlight">\(t_i\)</span>는 <span class="math notranslate nohighlight">\(i\)</span>-번째 구간의 도수, <span class="math notranslate nohighlight">\(w_i\)</span>는 <span class="math notranslate nohighlight">\(i\)</span>-번째 구간의 크기를 가리킨다.</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\displaystyle\frac{t}{n}}{t} \cdot \frac{1}{\displaystyle \frac{b-a}{n}} = \frac 1 n \cdot \frac{n}{b-a} = \frac{1}{b-a}
+h_i = \frac{t_i}{t} \cdot \frac{1}{w_i}
+\]</div>
+<p>그러면 막대 면적의 합은 다음과 같이 1이 된다.</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^n h_i \cdot w_i = \sum_{i=1}^n \frac{t_i}{t} = \frac 1 t \cdot \sum_{i=1}^n t_i = \frac t t = 1
+\]</div>
+</div>
+<p><strong>균등 분포 함수의 히스토그램</strong></p>
+<p>균등 분포의 경우 구간별 막대 높이는 평균 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>이며, 이유는 다음과 같다.</p>
+<p>먼저 <span class="math notranslate nohighlight">\(t\)</span>는 데이터셋의 크기, <span class="math notranslate nohighlight">\(n\)</span>은 구간의 개수를 가리킨다고 하자.
+그러면 구간별 평균 도수는 <span class="math notranslate nohighlight">\(\frac t n\)</span>이고, 따라서 구간별 평균 상대도수는 <span class="math notranslate nohighlight">\(\frac 1 n\)</span>이다.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\displaystyle\frac{t}{n}}{t} = \frac 1 n
+\]</div>
+<p>각 구간의 크기는 일정하게 <span class="math notranslate nohighlight">\(\frac{b-a}{n}\)</span>이기에 앞서 언급한 정의에 의해
+균등 분포 함수의 히스토그램에서 구간별 막대의 평균 높이는 다음과 같이 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>다.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{n} \cdot \frac{1}{\displaystyle \frac{b-a}{n}} = \frac 1 n \cdot \frac{n}{b-a} = \frac{1}{b-a}
 \]</div>
 <p>예를 들어 아래 코드는 전체 영역이 2부터 5까지를 대상으로 하기에
 막대로 구성된 영역의 면적을 1로 만들기 위해
@@ -1010,15 +1036,15 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, 
 \[
 \frac{1}{5-2} \simeq 0.333333
 \]</div>
-<p>그래프에서 빨간 직선은 이론적 평균 밀도인 0.333333을,
-노란 직선은 주어진 데이터셋의 실제 평균 밀도인 0.334067을 가리킨다.</p>
+<p>그래프에서 빨간 직선은 이론적 평균 막대 높이인 0.333333을,
+노란 직선은 주어진 데이터셋의 실제 평균 막대 높이인 0.334067을 가리킨다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
 <span class="n">dens</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">uni1000</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># 확률 밀도 함수 그래프: y = 1/(5-2) = 0.333333 (빨간 직선)</span>
+<span class="c1"># 이론적 확률 밀도 함수 그래프: y = 1/(5-2) = 0.333333 (빨간 직선)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">5</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
 <span class="c1"># 실제 평균 밀도: dens.mean() = 0.334067 (노란 직선)</span>
@@ -1035,14 +1061,146 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\, 
 <img alt="_images/3cfc885bd5ea852193230cbdbbf8e3a851839cb1341e09f14392ecd83ae14de8.png" src="_images/3cfc885bd5ea852193230cbdbbf8e3a851839cb1341e09f14392ecd83ae14de8.png" />
 </div>
 </div>
-<p>이론 평균과 실제 계산값이 다른 이유는 부동소수점 연산에 기인한다.
-앞서 확인한 대로 구간별 실제 평균 도수는 <span class="math notranslate nohighlight">\(\frac{1000}{25} = 40\)</span>이기에 평균 막대 높이 또한 이론적으로 다음과 같이 1/3나와야 한다.</p>
+<p>이론적 평균 막대 높이와 실제 평균 막대 높이가 다르게 계산되는 이유는 부동소수점 연산에 기인한다.
+앞서 확인한 대로 구간별 실제 평균 도수는 <span class="math notranslate nohighlight">\(\frac{1000}{25} = 40\)</span>이기에 평균 막대 높이 또한
+이론적으로 다음과 같이 1/3로 나와야 한다.</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{40}{1000} \cdot \frac{1}{\frac{3}{25}} = \frac{1}{25} \cdot \frac{25}{3} = \frac 1 3
 \]</div>
-<p>하지만 각 막대의 높이가 저장된 <code class="docutils literal notranslate"><span class="pre">dens</span></code>는 해당 구간의 실제 상대도수를 구간 크기 <span class="math notranslate nohighlight">\(1/3\)</span>으로 나눈 값을 사용하고,
-그 값들의 평균은 또다시 부동소수점 연산을 사용하기에 이론 평균값인 1/3과 약간의 오차가 발생한다.</p>
+<p>하지만 각 막대의 높이가 저장된 <code class="docutils literal notranslate"><span class="pre">dens</span></code>는 해당 구간의 실제 상대도수를 구간 크기 <span class="math notranslate nohighlight">\(3/25\)</span>으로 나눈 값을 사용하고,
+그 값들의 평균을 계산하기 위해 또다시 부동소수점 연산을 사용하면서 이론 평균값인 1/3과 약간의 오차가 발생하게 된다.</p>
+<p><strong>히스토그램과 확률 밀도 함수</strong></p>
+<p>앞서 균등 분포의 히스토그램에서 확인하였듯이 각 막대의 평균 높이가 확률 밀도 함숫값과
+밀접하게 연관되어 보인다.</p>
+<p>사실 이는 의도한 바다.
+<code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수를 <code class="docutils literal notranslate"><span class="pre">density=True</span></code> 키워드 인자와 함께 호출할 때 앞서 설명한 대로
+막대 면적의 총합이 1이 되도록 구간별 막대의 높이가 지정되도록 한다.
+그리고 그렇게 하면 모든 확률 분포의 확률 밀도 함수 그래프가 히스토그램에
+사용된 막대들이 만드는 형태와 유사하게 그려진다.
+이유는 확률 밀도 함수 <span class="math notranslate nohighlight">\(f\)</span>와 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 면적이 지정된 구간 내에서 1이 되어야 하고,
+<span class="math notranslate nohighlight">\(f(x)\)</span>가 크다는 것은 <span class="math notranslate nohighlight">\(x\)</span> 근처에 데이터가 많이 모여 있다 것을, 즉
+해당 구간의 상대도수가 크다는 것을 의미하기 때문이다.</p>
+<p>바로 이전 그래프에서 히스토그램과 함께 그린 빨간 직선이 바로  균등 분포의 이론적 확률 밀도 함수 그래프다.
+물론 실전 데이터에 대한 확률 밀도 함수는 정확한 직선으로 그려지지 않는다.
+예를  들어 앞서 사용한 데이터에 대한 확률 밀도 함수 그래프를 그리면 다음과 같다.</p>
+<p>아래 코드에서 <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> 라이브러리의 <code class="docutils literal notranslate"><span class="pre">kdeplot()</span></code> 함수가 주어진 데이터셋의 분포에 대한 확률 밀도 함수를 추정해서
+그래프로 나타낸다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cut=0</span></code> 키워드 인자: 데이터의 범위 내에서만 확률 밀도 함수의 그래프를 그리도록 함.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">dens</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">uni1000</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 확률 밀도 함수 그래프</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">uni1000</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7b61d702c2837a0677c8fa827984bb18a63f1680adf1ee251cebb3495aab71a6.png" src="_images/7b61d702c2837a0677c8fa827984bb18a63f1680adf1ee251cebb3495aab71a6.png" />
+</div>
+</div>
+<p>위 그래프에서 보여지는 확률 밀도 함수는 직선과 거리가 멀다.
+하지만 이는 하나의 표본에 대한 결과이다.
+표본 선택을 여러 번 다르게 진행한 다음에 확률 밀도 함수값의 평균값을 그래프로 그리면
+<code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">1/3</span></code> 직선 그래프에 가까운 그래프가 그려진다.</p>
+<p>아래 코드는 지금까지의 설명을 시드를 1만번 다르게 하면서 1만번 실행하여,
+구간별 확률 밀도 함수값의 평균값을 계산한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iter_num</span> <span class="o">=</span> <span class="mi">10000</span>    <span class="c1"># 반복 횟수</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="mi">25</span>           <span class="c1"># 구간 개수</span>
+<span class="n">sample_size</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># 표본 크기</span>
+
+<span class="c1"># 구간별 확룰 밀도 함수값의 합 저장용</span>
+<span class="n">dens_sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span>
+
+<span class="c1"># iter_num 횟수만큼 표본 선택 실험 반복</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iter_num</span><span class="p">):</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1"># 시드 다르게 지정</span>
+    
+    <span class="n">uni1000</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span><span class="n">sample_size</span><span class="p">)</span>
+    <span class="n">dens</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">uni1000</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 히스토그램 데이터 생성</span>
+    <span class="n">dens_sum</span> <span class="o">+=</span> <span class="n">dens</span> <span class="c1"># 구간별 누적 확률 밀도 함숫값</span>
+
+<span class="c1"># 구간별 평균 확률 밀도 함숫값    </span>
+<span class="n">dens_mean</span> <span class="o">=</span> <span class="n">dens_sum</span> <span class="o">/</span> <span class="n">iter_num</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드는
+계산된 구간별 확률 밀도 함숫값을 검정 실선 그래프로 그린다.
+결과적으로 빨간 직선으로 그려진 <span class="math notranslate nohighlight">\(y = 1/3\)</span>의 그래프와 거의 유사하다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dens_mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.3337  , 0.333969, 0.333407, 0.333393, 0.333386, 0.334333,
+       0.332156, 0.334258, 0.332416, 0.334026, 0.333169, 0.334017,
+       0.334482, 0.333428, 0.333247, 0.333679, 0.333645, 0.332909,
+       0.333539, 0.333815, 0.334152, 0.33339 , 0.333356, 0.333683,
+       0.333928])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># 빨간 직선</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dens_mean</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="c1"># 검은 실선: 구간별 평균 확률 밀도 함숫값  그래프</span>
+<span class="c1"># ax.plot(bins[:-1], dens_mean, linewidth=2, color=&#39;k&#39;)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dens_mean</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">dens_mean</span><span class="p">)</span>
+
+<span class="c1"># ax.set_xlim(1.85, 5.15)</span>
+<span class="c1"># ax.set_ylim(0, 0.49)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f6bdb509c5e7779542de8d1bcfe953551dd3ae59f62a1ba1f2ba2e8695c62d2d.png" src="_images/f6bdb509c5e7779542de8d1bcfe953551dd3ae59f62a1ba1f2ba2e8695c62d2d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># 빨간 직선</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="c1"># 검은 실선: 구간별 평균 확률 밀도 함숫값  그래프</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dens_mean</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">1.85</span><span class="p">,</span> <span class="mf">5.15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.49</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9afd3723aaa00d6bf872677143e188373bcc0c09859bfe31004c69a9c0677bff.png" src="_images/9afd3723aaa00d6bf872677143e188373bcc0c09859bfe31004c69a9c0677bff.png" />
+</div>
+</div>
 </section>
 <section id="id6">
 <h3><span class="section-number">13.1.4. </span>캘리포니아 중위소득<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
