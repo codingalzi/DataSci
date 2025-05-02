@@ -1,0 +1,1008 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>14. 다변량 분포(준비중) &#8212; 데이터 사이언스 기초</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'probability_multivariate';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="15. 표본분포(준비중)" href="sample_distribution.html" />
+    <link rel="prev" title="13. 연속 확률분포(준비중)" href="probability_continuous.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">데이터 사이언스 기초</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lists_dicts.html">1. 리스트와 사전</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">2. 넘파이 어레이</a></li>
+<li class="toctree-l1"><a class="reference internal" href="series.html">3. 판다스 시리즈</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataframes.html">4. 판다스 데이터프레임</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_handling.html">5. 데이터 다루기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneD_data.html">6. 1차원 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oneD_visualization.html">7. 1차원 데이터 시각화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twoD_data.html">8. 2차원 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twoD_visualization.html">9. 2차원 데이터 시각화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sampling.html">10. 모집단과 표본</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probability.html">11. 확률 분포</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probability_discrete.html">12. 이산 확률 분포</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probability_continuous.html">13. 연속 확률분포(준비중)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. 다변량 분포(준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_distribution.html">15. 표본분포(준비중)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/jupyter-book/probability_multivariate.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/codingalzi/DataSci" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/codingalzi/DataSci/issues/new?title=Issue%20on%20page%20%2Fprobability_multivariate.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/probability_multivariate.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>다변량 분포(준비중)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">14.1. 다변량 분포</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">14.1.1. 연속 결합 확률 분포</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">14.1.2. 데이터 전처리: 표준화</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">14.2. 연습문제</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ch-probability-multivariate">
+<span id="id1"></span><h1><span class="section-number">14. </span>다변량 분포(준비중)<a class="headerlink" href="#ch-probability-multivariate" title="Link to this heading">#</a></h1>
+<p><strong>기본 설정</strong></p>
+<p>Numpy와 Pandas 라이브러리를 각각 np와 pd로 불러온다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>데이터프레임의 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy">chained indexing을 금지시키기 위한 설정</a>을 지정한다.
+Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">copy_on_write</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>주피터 노트북에서 부동소수점의 출력을 소수점 이하 6자리로 제한한다.
+아래 코드는 주피터 노트북에서만 사용하며 일반적인 파이썬 코드가 아니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">precision</span> 6
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;%.6f&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드는 데이터프레임 내에서 부동소수점의 출력을 소수점 이하 6자리로 제한한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.precision&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>데이터 시각화를 위해 <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>를 <code class="docutils literal notranslate"><span class="pre">plt</span></code>로,
+<code class="docutils literal notranslate"><span class="pre">seaborn</span></code>을 <code class="docutils literal notranslate"><span class="pre">sns</span></code>로 불러온다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>그래프 스타일을 <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>에서 제공하는 <code class="docutils literal notranslate"><span class="pre">white</span></code> 스타일로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>데이터 저장소 디렉토리</strong></p>
+<p>코드에 사용되는 <a class="reference external" href="https://github.com/codingalzi/DataSci/tree/master/data">데이터 저장소의 기본 디렉토리</a>를 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/codingalzi/DataSci/refs/heads/master/data/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>주요 내용</strong></p>
+<p>이산 확률 분포의 주요 개념을 소개한다.</p>
+<ul class="simple">
+<li><p>연속 확률 변수</p></li>
+<li><p>연속 확률 분포</p></li>
+<li><p>누적 분포 함수</p></li>
+<li><p>확률 밀도 함수</p></li>
+</ul>
+<section id="id2">
+<h2><span class="section-number">14.1. </span>다변량 분포<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3><span class="section-number">14.1.1. </span>연속 결합 확률 분포<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p><strong>보스턴 주택가격 데이터셋</strong></p>
+<p>보스턴 주택가격 데이터셋은
+1978년에 발표된 미국 보스턴 지녁의 총 506개 구역에서 주택 가격에 영향을 미치는 요소들을 수집한 자료를 담고 있다.
+구역별 중위주택가격을 포함해서 총 14가지 특성이 포함된다.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="boston">
+<caption><span class="caption-number">Table 14.1 </span><span class="caption-text">보스턴 주택가격 데이터셋의 특성</span><a class="headerlink" href="#boston" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 21.4%" />
+<col style="width: 78.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>특성</p></th>
+<th class="head"><p>의미</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><font color=#FF0000>CRIM</font></p></td>
+<td><p><font color=#FF0000>구역별 1인당 범죄율</font></p></td>
+</tr>
+<tr class="row-odd"><td><p>ZN</p></td>
+<td><p>25000 평방 피트 이상의 주거 구역 비율</p></td>
+</tr>
+<tr class="row-even"><td><p>INDUS</p></td>
+<td><p>구역별 비소매 사업지(에이커) 비율</p></td>
+</tr>
+<tr class="row-odd"><td><p>CHAS</p></td>
+<td><p>Charles River 인접 여부</p></td>
+</tr>
+<tr class="row-even"><td><p>NOX</p></td>
+<td><p>10ppm 당 일산화 질소 농도</p></td>
+</tr>
+<tr class="row-odd"><td><p>RM</p></td>
+<td><p>주택 당 평균 방의 개수</p></td>
+</tr>
+<tr class="row-even"><td><p>AGE</p></td>
+<td><p>1940년 이전에 건축된 소유주택 비율</p></td>
+</tr>
+<tr class="row-odd"><td><p>DIS</p></td>
+<td><p>보스턴 고용 센터 다섯 군데까지의 접근성 지수</p></td>
+</tr>
+<tr class="row-even"><td><p>RAD</p></td>
+<td><p>방사형 고속도로 접근성 지수</p></td>
+</tr>
+<tr class="row-odd"><td><p>TAX</p></td>
+<td><p>1만달러 당 재산세율</p></td>
+</tr>
+<tr class="row-even"><td><p>PTRATIO</p></td>
+<td><p>구역별 학생 대 교사 비율</p></td>
+</tr>
+<tr class="row-odd"><td><p><font color=#FF0000>B</font></p></td>
+<td><p><font color=#FF0000>1000(Bk - 0.63)^2 (Bk는구역별 흑인 비율)</font></p></td>
+</tr>
+<tr class="row-even"><td><p><font color=#FF0000>LSTAT</font></p></td>
+<td><p><font color=#FF0000>구역별 하위 계층 인구 비율</font></p></td>
+</tr>
+<tr class="row-odd"><td><p>MEDV</p></td>
+<td><p>자가 주택 중위가격</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>보스턴 주택가격 데이터셋 불러오기</strong></p>
+<p>아래는 보스턴 데이터가 저장된 csv 파일의 처음 10줄이다.
+각각의 특성은 2, 3개의 공백으로 구분되어 있으며 특성명은 없다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="mf">0.00632</span>  <span class="mf">18.00</span>   <span class="mf">2.310</span>  <span class="mi">0</span>  <span class="mf">0.5380</span>  <span class="mf">6.5750</span>  <span class="mf">65.20</span>  <span class="mf">4.0900</span>   <span class="mi">1</span>  <span class="mf">296.0</span>  <span class="mf">15.30</span> <span class="mf">396.90</span>   <span class="mf">4.98</span>  <span class="mf">24.00</span>
+ <span class="mf">0.02731</span>   <span class="mf">0.00</span>   <span class="mf">7.070</span>  <span class="mi">0</span>  <span class="mf">0.4690</span>  <span class="mf">6.4210</span>  <span class="mf">78.90</span>  <span class="mf">4.9671</span>   <span class="mi">2</span>  <span class="mf">242.0</span>  <span class="mf">17.80</span> <span class="mf">396.90</span>   <span class="mf">9.14</span>  <span class="mf">21.60</span>
+ <span class="mf">0.02729</span>   <span class="mf">0.00</span>   <span class="mf">7.070</span>  <span class="mi">0</span>  <span class="mf">0.4690</span>  <span class="mf">7.1850</span>  <span class="mf">61.10</span>  <span class="mf">4.9671</span>   <span class="mi">2</span>  <span class="mf">242.0</span>  <span class="mf">17.80</span> <span class="mf">392.83</span>   <span class="mf">4.03</span>  <span class="mf">34.70</span>
+ <span class="mf">0.03237</span>   <span class="mf">0.00</span>   <span class="mf">2.180</span>  <span class="mi">0</span>  <span class="mf">0.4580</span>  <span class="mf">6.9980</span>  <span class="mf">45.80</span>  <span class="mf">6.0622</span>   <span class="mi">3</span>  <span class="mf">222.0</span>  <span class="mf">18.70</span> <span class="mf">394.63</span>   <span class="mf">2.94</span>  <span class="mf">33.40</span>
+ <span class="mf">0.06905</span>   <span class="mf">0.00</span>   <span class="mf">2.180</span>  <span class="mi">0</span>  <span class="mf">0.4580</span>  <span class="mf">7.1470</span>  <span class="mf">54.20</span>  <span class="mf">6.0622</span>   <span class="mi">3</span>  <span class="mf">222.0</span>  <span class="mf">18.70</span> <span class="mf">396.90</span>   <span class="mf">5.33</span>  <span class="mf">36.20</span>
+ <span class="mf">0.02985</span>   <span class="mf">0.00</span>   <span class="mf">2.180</span>  <span class="mi">0</span>  <span class="mf">0.4580</span>  <span class="mf">6.4300</span>  <span class="mf">58.70</span>  <span class="mf">6.0622</span>   <span class="mi">3</span>  <span class="mf">222.0</span>  <span class="mf">18.70</span> <span class="mf">394.12</span>   <span class="mf">5.21</span>  <span class="mf">28.70</span>
+ <span class="mf">0.08829</span>  <span class="mf">12.50</span>   <span class="mf">7.870</span>  <span class="mi">0</span>  <span class="mf">0.5240</span>  <span class="mf">6.0120</span>  <span class="mf">66.60</span>  <span class="mf">5.5605</span>   <span class="mi">5</span>  <span class="mf">311.0</span>  <span class="mf">15.20</span> <span class="mf">395.60</span>  <span class="mf">12.43</span>  <span class="mf">22.90</span>
+ <span class="mf">0.14455</span>  <span class="mf">12.50</span>   <span class="mf">7.870</span>  <span class="mi">0</span>  <span class="mf">0.5240</span>  <span class="mf">6.1720</span>  <span class="mf">96.10</span>  <span class="mf">5.9505</span>   <span class="mi">5</span>  <span class="mf">311.0</span>  <span class="mf">15.20</span> <span class="mf">396.90</span>  <span class="mf">19.15</span>  <span class="mf">27.10</span>
+ <span class="mf">0.21124</span>  <span class="mf">12.50</span>   <span class="mf">7.870</span>  <span class="mi">0</span>  <span class="mf">0.5240</span>  <span class="mf">5.6310</span> <span class="mf">100.00</span>  <span class="mf">6.0821</span>   <span class="mi">5</span>  <span class="mf">311.0</span>  <span class="mf">15.20</span> <span class="mf">386.63</span>  <span class="mf">29.93</span>  <span class="mf">16.50</span>
+ <span class="mf">0.17004</span>  <span class="mf">12.50</span>   <span class="mf">7.870</span>  <span class="mi">0</span>  <span class="mf">0.5240</span>  <span class="mf">6.0040</span>  <span class="mf">85.90</span>  <span class="mf">6.5921</span>   <span class="mi">5</span>  <span class="mf">311.0</span>  <span class="mf">15.20</span> <span class="mf">386.71</span>  <span class="mf">17.10</span>  <span class="mf">18.90</span>
+</pre></div>
+</div>
+<p>14개 특성의 특성명은 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CRIM&#39;</span><span class="p">,</span> <span class="s1">&#39;ZN&#39;</span><span class="p">,</span> <span class="s1">&#39;INDUS&#39;</span><span class="p">,</span> <span class="s1">&#39;CHAS&#39;</span><span class="p">,</span> <span class="s1">&#39;NOX&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;RM&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;DIS&#39;</span><span class="p">,</span> <span class="s1">&#39;RAD&#39;</span><span class="p">,</span> <span class="s1">&#39;TAX&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;PTRATIO&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;LSTAT&#39;</span><span class="p">,</span> <span class="s1">&#39;MEDV&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드는 특성명 정보를 활용하여 보스턴 주택가격 데이터셋을 데이터프레임으로 불러온다.
+<code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> 함수 호출에 사용된 키워드 인자는 다음과 같다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">header=None</span></code>: 특성명 등 데이터 정보를 포함하는 행의 개수. <code class="docutils literal notranslate"><span class="pre">None</span></code>은 그런 행이 없다은 의미임.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delimiter=r'\s+</span></code>: 특성값 구분 문자열 지정. 기본값은 쉼표이지만 여기서는 한 개 이상의 공백 문자로 구성된 문자열을
+가리키는 정규표현식 지정.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">names</span></code>: 특성명을 담은 리스트 또는 어레이 지정.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="o">+</span><span class="s2">&quot;boston_housing.csv&quot;</span><span class="p">,</span> 
+                     <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                     <span class="n">delimiter</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span>
+                     <span class="n">names</span><span class="o">=</span><span class="n">column_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRIM</th>
+      <th>ZN</th>
+      <th>INDUS</th>
+      <th>CHAS</th>
+      <th>NOX</th>
+      <th>RM</th>
+      <th>AGE</th>
+      <th>DIS</th>
+      <th>RAD</th>
+      <th>TAX</th>
+      <th>PTRATIO</th>
+      <th>B</th>
+      <th>LSTAT</th>
+      <th>MEDV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.00632</td>
+      <td>18.0</td>
+      <td>2.31</td>
+      <td>0</td>
+      <td>0.538</td>
+      <td>6.575</td>
+      <td>65.2</td>
+      <td>4.0900</td>
+      <td>1</td>
+      <td>296.0</td>
+      <td>15.3</td>
+      <td>396.90</td>
+      <td>4.98</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.02731</td>
+      <td>0.0</td>
+      <td>7.07</td>
+      <td>0</td>
+      <td>0.469</td>
+      <td>6.421</td>
+      <td>78.9</td>
+      <td>4.9671</td>
+      <td>2</td>
+      <td>242.0</td>
+      <td>17.8</td>
+      <td>396.90</td>
+      <td>9.14</td>
+      <td>21.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.02729</td>
+      <td>0.0</td>
+      <td>7.07</td>
+      <td>0</td>
+      <td>0.469</td>
+      <td>7.185</td>
+      <td>61.1</td>
+      <td>4.9671</td>
+      <td>2</td>
+      <td>242.0</td>
+      <td>17.8</td>
+      <td>392.83</td>
+      <td>4.03</td>
+      <td>34.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.03237</td>
+      <td>0.0</td>
+      <td>2.18</td>
+      <td>0</td>
+      <td>0.458</td>
+      <td>6.998</td>
+      <td>45.8</td>
+      <td>6.0622</td>
+      <td>3</td>
+      <td>222.0</td>
+      <td>18.7</td>
+      <td>394.63</td>
+      <td>2.94</td>
+      <td>33.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.06905</td>
+      <td>0.0</td>
+      <td>2.18</td>
+      <td>0</td>
+      <td>0.458</td>
+      <td>7.147</td>
+      <td>54.2</td>
+      <td>6.0622</td>
+      <td>3</td>
+      <td>222.0</td>
+      <td>18.7</td>
+      <td>396.90</td>
+      <td>5.33</td>
+      <td>36.2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>501</th>
+      <td>0.06263</td>
+      <td>0.0</td>
+      <td>11.93</td>
+      <td>0</td>
+      <td>0.573</td>
+      <td>6.593</td>
+      <td>69.1</td>
+      <td>2.4786</td>
+      <td>1</td>
+      <td>273.0</td>
+      <td>21.0</td>
+      <td>391.99</td>
+      <td>9.67</td>
+      <td>22.4</td>
+    </tr>
+    <tr>
+      <th>502</th>
+      <td>0.04527</td>
+      <td>0.0</td>
+      <td>11.93</td>
+      <td>0</td>
+      <td>0.573</td>
+      <td>6.120</td>
+      <td>76.7</td>
+      <td>2.2875</td>
+      <td>1</td>
+      <td>273.0</td>
+      <td>21.0</td>
+      <td>396.90</td>
+      <td>9.08</td>
+      <td>20.6</td>
+    </tr>
+    <tr>
+      <th>503</th>
+      <td>0.06076</td>
+      <td>0.0</td>
+      <td>11.93</td>
+      <td>0</td>
+      <td>0.573</td>
+      <td>6.976</td>
+      <td>91.0</td>
+      <td>2.1675</td>
+      <td>1</td>
+      <td>273.0</td>
+      <td>21.0</td>
+      <td>396.90</td>
+      <td>5.64</td>
+      <td>23.9</td>
+    </tr>
+    <tr>
+      <th>504</th>
+      <td>0.10959</td>
+      <td>0.0</td>
+      <td>11.93</td>
+      <td>0</td>
+      <td>0.573</td>
+      <td>6.794</td>
+      <td>89.3</td>
+      <td>2.3889</td>
+      <td>1</td>
+      <td>273.0</td>
+      <td>21.0</td>
+      <td>393.45</td>
+      <td>6.48</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>505</th>
+      <td>0.04741</td>
+      <td>0.0</td>
+      <td>11.93</td>
+      <td>0</td>
+      <td>0.573</td>
+      <td>6.030</td>
+      <td>80.8</td>
+      <td>2.5050</td>
+      <td>1</td>
+      <td>273.0</td>
+      <td>21.0</td>
+      <td>396.90</td>
+      <td>7.88</td>
+      <td>11.9</td>
+    </tr>
+  </tbody>
+</table>
+<p>506 rows × 14 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">14.1.2. </span>데이터 전처리: 표준화<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>특성에 따라 사용되는 값들의 크기 정도<font size='2'>scale</font>가 다르다.
+어떤 특성은 0과 1사이의 값을, 다른 특성은 100단위의 값을 포함하기도 한다.
+그런데 머신러닝 모델은 기본적으로 모든 특성이 동일한 크기 정도의
+값으로 구성될 때 보다 잘 훈련된다.
+이런 이유로 여기서는 평균은 0, 표준편차는 1이 되도록 변환하는
+<strong>표준화</strong><font size='2'>standardization</font>를 적용해서
+훈련셋과 테스트셋을 전처리한다.</p>
+<p>표준화는 다음 식으로 계산된다.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{x - \mu}{\sigma}
+\]</div>
+<p><span class="math notranslate nohighlight">\(x\)</span>는 샘플의 특성값을, <span class="math notranslate nohighlight">\(\mu\)</span>와 <span class="math notranslate nohighlight">\(\sigma\)</span>는 특성별 평균값과 표준편차를 가리킨다.
+넘파이 어레이를 이용하면 전체 훈련셋에 대해 다음처럼 한 번에 표준화를 진행할 수 있다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 훈련셋의 특성별 평균값/표준편차</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">train_data</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">std</span> <span class="o">=</span> <span class="n">train_data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 훈련셋 표준화</span>
+<span class="n">train_data</span> <span class="o">-=</span> <span class="n">mean</span>
+<span class="n">train_data</span> <span class="o">/=</span> <span class="n">std</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">14.2. </span>연습문제<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/practices/practice-probability_multivariate.ipynb">(연습) 다변량 분포</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="probability_continuous.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>연속 확률분포(준비중)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sample_distribution.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>표본분포(준비중)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">14.1. 다변량 분포</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">14.1.1. 연속 결합 확률 분포</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">14.1.2. 데이터 전처리: 표준화</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">14.2. 연습문제</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 코딩알지
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
