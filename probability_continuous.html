@@ -1138,9 +1138,29 @@ memory usage: 153.8 KB
 즉 해당 구간의 상대도수가 커서 결국 구간 밀도 막대가 높게 그려지기 때문이다.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> 함수</strong></p>
 <p>아래 코드의 <code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> 함수는
-KDE 기법을 활용하여 <strong>추정된</strong> 확률 밀도 함수의 그래프를 그린다.
-함수 호출에 사용된 <code class="docutils literal notranslate"><span class="pre">cut=0</span></code> 키워드 인자는
-데이터의 범위 내에서만 확률 밀도 함수의 그래프를 그리도록 하는 옵션 기능이다.</p>
+가우스 커널을 사용하는 밀도 추정 기법(Gaussian KDE)을 활용하여 <strong>추정된</strong> 확률 밀도 함수의 그래프를 그린다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># 구간별 밀도 히스토그램</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">housing</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 추정된 확률 밀도 함수 그래프</span>
+<span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cfc09e2deb7fc78346be91436f6181b13b84d67aca5cf5390a1a60cf33b980d7.png" src="_images/cfc09e2deb7fc78346be91436f6181b13b84d67aca5cf5390a1a60cf33b980d7.png" />
+</div>
+</div>
+<p>가우스 KDE 기법으로 추정된 확률 밀도 함수는 모든 실수에 대해 정의된다.
+이에 대한 자세한 설명은 이후에 정규 분포를 다룰 때 소개한다.</p>
+<p>데이터의 범위 내에서만 확률 밀도 함수의 그래프를 그리도록 하려면
+<code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> 함수를 호출할 때 <code class="docutils literal notranslate"><span class="pre">cut=0</span></code> 키워드 인자를 지정하면 된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1159,21 +1179,23 @@ KDE 기법을 활용하여 <strong>추정된</strong> 확률 밀도 함수의 �
 <img alt="_images/f9989d786501cab95119600d53bc9dae20cb10e6329d1954d4ac65ee7099d051.png" src="_images/f9989d786501cab95119600d53bc9dae20cb10e6329d1954d4ac65ee7099d051.png" />
 </div>
 </div>
-<p>확률 밀도 함수 그래프만 따로 확인하면 그래프의 곡선이 일부 구간에서
-급격하게 변해서 조금 부자연스러워 보인다.</p>
+<p>하지만 여기서는 <code class="docutils literal notranslate"><span class="pre">cut</span></code> 키워드 인자를 지정하지 않고
+확률 밀도 함수를 추정된 그대로 사용한다.</p>
+<p>아래 코드는 확률 밀도 함수 그래프만 따로 확인한다.
+그래프의 곡선이 일부 구간에서 급격하게 변해서 조금 부자연스러워 보인다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
 <span class="c1"># 추정된 확률 밀도 함수 그래프</span>
-<span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
+<span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7c8a7984621b813060dbd3801f0eef3180b0352e20ab2dfb514738fd3018d13b.png" src="_images/7c8a7984621b813060dbd3801f0eef3180b0352e20ab2dfb514738fd3018d13b.png" />
+<img alt="_images/9b28355c026527ed68bb16386142d85a5fa59698fb6d920ec1bb027c59dc721a.png" src="_images/9b28355c026527ed68bb16386142d85a5fa59698fb6d920ec1bb027c59dc721a.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> 함수의 <code class="docutils literal notranslate"><span class="pre">bw_method=0.19</span></code> 키워드 인자를 함께 사용하면
@@ -1183,14 +1205,14 @@ KDE 기법을 활용하여 <strong>추정된</strong> 확률 밀도 함수의 �
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
 <span class="c1"># 추정된 확률 밀도 함수 그래프</span>
-<span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span> <span class="n">bw_method</span><span class="o">=</span><span class="mf">0.19</span><span class="p">)</span>
+<span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span> <span class="n">bw_method</span><span class="o">=</span><span class="mf">0.19</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/156aa61adfe0a68f8ed07ecfc16e2e82dce3747287dc6a2da6b71b10e5668ed5.png" src="_images/156aa61adfe0a68f8ed07ecfc16e2e82dce3747287dc6a2da6b71b10e5668ed5.png" />
+<img alt="_images/519d72fee443923fad4ca90c6b910f6bfb5aae1ff418f02b655d9aa9c7969fe7.png" src="_images/519d72fee443923fad4ca90c6b910f6bfb5aae1ff418f02b655d9aa9c7969fe7.png" />
 </div>
 </div>
 <p>구간별 밀도 히스토그램고 함께 그리면 자연스럽게 막대들의 끝을 따라 부드럽게 움직이는 것처럼 보인다.</p>
@@ -1202,21 +1224,22 @@ KDE 기법을 활용하여 <strong>추정된</strong> 확률 밀도 함수의 �
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">housing</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># 추정된 확률 밀도 함수 그래프</span>
-<span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bw_method</span><span class="o">=</span><span class="mf">0.19</span><span class="p">)</span>
+<span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">bw_method</span><span class="o">=</span><span class="mf">0.19</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4daa1e2d653a53fdc73d1388e86550ff262b5196712091ffcbbac0f7702543de.png" src="_images/4daa1e2d653a53fdc73d1388e86550ff262b5196712091ffcbbac0f7702543de.png" />
+<img alt="_images/b5e0baa21a5ee99079e0f0daab51ed6b508a204db7f048452c4a3c2d09db81df.png" src="_images/b5e0baa21a5ee99079e0f0daab51ed6b508a204db7f048452c4a3c2d09db81df.png" />
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">bw_method</span></code> 변수는 band-width라는 값을 인자로 받을 수 있으며,
+<p><code class="docutils literal notranslate"><span class="pre">bw_method</span></code> 변수는 평활모수(smoothing papameter, bandwidth)라고 불리는 값을 인자로 받는다.
 기본 인자는 주어진 데이터를 활용해 자동으로 적절한 값으로 지정된다.
-보다 자세한 설명은 하지 않지만
-값을 크게 지정할 수록 확률 밀도 함수 그래프의 곡선이 부드럽고 평평해진다는 점은 기억해야 한다.</p>
-<p>예를 들어 아래 코드는 <code class="docutils literal notranslate"><span class="pre">bw_method=1</span></code>로 지정했을 때 구간별 밀도 히스토그램과 너무 동떨어지게 추정된 확률 밀도 함수를 보여준다.</p>
+보다 자세한 설명은 이후에 정규 분포를 다룰 때 다룬다.
+다만 값을 크게 지정할 수록 확률 밀도 함수 그래프의 곡선이 부드럽고 평평해진다는 점은 기억해 둔다.</p>
+<p>예를 들어 아래 코드는 <code class="docutils literal notranslate"><span class="pre">bw_method=1</span></code>로 지정했을 때 구간별 밀도 히스토그램과 많이 동떨어지게
+추정된 확률 밀도 함수의 그래프를 생성함을 보여준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1225,25 +1248,25 @@ KDE 기법을 활용하여 <strong>추정된</strong> 확률 밀도 함수의 �
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">housing</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># 추정된 확률 밀도 함수 그래프</span>
-<span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bw_method</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">bw_method</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/44fd7b30496e89a94c9ee6ce08e985c4e43f9f47ccd2fd8565409f596ab74693.png" src="_images/44fd7b30496e89a94c9ee6ce08e985c4e43f9f47ccd2fd8565409f596ab74693.png" />
+<img alt="_images/19e178795804b8e4e12e52e6b065a0950c86c9752a3ec30e98fd90e516b28335.png" src="_images/19e178795804b8e4e12e52e6b065a0950c86c9752a3ec30e98fd90e516b28335.png" />
 </div>
 </div>
 <p>중위소득 데이터의 경우엔
 자동으로 계산된 <code class="docutils literal notranslate"><span class="pre">bw_method</span></code>의 값보다 <code class="docutils literal notranslate"><span class="pre">bw_method=0.19</span></code>로 지정했을 때
-중위소득의 구간별 밀도 히스토그램과 보다 잘 어울리는 확률 밀도 함수 그래프가 그려진다고 판단된다.</p>
-<p>사실 커널 밀도 추정 기법은 여러 옵션에 의존하기 때문에
-사용자 입장에서 적절한 옵션을 수동으로 지정해줄 필요가 있음에 주의해야 한다.</p>
+중위소득의 구간별 밀도 히스토그램과 보다 잘 어울리는 확률 밀도 함수 그래프가 그려진다고 판단된다.
+사실 커널 밀도 추정 기법은 여러 옵션에 의존하기 때문에
+사용자 입장에서 경우에 따라 보다 적절한 옵션을 수동으로 지정해줄 필요가 있다.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">sns.histplot()</span></code> 함수</strong></p>
 <p>Seaborn 라이브러리의 <code class="docutils literal notranslate"><span class="pre">histplot()</span></code> 함수가
 <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수와 키워드 인자를 받는 매개변수명은 다르지만 기본적으로 동일하게 작동한다.
-Seaborn 라이브러리의 특성상 색상이 좀 더 연해진다.</p>
+다만 Seaborn 라이브러리의 특성상 색상이 좀 더 연해진다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1252,14 +1275,14 @@ Seaborn 라이브러리의 특성상 색상이 좀 더 연해진다.</p>
 <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;density&#39;</span><span class="p">)</span>
 
 <span class="c1"># 추정된 확률 밀도 함수 그래프</span>
-<span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bw_method</span><span class="o">=</span><span class="mf">.19</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
+<span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">bw_method</span><span class="o">=</span><span class="mf">.19</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/688e07c422235ded6248342f2759daf59992af8faec2521e8bd7c79cec2377ce.png" src="_images/688e07c422235ded6248342f2759daf59992af8faec2521e8bd7c79cec2377ce.png" />
+<img alt="_images/36948314ba6a8d84e5d01e6cf3634dbbc2d827f02c57826023ce802296f8747c.png" src="_images/36948314ba6a8d84e5d01e6cf3634dbbc2d827f02c57826023ce802296f8747c.png" />
 </div>
 </div>
 <p>참고로 <code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> 함수의 반환값은 <code class="docutils literal notranslate"><span class="pre">matplotlib.axes._axes.Axes</span></code> 클래스의 객체이고
@@ -1278,7 +1301,6 @@ Seaborn 라이브러리의 특성상 색상이 좀 더 연해진다.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.299</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1286,7 +1308,7 @@ Seaborn 라이브러리의 특성상 색상이 좀 더 연해진다.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d3c08afe4db40a06d065e15ddbc39f3b1de153a72cf4e7ddc7973b52fc4861b4.png" src="_images/d3c08afe4db40a06d065e15ddbc39f3b1de153a72cf4e7ddc7973b52fc4861b4.png" />
+<img alt="_images/fa88b1e62f19c6a5d43ac052bfe9bcebb9692c968aa88afa9cb58d77db1538c3.png" src="_images/fa88b1e62f19c6a5d43ac052bfe9bcebb9692c968aa88afa9cb58d77db1538c3.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> 모듈</strong></p>
@@ -1315,10 +1337,10 @@ Seaborn 라이브러리의 특성상 색상이 좀 더 연해진다.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
-<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">housing</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">f_income</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">15.7</span><span class="p">])</span>
+<span class="c1"># ax.set_xlim([-0.2, 15.7])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.299</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1326,13 +1348,113 @@ Seaborn 라이브러리의 특성상 색상이 좀 더 연해진다.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7460a151d76d82165880e38ad16853f0f46d5aeff4ac3bbee10ffc6b8c1669a5.png" src="_images/7460a151d76d82165880e38ad16853f0f46d5aeff4ac3bbee10ffc6b8c1669a5.png" />
+<img alt="_images/dc12992a12a2171c3879823544727403bccd283f27f5af02ac4279c4691a845f.png" src="_images/dc12992a12a2171c3879823544727403bccd283f27f5af02ac4279c4691a845f.png" />
 </div>
 </div>
 </section>
 <section id="id7">
 <h3><span class="section-number">13.5.2. </span>확률 밀도 함수 적분<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
-<p>…</p>
+<p>KDE 기법으로 생성된 확률 밀도 함수 <code class="docutils literal notranslate"><span class="pre">f_income()</span></code>가
+앞서 중위소득 데이터를 이용하여 직접 정의한 <code class="docutils literal notranslate"><span class="pre">F_income()</span></code> 함수의 미분함수에 해당한다는 사실을
+확인한다.
+즉, <code class="docutils literal notranslate"><span class="pre">F_income(a)</span></code>는 <code class="docutils literal notranslate"><span class="pre">f_income()</span></code> 함수를 구간 <code class="docutils literal notranslate"><span class="pre">[-np.inf,</span> <span class="pre">a]</span></code>에서 정적분한 값이어야 한다.
+다만 <code class="docutils literal notranslate"><span class="pre">f_income()</span></code> 함수는 KDE 기법으로 이론적으로 추정된 함수이기에 어느 정도의 오차는 인정해야 한다.</p>
+<p>정적분을 프로그래밍으로 직접 구현하는 일은 간단하지 않기에
+통계 관련 전문 라이브러리를 활용하다.</p>
+<p><strong>scipy.integrate 모듈</strong></p>
+<p>SciPy 라이브러리의 <code class="docutils literal notranslate"><span class="pre">integrate</span></code> 모듈은 정적분 관련 다양한 함수를 제공한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.integrate</span> <span class="k">as</span> <span class="nn">integrate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>적분 가능한 함수의 정적분은 <code class="docutils literal notranslate"><span class="pre">quad()</span></code> 함수가 담당한다.
+예를 들어 아래 코드는 중위소득의 범위에서 <code class="docutils literal notranslate"><span class="pre">f_income()</span></code> 함수를 정적분한 결과를 보여준다.
+<code class="docutils literal notranslate"><span class="pre">integrate.quad()</span></code> 함수는 정적분값과 함께 계산된 값과 실제 값 사이의 오차를 함께 반환한다.
+여기서는 <code class="docutils literal notranslate"><span class="pre">f_income()</span></code> 함수를 정적분하면
+임의로 선택된 구역의 중위소득이 지정된 구간안에 포함될 확률의 추정치가
+계산되는가를 확인하는 것이 목적이기에 오차는 무시한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f_income</span><span class="p">,</span> <span class="n">housing</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">housing</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.998388, 0.000000)
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">integrate.quad()</span></code> 함수를 이용하여 <span class="math notranslate nohighlight">\(P(a \le X \le b)\)</span>를 추정하는 함수,
+즉 앞서 정의한 <code class="docutils literal notranslate"><span class="pre">P_income()</span></code>을 추정하는 함수를 정의한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">P_estimate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">p</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f_income</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>실수 전체 영역에서는 확률이 1이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_estimate</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.000000
+</pre></div>
+</div>
+</div>
+</div>
+<p>중위소득 범위에서의 확률은 1보다 아주 조금 작다.
+이유는 앞서 추정된 확률 밀도 함수의 그래프에서 보았듯이
+데이터 분포의 영역 밖에서도 어느 정도의 확률 밀도가 0보다 크기 때문이다.
+다시 한 번 말하지만 이는 KDE 기법이 원래 그렇게 작동한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_estimate</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">housing</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.998388
+</pre></div>
+</div>
+</div>
+</div>
+<p>중위소득 범주가 2일 확률, 즉 중위소득이 1.5에서 3.0 사이에 위치할 확률은 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_estimate</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.329210
+</pre></div>
+</div>
+</div>
+</div>
+<p>앞서 데이터로부터 직접 계산한 확률과는 다음고 같이 역시 약간의 오차가 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_income</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.333011
+</pre></div>
+</div>
+</div>
+</div>
+<p>이처럼 KDE 기법으로 추정된 확률 밀도 함수가 실제 누적 함수 분포를 잘 추정한다고 결론지을 수 있다.</p>
 </section>
 </section>
 <section id="cycler">
