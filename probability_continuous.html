@@ -1361,7 +1361,7 @@ memory usage: 153.8 KB
 매우 유사함을 보인다.
 두 함숫값이 정확이 일치하지 않는 이유는
 <code class="docutils literal notranslate"><span class="pre">f_income()</span></code> 함수는 KDE 기법으로 이론적으로 추정된 함수이기에
-함숫값도 추정값이기 때문이다.</p>
+함숫값 또한 추정값이기 때문이다.</p>
 <p><strong>scipy.integrate 모듈</strong></p>
 <p>정적분을 프로그래밍으로 직접 구현하는 일은 간단하지 않기에
 통계 관련 전문 라이브러리인 SciPy 라이브러리의 <code class="docutils literal notranslate"><span class="pre">integrate</span></code> 모듈에
@@ -1394,11 +1394,11 @@ memory usage: 153.8 KB
 </div>
 </div>
 </div>
-<p>여기서는 <code class="docutils literal notranslate"><span class="pre">f_income()</span></code> 함수를 정적분하면
-임의로 선택된 구역의 중위소득이 지정된 구간안에 포함될 확률의 추정치가 계산되는가를
-확인하는 것이 목적이기에 오차는 무시한다.</p>
-<p>아래 <code class="docutils literal notranslate"><span class="pre">P-estimate()</span></code> 함수는 <code class="docutils literal notranslate"><span class="pre">quad()</span></code> 함수를 이용하여 <span class="math notranslate nohighlight">\(P(a \le X \le b)\)</span>를 추정하는 함수,
-즉 앞서 정의한 <code class="docutils literal notranslate"><span class="pre">P_income()</span></code>의 함숫값을 추정한다.</p>
+<p>여기서는 <code class="docutils literal notranslate"><span class="pre">f_income()</span></code> 함수를 정적분했을 때
+임의로 선택된 구역의 중위소득이 지정된 구간 안에 포함될 확률의 추정치가 계산되는가를
+확인하고자 하기에 따라서 오차는 무시한다.</p>
+<p>아래 <code class="docutils literal notranslate"><span class="pre">P_estimate()</span></code> 함수는 <code class="docutils literal notranslate"><span class="pre">quad()</span></code> 함수를 이용하여 <span class="math notranslate nohighlight">\(P(a \le X \le b)\)</span>를 추정하는 함수다.
+즉, 앞서 정의한 <code class="docutils literal notranslate"><span class="pre">P_income()</span></code> 함수의 추정 함수다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">P_estimate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -1424,7 +1424,7 @@ memory usage: 153.8 KB
 <p>중위소득 범위에서의 확률은 1보다 아주 조금 작다.
 이유는 앞서 추정된 확률 밀도 함수의 그래프에서 보았듯이
 데이터 분포의 영역 밖에서도 확률 밀도가 0보다 큰 영역이 존재하기 때문이다.
-다시 한 번 말하지만 이는 KDE 기법이 원래 그렇게 작동한다.</p>
+KDE 기법이 원래 그렇게 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_estimate</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">housing</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
@@ -1450,7 +1450,7 @@ memory usage: 153.8 KB
 </div>
 </div>
 </div>
-<p>앞서 데이터로부터 직접 계산된 확률과는 역시 약간의 오차가 있다.</p>
+<p>앞서 데이터로부터 직접 계산된 <code class="docutils literal notranslate"><span class="pre">P_income()</span></code> 함수가 계산한 확률과는 역시 약간의 오차만큼 작다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_income</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
@@ -1478,7 +1478,7 @@ memory usage: 153.8 KB
 </div>
 </div>
 </div>
-<p>반면에 실제 확률은 다음과 같다.</p>
+<p>반면에 실제 확률은 다음과 같이 조금 더 크다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F_income</span><span class="p">(</span><span class="mf">3.7</span><span class="p">)</span>
