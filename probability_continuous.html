@@ -989,7 +989,8 @@ F(x) = \frac{x-a}{b-a}
 <img alt="_images/786583a2f9d395f171ec88e61b1a87c5e7610a46528aa4f1846abc35d23726dd.png" src="_images/786583a2f9d395f171ec88e61b1a87c5e7610a46528aa4f1846abc35d23726dd.png" />
 </div>
 </div>
-<p>반면에 <code class="docutils literal notranslate"><span class="pre">density=True</span></code> 키워드 인자를 지정하면 각 구간별로 상대도수를 막대로 표현한다.
+<p><strong>균등 분포의 히스토그램과 확률 밀도 함수</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수를 호출할 때 <code class="docutils literal notranslate"><span class="pre">density=True</span></code> 키워드 인자를 지정하면 각 구간별로 상대도수를 막대로 표현한다.
 또한 전체 구역의 면적을 1로 만들기 위해 구간의 상대도수를 해당 구간의 크기로 나눈 값을 막대의 높이로 사용한다.</p>
 <div class="note admonition">
 <p class="admonition-title">히스토그램의 막대 높이</p>
@@ -1007,8 +1008,7 @@ h_i = \frac{t_i}{t} \cdot \frac{1}{w_i}
 \sum_{i=1}^n h_i \cdot w_i = \sum_{i=1}^n \frac{t_i}{t} \cdot \frac{1}{w_i}\cdot w_i = \sum_{i=1}^n \frac{t_i}{t} = \frac 1 t \cdot \sum_{i=1}^n t_i = \frac t t = 1
 \]</div>
 </div>
-<p><strong>균등 분포의 히스토그램과 확률 밀도 함수</strong></p>
-<p>데이터셋의 구간별 밀도를 나타내는 히스토그램과 확률 밀도 함수의 그래프와 밀접하게 연관된다.
+<p>따라서 데이터셋의 구간별 밀도를 나타내는 히스토그램과 확률 밀도 함수의 그래프와 밀접하게 연관된다.
 예를 들어 균등 분포의 경우 구간별 밀도 히스토그램에서 구간별 막대 높이는 평균 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>로 계산된다.
 이유는 다음과 같다.</p>
 <p>먼저 <span class="math notranslate nohighlight">\(t\)</span>는 데이터셋의 크기, <span class="math notranslate nohighlight">\(n\)</span>은 구간의 개수를 가리킨다고 하자.
