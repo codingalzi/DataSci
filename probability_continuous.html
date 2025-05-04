@@ -505,7 +505,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 <p><strong>주요 내용</strong></p>
-<p>이산 확률 분포의 주요 개념을 소개한다.</p>
+<p>연속 확률 분포의 주요 개념을 소개한다.</p>
 <ul class="simple">
 <li><p>연속 확률 변수</p></li>
 <li><p>누적 분포 함수</p></li>
@@ -1216,7 +1216,7 @@ memory usage: 153.8 KB
 <img alt="_images/519d72fee443923fad4ca90c6b910f6bfb5aae1ff418f02b655d9aa9c7969fe7.png" src="_images/519d72fee443923fad4ca90c6b910f6bfb5aae1ff418f02b655d9aa9c7969fe7.png" />
 </div>
 </div>
-<p>구간별 밀도 히스토그램고 함께 그리면 자연스럽게 막대들의 끝을 따라 부드럽게 움직이는 것처럼 보인다.</p>
+<p>구간별 밀도 히스토그램과 함께 그리면 자연스럽게 막대들의 끝을 따라 부드럽게 움직이는 것처럼 보인다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1359,7 +1359,7 @@ memory usage: 153.8 KB
 앞서 중위소득 데이터를 이용하여 직접 정의한 <code class="docutils literal notranslate"><span class="pre">F_income()</span></code> 함수의 미분함수에 해당한다는 사실을 근사적으로 보일 수 있다.
 이를 위해 <code class="docutils literal notranslate"><span class="pre">F_income(a)</span></code>가 <code class="docutils literal notranslate"><span class="pre">f_income()</span></code> 함수를 구간 <code class="docutils literal notranslate"><span class="pre">[-np.inf,</span> <span class="pre">a]</span></code>에서 정적분한 값과
 매우 유사함을 보인다.
-두 함숫값이 정확이 일치하지 않는 이유는
+두 함숫값이 정확히 일치하지 않는 이유는
 <code class="docutils literal notranslate"><span class="pre">f_income()</span></code> 함수는 KDE 기법으로 이론적으로 추정된 함수이기에
 함숫값 또한 추정값이기 때문이다.</p>
 <p><strong>scipy.integrate 모듈</strong></p>
