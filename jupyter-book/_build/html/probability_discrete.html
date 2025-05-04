@@ -2313,7 +2313,7 @@ f_Y(y) = \sum_k f_{XY}(x_k, y) = \sum_k P(X=x_k, Y=y)
 <span class="math notranslate nohighlight">\(f_Y()\)</span>는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 영향을 받지 않고 독립적으로 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>의 확률 분포를 계산한다.</p>
 <p>캘리포니아 주택가격 데이터셋에서 소득 분포를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>와 주택중위가격 분포를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>에 대해
 앞서 선언된 이산 결합 확률 분포의 결합 PMF인 <code class="docutils literal notranslate"><span class="pre">p_XY()</span></code> 함수를 이용하여
-각각의 확률 변수에 대한 주변 확률 밀도 함수를 구해보자.</p>
+각각의 확률 변수에 대한 주변 확률 질량 함수를 구해보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -2339,7 +2339,7 @@ f_Y(y) = \sum_k f_{XY}(x_k, y) = \sum_k P(X=x_k, Y=y)
     <span class="k">return</span> <span class="n">count</span> <span class="o">/</span> <span class="n">pop</span>
 </pre></div>
 </div>
-<p>따라서 각 확률 변수의 주변 확률 밀도 함수를 다음과 같이 정의해도 된다.</p>
+<p>따라서 각 확률 변수의 주변 확률 질량 함수를 다음과 같이 정의해도 된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_X1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -2480,13 +2480,13 @@ f_Y(y) = \sum_k f_{XY}(x_k, y) = \sum_k P(X=x_k, Y=y)
 </div>
 </div>
 <p>하지만 두 함수의 결과가 이론적으로 동일해야 함에도 불구하고
-다르게 계산되는 이뉴는 두 함수가 서로 다른 방식으로 부동소수점 연산을 실행하기 때문이다.
+다르게 계산되는 이유는 두 함수가 서로 다른 방식으로 부동소수점 연산을 실행하기 때문이다.
 즉, 부동소수점의 연산의 한계 때문이다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">f_X(x)</span></code>: 모든 <code class="docutils literal notranslate"><span class="pre">y</span></code>에 대해 먼저 <code class="docutils literal notranslate"><span class="pre">P(X=x,</span> <span class="pre">Y=y)</span></code>, 즉 확률을 계산한 다음에 더함.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">f_X1(x)</span></code>: <code class="docutils literal notranslate"><span class="pre">x</span></code>의 범주에 속하는 도수를 모두 더한 다음에 확률 계산.</p></li>
 </ul>
-<p>반면에 <code class="docutils literal notranslate"><span class="pre">f_X1()</span></code>과 <code class="docutils literal notranslate"><span class="pre">f_Y1()</span></code>은 앞서 정의한 확률 밀도 함수 <code class="docutils literal notranslate"><span class="pre">p_X()</span></code>, <code class="docutils literal notranslate"><span class="pre">p_Y()</span></code>와 각각 완전히 동일한
+<p>반면에 <code class="docutils literal notranslate"><span class="pre">f_X1()</span></code>과 <code class="docutils literal notranslate"><span class="pre">f_Y1()</span></code>은 앞서 정의한 확률 질량 함수 <code class="docutils literal notranslate"><span class="pre">p_X()</span></code>, <code class="docutils literal notranslate"><span class="pre">p_Y()</span></code>와 각각 완전히 동일한
 확률을 계산한다.
 이유는 <code class="docutils literal notranslate"><span class="pre">p_X()</span></code>, <code class="docutils literal notranslate"><span class="pre">p_Y()</span></code>또한 먼저 도수를 합한 다음에 확률을 계산하기 때문이다.</p>
 <div class="cell docutils container">
@@ -2513,8 +2513,8 @@ f_Y(y) = \sum_k f_{XY}(x_k, y) = \sum_k P(X=x_k, Y=y)
 </div>
 </div>
 </div>
-<p>결론적으로 두 확률 변수의 확률 밀도 함수는 결합 확률 밀도 함수를 이용하여 정의된
-확률 밀도 함수와 동일하다.</p>
+<p>결론적으로 두 확률 변수의 확률 질량 함수는 결합 확률 질량 함수를 이용하여 정의된
+확률 질량 함수와 동일하다.</p>
 </section>
 </section>
 <section id="id7">

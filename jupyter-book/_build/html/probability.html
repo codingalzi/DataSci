@@ -1607,9 +1607,11 @@ P(X=1) = P(X=2) = \cdots = P(X=6) = \frac1 6
 </div></div></div>
 </div>
 <p>위 표의 <code class="docutils literal notranslate"><span class="pre">무작위</span> <span class="pre">추출(%)</span></code> 특성에서 확인되듯이
-19,674구역의 10%인 1,968개 구역을 임의로 추출했을 때 소득 범주별 상대도수가 모집단의 상대도수와 유사하다.
-아래 코드는 무작위 추출 표본의 소득 범주별 상대도수 히스토그램을
-모집단의 소득 범주별 상대도수 히스토그램과 비교한다.</p>
+19,674구역의 10%인 1,968개 구역을 임의로 추출했을 때 소득 범주별 상대도수가 모집단의 상대도수와 유사하다.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수 활용</strong></p>
+<p>아래 코드는 무작위 추출 표본의 소득 범주별 상대도수 히스토그램을
+모집단의 소득 범주별 상대도수 히스토그램과 비교한다.
+<code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수를 호출할 때 <code class="docutils literal notranslate"><span class="pre">density=True</span></code>를 지정하면 도수 대신에 상대도수를 막대그래프 형식으로 그림에 주의한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_cat</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="s1">&#39;income_cat&#39;</span><span class="p">]</span>
@@ -1638,7 +1640,7 @@ P(X=1) = P(X=2) = \cdots = P(X=6) = \frac1 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d634d8bc92c637edcbaa755293ca8048a07598a3a7f93c39f46695cbf63c6994.png" src="_images/d634d8bc92c637edcbaa755293ca8048a07598a3a7f93c39f46695cbf63c6994.png" />
+<img alt="_images/4797ad8bec9a204a97d8c236121d99c80394378bd57d88804444b3e4c75f38d2.png" src="_images/4797ad8bec9a204a97d8c236121d99c80394378bd57d88804444b3e4c75f38d2.png" />
 </div>
 </div>
 <p>이렇듯 무작위 추출의 결과는 모집단의 확률 분포와 밀접하게 관련된다.
@@ -1689,7 +1691,7 @@ P(X=1) = P(X=2) = \cdots = P(X=6) = \frac1 6
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3eb9d9efc2e670f8cdc6989e72f049617dadccec3672ae8d9234a3cc88e27838.png" src="_images/3eb9d9efc2e670f8cdc6989e72f049617dadccec3672ae8d9234a3cc88e27838.png" />
+<img alt="_images/6c1b87137fec3c4d82940813419fdf14ec78899a1f48e34c188d8a3be54cccb9.png" src="_images/6c1b87137fec3c4d82940813419fdf14ec78899a1f48e34c188d8a3be54cccb9.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">random_sampling</span></code> 표본의 크기가 1,968이고, 인덱스의 범위를 50개 구간으로 쪼갰기에
@@ -2078,13 +2080,11 @@ P(Y = k) \simeq 0.02
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f4adb3ce5ef5b1aaea9cf9f7fab4ff8f6925aff5088b5d97bdb73ba9cc623979.png" src="_images/f4adb3ce5ef5b1aaea9cf9f7fab4ff8f6925aff5088b5d97bdb73ba9cc623979.png" />
+<img alt="_images/c4c12eed16d67e885f22d66a32803cc40fb502622706c1f18f7fd34e79aaa4f3.png" src="_images/c4c12eed16d67e885f22d66a32803cc40fb502622706c1f18f7fd34e79aaa4f3.png" />
 </div>
 </div>
-<p><strong><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수 활용</strong></p>
 <p>동일한 그림을 추출된 표본 데이터 자체를 이용하여 그릴 수도 있다.
-<code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수를 호출할 때 <code class="docutils literal notranslate"><span class="pre">density=True</span></code>를 지정하면 도수 대신에 상대도수를 막대그래프 형식으로 그림에 주의한다.</p>
-<p>주의사항:</p>
+단, 아래 사항에 주의한다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수가 그리는 각 막대의 중심이 1.5, 2.5, 3.5, 4.5, 5.5 등으로 정해진다.</p></li>
 <li><p>따라서 <code class="docutils literal notranslate"><span class="pre">plt.hlines()</span></code> 함수가 그리는 맨 왼편의 선분의 x-좌표가 1.15와 1.85로 지정되었다.</p></li>
@@ -2106,116 +2106,8 @@ P(Y = k) \simeq 0.02
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c83f7807f043b3464b950c75ef8e0b787a8e3c115dd328b27f63865ec97b45e1.png" src="_images/c83f7807f043b3464b950c75ef8e0b787a8e3c115dd328b27f63865ec97b45e1.png" />
+<img alt="_images/21f385d468d14244438f13cd760fddb26bbede0676eb5637262b94fdf08ba4f3.png" src="_images/21f385d468d14244438f13cd760fddb26bbede0676eb5637262b94fdf08ba4f3.png" />
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>median_income</th>
-      <th>median_house_value</th>
-      <th>income_cat</th>
-    </tr>
-    <tr>
-      <th>district</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>8.3252</td>
-      <td>452600.0</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>8.3014</td>
-      <td>358500.0</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7.2574</td>
-      <td>352100.0</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>5.6431</td>
-      <td>341300.0</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>3.8462</td>
-      <td>342200.0</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>19670</th>
-      <td>1.5603</td>
-      <td>78100.0</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>19671</th>
-      <td>2.5568</td>
-      <td>77100.0</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>19672</th>
-      <td>1.7000</td>
-      <td>92300.0</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>19673</th>
-      <td>1.8672</td>
-      <td>84700.0</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>19674</th>
-      <td>2.3886</td>
-      <td>89400.0</td>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-<p>19675 rows × 3 columns</p>
-</div></div></div>
 </div>
 </section>
 </section>
