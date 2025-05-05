@@ -591,7 +591,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 P(X=x) = 0
 \]</div>
 <p>예를 들어 0과 1사이의 실수 중에서 무작위로 하나의 값을 취했을 때 그 값이 정확히 0.5일 확률과
-캘리포니아 주택가격 데이터셋에서 임의로 선택된 구역의 중위소득이 정확히 1.999999일 확률 보두 0이다.</p>
+캘리포니아 주택가격 데이터셋에서 임의로 선택된 구역의 중위소득이 정확히 1.999999일 확률 모두 0이다.</p>
 <p>연속 확률 분포는 대신 확률 변수가 특정 구간에서 하나의 값을 취할 확률을 계산한다.
 0과 1사이에서 무작위로 선택한 값이 0.49에서 0.51 사이일 확률은 0.02, 즉 2%다.
 구간 전체의 크기가 1인데 0.49에서 0.51 사이 구간의 크기는 0.02이기 때문이다.
@@ -1315,7 +1315,7 @@ memory usage: 153.8 KB
 <p><strong><code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> 모듈</strong></p>
 <p>그런데 <code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> 함수는 확률 밀도 함수 자체를 제공하지 않는다.
 대신 주요 통계 함수를 제공하는 <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">gaussian_kde()</span></code> 함수가
-<code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> 함수와 동일한 방식으로 커널 밀도 추정 기법을 확용하여
+<code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> 함수와 동일한 방식으로 커널 밀도 추정 기법을 활용하여
 주어진 데이터에 대한 확률 밀도 함수를 반환한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
