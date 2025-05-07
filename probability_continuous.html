@@ -417,6 +417,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-kde">13.5. 커널 밀도 추정</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">13.5.1. Seaborn 라이브러리</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">13.5.2. 확률 밀도 함수 적분</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kde">13.5.3. 히스토그램과 KDE 기법 활용 기준</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cycler">13.6. Cycler 색상표</a></li>
@@ -1496,8 +1497,24 @@ KDE 기법이 원래 그렇게 작동한다.</p>
 </div>
 </div>
 </div>
-<p><strong>결론</strong></p>
-<p>KDE 기법으로 추정된 확률 밀도 함수가 데이터셋의 실제 분포를 잘 추정한다.</p>
+</section>
+<section id="kde">
+<h3><span class="section-number">13.5.3. </span>히스토그램과 KDE 기법 활용 기준<a class="headerlink" href="#kde" title="Link to this heading">#</a></h3>
+<p>지금까지의 설명과 예제를 보면 KDE 기법으로 추정된 확률 밀도 함수가 데이터셋의 실제 분포를 잘 추정하는 것으로 보인다.
+KDE 기법은 그런데 <strong>단봉 분포</strong><font size='2'>unimodal distribution</font>,
+즉 하나의 봉우리만 갖는 형태의 데이터 분포를 갖는 확률 변수에 대해서만 제대로 작동한다.
+반면에 두 개의 봉우리를 갖는 형태의 <strong>쌍봉 분포</strong><font size='2'>bimodal distribution</font>,
+세 개 이상의 봉우리를 갖는 형태의 <strong>다봉 분포</strong><font size='2'>multimodal distribution</font>에 대해서는
+그렇지 않다.</p>
+<p>추정 확률 밀도 함수는 또한 평활모수<font size='2'>bandwidth</font> 인자값에 의존한다.
+적절한 평활모수를 정하는 일은 쉽지 않다.
+<code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> 함수처럼 자동으로 적절한 평활모수를 찾아준다 하더라도
+경우에 따라 수동으로 조절해줄 필요가 있는지 판단해야 한다.</p>
+<p>적절한 평활모수는 히스토그램 그래프를 참고해서 결정할 것을 추천한다.
+그런데 히스토그램이 전달하는 정보의 내용은 막대의 개수, 즉 각 구간의 크기에 의존함에 주의해야 한다.
+결국 다양한 경우를 확인하여 사용자의 목적에 맞는 적절한 히스토그램과 평활모수를 지정할 필요가 있다.</p>
+<p><a class="reference external" href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/practices/practice-probability_continuous.ipynb">(연습) 연속 확률 분포</a>의
+문제 8과 문제 9에서 에제를 통해 히스토그램과 KDE 기법의 활용 기준을 설명한다.</p>
 </section>
 </section>
 <section id="cycler">
@@ -1630,6 +1647,7 @@ KDE 기법이 원래 그렇게 작동한다.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-kde">13.5. 커널 밀도 추정</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">13.5.1. Seaborn 라이브러리</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">13.5.2. 확률 밀도 함수 적분</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kde">13.5.3. 히스토그램과 KDE 기법 활용 기준</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cycler">13.6. Cycler 색상표</a></li>
