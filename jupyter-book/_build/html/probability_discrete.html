@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -182,7 +182,7 @@
 <li class="toctree-l1"><a class="reference internal" href="probability.html">11. 확률 분포</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">12. 이산 확률 분포</a></li>
 <li class="toctree-l1"><a class="reference internal" href="probability_continuous.html">13. 연속 확률분포</a></li>
-<li class="toctree-l1"><a class="reference internal" href="probability_multivariate.html">14. 다변량 분포(준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probability_multivariate.html">14. 다변량 분포</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sample_distribution.html">15. 표본분포(준비중)</a></li>
 </ul>
 
@@ -1169,8 +1169,8 @@ F(x) = P(X \le x) = \sum_{x_k \le x} f(x_k)
 </div>
 <section id="id4">
 <h3><span class="section-number">12.2.1. </span>이산 결합 확률 분포<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p><span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> 두 개의 이산 확률 변수가 주어졌을 때 <span class="math notranslate nohighlight">\((X, Y)\)</span>는 각각의 확률 변수가 취할 수 있는 값들의 조합이 발생할
-가능성의 확률 분포를
+<p><span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> 두 개의 이산 확률 변수가 주어졌을 때 <span class="math notranslate nohighlight">\((X, Y)\)</span>는 각각의 확률 변수가 취할 수 있는 값들의 조합을 가리키는 결합 확률 변수다.
+결합 확률 변수 <span class="math notranslate nohighlight">\((X, Y)\)</span>가 가리키는 값들이 발생할 가능성의 확률 분포를
 <strong>이산 결합 확률 분포</strong><font size='2'>discrete joint probability distribution</font>라 부른다.
 이산 결합 확률 분포의 확률 질량 함수는 <strong>결합 확률 질량 함수</strong><font size='2'>joint probability mass function</font>로 정의되며,
 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>는 <span class="math notranslate nohighlight">\(x\)</span>를, 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>는 <span class="math notranslate nohighlight">\(y\)</span>를 취할 확률을</p>
@@ -1179,10 +1179,15 @@ F(x) = P(X \le x) = \sum_{x_k \le x} f(x_k)
 f_{XY}(x, y) = P(X=x, Y=y) = p
 \]</div>
 <p>로 표현한다.
-경우에 따라 아래처럼 표현된다.</p>
+경우에 따라 아래처럼 표현되기도 한다.</p>
 <div class="math notranslate nohighlight">
 \[
-f_{XY}(x, y) = P(X=x \cap Y=y) = p
+f_{XY}(x, y) = P(X=x \;\cap\; Y=y) = p
+\]</div>
+<p>또는</p>
+<div class="math notranslate nohighlight">
+\[
+f_{XY}(x, y) = P(X=x \;\;\text{and}\;\; Y=y) = p
 \]</div>
 <p><strong>예제: 소득 범주와 주택가격 범주</strong></p>
 <p>캘리포니아 주택가격에 데이터셋에 포함된 중위주택가격을 지정된 가격 구간으로 나눠 새로운 이산 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>를 선언한다.
@@ -2109,7 +2114,7 @@ Name: median_house_value, dtype: float64
 아래 그림에서 파랑색 영역 <span class="math notranslate nohighlight">\(B\)</span>에서 보라색 영역이 차지하는 비율을 가리킨다.
 반면에 조건부 확률과는 달리 <span class="math notranslate nohighlight">\(P(A)\)</span>, <span class="math notranslate nohighlight">\(P(B)\)</span>, <span class="math notranslate nohighlight">\(P(A, B)\)</span> 등은 전체 검정색 영역 <span class="math notranslate nohighlight">\(U\)</span>에서
 각각의 영역이 차지하는 비율을 가리킨다.</p>
-<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/conditional02.png?raw=true" style="width:300px"></div></p><p><span class="math notranslate nohighlight">\(P(A, B)\)</span>, 즉 <span class="math notranslate nohighlight">\(P(A\cap B)\)</span> 는 전체 검정색 영역 <span class="math notranslate nohighlight">\(U\)</span>에서 보라색 영역이 차지하는 비율이며, 따라서 <span class="math notranslate nohighlight">\(P(A \mid B)\)</span>와
+<p><div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/conditional02.png?raw=true" style="width:300px"></div></p><p><span class="math notranslate nohighlight">\(P(A, B)\)</span>, 즉 <span class="math notranslate nohighlight">\(P(A \;\cap\; BB)\)</span> 는 전체 검정색 영역 <span class="math notranslate nohighlight">\(U\)</span>에서 보라색 영역이 차지하는 비율이며, 따라서 <span class="math notranslate nohighlight">\(P(A \mid B)\)</span>와
 일반적으로 다르다.
 하지만 다음 식이 성립한다.</p>
 <div class="math notranslate nohighlight">
@@ -2119,7 +2124,7 @@ P(A\mid B) = \frac{P(A, B)}{P(B)}\qquad (\ast)
 <p>이유는 위 그림에서 바로 알 수 있듯이 다음이 성립하기 때문이다.</p>
 <div class="math notranslate nohighlight">
 \[
-P(A\mid B) = \frac{A\cap B}{B} = \frac{\frac{A\cap B}{U}}{\frac{B}{U}} = \frac{P(A\cap B)}{P(B)}
+P(A\mid B) = \frac{A \;\cap\; BB}{B} = \frac{\frac{A \;\cap\; BB}{U}}{\frac{B}{U}} = \frac{P(A \;\cap\; BB)}{P(B)}
 \]</div>
 <div class="example admonition">
 <p class="admonition-title">예제</p>
@@ -2298,8 +2303,8 @@ P(Y=y\mid X=x) = \frac{P(Y=y, X=x)}{P(X=x)} = \frac{P(X=x, Y=y)}{P(X=x)}
 <h3><span class="section-number">12.2.3. </span>주변 확률 분포<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>확률 변수 <span class="math notranslate nohighlight">\((X, Y)\)</span>의 결합 확률 분포가 주어졌을 때
 각각의 확률 변수에 대한 확률 분포를
-<strong>주변 확률 분포</strong><font size='2'>marginal probability distribution</font>라 한다.</p>
-<p>확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 주변 확률 질량 함수는 다음과 같이 정의된다.</p>
+<strong>주변 확률 분포</strong><font size='2'>marginal probability distribution</font>라 한다.
+확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 주변 확률 질량 함수는 다음과 같이 정의된다.</p>
 <div class="math notranslate nohighlight">
 \[
 f_X(x) = \sum_k f_{XY}(x, y_k) = \sum_k P(X=x, Y=y_k)
@@ -2309,8 +2314,8 @@ f_X(x) = \sum_k f_{XY}(x, y_k) = \sum_k P(X=x, Y=y_k)
 \[
 f_Y(y) = \sum_k f_{XY}(x_k, y) = \sum_k P(X=x_k, Y=y)
 \]</div>
-<p><span class="math notranslate nohighlight">\(f_X()\)</span>는 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>의 영향을 받지 않고 독립적으로 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 분포를,
-<span class="math notranslate nohighlight">\(f_Y()\)</span>는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 영향을 받지 않고 독립적으로 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>의 확률 분포를 계산한다.</p>
+<p><span class="math notranslate nohighlight">\(f_X\)</span>는 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>의 영향을 받지 않고 독립적으로 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 분포를,
+<span class="math notranslate nohighlight">\(f_Y\)</span>는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 영향을 받지 않고 독립적으로 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>의 확률 분포를 계산한다.</p>
 <p>캘리포니아 주택가격 데이터셋에서 소득 분포를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>와 주택중위가격 분포를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>에 대해
 앞서 선언된 이산 결합 확률 분포의 결합 PMF인 <code class="docutils literal notranslate"><span class="pre">p_XY()</span></code> 함수를 이용하여
 각각의 확률 변수에 대한 주변 확률 질량 함수를 구해보자.</p>
