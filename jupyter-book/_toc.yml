@@ -20,5 +20,4 @@ chapters:
 - file: probability
 - file: probability_discrete
 - file: probability_continuous
-- file: probability_multivariate
 - file: sample_distribution
