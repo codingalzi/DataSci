@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -1937,80 +1937,10 @@ P(a \le X \le b\;\;\text{and}\;\; c \le Y \le d) = p
 결합 확률을 계산한다.</p>
 <p><strong>결합 확률 분포 함수</strong></p>
 <p>앞서 사용한 예제를 일반화하여
-중위소득은 <span class="math notranslate nohighlight">\(a\)</span>와 <span class="math notranslate nohighlight">\(b\)</span> 사이에서,
-중위주택가격은 <span class="math notranslate nohighlight">\(c\)</span>와 <span class="math notranslate nohighlight">\(d\)</span> 사이에서
+중위소득은 <span class="math notranslate nohighlight">\(a\)</span> 와 <span class="math notranslate nohighlight">\(b\)</span> 사이에서,
+중위주택가격은 <span class="math notranslate nohighlight">\(c\)</span> 와 <span class="math notranslate nohighlight">\(d\)</span> 사이에서
 값을 가질 확률을 계산하는 결합 확률 분포 함수를
 다음과 같이 두 개의 부울 마스크를 이용하여 선언한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_X</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;=</span> <span class="n">housing</span><span class="o">.</span><span class="n">median_income</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">median_income</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">)</span>
-<span class="n">mask_Y</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span> <span class="o">&lt;=</span> <span class="n">housing</span><span class="o">.</span><span class="n">median_house_value</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">median_house_value</span> <span class="o">&lt;=</span> <span class="n">d</span><span class="p">)</span>
-<span class="n">cross_XY</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">mask_X</span><span class="p">,</span> <span class="n">mask_Y</span><span class="p">,</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">total</span> <span class="o">=</span> <span class="n">cross_XY</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="s1">&#39;All&#39;</span><span class="p">]</span>
-<span class="n">cross_XY_prob</span> <span class="o">=</span> <span class="n">cross_XY</span> <span class="o">/</span> <span class="n">total</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_XY_prob</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>median_house_value</th>
-      <th>False</th>
-      <th>True</th>
-      <th>All</th>
-    </tr>
-    <tr>
-      <th>median_income</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>False</th>
-      <td>0.437611</td>
-      <td>0.199441</td>
-      <td>0.637052</td>
-    </tr>
-    <tr>
-      <th>True</th>
-      <td>0.191258</td>
-      <td>0.171690</td>
-      <td>0.362948</td>
-    </tr>
-    <tr>
-      <th>All</th>
-      <td>0.628869</td>
-      <td>0.371131</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">p_XY</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
@@ -2057,9 +1987,7 @@ P(a \le X \le b\;\;\text{and}\;\; c \le Y \le d) = p
 <span id="id9"></span><h2><span class="section-number">13.7. </span>다변량 커널 밀도 추정<a class="headerlink" href="#sec-kde-multivariate" title="Link to this heading">#</a></h2>
 <p>데이터셋이 주어졌을 때
 <strong>커널 밀도 추정</strong><font size='2'>kernel density estimation</font>(KDE) 기법을 이용하여
-결합 확률 분포 함수를 구할 수 있다.
-여기서는 캘리포니아 데이터셋의 중위소득과 중위주택가격의 결합 확률 분포에 대한 확률 밀도 함수를
-KDE에 기반하여 구현한다.</p>
+결합 확률 분포 함수를 구할 수 있다.</p>
 <section id="id10">
 <h3><span class="section-number">13.7.1. </span>결합 확률 밀도 함수<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>에 대한 누적 분포 함수 <span class="math notranslate nohighlight">\(F(a)\)</span>를 계산할 때
@@ -2078,8 +2006,8 @@ P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f(x, y)\; dx\, dy
 <p>앞서 활용한
 <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">gaussian_kde()</span></code> 함수가
 커널 밀도 추정(KDE) 기법을 적용하여
-결합 확률 분포에 대해서도 확률 밀도 함수를 계산한다.</p>
-<p>하지만 기초 수준에서 다루기에는 조금 어려워서 더 이상 언급하지 않는다.
+결합 확률 분포에 대해서도 확률 밀도 함수를 계산한다.
+하지만 기초 수준에서 다루기에는 조금 어려워서 더 이상 언급하지 않는다.
 대신 결합 확률 분포의 시각화를 통해 특성들 사이의 상관관계를 확인하는 방법을 간단하게 소개한다.</p>
 </section>
 <section id="id11">
@@ -2091,19 +2019,34 @@ P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f(x, y)\; dx\, dy
 
 <span class="c1"># 추정된 확률 밀도 함수 그래프</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;median_income&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">)</span>
-<span class="c1"># ax.plot(m1, m2, &#39;k.&#39;, markersize=2)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bb6f75b6923557316d646949c3fd1c1c688e9295c49d1fee69479eef69d42398.png" src="_images/bb6f75b6923557316d646949c3fd1c1c688e9295c49d1fee69479eef69d42398.png" />
+<img alt="_images/4d85d95a6d5f16939880672d5eea79d055538680c6fd53f330215082f7a17ba8.png" src="_images/4d85d95a6d5f16939880672d5eea79d055538680c6fd53f330215082f7a17ba8.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># 추정된 확률 밀도 함수 그래프</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;median_income&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">)</span>
+<span class="n">housing</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;median_income&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.01</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e8b5a1396ec7215a83b73b721cad7a7eb66706803dae9d1d17c7ce5212505004.png" src="_images/e8b5a1396ec7215a83b73b721cad7a7eb66706803dae9d1d17c7ce5212505004.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># 추정된 확률 밀도 함수 그래프</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;median_income&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -2113,72 +2056,7 @@ P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f(x, y)\; dx\, dy
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/45a55a89bb6b7a62f46287c0bdd0170f59c1cccb91b0f8b519fc55b7abc682eb.png" src="_images/45a55a89bb6b7a62f46287c0bdd0170f59c1cccb91b0f8b519fc55b7abc682eb.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 추정된 확률 밀도 함수 그래프</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">housing</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;median_income&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/64cbdfeb0a7ccb9f70d1e9dfe995ada39a33fe14d94e313e05f50af72b17a009.png" src="_images/64cbdfeb0a7ccb9f70d1e9dfe995ada39a33fe14d94e313e05f50af72b17a009.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 추정된 확률 밀도 함수 그래프</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">housing</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;median_income&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">,</span> <span class="n">rug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/43f83c6d3301033f96b01431a9c47e4775c5a1079a09d243ac52b5d781f020b1.png" src="_images/43f83c6d3301033f96b01431a9c47e4775c5a1079a09d243ac52b5d781f020b1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">housing</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;median_income&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">,</span> <span class="n">binwidth</span><span class="o">=</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f5d0a9964b0&gt;
-</pre></div>
-</div>
-<img alt="_images/34a6093f78f433136dfd52be7f94176ce9f092baef4a3d29f1c02df4cfa370c5.png" src="_images/34a6093f78f433136dfd52be7f94176ce9f092baef4a3d29f1c02df4cfa370c5.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 추정된 확률 밀도 함수 그래프</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">housing</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;median_income&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/f7a77511fac85347529b1e6f14eba1c66db04d9fd8c925df4ae694810b636b1c.png" src="_images/f7a77511fac85347529b1e6f14eba1c66db04d9fd8c925df4ae694810b636b1c.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">JointGrid</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">housing</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;median_income&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;median_house_value&quot;</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">plot_joint</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">plot_marginals</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/cb1e6b56a33656307a7bf11a507536f835b5afa5b029a78fce5131eab8a6b0a4.png" src="_images/cb1e6b56a33656307a7bf11a507536f835b5afa5b029a78fce5131eab8a6b0a4.png" />
+<img alt="_images/53cc902f7a7ae0d90f763a7e8b4c101b7b3e333efa9ee17e57b709f2ff60dea0.png" src="_images/53cc902f7a7ae0d90f763a7e8b4c101b7b3e333efa9ee17e57b709f2ff60dea0.png" />
 </div>
 </div>
 </section>
