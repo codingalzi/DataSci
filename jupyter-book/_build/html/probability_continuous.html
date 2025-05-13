@@ -2001,7 +2001,7 @@ F(a) = P(X \le a) = \int_{-\infty}^{a} f(x)\; dx
 단, 결합 확률 밀도 함수 <span class="math notranslate nohighlight">\(f(x, y)\)</span>는 항상 음이 아닌 실수이어야 한다.</p>
 <div class="math notranslate nohighlight">
 \[
-P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f(x, y)\; dx\, dy
+P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f(x, y)\; dy\, dx
 \]</div>
 <p>앞서 활용한
 <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">gaussian_kde()</span></code> 함수가
