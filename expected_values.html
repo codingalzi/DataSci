@@ -706,6 +706,10 @@ E(X) = x_1 \, f(x_1) + \cdots + x_N \, f(x_N) = \sum_{k=1}^{N} x_k \, f(x_k) \\[
 </div>
 </div>
 <p>반면에 정상적인 주사위를 사용한 경우에는 앞서 기댓값이 3.5로 계산된다.</p>
+<div class="math notranslate nohighlight">
+\[
+1\, \frac{1}{6} + 2 \, \frac{1}{6} + 3 \, \frac{1}{6} + 4\, \frac{1}{6} + 5\, \frac{1}{6} + 6 \, \frac{1}{6} = 3.5
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">x</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
@@ -734,8 +738,8 @@ E(X) = x_1 \, f(x_1) + \cdots + x_N \, f(x_N) = \sum_{k=1}^{N} x_k \, f(x_k) \\[
 <h3><span class="section-number">14.1.2. </span>분산<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 분산 <span class="math notranslate nohighlight">\(V(X)\)</span>은
 확률 변수가 가질 수 있는 값들과 기댓값 사이의 오차의 제곱에 대한 기댓값으로 정의된다.
-평균값을 이용한 분산의 정의에서 평균값 대신 기댓값을 사용하는 점이 다름에 주의한다.</p>
-<p>아래 식에서 <span class="math notranslate nohighlight">\(\mu\)</span>는 <span class="math notranslate nohighlight">\(E(X)\)</span>를 가리킨다.</p>
+평균값을 이용한 분산의 정의에서 평균값 대신 기댓값을 사용하는 점이 다름에 주의한다.
+아래 식에서 <span class="math notranslate nohighlight">\(\mu\)</span>는 <span class="math notranslate nohighlight">\(E(X)\)</span>를 가리킨다.</p>
 <div class="math notranslate nohighlight">
 \[
 V(X) = E[(X - \mu)^2]
