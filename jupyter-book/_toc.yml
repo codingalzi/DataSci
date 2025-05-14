@@ -20,4 +20,5 @@ chapters:
 - file: probability
 - file: probability_discrete
 - file: probability_continuous
+- file: expectation-variance
 - file: sample_distribution
