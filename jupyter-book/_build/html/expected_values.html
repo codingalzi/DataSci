@@ -688,6 +688,11 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 E(X) = x_1 \, f(x_1) + \cdots + x_N \, f(x_N) = \sum_{k=1}^{N} x_k \, f(x_k) \\[.5ex]
 \end{split}\]</div>
 <p>위 식에 따르면 불공정한 주사위를 많이 던졌을 때 나올 수 있는 값들의 평균값은 4.33 정도다.</p>
+<div class="math notranslate nohighlight">
+\[
+1\, \frac{1}{12} + 2 \, \frac{2}{12} + 3 \, \frac{3}{12} + 4\, \frac{4}{12} + 5\, \frac{5}{12} + 6 \, \frac{6}{12} = 4.333333
+\]</div>
+<p>아래 코드가 이를 확인해준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">x</span> <span class="o">*</span> <span class="n">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
