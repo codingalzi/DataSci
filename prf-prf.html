@@ -6,9 +6,8 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>소개 &#8212; 데이터 사이언스 기초</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proof Index &#8212; 데이터 사이언스 기초</title>
   
   
   
@@ -58,14 +57,18 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'prf-prf';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. 리스트와 사전" href="lists_dicts.html" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+
+    <script>
+      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
+    </script>
+
+
   </head>
   
   
@@ -146,7 +149,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -231,37 +234,6 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/jupyter-book/intro.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -287,7 +259,7 @@
       
       
       
-      <li><a href="https://github.com/codingalzi/DataSci/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/codingalzi/DataSci/issues/new?title=Issue%20on%20page%20%2Fprf-prf.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -299,54 +271,6 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="_sources/intro.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
 </li>
       
   </ul>
@@ -388,9 +312,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -401,21 +323,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>소개</h1>
+    <h1></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">데이터 사이언스와 통계분석</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">파이썬 통계분석</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">파이썬 주요 라이브러리</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -425,92 +337,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>소개<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p><strong>감사의 글</strong></p>
-<p><a class="reference external" href="https://www.hanbit.co.kr/store/books/look.php?p_code=B2049588591">누구나 파이썬 통계분석</a>의
-소스코드를 활용한 데이터 사이언스 기초 강의노트입니다.
-소중한 자료를 공개한 타니아이 히로키와 한빛미디어 출판사에게
-진심어린 감사를 전한다.</p>
-<section id="id2">
-<h2>데이터 사이언스와 통계분석<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>현대 정보화 사회에서 데이터를 적절하게 다루는 기술은 과학기술의 발전에 매우 중요하다.
-데이터 사이언스는 바로 데이터로부터 정보를 추출하는 기법과 추출한 정보를 활용하는 연구 분야를 가리킨다.
-데이터로부터 정보를 얻기 위해 전통적으로 수학, 통계학, 확률론을 이용하여 이론적으로 접근하였지만
-최근들어 데이터의 크기가 상상 이상으로 커지면서 이제는 머신러닝, 딥러닝 등 컴퓨터를 보다 적극적으로 활용한
-데이터 사이언스의 중요도가 절대적으로 커졌다.</p>
-<p>데이터 사이언스의 기초는 통계분석이다.
-특히 통계분석의 사고방식과 구법을 직감적으로 이해하는 것이 중요하다.
-통계분석을 깊게 이해할 수록 주어진 데이터로부터 중요한 정보를 보다 잘 이끌어낼 수 있다.</p>
-</section>
-<section id="id3">
-<h2>파이썬 통계분석<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>통계분석 분야에서 파이썬과 R 두 프로그래밍 언어가 자주 이용된다.
-여기서는 파이썬을 이용한다.</p>
-<p>파이썬<font size='2'>Python</font>은 현재 데이터 분석 및 머신러닝 분야에서
-가장 많이 사용되는 프로그래밍언어이다.
-아래 사진은 2025년 2월 기준 인터넷 검색 엔진에서 언급된 빈도를 측정한
-<a class="reference external" href="https://www.tiobe.com/tiobe-index/">TIOBE Index</a>의 상위 결과를 보여준다.</p>
-<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/42H/master/jupyter-book/images/tiobe-index.jpg" style="width:750px"></div></p></section>
-<section id="id4">
-<h2>파이썬 주요 라이브러리<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>데이터 사이언스 분야에서 유용하게 사용되는 주요 파이썬 라이브러리는 다음과 같다.</p>
-<ul class="simple">
-<li><p>수치 해석, 통계, 확률 등에 유용한 라이브러리 제공</p>
-<ul>
-<li><p><a class="reference external" href="https://scipy.org">싸이파이<font size='2'>SciPy</font></a></p></li>
-<li><p><a class="reference external" href="https://www.statsmodels.org/stable/index.html">스탯츠모델스<font size='2'>statsmodels</font></a></p></li>
-</ul>
-</li>
-<li><p>데이터 처리, 시각화 등에 필요한 라이브러리 제공</p>
-<ul>
-<li><p><a class="reference external" href="https://numpy.org">넘파이<font size='2'>NumPy</font></a></p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org">판다스<font size='2'>Pandas</font></a></p></li>
-<li><p><a class="reference external" href="https://matplotlib.org">맷플롯립<font size='2'>Matplotlib</font></a></p></li>
-</ul>
-</li>
-<li><p>머신러닝, 데이터 분석 등에 활용될 수 있는 라이브러리 및 도구의 지속적 개발</p>
-<ul>
-<li><p><a class="reference external" href="https://scikit-learn.org/">사이킷런<font size='2'>scikit-learn</font></a></p></li>
-<li><p><a class="reference external" href="https://www.tensorflow.org/">텐서플로우<font size='2'>TensorFlow</font></a></p></li>
-<li><p><a class="reference external" href="https://keras.io/">케라스<font size='2'>Keras</font></a></p></li>
-<li><p><a class="reference external" href="https://keras.io/">파이토치<font size='2'>PyTorch</font></a></p></li>
-</ul>
-</li>
-</ul>
-<p>여기서는 넘파이<font size='2'>NumPy</font>,
-판다스<font size='2'>Pandas</font>,
-맷플롯립<font size='2'>matplotlib</font>을 주로 활용한다.</p>
-<ul class="simple">
-<li><p>넘파이: 효율적이고 빠른 다차원 배열<font size='2'>array</font> 지원</p></li>
-<li><p>판다스: 테이블 데이터를 매우 효율적으로 다룰 수 있는 데이터프레임 지원</p></li>
-<li><p>맷플롯립: 유용한 데이터 시각화 API 지원</p></li>
-</ul>
-<p><a class="reference external" href="https://survey.stackoverflow.co/2024/technology#most-popular-technologies-misc-tech-learn">Stack Overflow 개발자 설문조사 2024</a>에 따르면 가장 배우고 싶어하는 라이브러리로 넘파이와 판다스가 뽑혔다.</p>
-<div align="center"><img src="https://github.com/codingalzi/DataSci/blob/master/jupyter-book/images/wanted_libraries.png?raw=true" style="width:600px"></div></section>
-<div class="toctree-wrapper compound">
-</div>
-</section>
 
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "python"
-        },
-        kernelOptions: {
-            name: "python3",
-            path: "./."
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'python3'</script>
+   <h1>Proof Index</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-1부터 6까지 정수의 평균값"><strong>1부터 6까지 정수의 평균값</strong></a>
+   </div>
+
+   <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-1부터 6까지 정수의 평균값"><td></td><td>
+       <strong>1부터 6까지 정수의 평균값</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="expectation-variance.html#1부터 6까지 정수의 평균값"><code class="xref">1부터 6까지 정수의 평균값</code></a> <em>(expectation-variance)</em></td><td>
+       <em>example</em></td></tr>
+   </table>
+
 
                 </article>
               
@@ -522,38 +366,12 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="lists_dicts.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>리스트와 사전</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">데이터 사이언스와 통계분석</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">파이썬 통계분석</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">파이썬 주요 라이브러리</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
