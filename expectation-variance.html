@@ -613,11 +613,15 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </tbody>
 </table>
 </div>
-<p>즉, 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 질량 함수는 다음과 같다.</p>
+<p>아래 코드는 불공정한 주사위를 던졌을 때 나오는 값을 가리키는
+확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 질량 함수와 확률 분포를 정의한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">/</span><span class="mi">21</span>
+
+<span class="c1"># 불공정한 주사위의 확률 분포 지정</span>
+<span class="n">prob_X</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -629,9 +633,6 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span> <span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-
-<span class="c1"># 불공정한 주사위의 확률 분포 지정</span>
-<span class="n">prob_X</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
 
 <span class="c1"># 총 10만번 불공정한 주사위 던지기</span>
 <span class="n">size</span> <span class="o">=</span> <span class="mi">100_001</span>
