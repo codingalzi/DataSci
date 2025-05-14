@@ -617,10 +617,11 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 질량 함수와 확률 분포를 정의한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 불공정한 주사위 던지기의 확률 질량 함수</span>
+<span class="k">def</span> <span class="nf">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">/</span><span class="mi">21</span>
 
-<span class="c1"># 불공정한 주사위의 확률 분포 지정</span>
+<span class="c1"># 불공정한 주사위 던지기의 확률 분포 지정</span>
 <span class="n">prob_X</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -657,9 +658,14 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <p>빨간 직선은 불공정한 주사위를 반복해서 던질 때 나온 값들의 평균값이며,
 이산 확률 변수 <span class="math notranslate nohighlight">\(X\)</span> 가 취할 수 있는 값들의 평균값을 <strong>기댓값</strong><font size='2'>expectation value</font>
 <span class="math notranslate nohighlight">\(E(X)\)</span>는 다음과 같이 정의된다.
-단, 함수 <span class="math notranslate nohighlight">\(f\)</span>는 확률 질량 함수를 가리킨다.</p>
+단, 함수 <span class="math notranslate nohighlight">\(f\)</span>는 확률 질량 함수를, <span class="math notranslate nohighlight">\(N\)</span>은 값들의 개수를 가리킨다.</p>
 <div class="math notranslate nohighlight">
-\[E(X) = \sum_k x_k \, f(x_k)\]</div>
+\[\begin{split}
+\begin{align*}
+E(X) &amp;= \sum_{k=1}^{N} x_k \, f(x_k) \\[.5ex]
+&amp;= x_1 \, f(x_1) + \cdots + x_N \, f(x_N)
+\end{align*}
+\end{split}\]</div>
 <p>위 식에 따르면 불공정한 주사위를 많이 던졌을 때 나올 수 있는 값들의 평균값은 4.33 정도다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
