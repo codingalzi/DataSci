@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>14. 기댓값과 분산 (준비중) &#8212; 데이터 사이언스 기초</title>
+    <title>14. 기댓값과 분산 &#8212; 데이터 사이언스 기초</title>
   
   
   
@@ -182,7 +182,7 @@
 <li class="toctree-l1"><a class="reference internal" href="probability.html">11. 확률 분포</a></li>
 <li class="toctree-l1"><a class="reference internal" href="probability_discrete.html">12. 이산 확률 분포</a></li>
 <li class="toctree-l1"><a class="reference internal" href="probability_continuous.html">13. 연속 확률 분포</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. 기댓값과 분산 (준비중)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. 기댓값과 분산</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sample_distribution.html">15. 표본분포(준비중)</a></li>
 </ul>
 
@@ -400,7 +400,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>기댓값과 분산 (준비중)</h1>
+    <h1>기댓값과 분산</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -430,7 +430,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ch-expectation-variance">
-<span id="id1"></span><h1><span class="section-number">14. </span>기댓값과 분산 (준비중)<a class="headerlink" href="#ch-expectation-variance" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">14. </span>기댓값과 분산<a class="headerlink" href="#ch-expectation-variance" title="Link to this heading">#</a></h1>
 <p><strong>기본 설정</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">numpy</span></code>와 <code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리를 각각 <code class="docutils literal notranslate"><span class="pre">np</span></code>와 <code class="docutils literal notranslate"><span class="pre">pd</span></code>로 불러온다.</p>
 <div class="cell docutils container">
@@ -888,7 +888,8 @@ V(X) = E[(X - \mu_X)^2] = \sum_{i=1}^n (x_i -\mu_X)^2 \, f(x_i)
 </section>
 <section id="id5">
 <h3><span class="section-number">14.1.3. </span>확률 변수 선형 변환<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<p>확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 취할 수 있는 값에 상수 <span class="math notranslate nohighlight">\(a\)</span>를 곱한 다음에 상수 <span class="math notranslate nohighlight">\(b\)</span>를 더한 값을 가리키는 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>는 다음과 같이 정의된다.</p>
+<p>확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 취할 수 있는 값에 상수 <span class="math notranslate nohighlight">\(a\)</span>를 곱한 다음에 상수 <span class="math notranslate nohighlight">\(b\)</span>를 더한 값을 가리키는 확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>는 다음과 같이 정의된다.
+확률 변수 <span class="math notranslate nohighlight">\(Y\)</span>는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>를 선형 변환한 결과이며 서로 동일한 확률 분포를 따른다.</p>
 <div class="math notranslate nohighlight">
 \[
 Y = a\, X + b
@@ -971,6 +972,65 @@ Y = 10000\, X + 5000
 </div>
 </div>
 </div>
+<p><strong>선형 변환 결과 확인</strong></p>
+<p>앞서 공식을 이용한 계산대로 결과가 나오는지 실제 확인해본다.
+아래 표는 범주에 1만을 곱한 다음에 5천을 더한 실제 중위소득을 담고 있다.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>범주</p></th>
+<th class="head text-center"><p>1</p></th>
+<th class="head text-center"><p>2</p></th>
+<th class="head text-center"><p>3</p></th>
+<th class="head text-center"><p>4</p></th>
+<th class="head text-center"><p>5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>실제 중위소득</p></td>
+<td class="text-center"><p>15,000</p></td>
+<td class="text-center"><p>25,000</p></td>
+<td class="text-center"><p>35,000</p></td>
+<td class="text-center"><p>45,000</p></td>
+<td class="text-center"><p>65,000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>확률 분포는 <code class="docutils literal notranslate"><span class="pre">f_income()</span></code> 함수와 동일하기에
+임의로 선택된 구역의 실제 중위소득에 대한 기댓값은 다음과 같이 계산된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="mi">10000</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5000</span><span class="p">)</span> <span class="o">*</span> <span class="n">f_income</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
+<span class="n">mu_transformed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34354.475000
+</pre></div>
+</div>
+</div>
+</div>
+<p>앞서의 계산과 소수점 이하 셋째 자리에서 발생한 오차는 부동소수점 연산의 불완전성 때문이다.
+확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 기댓값인 <code class="docutils literal notranslate"><span class="pre">mu_income</span></code> 에 1만을 곱한 다음에 5천을 더할 때와
+먼저 확률을 곱한 다음에 기댓값을 계산한 결과가 어쩔 수 없이 약간의 오차를 보였다.
+하지만 이상하게도 표준편차는 동일하게 계산된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="mi">10000</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5000</span> <span class="o">-</span> <span class="n">mu_transformed</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">f_income</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
+<span class="n">sigma_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">V_transformed</span><span class="p">)</span>
+<span class="n">sigma_transformed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10093.326619
+</pre></div>
+</div>
+</div>
+</div>
+<p>결론적으로 엄밀한 계산이 요구되는 경우엔 부동소수점 연산을 매우 조심스럽게 다뤄야 하지만
+여기서는 그렇지 않기에 더 이상 언급하지 않는다.</p>
 </section>
 </section>
 <section id="id6">
