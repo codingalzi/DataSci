@@ -691,7 +691,7 @@ E[X] = x_1 \, f(x_1) + \cdots + x_n \, f(x_n) = \sum_{k=1}^{n} x_i \, f(x_i) \\[
 <p>위 식에 따르면 불공정한 주사위를 많이 던졌을 때 나올 수 있는 값들의 평균값은 4.33 정도다.</p>
 <div class="math notranslate nohighlight">
 \[
-1\, \frac{1}{12} + 2 \, \frac{2}{12} + 3 \, \frac{3}{12} + 4\, \frac{4}{12} + 5\, \frac{5}{12} + 6 \, \frac{6}{12} = 4.333333
+1\, \frac{1}{21} + 2 \, \frac{2}{21} + 3 \, \frac{3}{21} + 4\, \frac{4}{21} + 5\, \frac{5}{21} + 6 \, \frac{6}{21} = 4.333333
 \]</div>
 <p>아래 코드가 이를 확인해준다.</p>
 <div class="cell docutils container">
@@ -928,46 +928,46 @@ V(Y) &amp;= a^2 \, V(X) \\[1ex]
 </table>
 </div>
 <p>하지만 실제로는 몇 만 달러 단위로 중위소득이 움직인다.
-따라서 범주별 중위소득은 실제로는 범주에 1만을 곱한 다음에 몇 천 정도 더해줘야 할 듯하다.
-예를 들어 5천 정도 더해준다고 가정하자.
+따라서 범주별 중위소득은 실제로는 범주에 1만5천을 곱한 다음에 몇 천 정도 빼줘야 할 듯하다.
+예를 들어 7천5백 정도 빼준다고 가정하자.
 그러면 실제 중위소득을 가리키는 확률 변수는 다음과 같게 된다.</p>
 <div class="math notranslate nohighlight">
 \[
-Y = 10000\, X + 5000
+Y = 15000\ X - 7500
 \]</div>
 <p>임의로 선택된 구역의 중위소득에 대한 기댓값은
-34,354 달러 정도로 계산된다.</p>
+36,532 달러 정도로 계산된다.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E[Y]\)</span> 계산</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_real_income</span> <span class="o">=</span> <span class="mi">10000</span> <span class="o">*</span> <span class="n">mu_income</span> <span class="o">+</span> <span class="mi">5000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_real_income</span> <span class="o">=</span> <span class="mi">15000</span> <span class="o">*</span> <span class="n">mu_income</span> <span class="o">-</span> <span class="mi">7500</span>
 <span class="n">mu_real_income</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34354.520000
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36531.780000
 </pre></div>
 </div>
 </div>
 </div>
 <p>임의로 선택된 구역의 실제 중위소득은 위 기댓값으로부터 평균적으로
-10,093 달러 정도의 오차를 가질 것으로 기대된다.</p>
+15,140 달러 정도의 오차를 가질 것으로 기대된다.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(V(Y)\)</span> 와 <span class="math notranslate nohighlight">\(\sigma_Y\)</span> 계산</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V_real_income</span> <span class="o">=</span> <span class="mi">10000</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">V_income</span>
-<span class="n">sigma_real_income</span> <span class="o">=</span> <span class="mi">10000</span> <span class="o">*</span> <span class="n">sigma_income</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V_real_income</span> <span class="o">=</span> <span class="mi">15000</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">V_income</span>
+<span class="n">sigma_real_income</span> <span class="o">=</span> <span class="mi">15000</span> <span class="o">*</span> <span class="n">sigma_income</span>
 <span class="n">sigma_real_income</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10093.332233
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15139.998350
 </pre></div>
 </div>
 </div>
@@ -987,11 +987,11 @@ Y = 10000\, X + 5000
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-center"><p>실제 중위소득</p></td>
-<td class="text-center"><p>15,000</p></td>
-<td class="text-center"><p>25,000</p></td>
-<td class="text-center"><p>35,000</p></td>
-<td class="text-center"><p>45,000</p></td>
-<td class="text-center"><p>55,000</p></td>
+<td class="text-center"><p>7,500</p></td>
+<td class="text-center"><p>22,500</p></td>
+<td class="text-center"><p>37,500</p></td>
+<td class="text-center"><p>52,500</p></td>
+<td class="text-center"><p>67,500</p></td>
 </tr>
 </tbody>
 </table>
@@ -1000,20 +1000,17 @@ Y = 10000\, X + 5000
 임의로 선택된 구역의 실제 중위소득에 대한 기댓값은 다음과 같이 계산된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="mi">10000</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5000</span><span class="p">)</span> <span class="o">*</span> <span class="n">f_income</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="mi">15000</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">7500</span><span class="p">)</span> <span class="o">*</span> <span class="n">f_income</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
 <span class="n">mu_transformed</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34354.520000
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36531.780000
 </pre></div>
 </div>
 </div>
 </div>
-<p>앞서의 계산과 소수점 이하 셋째 자리에서 발생한 오차는 부동소수점 연산의 불완전성 때문이다.
-확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 기댓값인 <code class="docutils literal notranslate"><span class="pre">mu_income</span></code> 에 1만을 곱한 다음에 5천을 더할 때와
-먼저 확률을 곱한 다음에 기댓값을 계산한 결과가 어쩔 수 없이 약간의 오차를 보였다.</p>
 <p>아래 코드는 임의로 선택된 10만 개 구역의 중위소득에 대해 100개씩 누적된 평균값은
 바로 앞세 계산된 <code class="docutils literal notranslate"><span class="pre">mu_transformed</span></code>에 수렴함을 보여준다.</p>
 <div class="cell docutils container">
@@ -1025,7 +1022,7 @@ Y = 10000\, X + 5000
 
 <span class="c1"># 총 10만번 실제 중위소득 선택</span>
 <span class="n">size</span> <span class="o">=</span> <span class="mi">100_001</span>
-<span class="n">income100k_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">size</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">prob_income</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10000</span> <span class="o">+</span> <span class="mi">5000</span>
+<span class="n">income100k_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">size</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">prob_income</span><span class="p">)</span> <span class="o">*</span> <span class="mi">15000</span> <span class="o">-</span> <span class="mi">7500</span>
 
 <span class="c1"># 100번 던질 때마다 누적 평균값 계산</span>
 <span class="n">income_means_transformed</span> <span class="o">=</span> <span class="p">[</span><span class="n">income100k_transformed</span><span class="p">[:</span><span class="n">step</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="mi">100</span><span class="p">)]</span>
@@ -1039,22 +1036,20 @@ Y = 10000\, X + 5000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ea747c920caf8968b03c2a09aedabda20f27641455bbcc93b42380453a56e033.png" src="_images/ea747c920caf8968b03c2a09aedabda20f27641455bbcc93b42380453a56e033.png" />
+<img alt="_images/90a1cd37ded18b8a1601eefcfacabdd8db398519f3a3b486bc39b6d5a75b13af.png" src="_images/90a1cd37ded18b8a1601eefcfacabdd8db398519f3a3b486bc39b6d5a75b13af.png" />
 </div>
 </div>
-<p>이상하게도 표준편차는 동일하게 계산된다.
-결론적으로 엄밀한 계산이 요구되는 경우엔 부동소수점 연산을 매우 조심스럽게 다뤄야 하지만
-여기서는 그렇지 않기에 더 이상 언급하지 않는다.</p>
+<p>표준편차 또한 동일하게 계산된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="mi">10000</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5000</span> <span class="o">-</span> <span class="n">mu_transformed</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">f_income</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="mi">15000</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">7500</span> <span class="o">-</span> <span class="n">mu_transformed</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">f_income</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
 <span class="n">sigma_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">V_transformed</span><span class="p">)</span>
 <span class="n">sigma_transformed</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10093.332233
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15139.998350
 </pre></div>
 </div>
 </div>
