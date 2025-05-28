@@ -22,3 +22,4 @@ chapters:
 - file: probability_continuous
 - file: expected_values
 - file: normal_distribution
+- file: sample_distribution
