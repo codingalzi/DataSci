@@ -524,7 +524,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </ul>
 <section id="id2">
 <h2><span class="section-number">15.1. </span>가우스 함수<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>정규 분포<font size='2'>normal districution</font>는
+<p><strong>정규 분포</strong><font size='2'>normal districution</font>는
 길이, 크기, 높이 등의 데이터처럼 실생활 또는 자연에서 얻어지는 값을
 다룰 때 자주 접하는 확률 분포다.
 예를 들어 아래 사례들이 일반적으로 정규 분포를 따른다.</p>
@@ -552,15 +552,17 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}}\, \exp(-\frac{(x-\mu)^2}{2\sigma^2})
 </div>
 </div>
 </div>
-<p>평균값과 표준편차에 따라 가우스 함수의 그래프가 다르게 그려진다.</p>
+<p>아래 코드는 평균값 <span class="math notranslate nohighlight">\(\mu\)</span>와 표준편차 <span class="math notranslate nohighlight">\(\sigma\)</span>에 따라 가우스 함수의 그래프가
+어떻게 달라지는지 보여준다.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\sigma\)</span>이 커지면 곡선은 넓고 평평해진다.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu\)</span>일 때 그래프의 봉우리가 가장 높고 그래프의 좌우가 균형을 이룬다.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span> 가 커지면 곡선은 넓고 평평해진다.</p></li>
 <li><p>곡선은 <span class="math notranslate nohighlight">\(x\)</span>축과 절대로 만나지 않는다. 하지만 평균에서 좌우로 멀어질 수록 점점 <span class="math notranslate nohighlight">\(x\)</span>축에 가까워진다.</p></li>
 <li><p>곡선과 <span class="math notranslate nohighlight">\(x\)</span>축 사이의 면적은 항상 1이 된다.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
@@ -581,7 +583,7 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}}\, \exp(-\frac{(x-\mu)^2}{2\sigma^2})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/19bc939c8c84b85fa58f38159dda5fd60f43f5c9337a39ad869c03b951246a50.png" src="_images/19bc939c8c84b85fa58f38159dda5fd60f43f5c9337a39ad869c03b951246a50.png" />
+<img alt="_images/d0984df9cd321c582c04a328b67cb8c8752b8dae833542ea2465205885908e29.png" src="_images/d0984df9cd321c582c04a328b67cb8c8752b8dae833542ea2465205885908e29.png" />
 </div>
 </div>
 <p>확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 정규 분포를 따르면서 평균이 <span class="math notranslate nohighlight">\(\mu\)</span>이고 분산이 <span class="math notranslate nohighlight">\(\sigma^2\)</span>일 때 아래와 같이 표기한다.</p>
@@ -589,8 +591,8 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}}\, \exp(-\frac{(x-\mu)^2}{2\sigma^2})
 \[
 X \sim N(\mu, \sigma^2)
 \]</div>
-<p>앞서 구현한 정규 분포의 확률 밀도 함수(pdf) <code class="docutils literal notranslate"><span class="pre">f_gaussian()</span></code> 등 정규 분포와
-관련된 모든 기능을 <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">norm</span></code> 확률 변수가 제공한다.</p>
+<p>앞서 직접 구현한 정규 분포의 확률 밀도 함수(pdf) <code class="docutils literal notranslate"><span class="pre">f_gaussian()</span></code> 등 정규 분포와
+관련된 모든 기능을 <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">norm</span></code> 객체가 제공한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
@@ -598,7 +600,7 @@ X \sim N(\mu, \sigma^2)
 </div>
 </div>
 </div>
-<p>예를 들어 <code class="docutils literal notranslate"><span class="pre">norm.pdf()</span></code>가 <code class="docutils literal notranslate"><span class="pre">f_gaussian()</span></code>에 해당하며
+<p>예를 들어 <code class="docutils literal notranslate"><span class="pre">norm.pdf()</span></code>가 <code class="docutils literal notranslate"><span class="pre">f_gaussian()</span></code>에 해당하며,
 이어지는 코드에서 대신 사용된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -607,10 +609,102 @@ X \sim N(\mu, \sigma^2)
 </div>
 </div>
 </div>
+<p>반면에 <code class="docutils literal notranslate"><span class="pre">norm.cdf()</span></code> 함수는 정규 분포의 누적 분포 함수를 가리킨다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F_gaussian</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>두 함수 모두 <code class="docutils literal notranslate"><span class="pre">loc=0</span></code>과 <code class="docutils literal notranslate"><span class="pre">scale=1</span></code>을 키워드 인자로 사용하며
+각각 분포의 평균값과 표준편차를 지정한다.</p>
 <section id="id3">
 <h3><span class="section-number">15.1.1. </span>표준 정규 분포<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>표준 정규 분포는 평균값이 0, 표준편차가 1인 정규 분포를 가리킨다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\mu = 0, \sigma = 1.0$&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/62871acd2a54c11ab35e1d6e60ea66aaf2866dbeedcbf7dd2742dd3dfcad977c.png" src="_images/62871acd2a54c11ab35e1d6e60ea66aaf2866dbeedcbf7dd2742dd3dfcad977c.png" />
+</div>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">15.1.2. </span>정규 분포 확률<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>아래 그래프는
+<span class="math notranslate nohighlight">\(X \sim N(0, 1)\)</span>일 때, <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>보다 같가나 작은 값을 취할 확률 <span class="math notranslate nohighlight">\(P(X \leq a)\)</span>를
+영역으로 보여준다.
+즉, <span class="math notranslate nohighlight">\(a\)</span> 보다 같거나 작은 구간에서 확률 밀도 함수 곡선과 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 면적이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># norm.pdf()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># -2에서 1 사이의 면적 표시</span>
+<span class="n">point_a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">point_a</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="c1"># 함수명 주석 달기</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;f_gaussian&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="mf">.8</span><span class="p">)),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">),</span>
+            <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(X \leq a)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1</span> <span class="p">,</span><span class="mf">0.15</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span>
+            <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># point_a를 눈금으로 추가 표시</span>
+<span class="n">x_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="n">point_a</span><span class="p">)</span>
+<span class="n">x_ticks_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1"># 실제로 보이는 눈금 기호</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x_ticks</span><span class="p">,</span> <span class="n">x_ticks_</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># a 눈금 색 지정</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/82a6a5885039ddd94772fa786b426cb17eeca908ae349c9301e6c510114219b3.png" src="_images/82a6a5885039ddd94772fa786b426cb17eeca908ae349c9301e6c510114219b3.png" />
+</div>
+</div>
+<p>위 그래프는 <code class="docutils literal notranslate"><span class="pre">a=-0.5</span></code>일 때의 <span class="math notranslate nohighlight">\(P(X \leq a)\)</span>를 보여주며 실제 계산은 <code class="docutils literal notranslate"><span class="pre">F_gaussian()</span></code> 함수를
+이용하면 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F_gaussian</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.308538
+</pre></div>
+</div>
+</div>
+</div>
+<p>반면에 아래 그래프는
 <span class="math notranslate nohighlight">\(X \sim N(0, 1)\)</span>일 때, <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>와 <span class="math notranslate nohighlight">\(b\)</span>사이의 값을 취할 확률 <span class="math notranslate nohighlight">\(P(a \le X \le b)\)</span>를
 구간 <span class="math notranslate nohighlight">\(a\)</span>에서 <span class="math notranslate nohighlight">\(b\)</span>에서 확률 밀도 함수 곡선과 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 면적으로 보여준다.</p>
 <div class="cell docutils container">
@@ -622,15 +716,25 @@ X \sim N(\mu, \sigma^2)
 
 <span class="c1"># norm.pdf()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
 <span class="c1"># -2에서 1 사이의 면적 표시</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="o">&lt;=</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="o">&lt;=</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">point_a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.5</span>
+<span class="n">point_b</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">point_a</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">point_b</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 
 <span class="c1"># 함수명 주석 달기</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;f_gaussian&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.39</span><span class="p">),</span>
             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(a \leq X \leq b)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span> <span class="p">,</span><span class="mf">0.25</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(a \leq X \leq b)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">.8</span> <span class="p">,</span><span class="mf">0.15</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span>
             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># point_a를 눈금으로 추가 표시</span>
+<span class="n">x_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="p">[</span><span class="n">point_a</span><span class="p">,</span> <span class="n">point_b</span><span class="p">])</span>
+<span class="n">x_ticks_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span> <span class="c1"># 실제로 보이는 눈금 기호</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x_ticks</span><span class="p">,</span> <span class="n">x_ticks_</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># a 눈금 색 지정</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># b 눈금 색 지정</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">)</span>
@@ -640,13 +744,25 @@ X \sim N(\mu, \sigma^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fcfa1f73b8c892be68f001dbfb6fb6588d78589f4510820d62b37e648f42ef78.png" src="_images/fcfa1f73b8c892be68f001dbfb6fb6588d78589f4510820d62b37e648f42ef78.png" />
+<img alt="_images/6a9c17c0786c312862cc1d94b55d4213e42fefaa0e1141eb76977f336630f012.png" src="_images/6a9c17c0786c312862cc1d94b55d4213e42fefaa0e1141eb76977f336630f012.png" />
 </div>
 </div>
-</section>
-<section id="id4">
-<h3><span class="section-number">15.1.2. </span>정규 분포 확률<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>예제: 20 ~ 24세 사이의 한국 남성들의 키를 <span class="math notranslate nohighlight">\(X\)</span>라 할 때, <span class="math notranslate nohighlight">\(X\)</span>의 평균은 173.5cm이고, 표준편차는 5.17cm이다.<br />
+<p>위 그래프는 <code class="docutils literal notranslate"><span class="pre">a=-2.5</span></code>, <code class="docutils literal notranslate"><span class="pre">b=1.5</span></code>일 때의 <span class="math notranslate nohighlight">\(P(a \leq X \leq b)\)</span>를 보여주며 실제 계산은 <code class="docutils literal notranslate"><span class="pre">F_gaussian()</span></code> 함수를
+이용하면 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F_gaussian</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="n">F_gaussian</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.926983
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>예제</strong></p>
+<p>20 ~ 24세 사이의 한국 남성들의 키를 <span class="math notranslate nohighlight">\(X\)</span>라 할 때, <span class="math notranslate nohighlight">\(X\)</span>의 평균은 173.5cm이고, 표준편차는 5.17cm이다.<br />
 즉, <span class="math notranslate nohighlight">\(X\)</span> ~ <span class="math notranslate nohighlight">\(N(173.5, (5.17)^2)\)</span></p>
 <p>키 180 이상의 남성을 소개팅에서 만날 확률 <span class="math notranslate nohighlight">\(P(X \geq 180)\)</span>은 ?</p>
 <div class="cell docutils container">
@@ -661,7 +777,7 @@ X \sim N(\mu, \sigma^2)
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu=173.5$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">173.8</span> <span class="p">,</span><span class="mf">0.002</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(X \geq 180)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">181.5</span> <span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">185</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(X \geq 180)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">181.5</span> <span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">185</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span><span class="n">s</span>
             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">173.5</span><span class="p">,</span> <span class="mf">173.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mf">173.5</span><span class="p">)],</span> <span class="n">color</span> <span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
@@ -700,6 +816,7 @@ X \sim N(\mu, \sigma^2)
 </div>
 </div>
 </div>
+<p><strong>예제</strong></p>
 <p>아래 코드는 우연히 만난 한국 남성이 키 180 이상, 185 이하일 확률 <span class="math notranslate nohighlight">\(P(180&lt;X&lt;185)\)</span>를 그래프로 보여준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
