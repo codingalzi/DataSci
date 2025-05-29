@@ -524,7 +524,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </ul>
 <section id="id2">
 <h2><span class="section-number">15.1. </span>가우스 함수<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p><strong>정규 분포</strong><font size='2'>normal districution</font>는
+<p><strong>정규 분포</strong><font size='2'>normal distribution</font>는
 길이, 크기, 높이 등의 데이터처럼 실생활 또는 자연에서 얻어지는 값을
 다룰 때 자주 접하는 확률 분포다.
 예를 들어 아래 사례들이 일반적으로 정규 분포를 따른다.</p>
@@ -649,7 +649,7 @@ X \sim N(\mu, \sigma^2)
 <section id="id4">
 <h3><span class="section-number">15.1.2. </span>정규 분포 확률<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>아래 그래프는
-<span class="math notranslate nohighlight">\(X \sim N(0, 1)\)</span>일 때, <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>보다 같가나 작은 값을 취할 확률 <span class="math notranslate nohighlight">\(P(X \leq a)\)</span>를
+<span class="math notranslate nohighlight">\(X \sim N(0, 1)\)</span>일 때, <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>보다 같거나 작은 값을 취할 확률 <span class="math notranslate nohighlight">\(P(X \leq a)\)</span>를
 영역으로 보여준다.
 즉, <span class="math notranslate nohighlight">\(a\)</span> 보다 같거나 작은 구간에서 확률 밀도 함수 곡선과 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 면적이다.</p>
 <div class="cell docutils container">
@@ -706,7 +706,7 @@ X \sim N(\mu, \sigma^2)
 </div>
 <p>반면에 아래 그래프는
 <span class="math notranslate nohighlight">\(X \sim N(0, 1)\)</span>일 때, <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>와 <span class="math notranslate nohighlight">\(b\)</span>사이의 값을 취할 확률 <span class="math notranslate nohighlight">\(P(a \le X \le b)\)</span>를
-구간 <span class="math notranslate nohighlight">\(a\)</span>에서 <span class="math notranslate nohighlight">\(b\)</span>에서 확률 밀도 함수 곡선과 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 면적으로 보여준다.</p>
+구간 <span class="math notranslate nohighlight">\(a\)</span>와 <span class="math notranslate nohighlight">\(b\)</span> 사이에서 확률 밀도 함수 곡선과 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 면적으로 보여준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
@@ -777,7 +777,7 @@ X \sim N(\mu, \sigma^2)
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu=173.5$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">173.8</span> <span class="p">,</span><span class="mf">0.002</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(X \geq 180)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">181.5</span> <span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">185</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span><span class="n">s</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(X \geq 180)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">181.5</span> <span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">185</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">173.5</span><span class="p">,</span> <span class="mf">173.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mf">173.5</span><span class="p">)],</span> <span class="n">color</span> <span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
@@ -794,7 +794,7 @@ X \sim N(\mu, \sigma^2)
 </div>
 <p>정규 분포의 누적 분포 함수는 <code class="docutils literal notranslate"><span class="pre">norm.cdf()</span></code> 함수가 가리킨다.
 <code class="docutils literal notranslate"><span class="pre">norm.cdf()</span></code> 함수 또한 <code class="docutils literal notranslate"><span class="pre">loc=0</span></code>, <code class="docutils literal notranslate"><span class="pre">scale=1</span></code> 두 개의 키워드 인자를 사용한다.
-두 키워드 인자의 기능을 <code class="docutils literal notranslate"><span class="pre">norm.pdf()</span></code> 함수와 동일하다.</p>
+두 키워드 인자의 기능은 <code class="docutils literal notranslate"><span class="pre">norm.pdf()</span></code> 함수와 동일하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F_gaussian</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span>
@@ -802,7 +802,7 @@ X \sim N(\mu, \sigma^2)
 </div>
 </div>
 </div>
-<p>한국 남성의 키를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 정규 분포 <span class="math notranslate nohighlight">\(N(173.5, (5.17)^2)\)</span> 를 따를 때
+<p>한국 남성의 키를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 정규 분포 <span class="math notranslate nohighlight">\(N(173.5, (5.17)^2)\)</span> 을 따를 때
 키 180 이상의 남성을 소개팅에서 만날 확률 <span class="math notranslate nohighlight">\(P(X \geq 180)\)</span>는 다음과 같이 계산된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -845,7 +845,7 @@ X \sim N(\mu, \sigma^2)
 <img alt="_images/0a110c660b908cd92fcf9763ab880b28b44c289b91eb1b00cfb08a5b9e92949a.png" src="_images/0a110c660b908cd92fcf9763ab880b28b44c289b91eb1b00cfb08a5b9e92949a.png" />
 </div>
 </div>
-<p>한국 남성의 키를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 정규 분포 <span class="math notranslate nohighlight">\(N(173.5, (5.17)^2)\)</span> 를 따를 때
+<p>한국 남성의 키를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 정규 분포 <span class="math notranslate nohighlight">\(N(173.5, (5.17)^2)\)</span> 을 따를 때
 키 180 이상, 185 이하의 남성을 소개팅에서 만날 확률 <span class="math notranslate nohighlight">\(P(180 \leq X \leq 185)\)</span>는 다음과 같이 계산된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -886,7 +886,7 @@ Z \sim N(0,1)
 \[\frac{185-173.5}{5.17} = 2.224371\]</div>
 </li>
 </ul>
-<p>표준와 이전과 이후의 확률 계산은 따르는 정규 분포만 다를 뿐 결과는 동일하다.</p>
+<p>표준화 이전과 이후의 확률 계산은 따르는 정규 분포만 다를 뿐 결과는 동일하다.</p>
 <ul class="simple">
 <li><p>키 180 이상일 확률 = 표준 점수가 1.26 이상일 확률</p></li>
 </ul>
@@ -996,7 +996,7 @@ $<span class="math notranslate nohighlight">\(⇒\ X+Y ∼N(μ_x+μ_y,\ 𝜎_{x}
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 전체 비교교</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 전체 비교</span>
 <span class="n">mu_w</span><span class="p">,</span> <span class="n">sigma_w</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">20</span>
 <span class="n">mu_m</span><span class="p">,</span> <span class="n">sigma_m</span> <span class="o">=</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">22</span>
 <span class="n">mu_sum</span><span class="p">,</span> <span class="n">sigma_sum</span> <span class="o">=</span> <span class="mi">340</span><span class="p">,</span> <span class="mi">30</span>
@@ -1165,7 +1165,7 @@ X ∼ N(μ,𝜎^2)
 \[
 4X∼ N(4μ,16𝜎^2)
 \]</div>
-<p><span class="math notranslate nohighlight">\(4X\)</span>는는 사람들의 체중이 4배되었음을 의미한다.</p>
+<p><span class="math notranslate nohighlight">\(4X\)</span>는 사람들의 체중이 4배되었음을 의미한다.</p>
 <p>이렇게 기존에 사용된 데이터가 <span class="math notranslate nohighlight">\(ax+b의\ 방식으로\ 변하면,\ _{(기존\ 데이터의\ 각각의\ 값을\ a배한\ 후\ b를\ 더해주는\ 방식)}\)</span>,
 즉, <strong>선형 변환</strong>을 하면 새로운 데이터의 평균과 분산은 아래와 같이 변한다.</p>
 <div class="math notranslate nohighlight">
@@ -1194,7 +1194,7 @@ X ∼ N(μ,𝜎^2)
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(X+X+X+X\)</span>는 4명을 무작위적이며, 서로 아무 상관없이 독립적으로 선택한다는 의미</p>
 </div></blockquote>
-<p>이떄 <span class="math notranslate nohighlight">\(X+X+X+X ∼ N(4μ,4𝜎^2)\)</span>이 성립한다.</p>
+<p>이때 <span class="math notranslate nohighlight">\(X+X+X+X ∼ N(4μ,4𝜎^2)\)</span>이 성립한다.</p>
 <p>일반적으로 아래 공식이 성립한다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1217,25 +1217,25 @@ $<span class="math notranslate nohighlight">\(⇒ X ∼ N(n⋅p, n⋅p⋅q)\)</s
 \)</span><span class="math notranslate nohighlight">\(_{단,\ q=1-p}\)</span><span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(_{주의:\ 연속성\ 보정\ 필요}\)</span>$</p></li>
 </ul>
-<p><strong>예제: 4지선다 40문제를 무작정 찍어서 30문제 이상 맞출 확률은?</strong></p>
+<p><strong>예제: 4지선다 40문제를 무작정 찍어서 30문제 이상 맞힐 확률은?</strong></p>
 <ul class="simple">
 <li><p>이항분포 문제: <span class="math notranslate nohighlight">\(X ∼ B(40, 0.25)\)</span></p></li>
 </ul>
-<p>하지만 40문제 중 30문제 이상 맞출 확률은 아래와 같이 계산</p>
+<p>하지만 40문제 중 30문제 이상 맞힐 확률은 아래와 같이 계산</p>
 <div class="math notranslate nohighlight">
 \[
 ^{40}C_{30}⋅(\frac{1}{4})^{30}⋅(\frac{3}{4})^{10}+^{40}C_{31}⋅(\frac{1}{4})^{31}⋅(\frac{3}{4})^{9}+⋯+^{40}C_{40}⋅(\frac{1}{4})^{40}
 \]</div>
 <p>그런데, 이런 과정은 너무 수고스럽거나, 너무 오래걸리거나, 경우에 따라 계산 불가능.
-<span class="math notranslate nohighlight">\(n!\)</span>등을 계산해야 하는데 <span class="math notranslate nohighlight">\(n\)</span>이 너무 클 경우, 컴퓨터를 이용해도 계산이 불가능 경우 존재</p>
+<span class="math notranslate nohighlight">\(n!\)</span>등을 계산해야 하는데 <span class="math notranslate nohighlight">\(n\)</span>이 너무 클 경우, 컴퓨터를 이용해도 계산이 불가능한 경우 존재</p>
 <p><strong>주의</strong></p>
-<p>이 문제의 경우 푸아송분포를 활용하더라도 하더라도 별 도움이 되지 않는다.<br />
+<p>이 문제의 경우 푸아송분포를 활용하더라도 별 도움이 되지 않는다.<br />
 푸아송분포 역시 많은 경우에 따라 실질적으로 불가능한 계산이 요구되기 때문이다.</p>
 <p><strong>대안: 정규분포 활용</strong></p>
 <p><span class="math notranslate nohighlight">\(X ∼B(n,p)\)</span>이고, <span class="math notranslate nohighlight">\(n⋅p&gt;5\)</span>와 <span class="math notranslate nohighlight">\(n⋅q&gt;5\ \ _{(q=1-p)}\)</span>라면, <span class="math notranslate nohighlight">\(X ∼N(n⋅p, n⋅p⋅q)\)</span>를 이용해서 이항분포에 대한 대략적인 값을 구할 수 있다.</p>
 <p><strong>주의사항</strong></p>
 <p>이항분포를 정규분포로 대체하여 확률을 계산할 때 주의할 점이 하나 있다.</p>
-<p>예제: 2지선다 12개의 문제 중 5개 이하의 문제를 맞출 확률 계산</p>
+<p>예제: 2지선다 12개의 문제 중 5개 이하의 문제를 맞힐 확률 계산</p>
 <p>답:</p>
 <p><span class="math notranslate nohighlight">\(X ∼ B(12, \frac{1}{2})\)</span>가 성립</p>
 <p>따라서, 1️⃣</p>
@@ -1313,8 +1313,8 @@ P(X&lt;6)=P(x=0)+⋯+P(x=5) \\
 </ul>
 <hr class="docutils" />
 <p><strong>연속성 보정</strong></p>
-<p>앞서 설명에 따라 이산데이터를 연속데이터를 이용하여 다루고자 할 때 발생하는 차이를 보정해주는 과정이 필요하다.
-이를 <strong>연속성 보정</strong>이라 부르며, 이산된 값들을 연속 눈금 위로 옮길 때 반드시 수행해야 하는 간단한 <strong>눈금조</strong>절을 의미한다.</p>
+<p>앞서 설명에 따라 이산 확률 분포에 대한 확률을 연속 확률 분포를 이용하여 계산하고자 할 때 발생하는 차이를 보정해주는 과정이 필요하다.
+이를 <strong>연속성 보정</strong>이라 부르며, 이산된 값들을 연속 눈금 위로 옮길 때 반드시 수행해야 하는 간단한 <strong>눈금조절</strong>을 의미한다.</p>
 <p>앞에 언급한 예제의 경우, 정규분포 확률을 계산할 때, <span class="math notranslate nohighlight">\(P(X&lt;6)\)</span>대신에 <span class="math notranslate nohighlight">\(P(X&lt;5.5)\)</span>를 계산하여 그래프를 이용한 설명에서 보여준 차이에 대한 보정이 이루어진다.</p>
 <p>실제로 <span class="math notranslate nohighlight">\(X ∼ N(6,3)\)</span>일때,</p>
 <div class="math notranslate nohighlight">
@@ -1322,7 +1322,7 @@ P(X&lt;6)=P(x=0)+⋯+P(x=5) \\
 P(X&lt;5.5) = P(Z&lt;\frac{5.5-6}{\sqrt{3}})=P(Z&lt;-0.29)=1-P(Z&lt;0.29)=1-0.6141=0.3859
 \]</div>
 <p>이며, 이 값은 이항분포에서 직접 계산한 값인 <strong>0.387과 매우 비슷</strong>하다.</p>
-<p><strong>예제: 2지선다 12문제를 찍어서 9문제 이상 맞출 확률</strong></p>
+<p><strong>예제: 2지선다 12문제를 찍어서 9문제 이상 맞힐 확률</strong></p>
 <p>답:</p>
 <p>이항분포로 계산할 경우에는</p>
 <div class="math notranslate nohighlight">
@@ -1331,7 +1331,7 @@ P(X&gt;8)=P(X≥9)=^{12}C_{9}⋅(\frac{1}{2})^{12}+⋯+^{12}C_{12}⋅(\frac{1}{2
 \]</div>
 <p>를 계산해야 함.
 하지만, 정규분포 <span class="math notranslate nohighlight">\(N(6,3)\)</span>을 활용할 경우 <span class="math notranslate nohighlight">\(P(X&gt;8.5)\ \ _{⟵ 연속성 보정\ \ \ \ \ \ \  \ }\)</span>를 계산해야 함</p>
-<p><strong>예제: 2지선다 12문제를 찍어서 2개 또는 3개 맞출 확률</strong></p>
+<p><strong>예제: 2지선다 12문제를 찍어서 2개 또는 3개 맞힐 확률</strong></p>
 <p>답:</p>
 <p>이항분포로 계산할 경우에는</p>
 <div class="math notranslate nohighlight">
@@ -1364,7 +1364,7 @@ $<span class="math notranslate nohighlight">\(X ∼ N(𝜆,𝜆)\)</span><span c
 <p>러브트레인이라는 롤러코스터가 1년에 고장나는 횟수가 𝜆=40일때, 1년에 52회 미만으로 고장날 확률은 얼마인가?</p>
 <p>답:</p>
 <p><span class="math notranslate nohighlight">\(X\)</span>가 1년에 고장나는 횟수를 나타내면 <span class="math notranslate nohighlight">\(X ∼P_0(40)\)</span>이다.<br />
-<span class="math notranslate nohighlight">\(𝜆&gt;15\)</span>이므로 <span class="math notranslate nohighlight">\(X∼N(15,15)\)</span>가 성립한다.<br />
+<span class="math notranslate nohighlight">\(𝜆&gt;15\)</span>이므로 <span class="math notranslate nohighlight">\(X∼N(40, 40)\)</span>이 성립한다.<br />
 따라서 푸아송분포에서 <span class="math notranslate nohighlight">\(P(X&lt;52)\)</span>는 정규분포에서</p>
 <div class="math notranslate nohighlight">
 \[
