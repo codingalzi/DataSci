@@ -937,8 +937,8 @@ Name: Son, dtype: float64
 </div>
 </div>
 <p><strong>정규 분포 확인</strong></p>
-<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">mu_son</span></code>와 <code class="docutils literal notranslate"><span class="pre">sigma_son</span></code>을 각각 평균값과 표준편차로 갖는 정규 분포의 확률 밀도 함수 그래프와
-앞서 KDE 기법으로 계산된 확률 밀도 함수 그래프가 거의 동일함을 보여준다.</p>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">mu_son</span></code>과 <code class="docutils literal notranslate"><span class="pre">sigma_son</span></code>을 각각 평균값과 표준편차로 갖는 정규 분포의 확률 밀도 함수 그래프와
+앞서 KDE 기법으로 계산된 확률 밀도 함수 그래프가 거의 동일하게 그려짐을 확인해준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -964,18 +964,18 @@ Name: Son, dtype: float64
 <img alt="_images/504790fe9b8076900a8e57da4e37c4679c50d2d539f20df4fdff303385af52ff.png" src="_images/504790fe9b8076900a8e57da4e37c4679c50d2d539f20df4fdff303385af52ff.png" />
 </div>
 </div>
-<p>주의사항: 표준편차가 7.15 정도로 1보다 많이 크기에 정규 분포에 비해 보다 펑퍼짐한 봉우리로
+<p>표준편차가 7.15 정도로 1보다 많이 크기에 정규 분포에 비해 보다 펑퍼짐한 봉우리로
 그려져야 하지만 표준 정규 분포에 가깝도록 보인다.
-하지만 이는 y-축이 0에서 0.4가 아닌 0에서 0.06 사이로 설정되었기에
-일종의 착시현상이 발생하기 때문이다.</p>
+하지만 이는 <span class="math notranslate nohighlight">\(y\)</span>-축이 0에서 0.4가 아닌 0에서 0.06 사이로 설정되었기에
+일종의 착시현상임에 주의한다.</p>
 <p><strong>정규 분포 활용</strong></p>
-<p>결론적으로 아들 키를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>는
+<p>앞서 확인하였듯이 아들 키를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>는
 다음과 같이 앞서 계산된 평균값과 표준편차를 갖는 정규 분포를 따른다고 간주해도 무방하다.</p>
 <div class="math notranslate nohighlight">
 \[
 X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 \]</div>
-<p>이를 다음과 같이 <code class="docutils literal notranslate"><span class="pre">norm</span></code> 객체를 이용하여 직접 확률 변수로 선언한다.
+<p>따라서 다음과 같이 <code class="docutils literal notranslate"><span class="pre">norm</span></code> 객체를 이용하여 아들 키를 가리키는 확률 변수를 선언한다.
 <code class="docutils literal notranslate"><span class="pre">norm</span></code> 객체를 활용할 때 함수처럼 평균값과 표준편차를 지정할 수 있음에 주의한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -984,7 +984,7 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 </div>
-<p>이렇게 정의된 확률 변수의 확률 밀도 함수(pdf)와 누적 분포 함수(cdf) 등은 추가 인자 없이 바로 활용된다.
+<p>평균값과 표준편차가 이미 지정되었기에 확률 밀도 함수(pdf)와 누적 분포 함수(cdf) 등은 추가 인자 없이 바로 활용된다.
 예를 들어 아래 코드는 임의로 선택된 아들 키가 평균값 이하일 확률이 50%임을 확인해준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -999,7 +999,7 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <p>아래 코드는 우연히 선택된 아들 키가 180 이상일 확률 <span class="math notranslate nohighlight">\(P(X \geq 180)\)</span>를
-정규 분포의 확률 밀도 함수의 그래프와 x-축 사이의 특정 구간의 영역으로 보여준다.</p>
+정규 분포의 확률 밀도 함수의 그래프와 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 특정 구간의 영역으로 보여준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -1012,8 +1012,6 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(X_</span><span class="si">{son}</span><span class="s1"> \geq 180)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">184</span> <span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">190</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">),</span>
             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
-
-<span class="c1"># ax.plot([173.5, 173.5], [0, f(173.5)], color =&#39;black&#39;, linewidth=1.4, linestyle=&quot;--&quot;)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.062</span><span class="p">)</span>
 
@@ -1073,11 +1071,8 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">185</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 
-<span class="c1"># ax.annotate(r&#39;$\mu_{son}$&#39;, xy=(mu_son+.5 ,0.002))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(180 \leq X_</span><span class="si">{son}</span><span class="s1"> \leq 185)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">182.5</span> <span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">188</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">),</span>
             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
-
-<span class="c1"># ax.plot([mu_son, mu_son], [0, f(mu_son)], color =&#39;black&#39;, linewidth=1.4, linestyle=&quot;--&quot;)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.062</span><span class="p">)</span>
 
