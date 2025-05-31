@@ -414,23 +414,24 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.1. 가우스 함수</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.1.1. 표준 정규 분포</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.1.2. 정규 분포 확률</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.1.3. 예제: 피어슨  데이터셋</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.2. 확률 변수 표준화</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.3. 정규분포 연산</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.3.1. 합</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.3.2. 차이</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.3.3. 정규 분포 선형 변환</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">15.3.4. 정규 분포의 독립 관측</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.2. 확률 변수 표준화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.3. 정규분포 연산</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.3.1. 합</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.3.2. 차이</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">15.3.3. 정규 분포 선형 변환</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">15.3.4. 정규 분포의 독립 관측</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">15.4. 정규분포 활용</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">15.4.1. 이항 분포 확률 계산</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">15.4.2. 연속성 보정 일반화</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">15.4.3. 푸아송 분포 확률 계산</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">15.4. 정규분포 활용</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">15.4.1. 이항 분포 확률 계산</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">15.4.2. 연속성 보정 일반화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">15.4.3. 푸아송 분포 확률 계산</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">15.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">15.5. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -541,8 +542,8 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}}\, \exp(-\frac{(x-\mu)^2}{2\sigma^2})
 \]</div>
 <p>아래 <code class="docutils literal notranslate"><span class="pre">f_gaussian()</span></code> 함수가 가우스 함수를 구현한다.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">loc=0</span></code>: 평균값. 기본값 0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scale=1</span></code>: 표준편차. 기본값 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">loc=0</span></code>: 평균값(<span class="math notranslate nohighlight">\(\mu\)</span>). 기본값 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scale=1</span></code>: 표준편차(<span class="math notranslate nohighlight">\(\sigma\)</span>). 기본값 1.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -620,7 +621,7 @@ X \sim N(\mu, \sigma^2)
 각각 분포의 평균값과 표준편차를 지정한다.</p>
 <section id="id3">
 <h3><span class="section-number">15.1.1. </span>표준 정규 분포<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>표준 정규 분포는 평균값이 0, 표준편차가 1인 정규 분포를 가리킨다.
+<p>표준 정규 분포는 평균값이 0, 표준편차가 1인 정규 분포다.
 아래 코드는 표준 정규 분포의 확률 밀도 함수만 따로 떼어 그래프로 나타낸다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -667,7 +668,7 @@ X \sim N(\mu, \sigma^2)
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">point_a</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 
 <span class="c1"># 함수명 주석 달기</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;f_gaussian&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="mf">.8</span><span class="p">)),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">),</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;f_gaussian&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">.807</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="mf">.8</span><span class="p">)),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">),</span>
             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(X \leq a)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1</span> <span class="p">,</span><span class="mf">0.15</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span>
@@ -687,7 +688,7 @@ X \sim N(\mu, \sigma^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3ecbf21c646686d1e6db1da4ea7261b7d962d56e93a84bac55f949d96cf9823b.png" src="_images/3ecbf21c646686d1e6db1da4ea7261b7d962d56e93a84bac55f949d96cf9823b.png" />
+<img alt="_images/0f1f133f9b0a844422c6b3425f975346a76c22c2b167e33b5722074d9568c209.png" src="_images/0f1f133f9b0a844422c6b3425f975346a76c22c2b167e33b5722074d9568c209.png" />
 </div>
 </div>
 <p>위 그래프는 <code class="docutils literal notranslate"><span class="pre">a=-0.5</span></code>일 때의 <span class="math notranslate nohighlight">\(P(X \leq a)\)</span>를 보여주며 실제 계산은 <code class="docutils literal notranslate"><span class="pre">F_gaussian()</span></code> 함수를
@@ -705,7 +706,7 @@ X \sim N(\mu, \sigma^2)
 </div>
 </div>
 <p>반면에 아래 그래프는
-<span class="math notranslate nohighlight">\(X \sim N(0, 1)\)</span>일 때, <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>와 <span class="math notranslate nohighlight">\(b\)</span>사이의 값을 취할 확률 <span class="math notranslate nohighlight">\(P(a \le X \le b)\)</span>를
+<span class="math notranslate nohighlight">\(X \sim N(0, 1)\)</span>일 때, <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>와 <span class="math notranslate nohighlight">\(b\)</span> 사이의 값을 취할 확률 <span class="math notranslate nohighlight">\(P(a \le X \le b)\)</span>를
 구간 <span class="math notranslate nohighlight">\(a\)</span>와 <span class="math notranslate nohighlight">\(b\)</span> 사이에서 확률 밀도 함수 곡선과 <span class="math notranslate nohighlight">\(x\)</span>-축 사이의 면적으로 보여준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -761,7 +762,9 @@ X \sim N(\mu, \sigma^2)
 </div>
 </div>
 </div>
-<p><strong>예제: 피어슨의 아버지-아들 키 데이터셋</strong></p>
+</section>
+<section id="id5">
+<h3><span class="section-number">15.1.3. </span>예제: 피어슨  데이터셋<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>아래 코드는 피어슨<font size='2'>Karl Pearson</font>이 1903년에 실험을 위해 수집한
 아버지와 아들의 키로 구성된 데이터셋을 불러온다.
 원래 인치 단위를 사용하지만 편의를 위해 센티미터 단위로 변환되었다.</p>
@@ -772,7 +775,7 @@ X \sim N(\mu, \sigma^2)
 </div>
 </div>
 </div>
-<p>처음 다섯 개 데이터는 다음과 같다.</p>
+<p>처음 다섯 가족의 아버지 키와 아들 키 데이터는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearson</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -832,7 +835,7 @@ X \sim N(\mu, \sigma^2)
 </table>
 </div></div></div>
 </div>
-<p>아버지와 아들 각각 총 1,078개의 부동소수점 값이 포함되었다.</p>
+<p>아버지 키와 아들 키 각각 총 1,078개의 부동소수점 값이 포함되었다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearson</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
@@ -853,16 +856,17 @@ memory usage: 17.0 KB
 </div>
 </div>
 </div>
+<p><strong>밀도 히스토그램 확인</strong></p>
 <p>먼저 아들 키의 분포를 확인하기 위해 밀도 히스토그램과
 커널 밀도 추정(KDE) 기법으로 찾아진 확률 밀도 함수의 그래프를 함께 그린다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
-<span class="c1"># 남성 신장 히스토그램</span>
+<span class="c1"># 아들 키 밀도 히스토그램</span>
 <span class="n">pearson</span><span class="p">[</span><span class="s1">&#39;Son&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="c1"># 추정된 확률 밀도 함수 그래프</span>
+<span class="c1"># KDE 기법으로 계산된 확률 밀도 함수 그래프</span>
 <span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">pearson</span><span class="p">[</span><span class="s1">&#39;Son&#39;</span><span class="p">])</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Height&#39;</span><span class="p">)</span>
@@ -900,6 +904,9 @@ Name: Son, dtype: float64
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>아들 키 평균값</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_son</span> <span class="o">=</span> <span class="n">desc_son</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
@@ -913,6 +920,9 @@ Name: Son, dtype: float64
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p>아들 키 표준편차</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma_son</span> <span class="o">=</span> <span class="n">desc_son</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span>
@@ -926,9 +936,9 @@ Name: Son, dtype: float64
 </div>
 </div>
 </div>
-<p>아래 코드는
-<code class="docutils literal notranslate"><span class="pre">mu_son</span></code>와 <code class="docutils literal notranslate"><span class="pre">sigma_son</span></code>를 각각 평균값과 표준편차로 갖는 정규 분포의 확률 밀도 함수 그래프와
-앞서 KDE 기법으로 추정된 확률 밀도 함수 그래프가 거의 동일함을 보여준다.</p>
+<p><strong>정규 분포 확인</strong></p>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">mu_son</span></code>와 <code class="docutils literal notranslate"><span class="pre">sigma_son</span></code>을 각각 평균값과 표준편차로 갖는 정규 분포의 확률 밀도 함수 그래프와
+앞서 KDE 기법으로 계산된 확률 밀도 함수 그래프가 거의 동일함을 보여준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -954,21 +964,22 @@ Name: Son, dtype: float64
 <img alt="_images/504790fe9b8076900a8e57da4e37c4679c50d2d539f20df4fdff303385af52ff.png" src="_images/504790fe9b8076900a8e57da4e37c4679c50d2d539f20df4fdff303385af52ff.png" />
 </div>
 </div>
-<p><strong>주의사항:</strong> 표준편차가 7.15 정도로 1보다 많이 크기에 정규 분포에 비해 보다 펑퍼짐한 봉우리로
+<p>주의사항: 표준편차가 7.15 정도로 1보다 많이 크기에 정규 분포에 비해 보다 펑퍼짐한 봉우리로
 그려져야 하지만 표준 정규 분포에 가깝도록 보인다.
 하지만 이는 y-축이 0에서 0.4가 아닌 0에서 0.06 사이로 설정되었기에
 일종의 착시현상이 발생하기 때문이다.</p>
+<p><strong>정규 분포 활용</strong></p>
 <p>결론적으로 아들 키를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>는
-다음 정규 분포를 따른다.</p>
+다음 정규 분포를 따른다라고 봐도 무방하다.</p>
 <div class="math notranslate nohighlight">
 \[
-X \sim N(\mu_{son}, \sigma_{son}^2)
+X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 \]</div>
-<p>이를 코드로 구현하면 다음과 같다.
+<p>이를 다음과 같이 <code class="docutils literal notranslate"><span class="pre">norm</span></code> 객체를 이용하여 직접 확률 변수로 선언한다.
 <code class="docutils literal notranslate"><span class="pre">norm</span></code> 객체를 활용할 때 함수처럼 평균값과 표준편차를 지정할 수 있음에 주의한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_son</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma_son</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_son</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_son</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma_son</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -977,7 +988,7 @@ X \sim N(\mu_{son}, \sigma_{son}^2)
 예를 들어 아래 코드는 임의로 선택된 20대 남성의 키가 평균값 이하일 확률이 50%임을 확인해준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">mu_son</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_son</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">mu_son</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -995,11 +1006,11 @@ X \sim N(\mu_{son}, \sigma_{son}^2)
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">143</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">pdf</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">X_son</span><span class="o">.</span><span class="n">pdf</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(X \geq 180)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">184.5</span> <span class="p">,</span><span class="mf">0.015</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">191</span><span class="p">,</span> <span class="mf">0.024</span><span class="p">),</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(X \geq 180)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">184</span> <span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">190</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">),</span>
             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="c1"># ax.plot([173.5, 173.5], [0, f(173.5)], color =&#39;black&#39;, linewidth=1.4, linestyle=&quot;--&quot;)</span>
@@ -1011,13 +1022,13 @@ X \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d91828e5d47016149e41c34efc874e369f8f457e1c016ba2a8e597cb91b88e48.png" src="_images/d91828e5d47016149e41c34efc874e369f8f457e1c016ba2a8e597cb91b88e48.png" />
+<img alt="_images/f188f27692efcfbe827710e887ba0d3a803bf3ad58d7751b620c35046017a1ac.png" src="_images/f188f27692efcfbe827710e887ba0d3a803bf3ad58d7751b620c35046017a1ac.png" />
 </div>
 </div>
-<p>우연히 선택된 아들 키가 180 이상일 확률 <span class="math notranslate nohighlight">\(P(X \geq 180)\)</span>는 다음과 같이 계산된다.</p>
+<p>우연히 선택된 아들 키가 180 이상일 확률 <span class="math notranslate nohighlight">\(P(X \geq 180)\)</span>의 계산은 <code class="docutils literal notranslate"><span class="pre">X_xon.cdf()</span></code> 함수를 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">-</span> <span class="n">X_son</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1045,36 +1056,36 @@ X \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 </div>
-<p>실제 값과 정규 분포의 누적 분포 함수를 이용하여 계산된 값이 매우 유사하다.
+<p>결론: 실제 값과 정규 분포의 누적 분포 함수를 이용하여 계산된 값이 매우 유사하다.
 따라서 앞으로는 실제 값을 구하는 대신 정규 분포의 성질과 기능만을 활용하여
 확률을 계산한다.</p>
-<p><strong>예제</strong></p>
+<p><strong><span class="math notranslate nohighlight">\(P(180&lt;X&lt;185)\)</span> 계산</strong></p>
 <p>아래 코드는 우연히 만난 한국 남성이 키 180 이상, 185 이하일 확률 <span class="math notranslate nohighlight">\(P(180&lt;X&lt;185)\)</span>를 그래프로 보여준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">154</span><span class="p">,</span> <span class="mi">193</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">173.5</span><span class="p">,</span> <span class="mf">5.17</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">143</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">X_son</span><span class="o">.</span><span class="n">pdf</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">185</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu=173.5$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">173.8</span> <span class="p">,</span><span class="mf">0.002</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(180 \leq X \leq 185)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">181.5</span> <span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">185</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span>
+<span class="c1"># ax.annotate(r&#39;$\mu_{son}$&#39;, xy=(mu_son+.5 ,0.002))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(180 \leq X \leq 185)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">182.5</span> <span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">188</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">),</span>
             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">173.5</span><span class="p">,</span> <span class="mf">173.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mf">173.5</span><span class="p">)],</span> <span class="n">color</span> <span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="c1"># ax.plot([mu_son, mu_son], [0, f(mu_son)], color =&#39;black&#39;, linewidth=1.4, linestyle=&quot;--&quot;)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.082</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.062</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0a110c660b908cd92fcf9763ab880b28b44c289b91eb1b00cfb08a5b9e92949a.png" src="_images/0a110c660b908cd92fcf9763ab880b28b44c289b91eb1b00cfb08a5b9e92949a.png" />
+<img alt="_images/d322dfa793d4743162d554135e93cce1cb392cf65d58fed7c4e4c879735ca572.png" src="_images/d322dfa793d4743162d554135e93cce1cb392cf65d58fed7c4e4c879735ca572.png" />
 </div>
 </div>
 <p>한국 남성의 키를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 정규 분포 <span class="math notranslate nohighlight">\(N(173.5, (5.17)^2)\)</span> 을 따를 때
@@ -1093,38 +1104,61 @@ X \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </section>
 </section>
-<section id="id5">
-<h2><span class="section-number">15.2. </span>확률 변수 표준화<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="id6">
+<h2><span class="section-number">15.2. </span>확률 변수 표준화<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(X \sim N(\mu, \sigma^2)\)</span>이 성립한다고 가정했을 때
-<span class="math notranslate nohighlight">\(X\)</span>의 표준 점수는 다음과 같이 정의한다.
-단, <span class="math notranslate nohighlight">\(\mu\)</span>와 <span class="math notranslate nohighlight">\(\sigma\)</span>는 각각 <span class="math notranslate nohighlight">\(X\)</span>의 평균값과 표준편차를 가리킨다.</p>
+<span class="math notranslate nohighlight">\(X\)</span>의 표준 점수는 다음과 같이 정의된다.</p>
 <div class="math notranslate nohighlight">
 \[
 Z = \frac{X-\mu}{\sigma}
 \]</div>
-<p>확률 변수 <span class="math notranslate nohighlight">\(Z\)</span>는 이제 표준 정규 분포를 따른다.</p>
+<p>그러면 확률 변수 <span class="math notranslate nohighlight">\(Z\)</span>는 이제 표준 정규 분포를 따른다.</p>
 <div class="math notranslate nohighlight">
 \[
 Z \sim N(0,1)
 \]</div>
-<p>예를 들어 한국 남성 키 180과 185의 표준 점수는 다음과 같다.</p>
-<ul>
-<li><p>180의 표준점수:</p>
-<div class="math notranslate nohighlight">
-\[\frac{180-173.5}{5.17} = 1.257253\]</div>
-</li>
-<li><p>185의 표준점수</p>
-<div class="math notranslate nohighlight">
-\[\frac{185-173.5}{5.17} = 2.224371\]</div>
-</li>
-</ul>
-<p>표준화 이전과 이후의 확률 계산은 따르는 정규 분포만 다를 뿐 결과는 동일하다.</p>
+<p>예를 들어 아들 키 180과 185의 표준 점수는 다음과 같다.</p>
 <ul class="simple">
-<li><p>키 180 이상일 확률 = 표준 점수가 1.26 이상일 확률</p></li>
+<li><p>180의 표준점수:</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">F_gaussian</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mf">173.5</span><span class="p">,</span> <span class="mf">5.17</span><span class="p">))</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">F_gaussian</span><span class="p">((</span><span class="mi">180</span><span class="o">-</span><span class="mf">173.5</span><span class="p">)</span><span class="o">/</span><span class="mf">5.17</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_180</span> <span class="o">=</span> <span class="p">(</span><span class="mi">180</span> <span class="o">-</span> <span class="n">mu_son</span><span class="p">)</span><span class="o">/</span><span class="n">sigma_son</span>
+<span class="n">z_180</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.774723
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>185의 표준점수</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_185</span> <span class="o">=</span> <span class="p">(</span><span class="mi">185</span> <span class="o">-</span> <span class="n">mu_son</span><span class="p">)</span><span class="o">/</span><span class="n">sigma_son</span>
+<span class="n">z_185</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.473677
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>표준화 이전과 이후의 확률</strong></p>
+<p>표준화 이후에는 평균값과 표준편차만 다른 정규 분포를 따른다.
+하지만 확률은 달라지지 않는다.</p>
+<ul class="simple">
+<li><p>(키 180 이상일 확률) = (표준 점수가 0.774723 이상일 확률)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">X_son</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">180</span><span class="p">))</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">F_gaussian</span><span class="p">(</span><span class="n">z_180</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1135,12 +1169,11 @@ Z \sim N(0,1)
 </div>
 </div>
 <ul class="simple">
-<li><p>키 180 이상, 185 이하일 확률 = 표준 점수가 1.257253 이상, 2.224371 이하일 확률</p></li>
+<li><p>키 180 이상, 185 이하일 확률 = 표준 점수가  0.774723 이상, 1.473677 이하일 확률</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">F_gaussian</span><span class="p">(</span><span class="mi">185</span><span class="p">,</span> <span class="mf">173.5</span><span class="p">,</span> <span class="mf">5.17</span><span class="p">)</span> <span class="o">-</span> <span class="n">F_gaussian</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mf">173.5</span><span class="p">,</span> <span class="mf">5.17</span><span class="p">))</span> <span class="o">==</span> \
-<span class="p">(</span><span class="n">F_gaussian</span><span class="p">((</span><span class="mi">185</span> <span class="o">-</span> <span class="mf">173.5</span><span class="p">)</span><span class="o">/</span><span class="mf">5.17</span><span class="p">)</span> <span class="o">-</span> <span class="n">F_gaussian</span><span class="p">((</span><span class="mi">180</span> <span class="o">-</span> <span class="mf">173.5</span><span class="p">)</span><span class="o">/</span><span class="mf">5.17</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">X_son</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">185</span><span class="p">)</span> <span class="o">-</span> <span class="n">X_son</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">180</span><span class="p">))</span> <span class="o">==</span> <span class="p">(</span><span class="n">F_gaussian</span><span class="p">(</span><span class="n">z_185</span><span class="p">)</span> <span class="o">-</span> <span class="n">F_gaussian</span><span class="p">(</span><span class="n">z_180</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1151,10 +1184,10 @@ Z \sim N(0,1)
 </div>
 </div>
 </section>
-<section id="id6">
-<h2><span class="section-number">15.3. </span>정규분포 연산<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <section id="id7">
-<h3><span class="section-number">15.3.1. </span>합<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">15.3. </span>정규분포 연산<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="id8">
+<h3><span class="section-number">15.3.1. </span>합<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>전제
 $<span class="math notranslate nohighlight">\(X ∼ N(μ_{x}, 𝜎_{x}^{2})\)</span><span class="math notranslate nohighlight">\(
@@ -1271,8 +1304,8 @@ X+Y ∼N(μ_x+μ_y,\ \  𝜎_x^2+𝜎_y^2)
 P(X+Y&lt;380)= P(Z&lt;\frac{380-340}{30})=P(Z&lt;1.33)=0.9082
 \]</div>
 </section>
-<section id="id8">
-<h3><span class="section-number">15.3.2. </span>차이<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h3><span class="section-number">15.3.2. </span>차이<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p><strong>예제: 결혼 중매 참여 남자, 여자의 키 차이</strong></p>
 <ul class="simple">
 <li><p>전제</p>
@@ -1375,8 +1408,8 @@ P(X-Y&gt;5)= P(Z&gt;\frac{5-7}{6.02})=P(Z&gt;-0.33)=P(Z&lt;0.33)=0.6293
 \]</div>
 <p>주의사항: 정규 분포 그래프는 평균을 중심으로 해서 좌우 대칭</p>
 </section>
-<section id="id9">
-<h3><span class="section-number">15.3.3. </span>정규 분포 선형 변환<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<section id="id10">
+<h3><span class="section-number">15.3.3. </span>정규 분포 선형 변환<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>전제
 $<span class="math notranslate nohighlight">\(X ∼ N(μ, 𝜎^{2})\)</span>$</p></li>
@@ -1405,8 +1438,8 @@ X ∼ N(μ,𝜎^2)
 aX+b ∼ N(a⋅μ+b,\ \ a^2𝜎^2)
 \]</div>
 </section>
-<section id="id10">
-<h3><span class="section-number">15.3.4. </span>정규 분포의 독립 관측<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<section id="id11">
+<h3><span class="section-number">15.3.4. </span>정규 분포의 독립 관측<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>전제
 $<span class="math notranslate nohighlight">\(X ∼ N(μ, 𝜎^{2})\)</span><span class="math notranslate nohighlight">\(
@@ -1435,10 +1468,10 @@ X_1+X_2+⋯+X_n ∼ N(nμ,n𝜎^2)
 <p>단, <span class="math notranslate nohighlight">\(X_i\)</span>는 모두 <span class="math notranslate nohighlight">\(X\)</span>의 독립관측이다. (<span class="math notranslate nohighlight">\(X\)</span>를 독립적으로 <span class="math notranslate nohighlight">\(n\)</span>번 반복한다는 의미)</p>
 </section>
 </section>
-<section id="id11">
-<h2><span class="section-number">15.4. </span>정규분포 활용<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <section id="id12">
-<h3><span class="section-number">15.4.1. </span>이항 분포 확률 계산<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">15.4. </span>정규분포 활용<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<section id="id13">
+<h3><span class="section-number">15.4.1. </span>이항 분포 확률 계산<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>전제
 $<span class="math notranslate nohighlight">\(X ∼ B(n,p)\)</span><span class="math notranslate nohighlight">\(
@@ -1573,8 +1606,8 @@ P(2≤X≤3)=P(1&lt;X&lt;4)=^{12}C_{2}⋅(\frac{1}{2})^{12}+^{12}C_{3}⋅(\frac{
 <p>를 계산해야 함.
 하지만 정규분포 <span class="math notranslate nohighlight">\(N(6,3)\)</span>을 활용할 경우 <span class="math notranslate nohighlight">\(P(1.5&lt;X&lt;3.5)\ \ _{⟵ 연속성 보정\ \ \ \ \ \ \  \ }\)</span>를 계산해야 함</p>
 </section>
-<section id="id13">
-<h3><span class="section-number">15.4.2. </span>연속성 보정 일반화<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<section id="id14">
+<h3><span class="section-number">15.4.2. </span>연속성 보정 일반화<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(X ∼ B(n,p)\)</span>이며, <span class="math notranslate nohighlight">\(n⋅p&gt;5,\ n⋅q&gt;5\)</span>도 성립하면 <span class="math notranslate nohighlight">\(X ∼ N(np, npq)\)</span>가 성립한다.</p>
 <ol class="arabic simple">
 <li><p>이항분포에서 <span class="math notranslate nohighlight">\(P(X≤a)\)</span>를 계산하고자 할 때 정규분포에서 <span class="math notranslate nohighlight">\(P(X&lt;a+0.5)\)</span>를 계산한다.</p></li>
@@ -1582,8 +1615,8 @@ P(2≤X≤3)=P(1&lt;X&lt;4)=^{12}C_{2}⋅(\frac{1}{2})^{12}+^{12}C_{3}⋅(\frac{
 <li><p>이항분포에서 <span class="math notranslate nohighlight">\(P(a≤X≤b)\)</span>를 계산하고자 할 때 정규분포에서 <span class="math notranslate nohighlight">\(P(a-0.5&lt;X&lt;b+0.5)\)</span>를 계산한다.</p></li>
 </ol>
 </section>
-<section id="id14">
-<h3><span class="section-number">15.4.3. </span>푸아송 분포 확률 계산<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<section id="id15">
+<h3><span class="section-number">15.4.3. </span>푸아송 분포 확률 계산<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>전제
 $<span class="math notranslate nohighlight">\(X ∼ P_{0}(𝜆)\)</span><span class="math notranslate nohighlight">\(
@@ -1606,8 +1639,8 @@ P(Z&lt;\frac{51.5-40}{\sqrt{40}})=P(Z&lt;1.82)=0.9656
 <p>이항분포의 경우처럼 연속성 보정을 사용하는 것에 주의해야 한다.</p>
 </section>
 </section>
-<section id="id15">
-<h2><span class="section-number">15.5. </span>연습문제<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<section id="id16">
+<h2><span class="section-number">15.5. </span>연습문제<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/practices/practice-normal_distribution.ipynb">(연습) 정규 분포</a></p>
 </section>
 </section>
@@ -1679,23 +1712,24 @@ P(Z&lt;\frac{51.5-40}{\sqrt{40}})=P(Z&lt;1.82)=0.9656
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.1. 가우스 함수</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.1.1. 표준 정규 분포</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.1.2. 정규 분포 확률</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.1.3. 예제: 피어슨  데이터셋</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.2. 확률 변수 표준화</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.3. 정규분포 연산</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.3.1. 합</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.3.2. 차이</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.3.3. 정규 분포 선형 변환</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">15.3.4. 정규 분포의 독립 관측</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.2. 확률 변수 표준화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.3. 정규분포 연산</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.3.1. 합</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.3.2. 차이</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">15.3.3. 정규 분포 선형 변환</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">15.3.4. 정규 분포의 독립 관측</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">15.4. 정규분포 활용</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">15.4.1. 이항 분포 확률 계산</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">15.4.2. 연속성 보정 일반화</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">15.4.3. 푸아송 분포 확률 계산</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">15.4. 정규분포 활용</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">15.4.1. 이항 분포 확률 계산</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">15.4.2. 연속성 보정 일반화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">15.4.3. 푸아송 분포 확률 계산</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">15.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">15.5. 연습문제</a></li>
 </ul>
   </nav></div>
 
