@@ -943,7 +943,7 @@ Name: Son, dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
-<span class="c1"># 20대 남성 키 데이터에 대해 KDE 기법으로 추정된 확률 밀도 함수 그래프</span>
+<span class="c1"># 아들 키 데이터에 대해 KDE 기법으로 추정된 확률 밀도 함수 그래프</span>
 <span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">pearson</span><span class="p">[</span><span class="s1">&#39;Son&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;KDE&#39;</span><span class="p">)</span>
 
 <span class="c1"># mu_son와 sigma_son를 이용한 정규 분포의 확률 밀도 함수 그래프</span>
@@ -985,7 +985,7 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <p>이렇게 정의된 확률 변수의 확률 밀도 함수(pdf)와 누적 분포 함수(cdf) 등은 추가 인자 없이 바로 활용된다.
-예를 들어 아래 코드는 임의로 선택된 20대 남성의 키가 평균값 이하일 확률이 50%임을 확인해준다.</p>
+예를 들어 아래 코드는 임의로 선택된 아들 키가 평균값 이하일 확률이 50%임을 확인해준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_son</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">mu_son</span><span class="p">)</span>
@@ -1090,7 +1090,7 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <p>아들 키를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X_{son}\)</span>이 정규 분포 <span class="math notranslate nohighlight">\(N(173.5, (5.17)^2)\)</span> 을 따를 때
-키 180 이상, 185 이하의 남성을 소개팅에서 만날 확률 <span class="math notranslate nohighlight">\(P(180 \leq X_{son} \leq 185)\)</span>는 다음과 같이 계산된다.</p>
+키 180 이상, 185 이하의 값을 가리킬 확률 <span class="math notranslate nohighlight">\(P(180 \leq X_{son} \leq 185)\)</span>는 다음과 같이 계산된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_son</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">185</span><span class="p">)</span> <span class="o">-</span> <span class="n">X_son</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span>
