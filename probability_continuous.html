@@ -183,7 +183,7 @@
 <li class="toctree-l1"><a class="reference internal" href="probability_discrete.html">12. 이산 확률 분포</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">13. 연속 확률 분포</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expected_values.html">14. 기댓값과 분산</a></li>
-<li class="toctree-l1"><a class="reference internal" href="normal_distribution.html">15. 정규 분포 (준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="normal_distribution.html">15. 정규분포 (준비중)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sample_distribution.html">16. 표본분포(준비중)</a></li>
 </ul>
 
@@ -411,7 +411,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.1. 연속 확률 변수</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.1. 연속 확률변수</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">13.2. 누적 분포 함수</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">13.3. 확률 밀도 함수</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">13.4. 연속 균등 분포</a></li>
@@ -515,23 +515,23 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <p><strong>주요 내용</strong></p>
 <p>연속 확률 분포의 주요 개념을 소개한다.</p>
 <ul class="simple">
-<li><p>연속 확률 변수</p></li>
+<li><p>연속 확률변수</p></li>
 <li><p>누적 분포 함수</p></li>
 <li><p>확률 밀도 함수</p></li>
 <li><p>커널 밀도 추정</p></li>
 <li><p>결합 확률 분포</p></li>
 </ul>
 <section id="id2">
-<h2><span class="section-number">13.1. </span>연속 확률 변수<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p><a class="reference internal" href="probability_discrete.html#ch-probability-discrete"><span class="std std-numref">12장</span></a>에서 살펴 본 이산 확률 변수는
+<h2><span class="section-number">13.1. </span>연속 확률변수<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="probability_discrete.html#ch-probability-discrete"><span class="std std-numref">12장</span></a>에서 살펴 본 이산 확률변수는
 <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span> … 등의 형식으로 하나, 둘, 셋 하며 셀 수 있는
 <strong>이산형 값</strong><font size='2'>discrete value</font>을 취한다.</p>
-<p>예를 들어 하나의 정상적인 주사위를 던졌을 때 나오는 값을 가리키는 확률 변수는
+<p>예를 들어 하나의 정상적인 주사위를 던졌을 때 나오는 값을 가리키는 확률변수는
 1, 2, 3, 4, 5, 6 중에 하나를 취하고,
-캘리포니아 주택가격 데이터셋에서 임의로 선택된 구역의 소득 범주를 가리키는 확률 변수는
+캘리포니아 주택가격 데이터셋에서 임의로 선택된 구역의 소득 범주를 가리키는 확률변수는
 1, 2, 3, 4, 5 중에 하나를 취한다.
-그리고 어느 학급의 수학 시험 점수를 가리키는 확률 변수는 0부터 100까지의 정수 중에 하나를 취한다.</p>
-<p>반면에 <strong>연속 확률 변수</strong><font size='2'>continuous random variable</font>는
+그리고 어느 학급의 수학 시험 점수를 가리키는 확률변수는 0부터 100까지의 정수 중에 하나를 취한다.</p>
+<p>반면에 <strong>연속 확률변수</strong><font size='2'>continuous random variable</font>는
 일정 구간에 속한 임의의 실수를 가리킨다.
 여기서 구간은 0과 1사이 등 구간의 크기가 유한할 수도 있지만
 0보다 큰 모든 실수, 아니면 그냥 모든 실수 처럼 구간의 크기가 무한일 수도 있다.</p>
@@ -544,8 +544,8 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 부동소수점은 엄밀히 말해 유한소수만 다루지만 여기서는 특별한 의미 없이 실수라는 표현을 사용한다.</p>
 </div>
 <p><strong>이산 확률 분포 대 연속 확률 분포</strong></p>
-<p>이산 확률 분포는 확률 변수가 특정 값을 가리킬 확률을 표 형식으로 표현한다.
-예를 들어 아래 표는 정상적인 주사위 하나를 던졌을 때 나오는 값을 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 분포다.</p>
+<p>이산 확률 분포는 확률변수가 특정 값을 가리킬 확률을 표 형식으로 표현한다.
+예를 들어 아래 표는 정상적인 주사위 하나를 던졌을 때 나오는 값을 가리키는 확률변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 분포다.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>X</p></th>
@@ -569,7 +569,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </tbody>
 </table>
 </div>
-<p>그리고 <a class="reference internal" href="probability_discrete.html#ch-probability-discrete"><span class="std std-numref">12장</span></a>에서 살펴 본 아래 표는 캘리포니아 주택가격 데이터셋에서 임의로 선택된 구역의 소득 범주를 가리키는 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 분포다.
+<p>그리고 <a class="reference internal" href="probability_discrete.html#ch-probability-discrete"><span class="std std-numref">12장</span></a>에서 살펴 본 아래 표는 캘리포니아 주택가격 데이터셋에서 임의로 선택된 구역의 소득 범주를 가리키는 확률변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 분포다.
 1부터 5까지 소득 범주는 중위소득을 0에서 1.5, 1.5에서 3.0, 3.0에서 4.5, 4.5에서 6, 6 이상 등 5개의 구간에 각각 해당한다.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -592,26 +592,26 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </tbody>
 </table>
 </div>
-<p>반면에 연속 확률 변수가 따르는 확률 분포를 <strong>연속 확률 분포</strong><font size='2'>continuous probability distribution</font>라 한다.
-이산 확률 분포와는 달리 연속 확률 분포는 확률 변수가 특정 값을 취할 확률을 계산하지 않는다.
-이유는 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 특정 실수 <span class="math notranslate nohighlight">\(x\)</span>를 취할 확률은 항상 0이기 때문이다</p>
+<p>반면에 연속 확률변수가 따르는 확률 분포를 <strong>연속 확률 분포</strong><font size='2'>continuous probability distribution</font>라 한다.
+이산 확률 분포와는 달리 연속 확률 분포는 확률변수가 특정 값을 취할 확률을 계산하지 않는다.
+이유는 연속 확률변수 <span class="math notranslate nohighlight">\(X\)</span>가 특정 실수 <span class="math notranslate nohighlight">\(x\)</span>를 취할 확률은 항상 0이기 때문이다</p>
 <div class="math notranslate nohighlight">
 \[
 P(X=x) = 0
 \]</div>
 <p>예를 들어 0과 1사이의 실수 중에서 무작위로 하나의 값을 취했을 때 그 값이 정확히 0.5일 확률과
 캘리포니아 주택가격 데이터셋에서 임의로 선택된 구역의 중위소득이 정확히 1.999999일 확률 모두 0이다.</p>
-<p>연속 확률 분포는 대신 확률 변수가 특정 구간에서 하나의 값을 취할 확률을 계산한다.
+<p>연속 확률 분포는 대신 확률변수가 특정 구간에서 하나의 값을 취할 확률을 계산한다.
 0과 1사이에서 무작위로 선택한 값이 0.49에서 0.51 사이일 확률은 0.02, 즉 2%다.
 구간 전체의 크기가 1인데 0.49에서 0.51 사이 구간의 크기는 0.02이기 때문이다.
 반면에 캘리포니아 주택가격 데이터셋에서 임의로 선택된 구역의 중위소득이 1.5에서 3.0 사이일 확률은
 중위 소득이 2구간에 속할 확률인 0.333011이다.</p>
-<p>이처럼 연속 확률 변수는 아래 표현식처럼 특정 구간의 값을 취할 확률을 계산한다.</p>
+<p>이처럼 연속 확률변수는 아래 표현식처럼 특정 구간의 값을 취할 확률을 계산한다.</p>
 <div class="math notranslate nohighlight">
 \[
 P(a \le X \le b)
 \]</div>
-<p>또한 연속 확률 변수가 특정 값을 취할 확률은 0이기에 구간의 끝 포함 여부는 중요하지 않기에
+<p>또한 연속 확률변수가 특정 값을 취할 확률은 0이기에 구간의 끝 포함 여부는 중요하지 않기에
 아래 식에서처럼 등호 기호는 생략해도 된다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -621,20 +621,20 @@ P(a \le X \le b) = P(a &lt; X &lt; b) = P(a &lt; X \le b) = P(a \le X &lt; b)
 <section id="id3">
 <h2><span class="section-number">13.2. </span>누적 분포 함수<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>0과 1사이의 실수 중에서 구간 <span class="math notranslate nohighlight">\([a, b]\)</span>에서 하나의 값을 취할 확률은 <span class="math notranslate nohighlight">\(b-a\)</span>임을 바로 알 수 있다.
-하지만 연속 확률 변수가 특정 구간의 값을 취할 확률을 정확하게 계산하는 일이
+하지만 연속 확률변수가 특정 구간의 값을 취할 확률을 정확하게 계산하는 일이
 일반적으로 그렇게 간단하지 않다.
 예를 들어 캘리포니아 주택가격 데이터셋에서 임의로 선택된 구역의 중위소득이 2.0에서 2.1 사이일 확률은 쉽게 알 수 없다.
 이유는 해당 구간이 앞서 언급한 대로 0에서 1.5, 1.5에서 3.0, 3.0에서 4.5, 4.5에서 6, 6 이상 등 5개의 구간
 어디와도 일치하지 않기 때문이다.</p>
 <p>여기서는 <strong>누적 분포 함수</strong><font size='2'>cumulative distribution function</font>(CDF)를 활용하여
-연속 확률 변수가 특정 구간의 값을 취할 확률을 계산하는 방법을 소개한다.
-연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의 누적 분포 함수 <span class="math notranslate nohighlight">\(F\)</span>는
-아래 식에서 처럼 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 특정 값보다 같거나 작은 값을 취할 확률을 계산한다.</p>
+연속 확률변수가 특정 구간의 값을 취할 확률을 계산하는 방법을 소개한다.
+연속 확률변수 <span class="math notranslate nohighlight">\(X\)</span>의 누적 분포 함수 <span class="math notranslate nohighlight">\(F\)</span>는
+아래 식에서 처럼 확률변수 <span class="math notranslate nohighlight">\(X\)</span>가 특정 값보다 같거나 작은 값을 취할 확률을 계산한다.</p>
 <div class="math notranslate nohighlight">
 \[
 F(a) = P(X \le a)
 \]</div>
-<p>누적 분포 함수가 알려진 경우 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>에서 <span class="math notranslate nohighlight">\(b\)</span> 사이의 값을 취할 확률은
+<p>누적 분포 함수가 알려진 경우 연속 확률변수 <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>에서 <span class="math notranslate nohighlight">\(b\)</span> 사이의 값을 취할 확률은
 다음과 같이 계산된다.
 단, <span class="math notranslate nohighlight">\(a \le b\)</span>를 가정한다.</p>
 <div class="math notranslate nohighlight">
@@ -642,7 +642,7 @@ F(a) = P(X \le a)
 P(a \le X \le b) = F(b) - F(a)
 \]</div>
 <p><strong>예제: 캘리포니아 구역별 중위소득 확률 분포</strong></p>
-<p>확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 캘리포니아의 구역별 중위소득을 가리킨다고 할 때
+<p>확률변수 <span class="math notranslate nohighlight">\(X\)</span>가 캘리포니아의 구역별 중위소득을 가리킨다고 할 때
 임의로 선택된 구역의 중위소득이 특정 값 이하일 확률을 계산하는 누적 분포 함수 <span class="math notranslate nohighlight">\(F\)</span>를
 부울 인덱싱을 이용하여 정의할 수 있다.</p>
 <p>아래 코드는 캘리포니아 주택가격 데이터셋을 불러온 후에
@@ -685,9 +685,9 @@ Name: median_income, Length: 19675, dtype: float64
 </div>
 </div>
 </div>
-<p>중위소득을 가리키는 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 특정 값 <span class="math notranslate nohighlight">\(a\)</span> 이하의 값을 가질 확률은
+<p>중위소득을 가리키는 연속 확률변수 <span class="math notranslate nohighlight">\(X\)</span>가 특정 값 <span class="math notranslate nohighlight">\(a\)</span> 이하의 값을 가질 확률은
 중위소득이 <span class="math notranslate nohighlight">\(a\)</span>보다 같거나 작은 구역의 비율이며,
-아래 <code class="docutils literal notranslate"><span class="pre">F_income()</span></code> 함수가 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>에 대한 누적 분포 함수를 구현한다.</p>
+아래 <code class="docutils literal notranslate"><span class="pre">F_income()</span></code> 함수가 확률변수 <span class="math notranslate nohighlight">\(X\)</span>에 대한 누적 분포 함수를 구현한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">F_income</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
@@ -748,7 +748,7 @@ Name: median_income, Length: 19675, dtype: float64
 </div>
 </div>
 <p><strong>누적 분포 함수의 성질</strong></p>
-<p>연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(x_0\)</span>에서 <span class="math notranslate nohighlight">\(x_1\)</span> 사이에서만 값을 취한다고 가정하자.
+<p>연속 확률변수 <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(x_0\)</span>에서 <span class="math notranslate nohighlight">\(x_1\)</span> 사이에서만 값을 취한다고 가정하자.
 그러면 <span class="math notranslate nohighlight">\(X\)</span>의 누적 분포 함수<span class="math notranslate nohighlight">\(F\)</span>는 다음 세 가지 성질을 만족한다.
 단, <span class="math notranslate nohighlight">\(a, b \in [x_0, x_1]\)</span>과 <span class="math notranslate nohighlight">\(a \le b\)</span>를 가정한다.</p>
 <p><span class="math notranslate nohighlight">\((1)\,\,\, F(a) \le F(b)\)</span></p>
@@ -877,9 +877,9 @@ Name: median_income, Length: 19675, dtype: float64
 </section>
 <section id="id4">
 <h2><span class="section-number">13.3. </span>확률 밀도 함수<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>연속 확률 변수가 특정 구간 내에서 값을 취할 확률을 이용하여
+<p>연속 확률변수가 특정 구간 내에서 값을 취할 확률을 이용하여
 누적 분포 함수의 특정 값 근처에서의 변화율을 계산할 수 있다.</p>
-<p>예를 들어 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>가 임의의 양수 <span class="math notranslate nohighlight">\(h\)</span>에 대해 구간 <span class="math notranslate nohighlight">\([x, x+h]\)</span>에서 값을 취할 확률은 다음과 같다.</p>
+<p>예를 들어 연속 확률변수 <span class="math notranslate nohighlight">\(X\)</span>가 임의의 양수 <span class="math notranslate nohighlight">\(h\)</span>에 대해 구간 <span class="math notranslate nohighlight">\([x, x+h]\)</span>에서 값을 취할 확률은 다음과 같다.</p>
 <div class="math notranslate nohighlight">
 \[
 F(x + h) - F(x)
@@ -903,7 +903,7 @@ F'(x) = \lim_{h \to 0}\frac{F(x + h) - F(x)}{h}
 \[
 F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\; dx
 \]</div>
-<p>영역의 변화율을 가리킨다는 의미에서 <span class="math notranslate nohighlight">\(f\)</span>를 연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>의
+<p>영역의 변화율을 가리킨다는 의미에서 <span class="math notranslate nohighlight">\(f\)</span>를 연속 확률변수 <span class="math notranslate nohighlight">\(X\)</span>의
 <strong>확률 밀도 함수</strong><font size='2'>probability density function</font>(PDF)라 부른다.</p>
 <p><strong>확률 밀도 함수 vs. 누적 분포 함수</strong></p>
 <p>아래 두 그래프가 위 설명의 내용을 정리해서 전달한다.</p>
@@ -920,14 +920,14 @@ F(a) = P(X \le a) = P(x_0 &lt; X \le a) = F(a) - F(x_0) = \int_{x_0}^{a} f(x)\; 
 </ul>
 <p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/pdf-cdf-1.png" style="width:100%"></div></p><div class="note admonition">
 <p class="admonition-title">확률 질량 함수 vs. 확률 밀도 함수</p>
-<p>확률 질량 함수(PMF)는 이산 확률 변수가 특정 값을 취할 확률을 계산한다.
-반면에 확률 밀도 함수(PDF)는 연속 확률 변수가 특정 값 이하의 값을 가질 확률의 변화율을 계산한다.</p>
+<p>확률 질량 함수(PMF)는 이산 확률변수가 특정 값을 취할 확률을 계산한다.
+반면에 확률 밀도 함수(PDF)는 연속 확률변수가 특정 값 이하의 값을 가질 확률의 변화율을 계산한다.</p>
 <p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/DataSci/master/jupyter-book/images/pmf-pdf-cdf.png" style="width:450px"></div></p>
 </div>
 </section>
 <section id="id5">
 <h2><span class="section-number">13.4. </span>연속 균등 분포<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>특정 범위 내에서 균등하게 값을 취할 수 있는 연속 확률 변수의 분포를
+<p>특정 범위 내에서 균등하게 값을 취할 수 있는 연속 확률변수의 분포를
 <strong>연속 균등 분포</strong><font size='2'>continuous uniform distribution</font>라 한다.
 <span class="math notranslate nohighlight">\(U(a, b)\)</span>는 구간 <span class="math notranslate nohighlight">\([a, b]\)</span>에서 값을 취하는 연속 균등 분포를 표현한다.
 연속 균등 분포 <span class="math notranslate nohighlight">\(U(a, b)\)</span>의 누적 분포 함수는 아래 그림에서 보여지는, 직선의 기울기가 <span class="math notranslate nohighlight">\(\frac{1}{b-a}\)</span>인 직선의 선분으로 표현된다.</p>
@@ -1510,7 +1510,7 @@ KDE 기법이 원래 그렇게 작동한다.</p>
 <h3><span class="section-number">13.5.3. </span>히스토그램과 KDE 기법 활용 기준<a class="headerlink" href="#kde" title="Link to this heading">#</a></h3>
 <p>지금까지의 설명과 예제를 보면 KDE 기법으로 추정된 확률 밀도 함수가 데이터셋의 실제 분포를 잘 추정하는 것으로 보인다.
 KDE 기법은 그런데 <strong>단봉 분포</strong><font size='2'>unimodal distribution</font>,
-즉 하나의 봉우리만 갖는 형태의 데이터 분포를 갖는 확률 변수에 대해서만 제대로 작동한다.
+즉 하나의 봉우리만 갖는 형태의 데이터 분포를 갖는 확률변수에 대해서만 제대로 작동한다.
 반면에 두 개의 봉우리를 갖는 형태의 <strong>쌍봉 분포</strong><font size='2'>bimodal distribution</font>,
 세 개 이상의 봉우리를 갖는 형태의 <strong>다봉 분포</strong><font size='2'>multimodal distribution</font>에 대해서는
 그렇지 않다.</p>
@@ -1527,7 +1527,7 @@ KDE 기법은 그런데 <strong>단봉 분포</strong><font size='2'>unimodal di
 </section>
 <section id="id8">
 <h2><span class="section-number">13.6. </span>결합 확률 분포<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
-<p><span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> 두 개의 연속 확률 변수가 주어졌을 때 <span class="math notranslate nohighlight">\((X, Y)\)</span>는 각각의 확률 변수가 취할 수 있는 값들의 조합을 가리키는 결합 확률 변수다.
+<p><span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> 두 개의 연속 확률변수가 주어졌을 때 <span class="math notranslate nohighlight">\((X, Y)\)</span>는 각각의 확률변수가 취할 수 있는 값들의 조합을 가리키는 결합 확률변수다.
 <span class="math notranslate nohighlight">\((X, y)\)</span>가 특정 영역에서 발생할 가능성의 확률 분포를
 <strong>연속 결합 확률 분포</strong><font size='2'>continuous joint probability distribution</font>라 부르며
 <span class="math notranslate nohighlight">\(X\)</span>가 <span class="math notranslate nohighlight">\(a\)</span>에서 <span class="math notranslate nohighlight">\(b\)</span> 사이에서, <span class="math notranslate nohighlight">\(Y\)</span>가 <span class="math notranslate nohighlight">\(c\)</span>에서 <span class="math notranslate nohighlight">\(d\)</span> 사이에서 값을 취할 확률은</p>
@@ -1548,7 +1548,7 @@ P(a \le X \le b\;\;\text{and}\;\; c \le Y \le d) = p
 \]</div>
 <p><strong>예제: 캘리포니아 구역별 중위소득과 중위주택가격의 결합 확률 분포</strong></p>
 <p><span class="math notranslate nohighlight">\(X\)</span>가 캘리포니아의 구역별 중위소득을,
-<span class="math notranslate nohighlight">\(Y\)</span>가 캘리포니아의 구역별 중위주택가격을 가리키는 확률 변수라 하자.
+<span class="math notranslate nohighlight">\(Y\)</span>가 캘리포니아의 구역별 중위주택가격을 가리키는 확률변수라 하자.
 임의로 선택된 구역의 중위소득과 중위주택가격이 각각 특정 영역에 포함될 확률을
 계산하는 연속 결합 확률 분포를
 부울 인덱싱을 이용하여 정의할 수 있다.</p>
@@ -1855,9 +1855,9 @@ P(a \le X \le b\;\;\text{and}\;\; c \le Y \le d) = p
 </div>
 <p>참고로 언급된 두 구간은 <a class="reference internal" href="probability_discrete.html#ch-probability-discrete"><span class="std std-numref">12장</span></a>에서 각각 중위소득 3구간,
 중위주택가격 4구간으로 지정되었으며
-당시 이산 결합 확률 변수가 각각의 구간에 속할 확률은 0.169911, 즉 약 17%로 계산되었다.</p>
+당시 이산 결합 확률변수가 각각의 구간에 속할 확률은 0.169911, 즉 약 17%로 계산되었다.</p>
 <p>차이가 발생하는 이유는 캘리포니아 주택 데이터셋은 유한 개의 데이터만 포함하기에
-확률 변수가 특정 실수를 가질 확률이 0이 아니기 때문이다.
+확률변수가 특정 실수를 가질 확률이 0이 아니기 때문이다.
 실제로 중위소득이 3.0일 확률이 0이 아니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1971,7 +1971,7 @@ P(a \le X \le b\;\;\text{and}\;\; c \le Y \le d) = p
 </div>
 </div>
 <p><strong>결합 확률 분포 함수의 성질</strong></p>
-<p>두 확률 변수가 취할 수 있는 전 영역에서의 결합 확률은 1이다.</p>
+<p>두 확률변수가 취할 수 있는 전 영역에서의 결합 확률은 1이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_XY</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
@@ -1992,14 +1992,14 @@ P(a \le X \le b\;\;\text{and}\;\; c \le Y \le d) = p
 결합 확률 분포 함수를 구할 수 있다.</p>
 <section id="id10">
 <h3><span class="section-number">13.7.1. </span>결합 확률 밀도 함수<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<p>연속 확률 변수 <span class="math notranslate nohighlight">\(X\)</span>에 대한 누적 분포 함수 <span class="math notranslate nohighlight">\(F(a)\)</span>를 계산할 때
+<p>연속 확률변수 <span class="math notranslate nohighlight">\(X\)</span>에 대한 누적 분포 함수 <span class="math notranslate nohighlight">\(F(a)\)</span>를 계산할 때
 확률 밀도 함수의 적분으로 계산하였다.</p>
 <div class="math notranslate nohighlight">
 \[
 F(a) = P(X \le a) = \int_{-\infty}^{a} f(x)\; dx
 \]</div>
 <p>단변량 누적 분포 함수를 계산할 때처럼
-<span class="math notranslate nohighlight">\((X, Y)\)</span> 결합 확률 변수에 대한 결합 확률 분포 함수도 결합 확률 밀도 함수의 적분으로 계산할 수 있다.
+<span class="math notranslate nohighlight">\((X, Y)\)</span> 결합 확률변수에 대한 결합 확률 분포 함수도 결합 확률 밀도 함수의 적분으로 계산할 수 있다.
 단, 결합 확률 밀도 함수 <span class="math notranslate nohighlight">\(f(x, y)\)</span>는 항상 음이 아닌 실수이어야 한다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2016,8 +2016,8 @@ P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f(x, y)\; dy\, dx
 <section id="id11">
 <h3><span class="section-number">13.7.2. </span>결합 확률 분포 시각화<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>Seaborn 라이브러리의 <code class="docutils literal notranslate"><span class="pre">kdeplot()</span></code> 함수를 활용하여
-두 개의 확률 변수를 결합하는 이변량 결합 확률 분포를 다양한 방식으로 시각화할 수 있다.</p>
-<p>먼저 아래 코드는 결합 확률 변수의 분포를 등고선 형식으로 그려준다.
+두 개의 확률변수를 결합하는 이변량 결합 확률 분포를 다양한 방식으로 시각화할 수 있다.</p>
+<p>먼저 아래 코드는 결합 확률변수의 분포를 등고선 형식으로 그려준다.
 안쪽 등고선이 보다 높은 데이터 밀도를 갖는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2195,7 +2195,7 @@ P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f(x, y)\; dy\, dx
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.1. 연속 확률 변수</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.1. 연속 확률변수</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">13.2. 누적 분포 함수</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">13.3. 확률 밀도 함수</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">13.4. 연속 균등 분포</a></li>
