@@ -747,7 +747,8 @@ Name: median_income, Length: 19675, dtype: float64
 집값이 소수점 이하 넷째 자리까지 사용하기에 0.00001을 빼준 값에 해당하는 데이터는 존재하지 않기에
 특정 지점에서의 확률이 항상 0이 되어
 <span class="math notranslate nohighlight">\(P(a \leq X \leq b)\)</span>를 <code class="docutils literal notranslate"><span class="pre">F_income()</span></code> 함수를 이용하여 정확하게 계산할 수 있게 된다.
-이런 확률값 보정은 유한개의 실전 데이터를 직접 이용하여 확률값을 계산할 때 항상 고려해야 한다.</p>
+이런 확률값 보정은 유한개의 실전 데이터를 직접 이용하여 확률값을 계산할 때 항상 고려해야 한다.
+확률값 보정을 위해 사용되는 <code class="docutils literal notranslate"><span class="pre">error</span></code>는 사용되는 데이터의 소수점 이하 자릿수보다 한 자리 더 많은 값으로 지정한다.</p>
 <p>아래 <code class="docutils literal notranslate"><span class="pre">P_income()</span></code> 함수는 임의로 선택된 구역의 중위소득이 특정 구간에 속할 확률을 계산하며
 앞서 설명한 확률값 보정을 적용하였다.</p>
 <div class="cell docutils container">
