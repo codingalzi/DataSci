@@ -58,10 +58,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sample_distribution';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="15. 정규 분포 (준비중)" href="normal_distribution.html" />
+    <link rel="prev" title="15. 정규분포 (준비중)" href="normal_distribution.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,7 +182,7 @@
 <li class="toctree-l1"><a class="reference internal" href="probability_discrete.html">12. 이산 확률 분포</a></li>
 <li class="toctree-l1"><a class="reference internal" href="probability_continuous.html">13. 연속 확률 분포</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expected_values.html">14. 기댓값과 분산</a></li>
-<li class="toctree-l1"><a class="reference internal" href="normal_distribution.html">15. 정규 분포 (준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="normal_distribution.html">15. 정규분포 (준비중)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">16. 표본분포(준비중)</a></li>
 </ul>
 
@@ -408,8 +410,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.1. 표본평균의 분포</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.2. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.1. 독립동일분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.2. 독립성</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">16.3. 정규분포 연산</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">16.3.1. 합과 차</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">16.3.2. 정규분포 선형 변환</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">16.3.3. 정규분포의 독립 관측</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">16.4. 합의 분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">16.5. 표본평균의 분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">16.6. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -423,7 +434,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ch-sample-distribution">
 <span id="id1"></span><h1><span class="section-number">16. </span>표본분포(준비중)<a class="headerlink" href="#ch-sample-distribution" title="Link to this heading">#</a></h1>
-<p>준비중 …</p>
 <p><strong>기본 설정</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">numpy</span></code>와 <code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리를 각각 <code class="docutils literal notranslate"><span class="pre">np</span></code>와 <code class="docutils literal notranslate"><span class="pre">pd</span></code>로 불러온다.</p>
 <div class="cell docutils container">
@@ -465,10 +475,22 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 </div>
-<p>데이터 시각화를 위해 <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>를 <code class="docutils literal notranslate"><span class="pre">plt</span></code>라는 별칭으로 불러온다.</p>
+<p>데이터 시각화를 위해 <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>를 <code class="docutils literal notranslate"><span class="pre">plt</span></code>로,
+<code class="docutils literal notranslate"><span class="pre">seaborn</span></code>을 <code class="docutils literal notranslate"><span class="pre">sns</span></code>로 불러온다.
+<code class="docutils literal notranslate"><span class="pre">seaborn</span></code> 라이브러리는 통계 관련 데이터의 정보를 보다 세련되고 정확하게 전달하는 그래프를 그리는 도구를 제공한다.
+<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> 라이브러리를 바탕으로 만들어져서 함께 사용해도 된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>그래프 스타일을 <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>에서 제공하는 <code class="docutils literal notranslate"><span class="pre">white</span></code> 스타일로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -489,6 +511,754 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <li><p>중심극한정리</p></li>
 <li><p>큰 수의 법칙</p></li>
 </ul>
+<section id="id2">
+<h2><span class="section-number">16.1. </span>독립동일분포<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>…</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">16.2. </span>독립성<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>…</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">16.3. </span>정규분포 연산<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3><span class="section-number">16.3.1. </span>합과 차<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>상호 독립인 확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 정규분포를 따른다고 가정한다.</p>
+<div class="math notranslate nohighlight">
+\[
+X \sim N(\mu_X, \sigma_X^2) \qquad Y \sim N(\mu_y, \sigma_y^2)
+\]</div>
+<p>그러면 두 확률 번수의 합과 차를 확률변수 <span class="math notranslate nohighlight">\(X+Y\)</span>와 <span class="math notranslate nohighlight">\(X-Y\)</span> 모두 정규분포를 따르며
+두 분포가 따르는 정규분포는 다음과 같다.</p>
+<div class="math notranslate nohighlight">
+\[
+X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\mu_Y,\ \sigma_{X}^{2}+\sigma_{Y}^{2})
+\]</div>
+<p>즉, <span class="math notranslate nohighlight">\(X+Y\)</span>의 평균값과 분산은 두 확률변수 각각의 평균값의 합과 분산의 합으로,
+<span class="math notranslate nohighlight">\(X-Y\)</span>의 평균값과 분산은 두 확률변수 각각의 평균값의 차와 분산의 합으로 계산된다.
+<span class="math notranslate nohighlight">\(X+Y\)</span>와 <span class="math notranslate nohighlight">\(X-Y\)</span>의 분산이 두 확률변수 각각의 분산의 합으로 계산되는 이유를 직관적으로 설명하기 위해
+다음 두 예제를 이용한다.</p>
+<p><strong>예제: 신랑, 신부 체중의 합의 분포</strong></p>
+<p>해야 할 일: 아래 분포를 따라는 남녀 키 데이터를 생성해서 활용할 것.
+상호 독립이어야 함.</p>
+<ul>
+<li><p>전제</p>
+<ul class="simple">
+<li><p>신부의 체중 <span class="math notranslate nohighlight">\(X ∼ N(150,400)\)</span></p></li>
+<li><p>신랑의 체중 <span class="math notranslate nohighlight">\(Y ∼ N(190, 500)\)</span></p></li>
+</ul>
+<p>⇒ 신랑 + 신부의 체중 <span class="math notranslate nohighlight">\(∼ N(340,900)\ _{= N(150+190=340,\ \ 400+500,900)}\)</span></p>
+</li>
+</ul>
+<blockquote>
+<div><p><em>신랑과 신부의 체중은 상호 독립이라고 가정</em></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># 정규분포의 평균과 표준편차</span>
+<span class="n">mu_w</span><span class="p">,</span> <span class="n">sigma_w</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">20</span>
+<span class="n">mu_m</span><span class="p">,</span> <span class="n">sigma_m</span> <span class="o">=</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">22</span>
+
+<span class="c1"># x축 범위</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_w</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="n">mu_w</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_m</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="n">mu_m</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># 정규분포 공식을 이용한 y값 계산</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu_w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_w</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">mu_m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_m</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># 그래프 출력</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;bride&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;groom&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/44aa25c22be8482b1b66c322816caae079ac5c29760f5bb37dbdd779b374b347.png" src="_images/44aa25c22be8482b1b66c322816caae079ac5c29760f5bb37dbdd779b374b347.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 신랑 + 신부 </span>
+<span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">340</span><span class="p">,</span> <span class="mi">30</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># 그래프 출력</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/aa592503dde2b7b2a482dc3365c4a088643eec85e0bdeeb4ca6b2616c59d0812.png" src="_images/aa592503dde2b7b2a482dc3365c4a088643eec85e0bdeeb4ca6b2616c59d0812.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 전체 비교</span>
+<span class="n">mu_w</span><span class="p">,</span> <span class="n">sigma_w</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">20</span>
+<span class="n">mu_m</span><span class="p">,</span> <span class="n">sigma_m</span> <span class="o">=</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">22</span>
+<span class="n">mu_sum</span><span class="p">,</span> <span class="n">sigma_sum</span> <span class="o">=</span> <span class="mi">340</span><span class="p">,</span> <span class="mi">30</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_w</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="n">mu_w</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_m</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="n">mu_m</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_sum</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_sum</span><span class="p">,</span> <span class="n">mu_sum</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_sum</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu_w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_w</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">mu_m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_m</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_sum</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x3</span> <span class="o">-</span> <span class="n">mu_sum</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_sum</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># 그래프 출력</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;bride&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;groom&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/845e051105c4320914205909259125f45c8a30079c4b2cdfaae35d7571a3b73a.png" src="_images/845e051105c4320914205909259125f45c8a30079c4b2cdfaae35d7571a3b73a.png" />
+</div>
+</div>
+<p>“신랑 + 신부”의 모양이 보다 납작해진다. 이유는 분산이 커지기 때문이다</p>
+<p>연속데이터를 다루는 두 정규분포의 합도 연속데이터를 다루는 정규분포를 따른다.<br />
+또한, 새로운 정규분포의 기대치와 분산은 각각의 기대치 또는 분산을 이용하여 아래와 같이 구한다.</p>
+<ul class="simple">
+<li><p>전제 : <span class="math notranslate nohighlight">\(X ∼N(μ_x, 𝜎^2_x), Y ∼ N(μ_y, 𝜎_y^2)\ \ \ _{(서로\ 독립)}\)</span></p></li>
+<li><p>결론 :  <span class="math notranslate nohighlight">\(⇒ \begin{pmatrix} 
+E(X+Y) = μ_x+μ_y,\ \  Var(X+Y)=Var(X)+Var(Y) \\
+X+Y ∼N(μ_x+μ_y,\ \  𝜎_x^2+𝜎_y^2)
+\end{pmatrix}\)</span></p></li>
+</ul>
+<p>신부와 신랑의 체중의 합이 380 파운드 이하일 확률은?</p>
+<div class="math notranslate nohighlight">
+\[
+P(X+Y&lt;380)= P(Z&lt;\frac{380-340}{30})=P(Z&lt;1.33)=0.9082
+\]</div>
+<p><strong>예제: 결혼 중매 참여 남자, 여자의 키 차이</strong></p>
+<ul class="simple">
+<li><p>전제</p>
+<ul>
+<li><p>남자의 키 <span class="math notranslate nohighlight">\(X ∼ N(71, 20.25)\)</span></p></li>
+<li><p>여자의 키 <span class="math notranslate nohighlight">\(Y ∼ N(64,16)\)</span></p></li>
+</ul>
+</li>
+<li><p>결론<br />
+⟹ 남자의 키와 여자의 키의 차이의 분포 <span class="math notranslate nohighlight">\(∼N(7, 36.25)_{=N(71-64, 20.25+16)}\)</span></p></li>
+</ul>
+<blockquote>
+<div><p>남자와 여자의 키는 상호 독립이라고 가정</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_w</span><span class="p">,</span> <span class="n">sigma_w</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span>
+<span class="n">mu_m</span><span class="p">,</span> <span class="n">sigma_m</span> <span class="o">=</span> <span class="mi">71</span><span class="p">,</span> <span class="mf">4.5</span> 
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_w</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="n">mu_w</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_m</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="n">mu_m</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu_w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_w</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">mu_m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_m</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Woman&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Man&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7dd29e75155275c521689ad270f90c7304fb5e4a1bc22cdda472520b5e591d30.png" src="_images/7dd29e75155275c521689ad270f90c7304fb5e4a1bc22cdda472520b5e591d30.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  남자 + 여자</span>
+<span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">6.02</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># 그래프 출력</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/75473a71c800d46a3caf93f600ff0c97337dd305f815625f0dd37f0a5a6926ae.png" src="_images/75473a71c800d46a3caf93f600ff0c97337dd305f815625f0dd37f0a5a6926ae.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 전체 비교</span>
+<span class="n">mu_w</span><span class="p">,</span> <span class="n">sigma_w</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span>
+<span class="n">mu_m</span><span class="p">,</span> <span class="n">sigma_m</span> <span class="o">=</span> <span class="mi">71</span><span class="p">,</span> <span class="mf">4.5</span>
+<span class="n">mu_sum</span><span class="p">,</span> <span class="n">sigma_sum</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">6.02</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_w</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="n">mu_w</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_m</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="n">mu_m</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_sum</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_sum</span><span class="p">,</span> <span class="n">mu_sum</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_sum</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu_w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_w</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">mu_m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_m</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_sum</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x3</span> <span class="o">-</span> <span class="n">mu_sum</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_sum</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># 그래프 출력</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Woman&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Man&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d289b01520d4ca8e9bb6964a61bdca340ca23bda231635cbb4ef8407940ddbf7.png" src="_images/d289b01520d4ca8e9bb6964a61bdca340ca23bda231635cbb4ef8407940ddbf7.png" />
+</div>
+</div>
+<p>“남자 - 여자”의 모양이 보다 납작해진다. 이유는 분산이 커지기 때문이다.</p>
+<p>연속데이터를 다루는 두 정규분포의 차이도 연속데이터를 다루는 정규분포를 따른다.<br />
+또한, 새로운 정규분포의 기대치와 분산은 각각의 기대치 또는 분산을 이용하여 아래와 같이 구한다.</p>
+<ul class="simple">
+<li><p>전제 : <span class="math notranslate nohighlight">\(X ∼N(μ_x, 𝜎^2_x), Y ∼ N(μ_y, 𝜎_y^2)\ \ \ _{(서로\ 독립)}\)</span></p></li>
+<li><p>결론 :  <span class="math notranslate nohighlight">\(⇒ \begin{pmatrix} 
+E(X-Y) = μ_x-μ_y,\ \  Var(X-Y)=Var(X)+Var(Y) \\
+X-Y ∼N(μ_x-μ_y,\ \  𝜎_x^2+𝜎_y^2)
+\end{pmatrix}\)</span></p></li>
+</ul>
+<p>남자와 여자의 키의 차이가 5인치 이상일 확률은?</p>
+<div class="math notranslate nohighlight">
+\[
+P(X-Y&gt;5)= P(Z&gt;\frac{5-7}{6.02})=P(Z&gt;-0.33)=P(Z&lt;0.33)=0.6293
+\]</div>
+<p>주의사항: 정규분포 그래프는 평균을 중심으로 해서 좌우 대칭</p>
+<p><strong>상호 독립성의 중요성: 피어슨  데이터셋</strong></p>
+<p><strong>주의사항</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 상호 독립이지 않은 경우를 다뤄야 함.</p></li>
+<li><p>예를 들어 피어슨 데이터셋의 아버지와 아들의 키 데이터셋. 아버지 키와 아들 키는 독립적일 수 없음.</p></li>
+</ul>
+<p>아래 코드는 피어슨<font size='2'>Pearson</font>이 1903년에 실험을 위해 수집한
+아버지와 아들의 키로 구성된 데이터셋을 불러온다.
+원래 인치 단위를 사용하지만 편의를 위해 센티미터 단위로 변환되었다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearson</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="o">+</span><span class="s2">&quot;pearson_dataset.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">pearson</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Father</th>
+      <th>Son</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>165.1</td>
+      <td>151.9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>160.8</td>
+      <td>160.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>165.1</td>
+      <td>160.8</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>167.1</td>
+      <td>159.5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>155.2</td>
+      <td>163.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>아버지 키와 아들 키 각각 총 1,078개의 부동소수점 값이 포함되었다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearson</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1078 entries, 0 to 1077
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   Father  1078 non-null   float64
+ 1   Son     1078 non-null   float64
+dtypes: float64(2)
+memory usage: 17.0 KB
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>아버지 키와 아들 키의 상관관계</strong></p>
+<ul class="simple">
+<li><p>공분산</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearson</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Father</th>
+      <th>Son</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Father</th>
+      <td>48.612085</td>
+      <td>24.984513</td>
+    </tr>
+    <tr>
+      <th>Son</th>
+      <td>24.984513</td>
+      <td>51.125832</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>피어슨 상관계수</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearson</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Father</th>
+      <th>Son</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Father</th>
+      <td>1.000000</td>
+      <td>0.501163</td>
+    </tr>
+    <tr>
+      <th>Son</th>
+      <td>0.501163</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>결론: 아버지키와 아들 키는 상호 독립이 아님.</p>
+<ul class="simple">
+<li><p>아버지 키와 아들 키 합 데이터 추가</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearson</span><span class="p">[</span><span class="s1">&#39;Father+Son&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pearson</span><span class="p">[</span><span class="s1">&#39;Father&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">pearson</span><span class="p">[</span><span class="s1">&#39;Son&#39;</span><span class="p">]</span>
+<span class="n">pearson</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Father</th>
+      <th>Son</th>
+      <th>Father+Son</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>165.1</td>
+      <td>151.9</td>
+      <td>317.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>160.8</td>
+      <td>160.5</td>
+      <td>321.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>165.1</td>
+      <td>160.8</td>
+      <td>325.9</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>167.1</td>
+      <td>159.5</td>
+      <td>326.6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>155.2</td>
+      <td>163.3</td>
+      <td>318.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearson_desc</span> <span class="o">=</span> <span class="n">pearson</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="n">pearson_desc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Father</th>
+      <th>Son</th>
+      <th>Father+Son</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1078.000000</td>
+      <td>1078.000000</td>
+      <td>1078.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>171.922635</td>
+      <td>174.457978</td>
+      <td>346.380612</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>6.975473</td>
+      <td>7.153552</td>
+      <td>12.241158</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>149.900000</td>
+      <td>148.600000</td>
+      <td>307.800000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>167.100000</td>
+      <td>169.900000</td>
+      <td>338.025000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>172.200000</td>
+      <td>174.200000</td>
+      <td>346.400000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>176.800000</td>
+      <td>179.100000</td>
+      <td>354.800000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>191.500000</td>
+      <td>199.100000</td>
+      <td>381.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>평균값의 합</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_FS</span> <span class="o">=</span> <span class="n">pearson_desc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Father&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">pearson_desc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Son&#39;</span><span class="p">]</span>
+<span class="n">mu_FS</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>346.380612
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>분산의 합</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma_FS_squared</span> <span class="o">=</span> <span class="n">pearson_desc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;Father&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">pearson_desc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;Son&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">sigma_FS_squared</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>99.830524
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>이론적인 아버지 키와 아들 키의 합의 표준편차</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma_FS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_FS_squared</span><span class="p">)</span>
+<span class="n">sigma_FS</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.991523
+</pre></div>
+</div>
+</div>
+</div>
+<p>이론과 실제 계산된 표준편차가 많이 다르다.</p>
+<ul class="simple">
+<li><p>실제 아버지 키와 아들 키의 합의 표준편차</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma_FaddS</span> <span class="o">=</span> <span class="n">pearson_desc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;Father+Son&#39;</span><span class="p">]</span>
+<span class="n">sigma_FaddS</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.241158
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>(아버지 키 + 아들 키)의 이론적 정규분포</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="n">X_FS</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">mu_FS</span><span class="p">,</span> <span class="n">sigma_FS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>확률 밀도 함수 그래프로 구분하기</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># KDE 기법으로 계산된 확률 밀도 함수 그래프</span>
+<span class="c1"># 아버지 키의 정규분포</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">pearson</span><span class="p">[</span><span class="s1">&#39;Father&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Father&#39;</span><span class="p">)</span>
+<span class="c1"># 아들 키의 정규분포</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">pearson</span><span class="p">[</span><span class="s1">&#39;Son&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Son&#39;</span><span class="p">)</span>
+<span class="c1"># (아버지 키+아들 키)의 실제 분포: 정규분포 아님</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">pearson</span><span class="p">[</span><span class="s1">&#39;Father+Son&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Father+Son&#39;</span><span class="p">)</span>
+
+<span class="c1"># (아버지 키+아들 키)의 이론적 정규분포</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X_FS</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N(\mu_</span><span class="si">{FS}</span><span class="s1">, \sigma_</span><span class="si">{FS}</span><span class="s1">)$&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Height&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4472d4af88341426dbe36d02eb59120b5941feb6e237843c4836fa4337b8a989.png" src="_images/4472d4af88341426dbe36d02eb59120b5941feb6e237843c4836fa4337b8a989.png" />
+</div>
+</div>
+<p>결론</p>
+<ul class="simple">
+<li><p>두 정규분포가 독립이 아니면 합의 분산은 언급된 공식으로 계산되지 않는다.</p></li>
+<li><p>아버지 키와 많이 다른 아들 키가 존재할 수 있기 때문으로 추정된다. (?)</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3><span class="section-number">16.3.2. </span>정규분포 선형 변환<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>전제
+$<span class="math notranslate nohighlight">\(X ∼ N(μ, 𝜎^{2})\)</span>$</p></li>
+<li><p>결론
+$<span class="math notranslate nohighlight">\(⇒\ aX+b ∼ N(aμ+b,\ a^{2}𝜎)\)</span>$</p></li>
+</ul>
+<p>X가 한국인 성인 한 명의 체중이라고 하면 <strong>정규분포</strong>를 따른다.<br />
+체중의 평균이 μ, 분산은 <span class="math notranslate nohighlight">\(𝜎^2\)</span>라 하자. 즉 다음이 성립한다.</p>
+<div class="math notranslate nohighlight">
+\[
+X ∼ N(μ,𝜎^2)
+\]</div>
+<p>이제, 중력이 지구의 4배인 행성이 있고 모든 한국인이 그 행성으로 이주했다고 가정하자.<br />
+그러면 모든 한국인의 체중이 지구에서의 체중의 4배로 늘어난다. 따라서 체중의 평균도 4배, 즉 4μ가 된다.</p>
+<p>반면에, 체중의 분산은 지구에서의 경우보다 <span class="math notranslate nohighlight">\(4^2배,\ 즉\ 16𝜎^2\)</span>이 된다.</p>
+<p>따라서, 새로운 행성에서의 한국인 체중은 아래의 분포를 따른다</p>
+<div class="math notranslate nohighlight">
+\[
+4X∼ N(4μ,16𝜎^2)
+\]</div>
+<p><span class="math notranslate nohighlight">\(4X\)</span>는 사람들의 체중이 4배되었음을 의미한다.</p>
+<p>이렇게 기존에 사용된 데이터가 <span class="math notranslate nohighlight">\(ax+b의\ 방식으로\ 변하면,\ _{(기존\ 데이터의\ 각각의\ 값을\ a배한\ 후\ b를\ 더해주는\ 방식)}\)</span>,
+즉, <strong>선형 변환</strong>을 하면 새로운 데이터의 평균과 분산은 아래와 같이 변한다.</p>
+<div class="math notranslate nohighlight">
+\[
+aX+b ∼ N(a⋅μ+b,\ \ a^2𝜎^2)
+\]</div>
+</section>
+<section id="id7">
+<h3><span class="section-number">16.3.3. </span>정규분포의 독립 관측<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>전제
+$<span class="math notranslate nohighlight">\(X ∼ N(μ, 𝜎^{2})\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(⇒ X_{1}, ⋯, X_ n\ 모두\ X의\ 독립\ 관측\)</span>$</p></li>
+<li><p>결론
+$<span class="math notranslate nohighlight">\(X_1+⋯+X_n ∼ N(nμ, n𝜎^2)\)</span>$</p></li>
+</ul>
+<p>X가 한국인 성인 한 명의 체중이라고 하면 <strong>정규분포</strong>를 따른다.<br />
+체중의 평균이 μ, 분산은 <span class="math notranslate nohighlight">\(𝜎^2\)</span>라 하자. 즉 다음이 성립한다.</p>
+<div class="math notranslate nohighlight">
+\[
+X ∼ N(μ,𝜎^2)
+\]</div>
+<p>이제, <u>한국인 성인 4명을 무작위로, 그리고 상호 독립적으로 선발</u>하였을 때 4명 체중의 합의 평균은 4μ이다.</p>
+<p>또한, 4명 체중의 합의 분산도 <span class="math notranslate nohighlight">\(4𝜎^2\)</span>이 된다.</p>
+<p>무작위적이며 상호 독립적인 방식으로 4명을 선택하여 합한 체중의 분포를 <span class="math notranslate nohighlight">\(X+X+X+X\)</span>로 표기한다</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(X+X+X+X\)</span>는 4명을 무작위적이며, 서로 아무 상관없이 독립적으로 선택한다는 의미</p>
+</div></blockquote>
+<p>이때 <span class="math notranslate nohighlight">\(X+X+X+X ∼ N(4μ,4𝜎^2)\)</span>이 성립한다.</p>
+<p>일반적으로 아래 공식이 성립한다.</p>
+<div class="math notranslate nohighlight">
+\[
+X_1+X_2+⋯+X_n ∼ N(nμ,n𝜎^2)
+\]</div>
+<p>단, <span class="math notranslate nohighlight">\(X_i\)</span>는 모두 <span class="math notranslate nohighlight">\(X\)</span>의 독립관측이다. (<span class="math notranslate nohighlight">\(X\)</span>를 독립적으로 <span class="math notranslate nohighlight">\(n\)</span>번 반복한다는 의미)</p>
 <p><strong>캘리포니아 주택가격 데이터셋</strong></p>
 <p>캘리포니아 주택가격 데이터셋을 계속해서 활용한다.</p>
 <ul class="simple">
@@ -891,8 +1661,14 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </div>
 </div>
 </div>
-<section id="id2">
-<h2><span class="section-number">16.1. </span>표본평균의 분포<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">16.4. </span>합의 분포<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>…</p>
+</section>
+<section id="id9">
+<h2><span class="section-number">16.5. </span>표본평균의 분포<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p><strong>10% 표본추출</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1186,8 +1962,8 @@ dtype: float64
 </div>
 </div>
 </section>
-<section id="id3">
-<h2><span class="section-number">16.2. </span>연습문제<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id10">
+<h2><span class="section-number">16.6. </span>연습문제<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/practices/practice-sampling_distribution.ipynb">(연습) 표본 분포</a></p>
 </section>
 </section>
@@ -1228,7 +2004,7 @@ dtype: float64
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">15. </span>정규 분포 (준비중)</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>정규분포 (준비중)</p>
       </div>
     </a>
 </div>
@@ -1247,8 +2023,17 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.1. 표본평균의 분포</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.2. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.1. 독립동일분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.2. 독립성</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">16.3. 정규분포 연산</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">16.3.1. 합과 차</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">16.3.2. 정규분포 선형 변환</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">16.3.3. 정규분포의 독립 관측</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">16.4. 합의 분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">16.5. 표본평균의 분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">16.6. 연습문제</a></li>
 </ul>
   </nav></div>
 
