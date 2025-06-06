@@ -697,27 +697,65 @@ Name: median_income, Length: 19675, dtype: float64
 </div>
 </div>
 </div>
-<p>임의의 구역을 선택했을 때 소득 범주 2에 속할 확률 <span class="math notranslate nohighlight">\(P(1.5 &lt; X &lt;= 3.0)\)</span>를
+<p>임의의 구역을 선택했을 때 소득 범주 2에 속할 확률 <span class="math notranslate nohighlight">\(P(1.5 &lt; X \leq 3.0)\)</span>를
 <code class="docutils literal notranslate"><span class="pre">F_income()</span></code>을 이용하여 계산하면 앞서 언급한 값과 동일하게 나온다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F_income</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">F_income</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F_income</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">F_income</span><span class="p">(</span><span class="mf">1.49999</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.333011
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.333367
 </pre></div>
 </div>
 </div>
 </div>
-<p>아래 <code class="docutils literal notranslate"><span class="pre">P_income()</span></code> 함수는 임의로 선택된 구역의 중위소득이 특정 구간에 속할 확률을 계산한다.</p>
+<p><strong>주의사항: 확률값 보정</strong></p>
+<p>위 코드에서 1.5 대신 <code class="docutils literal notranslate"><span class="pre">1.49999</span></code>를 사용한 이유는
+연속 확률 변수라 하더라도 유한개의 데이터만 다루기에
+확률 변수가 특정 값을 가질 확률이 0이 아닐 수 있다.
+예를 들어 집값이 1.5일 확률이 0.000356이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">error</span> <span class="o">=</span> <span class="p">(</span><span class="n">housing</span> <span class="o">==</span> <span class="mf">1.5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">error</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.000356
+</pre></div>
+</div>
+</div>
+</div>
+<p>이런 이유로 <code class="docutils literal notranslate"> <span class="pre">F_length(3.0)</span> <span class="pre">-</span> <span class="pre">F_length(1.5)</span></code>는 0.000356만큼 작은 값으로 계산된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">F_income</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">F_income</span><span class="p">(</span><span class="mf">1.5</span><span class="p">))</span> <span class="o">+</span> <span class="n">error</span> <span class="o">==</span> <span class="p">(</span><span class="n">F_income</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">F_income</span><span class="p">(</span><span class="mf">1.49999</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>결국 <span class="math notranslate nohighlight">\(P(a \leq X \leq b)\)</span>와 <span class="math notranslate nohighlight">\(P(a \lt X \leq b)\)</span> 가 서로 다른 확률을 가질 수 있다.
+이런 결과를 보정하기 위해 <code class="docutils literal notranslate"><span class="pre">a</span></code>에서 10의 -5승을 뺀 값을 대신 사용한다.
+집값이 소수점 이하 넷째 자리까지 사용하기에 0.00001을 빼준 값에 해당하는 데이터는 존재하지 않기에
+특정 지점에서의 확률이 항상 0이 되어
+<span class="math notranslate nohighlight">\(P(a \leq X \leq b)\)</span>를 <code class="docutils literal notranslate"><span class="pre">F_income()</span></code> 함수를 이용하여 정확하게 계산할 수 있게 된다.
+이런 확률값 보정은 유한개의 실전 데이터를 직접 이용하여 확률값을 계산할 때 항상 고려해야 한다.</p>
+<p>아래 <code class="docutils literal notranslate"><span class="pre">P_income()</span></code> 함수는 임의로 선택된 구역의 중위소득이 특정 구간에 속할 확률을 계산하며
+앞서 설명한 확률값 보정을 적용하였다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">P_income</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">assert</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;둘째 인자가 첫째 인자보다 같거나 커야 함&#39;</span>
     
-    <span class="k">return</span> <span class="n">F_income</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">F_income</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">F_income</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">F_income</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="mf">1.0e-5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -729,7 +767,7 @@ Name: median_income, Length: 19675, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.333011
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.333367
 </pre></div>
 </div>
 </div>
@@ -742,7 +780,7 @@ Name: median_income, Length: 19675, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.020534
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.021449
 </pre></div>
 </div>
 </div>
@@ -1000,7 +1038,7 @@ F(x) = \frac{x-a}{b-a}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d79a174c0ed3cc493d7073024196c870283e18199eac47ed7fd5c02345a323af.png" src="_images/d79a174c0ed3cc493d7073024196c870283e18199eac47ed7fd5c02345a323af.png" />
+<img alt="_images/786583a2f9d395f171ec88e61b1a87c5e7610a46528aa4f1846abc35d23726dd.png" src="_images/786583a2f9d395f171ec88e61b1a87c5e7610a46528aa4f1846abc35d23726dd.png" />
 </div>
 </div>
 <p><strong>균등 분포의 히스토그램과 확률 밀도 함수</strong></p>
@@ -1061,7 +1099,7 @@ h_i = \frac{t_i}{t} \cdot \frac{1}{w_i}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fc2910c41b8bf27ae4a7b7181c74ea05ae394a81f84371ef9f5bfc79d204ecd0.png" src="_images/fc2910c41b8bf27ae4a7b7181c74ea05ae394a81f84371ef9f5bfc79d204ecd0.png" />
+<img alt="_images/3cfc885bd5ea852193230cbdbbf8e3a851839cb1341e09f14392ecd83ae14de8.png" src="_images/3cfc885bd5ea852193230cbdbbf8e3a851839cb1341e09f14392ecd83ae14de8.png" />
 </div>
 </div>
 <p>이론적 평균 막대 높이와 실제 평균 막대 높이가 다르게 계산되는 이유는 부동소수점 연산에 기인한다.
@@ -1142,7 +1180,7 @@ memory usage: 153.8 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5c6539614340e526818275435b7e3f29ad806ced2176045c112cd4bb2b278605.png" src="_images/5c6539614340e526818275435b7e3f29ad806ced2176045c112cd4bb2b278605.png" />
+<img alt="_images/ed9b736f18ee6ef0794f40c2a57c8b9d7acf4e51dd58b49c88739da402a3781b.png" src="_images/ed9b736f18ee6ef0794f40c2a57c8b9d7acf4e51dd58b49c88739da402a3781b.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> 함수를 <code class="docutils literal notranslate"><span class="pre">density=True</span></code> 키워드 인자와 함께 호출할 때 앞서 설명한 대로 막대 면적의
@@ -1169,7 +1207,7 @@ memory usage: 153.8 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a1688310a81c97ee635d83d237e8310537f5cc48055bfe5ad7bff2dc51120098.png" src="_images/a1688310a81c97ee635d83d237e8310537f5cc48055bfe5ad7bff2dc51120098.png" />
+<img alt="_images/cfc09e2deb7fc78346be91436f6181b13b84d67aca5cf5390a1a60cf33b980d7.png" src="_images/cfc09e2deb7fc78346be91436f6181b13b84d67aca5cf5390a1a60cf33b980d7.png" />
 </div>
 </div>
 <p>가우스 KDE 기법으로 추정된 확률 밀도 함수는 모든 실수에 대해 정의된다.
@@ -1191,7 +1229,7 @@ memory usage: 153.8 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/34abf02fabb2c3d45d20e421b8e92307e9504625eb8ec629bc725fcd51188afc.png" src="_images/34abf02fabb2c3d45d20e421b8e92307e9504625eb8ec629bc725fcd51188afc.png" />
+<img alt="_images/f9989d786501cab95119600d53bc9dae20cb10e6329d1954d4ac65ee7099d051.png" src="_images/f9989d786501cab95119600d53bc9dae20cb10e6329d1954d4ac65ee7099d051.png" />
 </div>
 </div>
 <p>하지만 여기서는 <code class="docutils literal notranslate"><span class="pre">cut</span></code> 키워드 인자를 지정하지 않고
@@ -1210,7 +1248,7 @@ memory usage: 153.8 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2701d25849084c9e7cd232b795fa089c36e900fa8b84fcc534c59de92fa53c73.png" src="_images/2701d25849084c9e7cd232b795fa089c36e900fa8b84fcc534c59de92fa53c73.png" />
+<img alt="_images/9b28355c026527ed68bb16386142d85a5fa59698fb6d920ec1bb027c59dc721a.png" src="_images/9b28355c026527ed68bb16386142d85a5fa59698fb6d920ec1bb027c59dc721a.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> 함수의 <code class="docutils literal notranslate"><span class="pre">bw_method=0.19</span></code> 키워드 인자를 함께 사용하면
@@ -1227,7 +1265,7 @@ memory usage: 153.8 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1f0b8729770af3e32885d2905fef597b6a4cd1751aa6e8eaa5ad6f4a6015a3dd.png" src="_images/1f0b8729770af3e32885d2905fef597b6a4cd1751aa6e8eaa5ad6f4a6015a3dd.png" />
+<img alt="_images/519d72fee443923fad4ca90c6b910f6bfb5aae1ff418f02b655d9aa9c7969fe7.png" src="_images/519d72fee443923fad4ca90c6b910f6bfb5aae1ff418f02b655d9aa9c7969fe7.png" />
 </div>
 </div>
 <p>구간별 밀도 히스토그램과 함께 그리면 자연스럽게 막대들의 끝을 따라 부드럽게 움직이는 것처럼 보인다.</p>
@@ -1246,7 +1284,7 @@ memory usage: 153.8 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1f602b215d69919c8f64e0576e2d4df48fa2ee0775757c9ada6073f0dbfafabe.png" src="_images/1f602b215d69919c8f64e0576e2d4df48fa2ee0775757c9ada6073f0dbfafabe.png" />
+<img alt="_images/b5e0baa21a5ee99079e0f0daab51ed6b508a204db7f048452c4a3c2d09db81df.png" src="_images/b5e0baa21a5ee99079e0f0daab51ed6b508a204db7f048452c4a3c2d09db81df.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">bw_method</span></code> 변수는 평활모수(smoothing parameter, bandwidth)라고 불리는 값을 인자로 받는다.
@@ -1270,7 +1308,7 @@ memory usage: 153.8 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/66486ddac6c658f19ace1d1624f17af4b94c18f9379c978f7a8e40fc9671324b.png" src="_images/66486ddac6c658f19ace1d1624f17af4b94c18f9379c978f7a8e40fc9671324b.png" />
+<img alt="_images/19e178795804b8e4e12e52e6b065a0950c86c9752a3ec30e98fd90e516b28335.png" src="_images/19e178795804b8e4e12e52e6b065a0950c86c9752a3ec30e98fd90e516b28335.png" />
 </div>
 </div>
 <p>중위소득 데이터의 경우엔
@@ -1297,7 +1335,7 @@ memory usage: 153.8 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/aeba6069ead74404af7d2c0d790faf2e962fd7cf388e657a4fa6baebb2925492.png" src="_images/aeba6069ead74404af7d2c0d790faf2e962fd7cf388e657a4fa6baebb2925492.png" />
+<img alt="_images/36948314ba6a8d84e5d01e6cf3634dbbc2d827f02c57826023ce802296f8747c.png" src="_images/36948314ba6a8d84e5d01e6cf3634dbbc2d827f02c57826023ce802296f8747c.png" />
 </div>
 </div>
 <p>참고로 <code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> 함수의 반환값은 <code class="docutils literal notranslate"><span class="pre">matplotlib.axes._axes.Axes</span></code> 클래스의 객체이고
@@ -1323,7 +1361,7 @@ memory usage: 153.8 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/133e0eea72afd0d464fb2007bc051243fbe5fa3754f57437c9537dd900758bf7.png" src="_images/133e0eea72afd0d464fb2007bc051243fbe5fa3754f57437c9537dd900758bf7.png" />
+<img alt="_images/fa88b1e62f19c6a5d43ac052bfe9bcebb9692c968aa88afa9cb58d77db1538c3.png" src="_images/fa88b1e62f19c6a5d43ac052bfe9bcebb9692c968aa88afa9cb58d77db1538c3.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> 모듈</strong></p>
@@ -1363,7 +1401,7 @@ memory usage: 153.8 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/481310ba6f3237f4a8fcc37dbc351cc27a1acbe8e38f3a4397b1ce15959e714a.png" src="_images/481310ba6f3237f4a8fcc37dbc351cc27a1acbe8e38f3a4397b1ce15959e714a.png" />
+<img alt="_images/dc12992a12a2171c3879823544727403bccd283f27f5af02ac4279c4691a845f.png" src="_images/dc12992a12a2171c3879823544727403bccd283f27f5af02ac4279c4691a845f.png" />
 </div>
 </div>
 </section>
@@ -1472,7 +1510,7 @@ KDE 기법이 원래 그렇게 작동한다.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.333011
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.333367
 </pre></div>
 </div>
 </div>
@@ -2031,7 +2069,7 @@ P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f(x, y)\; dy\, dx
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4d85d95a6d5f16939880672d5eea79d055538680c6fd53f330215082f7a17ba8.png" src="_images/4d85d95a6d5f16939880672d5eea79d055538680c6fd53f330215082f7a17ba8.png" />
+<img alt="_images/52b31762e4109c32af690757ee2fc00c9d88736d68d39fe133f5fd366f503630.png" src="_images/52b31762e4109c32af690757ee2fc00c9d88736d68d39fe133f5fd366f503630.png" />
 </div>
 </div>
 <p>아래 코드는 데이터 산점도와 확률 밀도 함수 그래프를 함께 그린다.
@@ -2050,7 +2088,7 @@ P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f(x, y)\; dy\, dx
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3734cb45d9a8e1a7cab8bd0c93db1c9c3a4de1797fbbdb70bf3a2df4323ffc97.png" src="_images/3734cb45d9a8e1a7cab8bd0c93db1c9c3a4de1797fbbdb70bf3a2df4323ffc97.png" />
+<img alt="_images/8eb2f6ad8e839e3ea0f1715168a9e28a1efb129f83cc3aa421250568bc569df6.png" src="_images/8eb2f6ad8e839e3ea0f1715168a9e28a1efb129f83cc3aa421250568bc569df6.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> 함수 자체로 밀도를 색으로 구분해주는 기능이 있다.
@@ -2067,7 +2105,7 @@ P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f(x, y)\; dy\, dx
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/53cc902f7a7ae0d90f763a7e8b4c101b7b3e333efa9ee17e57b709f2ff60dea0.png" src="_images/53cc902f7a7ae0d90f763a7e8b4c101b7b3e333efa9ee17e57b709f2ff60dea0.png" />
+<img alt="_images/b8b1c02e13253f6de5a82b4f857c83c604b896be9c82f0fb72fe9298d55af6fb.png" src="_images/b8b1c02e13253f6de5a82b4f857c83c604b896be9c82f0fb72fe9298d55af6fb.png" />
 </div>
 </div>
 </section>
@@ -2120,7 +2158,7 @@ P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f(x, y)\; dy\, dx
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c4cee5b7a7a6f06695c61be28f48c153efe93dbdd4cb148d0156e7296c4327df.png" src="_images/c4cee5b7a7a6f06695c61be28f48c153efe93dbdd4cb148d0156e7296c4327df.png" />
+<img alt="_images/244118e1762732d930c3142ebc6fef80095b445689992a13e2ca6e678daa4a8a.png" src="_images/244118e1762732d930c3142ebc6fef80095b445689992a13e2ca6e678daa4a8a.png" />
 </div>
 </div>
 <p>참고로 지금까지 확률 밀도 함수의 그래프는 모두 Cycler 색상의 두번째(C1)인 주황색(<code class="docutils literal notranslate"><span class="pre">tab:orange</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">#ff7f0e</span></code>)으로 지정되었다.</p>
