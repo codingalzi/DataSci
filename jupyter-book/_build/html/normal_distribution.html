@@ -417,7 +417,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.1.3. 예제: 피어슨  데이터셋</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.2. 확률변수 표준화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.2. 정규분포 표준화</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.3. 정규분포 특징</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.4. 정규분포 활용</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.4.1. 이항 분포 확률 계산</a></li>
@@ -1089,14 +1089,19 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </section>
 </section>
 <section id="id6">
-<h2><span class="section-number">15.2. </span>확률변수 표준화<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
-<p><span class="math notranslate nohighlight">\(X \sim N(\mu, \sigma^2)\)</span>이 성립한다고 가정했을 때
-<span class="math notranslate nohighlight">\(X\)</span>의 표준 점수는 다음과 같이 정의된다.</p>
+<h2><span class="section-number">15.2. </span>정규분포 표준화<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="oneD_data.html#sec-scaling"><span class="std std-numref">6.5절</span></a>에서 소개한 표준화는 데이터의 분포를 평균값은 0, 표준편차는 1이 되도록 하며,
+이를 확률변수가 가리킬 수 있는 값들에 대해 적용해도 동일하다.</p>
+<p>임의의 확률변수 <span class="math notranslate nohighlight">\(X\)</span>에 대해 <span class="math notranslate nohighlight">\(X\)</span>가 가리키는 값의 표준 점수를 가리키는 확률변수 <span class="math notranslate nohighlight">\(Z\)</span>를 다음과 같이 정의한다.
+그러면 확률변수 <span class="math notranslate nohighlight">\(Z\)</span>가 가리키는 값들의 평균값 <span class="math notranslate nohighlight">\(\mu_Z\)</span>와 표준편차 <span class="math notranslate nohighlight">\(\sigma_Z\)</span>는 각각 0과 1이 된다.
+단, <span class="math notranslate nohighlight">\(\mu_X\)</span>와 <span class="math notranslate nohighlight">\(\sigma_X\)</span>는 각각 <span class="math notranslate nohighlight">\(X\)</span>가 가리키는 값의 평균값과 표준편차다.</p>
 <div class="math notranslate nohighlight">
 \[
-Z = \frac{X-\mu}{\sigma}
+Z = \frac{X-\mu_X}{\sigma_X}
 \]</div>
-<p>그러면 확률변수 <span class="math notranslate nohighlight">\(Z\)</span>는 이제 표준 정규분포를 따른다.</p>
+<p>확률변수 <span class="math notranslate nohighlight">\(X\)</span>가 만약 정규분포를 따른다면,
+즉 만약 <span class="math notranslate nohighlight">\(X \sim N(\mu, \sigma^2)\)</span>이 성립하면
+확률변수 <span class="math notranslate nohighlight">\(Z\)</span>는 표준 정규분포를 따른다.</p>
 <div class="math notranslate nohighlight">
 \[
 Z \sim N(0,1)
@@ -1135,8 +1140,8 @@ Z \sim N(0,1)
 </div>
 </div>
 <p><strong>표준화 이전과 이후의 확률</strong></p>
-<p>표준화 이후에는 평균값과 표준편차만 다른 정규분포를 따른다.
-하지만 확률은 달라지지 않는다.</p>
+<p>정규분포를 따르는 확률변수를 표준화한 다음에는 평균값과 표준편차만 다를뿐
+표준화 이전과 이후의 확률값은 달라지지 않는다.</p>
 <ul class="simple">
 <li><p>(키 180 이상일 확률) = (표준 점수가 0.774723 이상일 확률)</p></li>
 </ul>
@@ -1407,7 +1412,7 @@ P(X&lt;6)=P(x=0)+⋯+P(x=5) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/013b37c1a1a961076feeee02671d5134e6d8fc8b756c6beca17cfd7ece7eff75.png" src="_images/013b37c1a1a961076feeee02671d5134e6d8fc8b756c6beca17cfd7ece7eff75.png" />
+<img alt="_images/e3c180b354189b186d85eb8f60758e4fef91a54b948ad2d6ecf8bb1a44500f86.png" src="_images/e3c180b354189b186d85eb8f60758e4fef91a54b948ad2d6ecf8bb1a44500f86.png" />
 </div>
 </div>
 <p>2️⃣ <span class="math notranslate nohighlight">\(X ∼ N(6, 3)\)</span>일 때 <span class="math notranslate nohighlight">\(P(X&lt;6)\)</span>은 아래 그래프에서 빨간색으로 칠해진 면적에 대응</p>
@@ -1431,7 +1436,7 @@ P(X&lt;6)=P(x=0)+⋯+P(x=5) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/40f5f437ba786361885d2e47c7e7831e6633926b90d8cd1b0a64c9218978676b.png" src="_images/40f5f437ba786361885d2e47c7e7831e6633926b90d8cd1b0a64c9218978676b.png" />
+<img alt="_images/b0552d685381e54bc800d8bfa1fd33f448cf26764663e36ea4f6edc39c044282.png" src="_images/b0552d685381e54bc800d8bfa1fd33f448cf26764663e36ea4f6edc39c044282.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1577,7 +1582,7 @@ P(Z&lt;\frac{51.5-40}{\sqrt{40}})=P(Z&lt;1.82)=0.9656
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.1.3. 예제: 피어슨  데이터셋</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.2. 확률변수 표준화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.2. 정규분포 표준화</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.3. 정규분포 특징</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.4. 정규분포 활용</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.4.1. 이항 분포 확률 계산</a></li>
