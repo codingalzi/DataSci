@@ -183,7 +183,7 @@
 <li class="toctree-l1"><a class="reference internal" href="probability_discrete.html">12. 이산 확률 분포</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">13. 연속 확률 분포</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expected_values.html">14. 기댓값과 분산</a></li>
-<li class="toctree-l1"><a class="reference internal" href="normal_distribution.html">15. 정규분포 (준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="normal_distribution.html">15. 정규분포</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sample_distribution.html">16. 표본분포(준비중)</a></li>
 </ul>
 
@@ -711,10 +711,10 @@ Name: median_income, Length: 19675, dtype: float64
 </div>
 </div>
 </div>
-<p><strong>주의사항: 확률값 보정</strong></p>
+<p><strong>연속성 보정</strong></p>
 <p>위 코드에서 1.5 대신 <code class="docutils literal notranslate"><span class="pre">1.49999</span></code>를 사용한 이유는
 연속 확률 변수라 하더라도 유한개의 데이터만 다루기에
-확률 변수가 특정 값을 가질 확률이 0이 아닐 수 있다.
+확률 변수가 특정 값을 가질 확률이 0이 아닐 수 있기 때문이다.
 예를 들어 집값이 1.5일 확률이 0.000356이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -746,11 +746,11 @@ Name: median_income, Length: 19675, dtype: float64
 이런 결과를 보정하기 위해 <code class="docutils literal notranslate"><span class="pre">a</span></code>에서 10의 -5승을 뺀 값을 대신 사용한다.
 집값이 소수점 이하 넷째 자리까지 사용하기에 0.00001을 빼준 값에 해당하는 데이터는 존재하지 않기에
 특정 지점에서의 확률이 항상 0이 되어
-<span class="math notranslate nohighlight">\(P(a \leq X \leq b)\)</span>를 <code class="docutils literal notranslate"><span class="pre">F_income()</span></code> 함수를 이용하여 정확하게 계산할 수 있게 된다.
-이런 확률값 보정은 유한개의 실전 데이터를 직접 이용하여 확률값을 계산할 때 항상 고려해야 한다.
-확률값 보정을 위해 사용되는 <code class="docutils literal notranslate"><span class="pre">error</span></code>는 사용되는 데이터의 소수점 이하 자릿수보다 한 자리 더 많은 값으로 지정한다.</p>
+<span class="math notranslate nohighlight">\(P(a \leq X \leq b)\)</span>를 <code class="docutils literal notranslate"><span class="pre">F_income()</span></code> 함수를 이용하여 정확하게 계산할 수 있게 된다.</p>
+<p>이런 연속성 보정은 유한개의 실전 데이터를 직접 이용하여 확률을 계산할 때 항상 고려해야 한다.
+연속성 보정을 위해 사용되는 <code class="docutils literal notranslate"><span class="pre">error</span></code>는 사용되는 데이터의 소수점 이하 자릿수보다 한 자리 더 많은 값으로 지정한다.</p>
 <p>아래 <code class="docutils literal notranslate"><span class="pre">P_income()</span></code> 함수는 임의로 선택된 구역의 중위소득이 특정 구간에 속할 확률을 계산하며
-앞서 설명한 확률값 보정을 적용하였다.</p>
+앞서 설명한 연속성 보정을 적용하였다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">P_income</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
