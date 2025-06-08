@@ -1413,21 +1413,6 @@ t-분포에 대해서는 나중에 자세히 다룰 것이며 여기서는 정�
 </div>
 </div>
 <ul class="simple">
-<li><p>평균값 <span class="math notranslate nohighlight">\(\mu\)</span>를 중심으로 좌우 <span class="math notranslate nohighlight">\(3\sigma\)</span> 만틈 떨어진 영역의 크기</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F_gaussian</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">-</span> <span class="n">F_gaussian</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.997300
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
 <li><p>평균값 <span class="math notranslate nohighlight">\(\mu\)</span>부터 <span class="math notranslate nohighlight">\(3\sigma\)</span>까지의 영역의 크기</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1457,17 +1442,50 @@ t-분포에 대해서는 나중에 자세히 다룰 것이며 여기서는 정�
 </div>
 </div>
 </div>
+<p><strong><span class="math notranslate nohighlight">\(t\)</span>-분포의 확률값</strong></p>
+<p>반면에 자유도가 3인 <span class="math notranslate nohighlight">\(t\)</span>-분포에 대해서는 각 구간에 대해 다른 확률값이
+구간별로 정규분포에 비해 많이 작게 계산된다.</p>
 <ul class="simple">
-<li><p>평균값 <span class="math notranslate nohighlight">\(\mu\)</span>를 중심으로 좌우 <span class="math notranslate nohighlight">\(3\sigma\)</span> 만틈 떨어진 영역의 크기</p></li>
+<li><p>평균값 <span class="math notranslate nohighlight">\(\mu\)</span>를 중심으로 좌우 <span class="math notranslate nohighlight">\(\sigma\)</span> 만틈 떨어진 영역의 크기: 정규분포의 경우는 0.682689</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F_gaussian</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">-</span> <span class="n">F_gaussian</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_nu</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_nu</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">sigma</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.997300
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.608998
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>평균값 <span class="math notranslate nohighlight">\(\mu\)</span>를 중심으로 좌우 <span class="math notranslate nohighlight">\(2\sigma\)</span> 만틈 떨어진 영역의 크기: 정규분포의 경우는 0.954500</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_nu</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_nu</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.860674
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>평균값 <span class="math notranslate nohighlight">\(\mu\)</span>를 중심으로 좌우 <span class="math notranslate nohighlight">\(3\sigma\)</span> 만틈 떨어진 영역의 크기: 정규분포의 경우는 0.997300</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_nu</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_nu</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.942331
 </pre></div>
 </div>
 </div>
@@ -1707,14 +1725,14 @@ X \sim B(12, 0.5)
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x2</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;More area&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">5.2</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">),</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;More area&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">5.27</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">),</span> 
             <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;facecolor&#39;</span><span class="p">:</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;headwidth&#39;</span><span class="p">:</span><span class="mi">8</span><span class="p">})</span>
 
 <span class="c1"># ax.hlines(0.23, 5.5, 6, color=&#39;gray&#39;, linestyle=&#39;solid&#39;, linewidth=3)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$N(6, 3)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">8.</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">+</span><span class="mf">.01</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">),</span> 
             <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;facecolor&#39;</span><span class="p">:</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;headwidth&#39;</span><span class="p">:</span><span class="mi">8</span><span class="p">})</span>
 
-<span class="c1"># ax.set_xticks(range(0, 13))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
 
@@ -1723,7 +1741,7 @@ X \sim B(12, 0.5)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e6af046beea03ff49518e76bf66bbe816e8e4497bde903d1bb41a58ad5826b88.png" src="_images/e6af046beea03ff49518e76bf66bbe816e8e4497bde903d1bb41a58ad5826b88.png" />
+<img alt="_images/061b87dafec5018cdf93b7928962c434985dbe6e71c0bbe1c59ecd92b724ebdc.png" src="_images/061b87dafec5018cdf93b7928962c434985dbe6e71c0bbe1c59ecd92b724ebdc.png" />
 </div>
 </div>
 <p>앞서 설명에 따라 이산 확률 분포에 대한 확률을 연속 확률 분포를 이용하여 계산하고자 할 때
