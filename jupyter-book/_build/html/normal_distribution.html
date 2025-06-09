@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -561,7 +561,7 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}}\, \exp(-\frac{(x-\mu)^2}{2\sigma^2})
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\mu = 2, \sigma = 0.8$&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -569,7 +569,7 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}}\, \exp(-\frac{(x-\mu)^2}{2\sigma^2})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c376b0acdf6b058763b0caab0f705b5d5d9613ca35a92017dc44e820b57ceba8.png" src="_images/c376b0acdf6b058763b0caab0f705b5d5d9613ca35a92017dc44e820b57ceba8.png" />
+<img alt="_images/4d7c5bd06bcc4edc2004aedbfda0a32ce848d9596a959e75c32225292fc9a9be.png" src="_images/4d7c5bd06bcc4edc2004aedbfda0a32ce848d9596a959e75c32225292fc9a9be.png" />
 </div>
 </div>
 <p>확률변수 <span class="math notranslate nohighlight">\(X\)</span>가 평균값이 <span class="math notranslate nohighlight">\(\mu\)</span>이고 분산이 <span class="math notranslate nohighlight">\(\sigma^2\)</span>인
@@ -629,7 +629,7 @@ X \sim N(\mu, \sigma^2) \quad \Longrightarrow \quad E[X] = \mu,\,\, V(X) = \sigm
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -637,7 +637,7 @@ X \sim N(\mu, \sigma^2) \quad \Longrightarrow \quad E[X] = \mu,\,\, V(X) = \sigm
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8ab9d4938d13a5dabc0186d003a47193a75c1ef703290bb55eb963b37d7d993e.png" src="_images/8ab9d4938d13a5dabc0186d003a47193a75c1ef703290bb55eb963b37d7d993e.png" />
+<img alt="_images/db7352f276fd4c8f63362e897564cb444e6f7cca510fb73d9e43e4b4426d7efc.png" src="_images/db7352f276fd4c8f63362e897564cb444e6f7cca510fb73d9e43e4b4426d7efc.png" />
 </div>
 </div>
 </section>
@@ -675,6 +675,7 @@ X \sim N(\mu, \sigma^2) \quad \Longrightarrow \quad E[X] = \mu,\,\, V(X) = \sigm
 <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># a 눈금 색 지정</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -682,7 +683,7 @@ X \sim N(\mu, \sigma^2) \quad \Longrightarrow \quad E[X] = \mu,\,\, V(X) = \sigm
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0f1f133f9b0a844422c6b3425f975346a76c22c2b167e33b5722074d9568c209.png" src="_images/0f1f133f9b0a844422c6b3425f975346a76c22c2b167e33b5722074d9568c209.png" />
+<img alt="_images/82f7f09618b8f4c67bf456e2257b98997e57d135dd049bc7590644cb17c9f47a.png" src="_images/82f7f09618b8f4c67bf456e2257b98997e57d135dd049bc7590644cb17c9f47a.png" />
 </div>
 </div>
 <p>위 그래프는 <code class="docutils literal notranslate"><span class="pre">a=-0.5</span></code>일 때의 <span class="math notranslate nohighlight">\(P(X \leq a)\)</span>를 보여주며 실제 계산은 <code class="docutils literal notranslate"><span class="pre">F_gaussian()</span></code> 함수를
@@ -732,6 +733,7 @@ X \sim N(\mu, \sigma^2) \quad \Longrightarrow \quad E[X] = \mu,\,\, V(X) = \sigm
 <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># b 눈금 색 지정</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -739,7 +741,7 @@ X \sim N(\mu, \sigma^2) \quad \Longrightarrow \quad E[X] = \mu,\,\, V(X) = \sigm
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b847f1ca7eb528b9f9c5eac60edea8186e5fe4e414538d7b935e866fa2646bc1.png" src="_images/b847f1ca7eb528b9f9c5eac60edea8186e5fe4e414538d7b935e866fa2646bc1.png" />
+<img alt="_images/42870ea9140f4c69f5b69b806ae43cdb3b82304cd5659b9ba408449675cb0b33.png" src="_images/42870ea9140f4c69f5b69b806ae43cdb3b82304cd5659b9ba408449675cb0b33.png" />
 </div>
 </div>
 <p>위 그래프는 <code class="docutils literal notranslate"><span class="pre">a=-1.5</span></code>이고 <code class="docutils literal notranslate"><span class="pre">b=0.5</span></code>일 때의 <span class="math notranslate nohighlight">\(P(a \leq X \leq b)\)</span>를 보여주며 실제 계산은 <code class="docutils literal notranslate"><span class="pre">F_gaussian()</span></code> 함수를
@@ -864,14 +866,14 @@ memory usage: 17.0 KB
 <span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">pearson</span><span class="p">[</span><span class="s1">&#39;Son&#39;</span><span class="p">])</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Height&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c27baf47cee10411482e53431211434f65a41596975d25d9f08b00740d40ff89.png" src="_images/c27baf47cee10411482e53431211434f65a41596975d25d9f08b00740d40ff89.png" />
+<img alt="_images/8eb9fad5209f3ee5a4caeda2dd8aa50d7ce32de29c328913b4c3e1058f410842.png" src="_images/8eb9fad5209f3ee5a4caeda2dd8aa50d7ce32de29c328913b4c3e1058f410842.png" />
 </div>
 </div>
 <p>그래프를 보면 평균값을 중심으로 거의 좌우 대칭을 이루는 분포를 따른다.
@@ -946,7 +948,7 @@ Name: Son, dtype: float64
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N(\mu_</span><span class="si">{son}</span><span class="s1">, \sigma_</span><span class="si">{son}</span><span class="s1">^2)$&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Height&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
@@ -955,7 +957,7 @@ Name: Son, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/504790fe9b8076900a8e57da4e37c4679c50d2d539f20df4fdff303385af52ff.png" src="_images/504790fe9b8076900a8e57da4e37c4679c50d2d539f20df4fdff303385af52ff.png" />
+<img alt="_images/08f638f61140f041d6a15e77dd490b1aab2da7c1b8c96d73d0425f82e4ed8145.png" src="_images/08f638f61140f041d6a15e77dd490b1aab2da7c1b8c96d73d0425f82e4ed8145.png" />
 </div>
 </div>
 <p>표준편차가 7.15 정도로 1보다 많이 크기에 정규분포에 비해 보다 펑퍼짐한 봉우리로
@@ -1007,6 +1009,8 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(X_</span><span class="si">{son}</span><span class="s1"> \geq 180)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">184</span> <span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">190</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">),</span>
             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
 
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.062</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1014,7 +1018,7 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1723e7c26ed1c22c4d12604d6de07f19a011b68d3595bcb41a809b43c5e6f585.png" src="_images/1723e7c26ed1c22c4d12604d6de07f19a011b68d3595bcb41a809b43c5e6f585.png" />
+<img alt="_images/6795ead47c3f6878f76ea2453620fb2d6a1d52d606cdc335f493855161033d0e.png" src="_images/6795ead47c3f6878f76ea2453620fb2d6a1d52d606cdc335f493855161033d0e.png" />
 </div>
 </div>
 <p>우연히 선택된 아들 키가 180 이상일 확률 <span class="math notranslate nohighlight">\(P(X_{son} \geq 180)\)</span>의 계산은 <code class="docutils literal notranslate"><span class="pre">X_xon.cdf()</span></code> 함수를 이용한다.</p>
@@ -1068,6 +1072,8 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$P(180 \leq X_</span><span class="si">{son}</span><span class="s1"> \leq 185)$&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">182.5</span> <span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">188</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">),</span>
             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
 
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.062</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1075,7 +1081,7 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b4fd4da9861e180ecac15e43f56cef44c8f8a6eda19f15e3a490ef73ba4c6188.png" src="_images/b4fd4da9861e180ecac15e43f56cef44c8f8a6eda19f15e3a490ef73ba4c6188.png" />
+<img alt="_images/a143a1e966b0744753fd404616afa2a919352bcb6e95d46d8d7e8d1a9b0640d4.png" src="_images/a143a1e966b0744753fd404616afa2a919352bcb6e95d46d8d7e8d1a9b0640d4.png" />
 </div>
 </div>
 <p>아들 키를 가리키는 확률변수 <span class="math notranslate nohighlight">\(X_{son}\)</span>이 정규분포 <span class="math notranslate nohighlight">\(N(173.5, (5.17)^2)\)</span> 을 따를 때
@@ -1207,14 +1213,14 @@ KDE 기법으로 추정된 확률 밀도 함수(pdf0의 그래프를 그린다.<
 <span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">pearson</span><span class="p">[</span><span class="s1">&#39;Father&#39;</span><span class="p">])</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Height&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f8169068ed7465b57b5679f22de092e05a218378753a55161a0f7e0c7f83746b.png" src="_images/f8169068ed7465b57b5679f22de092e05a218378753a55161a0f7e0c7f83746b.png" />
+<img alt="_images/fdacb798d30e88286610d82303101ac170d5c2e49bb479dfee9104c7c47ee475.png" src="_images/fdacb798d30e88286610d82303101ac170d5c2e49bb479dfee9104c7c47ee475.png" />
 </div>
 </div>
 <p>밀도 히스토그램과 확률 밀도 함수 모두 정규 분포와 거리가 있어 보인다.
@@ -1237,7 +1243,7 @@ KDE 기법으로 추정된 확률 밀도 함수의 그래프를 함께 그려보
 <span class="n">kde</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">pearson</span><span class="p">[</span><span class="s1">&#39;Father&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;KDE&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Height&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
@@ -1246,7 +1252,7 @@ KDE 기법으로 추정된 확률 밀도 함수의 그래프를 함께 그려보
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2bdf30f7fd93e891528ec42f2a33559101f95f1c2353d0552f2e651a11efae20.png" src="_images/2bdf30f7fd93e891528ec42f2a33559101f95f1c2353d0552f2e651a11efae20.png" />
+<img alt="_images/b00129213052decbb5b99c8a2859a81a7314ce3b8933b1fbff27687e20e69704.png" src="_images/b00129213052decbb5b99c8a2859a81a7314ce3b8933b1fbff27687e20e69704.png" />
 </div>
 </div>
 <p>두 함수의 그래프가 서로 조금 다르기는 하지만 평균값을 중심으로 좌우로 퍼져있는 정도와
@@ -1275,6 +1281,8 @@ t-분포에 대해서는 나중에 자세히 다룰 것이며 여기서는 정�
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t_nu</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">t_nu</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.99</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t_nu</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_\nu$&#39;</span><span class="p">)</span>
 
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.39</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
@@ -1283,7 +1291,7 @@ t-분포에 대해서는 나중에 자세히 다룰 것이며 여기서는 정�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6ca39b16de059f87c062cb7af8ac1312eec33c8a04f77aa00bac90f2c8fe430b.png" src="_images/6ca39b16de059f87c062cb7af8ac1312eec33c8a04f77aa00bac90f2c8fe430b.png" />
+<img alt="_images/ae0d6176720317e8b5bfaf7e24c0a5a17044b2d5971a29c6bd06ac0826a96a48.png" src="_images/ae0d6176720317e8b5bfaf7e24c0a5a17044b2d5971a29c6bd06ac0826a96a48.png" />
 </div>
 </div>
 <div class="note admonition">
@@ -1326,6 +1334,8 @@ t-분포에 대해서는 나중에 자세히 다룰 것이며 여기서는 정�
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t_nu</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$t_\nu$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X_normal</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N(\mu_\nu, \sigma_\nu)$&#39;</span><span class="p">)</span>
 
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.39</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
@@ -1334,7 +1344,7 @@ t-분포에 대해서는 나중에 자세히 다룰 것이며 여기서는 정�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/693c8d56f4f94cb8c272398f72132de23c01ec0d0290eda631e7e9b586723a9b.png" src="_images/693c8d56f4f94cb8c272398f72132de23c01ec0d0290eda631e7e9b586723a9b.png" />
+<img alt="_images/7053d7a76b433124545713739a75469122d4b8ed121530d9c570749f3b44a966.png" src="_images/7053d7a76b433124545713739a75469122d4b8ed121530d9c570749f3b44a966.png" />
 </div>
 </div>
 <p><strong>정규분포와 표준편차</strong></p>
@@ -1698,14 +1708,14 @@ X \sim B(12, 0.5)
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/19770fb9e3d9a54e31a41c53ecb454494a7e33b7a7718cb030133dfe61a80d1d.png" src="_images/19770fb9e3d9a54e31a41c53ecb454494a7e33b7a7718cb030133dfe61a80d1d.png" />
+<img alt="_images/8f2e2e641809610f50067dad5e2f7d56abf2da5c4a53bad668342bd8a8da8378.png" src="_images/8f2e2e641809610f50067dad5e2f7d56abf2da5c4a53bad668342bd8a8da8378.png" />
 </div>
 </div>
 <p>반면에 아래 코드는 <span class="math notranslate nohighlight">\(X\)</span>가 정규분포 <span class="math notranslate nohighlight">\(N(6, 3)\)</span>을 따른다고 가정했을 때의 확률 밀도 함수 그래프를 함께 그린다.
@@ -1734,14 +1744,14 @@ X \sim B(12, 0.5)
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/061b87dafec5018cdf93b7928962c434985dbe6e71c0bbe1c59ecd92b724ebdc.png" src="_images/061b87dafec5018cdf93b7928962c434985dbe6e71c0bbe1c59ecd92b724ebdc.png" />
+<img alt="_images/6d4e36a46779f2b4737289eac8b04b315315a02ed18f2599fdce4e3eff62aa82.png" src="_images/6d4e36a46779f2b4737289eac8b04b315315a02ed18f2599fdce4e3eff62aa82.png" />
 </div>
 </div>
 <p>앞서 설명에 따라 이산 확률 분포에 대한 확률을 연속 확률 분포를 이용하여 계산하고자 할 때
@@ -1828,14 +1838,14 @@ X \sim B(12, 0.5)
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b867b9eda1250df9548eb98e3e16242b619beb0a9ceda8d0280c7da62c92a54d.png" src="_images/b867b9eda1250df9548eb98e3e16242b619beb0a9ceda8d0280c7da62c92a54d.png" />
+<img alt="_images/5eb647d8ba5b80428185b2178376c9c8352b4d7f4acc50307265afaf22e9d6a9.png" src="_images/5eb647d8ba5b80428185b2178376c9c8352b4d7f4acc50307265afaf22e9d6a9.png" />
 </div>
 </div>
 <p>따라서 이번에도 연속성 보정을 적용하여
@@ -1907,14 +1917,14 @@ X \sim B(12, 0.5)
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/245c127f06e359ef0abd65ccb2c4466a514add277ad0a8e3895b43fdfc3ef448.png" src="_images/245c127f06e359ef0abd65ccb2c4466a514add277ad0a8e3895b43fdfc3ef448.png" />
+<img alt="_images/927a6f52810e071ec89cb3b553abaa44d1ceddaf29d01fe534829de6f8581b56.png" src="_images/927a6f52810e071ec89cb3b553abaa44d1ceddaf29d01fe534829de6f8581b56.png" />
 </div>
 </div>
 <p>따라서 이번에도 연속성 보정을 적용하여
@@ -1932,7 +1942,7 @@ X \sim B(12, 0.5)
 </div>
 </div>
 </div>
-<p><strong>연속성 보정 일반화</strong></p>
+<p><strong>이항분포 연속성 보정 일반화</strong></p>
 <p>이산 확률변수 <span class="math notranslate nohighlight">\(X\)</span>가 이항분포를 따르며 다음이 성립한다고 가정한다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1969,7 +1979,7 @@ X \sim N(np, npq)
 </tbody>
 </table>
 </div>
-<p><strong>연속성 보정 예제: 5지선다 40문제를 임의로 찍어서 30 문제 이상 맞힐 확률</strong></p>
+<p><strong>이항분포 연속성 보정 예제: 5지선다 40문제를 임의로 찍어서 30 문제 이상 맞힐 확률</strong></p>
 <p>5지선다 40문제의 답을 모두 임의로 찍어 15문제 이상을 맞힐 확률을 연속성 보정을 적용하여 다시 계산한다.</p>
 <p>5지선다 문제 하나를 임의로 답을 찍어 맞힐 확률은 1/5, 즉 0.2다.
 40문제 각각에 대해 임의로 답을 찍는 행위는 서로 독립적이기에
@@ -2086,6 +2096,18 @@ X_{bin} \sim N(8, 6.4)
 </pre></div>
 </div>
 </div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">연속성 보정 주의사항</p>
+<p>연속 확률 분포를 따르는 것으로 간주되는 실전 데이터를 다룰 때에 항상 연속성 보정을 진행해야 한다.
+이항분포의 확률을 정규분포를 이용하여 계산하는 경우뿐만 아니라
+<a class="reference internal" href="probability_continuous.html#sec-continuity-correction"><span class="std std-numref">13.2.1절</span></a>에서처럼 실전 데이터를 다룰 때에는 일반적으로
+확률값을 보정해줄 필요가 있다.</p>
+<p>특히 데이터셋의 크기가 작을 수록 그렇다.
+위 이항분포의 경우에서 시행횟수가 12, 40이 아니라 몇 백 이상으로 키우면
+연속성 보정이 굳이 필요없을 정도로 오차가 크지 않다.
+<a class="reference internal" href="probability_continuous.html#sec-continuity-correction"><span class="std std-numref">13.2.1절</span></a>의 경우도 데이터셋이 보다 커지면
+특정 값에서의 확률이 0이 아니더라도 확률값 계산에 미치는 영향이 매우 미미해서 무시될 수 있다.</p>
 </div>
 </section>
 </section>
