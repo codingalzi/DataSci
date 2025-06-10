@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -698,20 +698,19 @@ X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\m
 <span class="math notranslate nohighlight">\(X-Y\)</span>의 평균값과 분산은 두 확률변수 각각의 평균값의 차와 분산의 합으로 계산된다.
 <span class="math notranslate nohighlight">\(X+Y\)</span>와 <span class="math notranslate nohighlight">\(X-Y\)</span>의 분산이 두 확률변수 각각의 분산의 합으로 계산되는 이유를 직관적으로 설명하기 위해
 다음 두 예제를 이용한다.</p>
-<p><strong>예제: 남자, 여자 체중의 합의 분포</strong></p>
-<p>해야 할 일: 아래 분포를 따라는 남녀 키 데이터를 생성해서 활용할 것.
-상호 독립이어야 함.</p>
+<p><strong>예제: 남성, 여성 체중의 합의 분포</strong></p>
+<p>2024년도 기준 한국 20대 남성, 여성의 체중 분포는 다음과 같다.</p>
 <ul class="simple">
 <li><p>전제</p>
 <ul>
-<li><p>남자의 체중 <span class="math notranslate nohighlight">\(Y \sim N(71.2, 8.5^2)\)</span></p></li>
-<li><p>여자의 체중 <span class="math notranslate nohighlight">\(X \sim N(53.7, 6.3^2)\)</span></p></li>
+<li><p>남성의 체중 <span class="math notranslate nohighlight">\(Y \sim N(76.59, 11.73^2)\)</span></p></li>
+<li><p>여성의 체중 <span class="math notranslate nohighlight">\(X \sim N(58.17, 9.28^2)\)</span></p></li>
 </ul>
 </li>
 <li><p>결론</p>
 <ul>
-<li><p>남자 + 여자의 체중 <span class="math notranslate nohighlight">\(\sim N(124.9, 10.58^2)\)</span></p></li>
-<li><p>단, 남자와 여자의 체중은 상호 독립이라고 가정한다.</p></li>
+<li><p>남성 + 여성의 체중 <span class="math notranslate nohighlight">\(\sim N(134.76, 96.18^2)\)</span></p></li>
+<li><p>단, 남성과 여성의 체중은 상호 독립이라고 가정한다.</p></li>
 </ul>
 </li>
 </ul>
@@ -724,22 +723,56 @@ X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\m
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">8.5</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">6.3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.580170
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_men</span> <span class="o">=</span> <span class="mf">76.59</span>
+<span class="n">sigma_men</span> <span class="o">=</span> <span class="mf">11.73</span>
+
+<span class="n">mu_wemen</span> <span class="o">=</span> <span class="mf">58.17</span>
+<span class="n">sigma_wemen</span> <span class="o">=</span> <span class="mf">9.28</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_men</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="mf">71.2</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">)</span>
-<span class="n">X_wemen</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="mf">53.7</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">)</span>
-<span class="n">X_sum</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="mf">124.9</span><span class="p">,</span> <span class="mf">10.58</span><span class="p">)</span>
-<span class="n">X_diff</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="mf">17.5</span><span class="p">,</span> <span class="mf">10.58</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_sum</span> <span class="o">=</span> <span class="n">mu_men</span> <span class="o">+</span> <span class="n">mu_wemen</span>
+<span class="n">mu_diff</span> <span class="o">=</span> <span class="n">mu_men</span> <span class="o">-</span> <span class="n">mu_wemen</span>
+
+<span class="n">sigma_sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_men</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_wemen</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_sum</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>134.760000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma_sum</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.956982
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_men</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">mu_men</span><span class="p">,</span> <span class="n">sigma_men</span><span class="p">)</span>
+<span class="n">X_wemen</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">mu_wemen</span><span class="p">,</span> <span class="n">sigma_wemen</span><span class="p">)</span>
+
+<span class="n">X_sum</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">mu_sum</span><span class="p">,</span> <span class="n">sigma_sum</span><span class="p">)</span>
+<span class="n">X_diff</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">mu_diff</span><span class="p">,</span> <span class="n">sigma_sum</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -785,28 +818,28 @@ X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\m
   <tbody>
     <tr>
       <th>0</th>
-      <td>82.482049</td>
-      <td>58.560508</td>
+      <td>80.786846</td>
+      <td>59.332083</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>66.383688</td>
-      <td>54.541060</td>
+      <td>83.168002</td>
+      <td>54.185117</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>70.520752</td>
-      <td>56.189584</td>
+      <td>89.294191</td>
+      <td>59.304921</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>67.183047</td>
-      <td>59.024809</td>
+      <td>88.951098</td>
+      <td>63.211806</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>54.831566</td>
-      <td>53.376824</td>
+      <td>60.429938</td>
+      <td>58.623421</td>
     </tr>
     <tr>
       <th>...</th>
@@ -815,28 +848,28 @@ X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\m
     </tr>
     <tr>
       <th>995</th>
-      <td>68.590987</td>
-      <td>45.792705</td>
+      <td>81.756769</td>
+      <td>52.026805</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>75.084614</td>
-      <td>56.315349</td>
+      <td>76.359649</td>
+      <td>62.122233</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>81.511496</td>
-      <td>56.323359</td>
+      <td>83.070707</td>
+      <td>58.347691</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>82.169376</td>
-      <td>55.234738</td>
+      <td>79.216513</td>
+      <td>52.217001</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>73.941220</td>
-      <td>56.396447</td>
+      <td>92.591367</td>
+      <td>62.697455</td>
     </tr>
   </tbody>
 </table>
@@ -879,38 +912,38 @@ X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\m
   <tbody>
     <tr>
       <th>0</th>
-      <td>82.482049</td>
-      <td>58.560508</td>
-      <td>141.042558</td>
-      <td>23.921541</td>
+      <td>80.786846</td>
+      <td>59.332083</td>
+      <td>140.118929</td>
+      <td>21.454762</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>66.383688</td>
-      <td>54.541060</td>
-      <td>120.924748</td>
-      <td>11.842628</td>
+      <td>83.168002</td>
+      <td>54.185117</td>
+      <td>137.353119</td>
+      <td>28.982886</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>70.520752</td>
-      <td>56.189584</td>
-      <td>126.710335</td>
-      <td>14.331168</td>
+      <td>89.294191</td>
+      <td>59.304921</td>
+      <td>148.599112</td>
+      <td>29.989270</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>67.183047</td>
-      <td>59.024809</td>
-      <td>126.207857</td>
-      <td>8.158238</td>
+      <td>88.951098</td>
+      <td>63.211806</td>
+      <td>152.162904</td>
+      <td>25.739292</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>54.831566</td>
-      <td>53.376824</td>
-      <td>108.208389</td>
-      <td>1.454742</td>
+      <td>60.429938</td>
+      <td>58.623421</td>
+      <td>119.053360</td>
+      <td>1.806517</td>
     </tr>
     <tr>
       <th>...</th>
@@ -921,38 +954,38 @@ X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\m
     </tr>
     <tr>
       <th>995</th>
-      <td>68.590987</td>
-      <td>45.792705</td>
-      <td>114.383693</td>
-      <td>22.798282</td>
+      <td>81.756769</td>
+      <td>52.026805</td>
+      <td>133.783574</td>
+      <td>29.729963</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>75.084614</td>
-      <td>56.315349</td>
-      <td>131.399964</td>
-      <td>18.769265</td>
+      <td>76.359649</td>
+      <td>62.122233</td>
+      <td>138.481882</td>
+      <td>14.237415</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>81.511496</td>
-      <td>56.323359</td>
-      <td>137.834855</td>
-      <td>25.188137</td>
+      <td>83.070707</td>
+      <td>58.347691</td>
+      <td>141.418399</td>
+      <td>24.723016</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>82.169376</td>
-      <td>55.234738</td>
-      <td>137.404115</td>
-      <td>26.934638</td>
+      <td>79.216513</td>
+      <td>52.217001</td>
+      <td>131.433514</td>
+      <td>26.999511</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>73.941220</td>
-      <td>56.396447</td>
-      <td>130.337667</td>
-      <td>17.544773</td>
+      <td>92.591367</td>
+      <td>62.697455</td>
+      <td>155.288822</td>
+      <td>29.893912</td>
     </tr>
   </tbody>
 </table>
@@ -963,18 +996,14 @@ X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\m
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
-<span class="n">data_sum</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_sum</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Men&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Men&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Wemen&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Wemen&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Men+Wemen&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Men+Wemen&#39;</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X_sum</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">85</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X_sum</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Normal&#39;</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X_men</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
-
-
-
-<span class="n">x_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="p">[</span><span class="mf">71.2</span><span class="p">,</span> <span class="mf">53.7</span><span class="p">,</span> <span class="mf">124.9</span><span class="p">])</span>
+<span class="n">x_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="p">[</span><span class="n">mu_men</span><span class="p">,</span> <span class="n">mu_wemen</span><span class="p">,</span> <span class="n">mu_sum</span><span class="p">])</span>
 <span class="n">x_ticks_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{men}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{wemen}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{sum}</span><span class="s1">$&#39;</span><span class="p">])</span> <span class="c1"># 실제로 보이는 눈금 기호</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x_ticks</span><span class="p">,</span> <span class="n">x_ticks_</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
@@ -990,21 +1019,21 @@ X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\m
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e9f2ad075dbf8d35d5c5ad9530ee904002ea4ab6fb1b1be296c1ac24f8fac2ce.png" src="_images/e9f2ad075dbf8d35d5c5ad9530ee904002ea4ab6fb1b1be296c1ac24f8fac2ce.png" />
+<img alt="_images/02a81b364bf3770005d87ca1cbd8433412f1e57a3683575f942c9ff4a7f30084.png" src="_images/02a81b364bf3770005d87ca1cbd8433412f1e57a3683575f942c9ff4a7f30084.png" />
 </div>
 </div>
-<p><strong>예제: 남자, 여자의 체중 차이</strong></p>
+<p><strong>예제: 남성, 여성의 체중 차이</strong></p>
 <ul class="simple">
 <li><p>전제</p>
 <ul>
-<li><p>남자의 체중 <span class="math notranslate nohighlight">\(Y \sim N(71.2, 8.5^2)\)</span></p></li>
-<li><p>여자의 체중 <span class="math notranslate nohighlight">\(X \sim N(53.7, 6.3^2)\)</span></p></li>
+<li><p>남성의 체중 <span class="math notranslate nohighlight">\(Y \sim N(71.2, 8.5^2)\)</span></p></li>
+<li><p>여성의 체중 <span class="math notranslate nohighlight">\(X \sim N(53.7, 6.3^2)\)</span></p></li>
 </ul>
 </li>
 <li><p>결론</p>
 <ul>
-<li><p>남자 - 여자의 체중 <span class="math notranslate nohighlight">\(\sim N(17.5, 10.58^2)\)</span></p></li>
-<li><p>단, 남자와 여자의 체중은 상호 독립이라고 가정한다.</p></li>
+<li><p>남성 - 여성의 체중 <span class="math notranslate nohighlight">\(\sim N(17.5, 10.58^2)\)</span></p></li>
+<li><p>단, 남성과 여성의 체중은 상호 독립이라고 가정한다.</p></li>
 </ul>
 </li>
 </ul>
@@ -1012,9 +1041,12 @@ X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\m
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
-<span class="n">data_diff</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Men&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Men&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Wemen&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Wemen&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Men-Wemen&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Men-Wemen&#39;</span><span class="p">)</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_diff</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X_diff</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Normal&#39;</span><span class="p">)</span>
 
 <span class="n">x_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="p">[</span><span class="mf">71.2</span><span class="p">,</span> <span class="mf">53.7</span><span class="p">,</span> <span class="mf">17.5</span><span class="p">])</span>
 <span class="n">x_ticks_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{men}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{wemen}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{diff}</span><span class="s1">$&#39;</span><span class="p">])</span> <span class="c1"># 실제로 보이는 눈금 기호</span>
@@ -1024,15 +1056,15 @@ X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\m
 <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># a 눈금 색 지정</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># a 눈금 색 지정</span>
 
-
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Weight&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7ee69576c12cb2e95b7d7ccd4dcf9994784dfb20f12af29ed25502e87cb17aee.png" src="_images/7ee69576c12cb2e95b7d7ccd4dcf9994784dfb20f12af29ed25502e87cb17aee.png" />
+<img alt="_images/cd9a7994365149525a98989b913aea970f33cbde653f238bc665d48b4b16fd65.png" src="_images/cd9a7994365149525a98989b913aea970f33cbde653f238bc665d48b4b16fd65.png" />
 </div>
 </div>
 <p><strong>상호 독립성의 중요성: 피어슨  데이터셋</strong></p>
@@ -1469,7 +1501,7 @@ memory usage: 17.0 KB
 
 <span class="c1"># (아버지 키+아들 키)의 이론적 정규분포</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X_FS</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N(\mu_</span><span class="si">{FS}</span><span class="s1">, \sigma_</span><span class="si">{FS}</span><span class="s1">)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X_FS</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N(\mu_</span><span class="si">{FS}</span><span class="s1">, \sigma_</span><span class="si">{FS}</span><span class="s1">)$&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Height&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
@@ -1480,7 +1512,7 @@ memory usage: 17.0 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4472d4af88341426dbe36d02eb59120b5941feb6e237843c4836fa4337b8a989.png" src="_images/4472d4af88341426dbe36d02eb59120b5941feb6e237843c4836fa4337b8a989.png" />
+<img alt="_images/210fe0367ab1b671bb6d4843506ef43af13c29dbf49edd136d132ced4da1999b.png" src="_images/210fe0367ab1b671bb6d4843506ef43af13c29dbf49edd136d132ced4da1999b.png" />
 </div>
 </div>
 <p>결론</p>
