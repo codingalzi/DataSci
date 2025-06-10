@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -530,13 +530,20 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 </ul>
 <section id="id3">
 <h3><span class="section-number">16.1.1. </span>독립성<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 서로 어떤 영향도 끼치지 않을 때 서로 독립이라 하며
-다음 수식이 성립한다.</p>
+<p>확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 서로 어떤 영향도 끼치지 않을 때 서로 독립이라 한다.
+수식으로 표혀하면 다음 수식이 성립할 때 두 확률변수가 서로 독립이라 정의한다.</p>
 <div class="math notranslate nohighlight">
 \[
 f_{XY}(x, y) = f_X(x) \cdot f_Y(y)
 \]</div>
-<p>예를 들어 <span class="math notranslate nohighlight">\(X\)</span>는 정상적인 주사위를 던져서 나오는 값을 가리키는 확률변수라 하자.
+<p>위 수식에서 <span class="math notranslate nohighlight">\(f_X\)</span>와 <span class="math notranslate nohighlight">\(f_Y\)</span> 는 각각 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>에 대한 주변 확률 밀도 함수를 가리키며
+다음과 같이 정의된다.</p>
+<div class="math notranslate nohighlight">
+\[
+f_X(x) = \sum_y f_{XY}(x, y) \qquad f_Y(y) = \sum_x f_{XY}(x, y)
+\]</div>
+<p><strong>예제</strong></p>
+<p>예를 들어 <span class="math notranslate nohighlight">\(X\)</span>는 공정한 주사위를 던져서 나오는 값을 가리키는 확률변수라 하자.
 <span class="math notranslate nohighlight">\(X\)</span>의 확률 분포는 다음과 같다.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -561,18 +568,7 @@ f_{XY}(x, y) = f_X(x) \cdot f_Y(y)
 </tbody>
 </table>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
-        <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>반면에 <span class="math notranslate nohighlight">\(Y\)</span>는 비정상적으로 다음 확률 분포를 따르는 확률 변수라 하자.</p>
+<p>반면에 <span class="math notranslate nohighlight">\(Y\)</span>는 아래 확률 분포를 갖는 불공적한 주사위를 던져서 나오는 값을 가리키는 확률 변수라 하자.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>Y</p></th>
@@ -596,9 +592,82 @@ f_{XY}(x, y) = f_X(x) \cdot f_Y(y)
 </tbody>
 </table>
 </div>
+<p>공정한 주사위와 불공정한 주사위를 동시에 던져서 나오는 값의 튜플을 가리키는
+결합 확률변수 <span class="math notranslate nohighlight">\((X, Y)\)</span>의 결합 확률 질량 함수의 결합 확률 질량 함수는 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="mi">21</span><span class="p">)</span> <span class="c1"># x의 확률은 항상 1/6</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>확률변수 각각에 대한 주변 확률 질량 함수를 <code class="docutils literal notranslate"><span class="pre">f_XY()</span></code>를 이용하여 정의해보자.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span>에 대한 주변 확률 질량 함수</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">y_probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_probs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Y\)</span>에 대한 주변 확률 질량 함수</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_Y</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">x_probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x_probs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드가 두 확률변수의 독립성을 확인해준다</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+<span class="n">xMy</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">f_Y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="n">xMy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>독립성의 다른 정의</strong></p>
+<p>다음이 성립한다.</p>
+<blockquote>
+<div><p>확률변수 각각에 대한 주변 확률 질량 함수가 개별 확률 질량 함수와 동일하면 두 확률변수는 서로 독립이다.</p>
+</div></blockquote>
+<p>위 성질을 이용하여 공정한 주사위와 불공정한 주사위를 동시에 던진 결과를 가리키는
+각각의 확률변수가 서로 독립임을 증명한다.</p>
+<p>먼저 공정한 주사위를 던져 나온 결과를 가리키는 확률변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 질량 함수는 다음과 같이 정의된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_massX</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>반면에 불공정한 주사위를 던져 나온 결과를 가리키는 확률변수 <span class="math notranslate nohighlight">\(Y\)</span>의 확률 질량 함수는 다음과 같이 정의된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_massY</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">y</span><span class="o">/</span><span class="mi">21</span>
     <span class="k">else</span><span class="p">:</span>
@@ -607,37 +676,99 @@ f_{XY}(x, y) = f_X(x) \cdot f_Y(y)
 </div>
 </div>
 </div>
-<p>정상적인 주사위와 비정상적인 주사위를 동시에 던져서 나오는 값의 튜플을 가리키는
-결합 확률변수 <span class="math notranslate nohighlight">\((X, Y)\)</span>의 결합 확률 질량 함수의 결합 확률 질량 함수는 다음과 같다.</p>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">f_X()</span></code> 함수와 <code class="docutils literal notranslate"><span class="pre">f_massX()</span></code> 함수가 동일함을 보인다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="mi">21</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">([</span><span class="n">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)],</span> <span class="p">[</span><span class="n">f_massX</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
 </div>
-<p>따라서 자연스럽게 두 확률변수가 서로 독립임이 확인된다.</p>
+<p>반면에 아래 코드는 <code class="docutils literal notranslate"><span class="pre">f_Y()</span></code> 함수와 <code class="docutils literal notranslate"><span class="pre">f_massY()</span></code> 함수가 동일함을 보인다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">([</span><span class="n">f_Y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)],</span> <span class="p">[</span><span class="n">f_massY</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id4">
 <h3><span class="section-number">16.1.2. </span>독립성 대 무상관성<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 서로 독립이면 두 확률변수 사이에 어떠한 상관성도 존재하지 않는다.
-예를 들어 <a class="reference internal" href="twoD_data.html#ch-twod-data"><span class="std std-numref">8장</span></a>에서 설명한 공분산과 상관계수가 0으로 계산된다.</p>
+예를 들어, 결합 확률분포의 공분산과 상관계수도 0이 된다.
+여기서는 두 개의 이산 확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>로 구성된 결합 확률변수 <span class="math notranslate nohighlight">\((X, Y)\)</span>를
+이용하여 독립성과 무상관성을 설명한다.</p>
+<p><span class="math notranslate nohighlight">\((X, Y)\)</span>의 확률 질량 함수를 <span class="math notranslate nohighlight">\(f_{XY}\)</span> 할 때 각 확률변수에 대한
+주변 확률 질량 함수, 기댓값, 분산과
+두 확률변수의 선형 상관관계를 측정하는 공분산과 피어슨 상관계수는
+아래와 같이 정의된다.</p>
+<ul class="simple">
+<li><p>기댓값</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-E_{XY}[X] &amp;= \sum_{x}\sum_y x \, f_{XY}(x, y)\\[.5ex]
-E_{XY}[Y] &amp;= \sum_{x}\sum_y y \, f_{XY}(x, y)\\[.5ex]
-Var_{XY}(X) &amp;= E_{XY}[(X - E_{XY}[X])^2]\\[1ex]
-Var_{XY}(Y) &amp;= E_{XY}[(Y - E_{XY}[Y])^2]\\[1ex]
-Cov[X, Y] &amp;= E_{XY}[(X - E_{XY}[X])\,(Y-E_{XY}[Y])]\\[.5ex]
- &amp;= \sum_{x}\sum_y (x-E_{XY}[X])\, (y-E_{XY}[Y]) \, f_{XY}(x, y)\\[1ex]
-Corr[X, Y] &amp;= \frac{Cov[X, Y]}{\sqrt{Var_{XY}(X)\, Var_{XY}(Y)}}\
+E[X] &amp;= \sum_x x\, f_X(x) = \sum_x x\, \sum_y f_{XY}(x, y)\\[.5ex] 
+E[Y]&amp;= \sum_y y\, f_Y(y) = \sum_y y\, \sum_x f_{XY}(x, y)\\[.5ex]
 \end{align*}
 \end{split}\]</div>
+<ul class="simple">
+<li><p>분산</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+Var(X) &amp;= \sum_x (x-E[X])^2\, f_X(x)\\[.5ex] 
+Var(Y) &amp;= \sum_y (y-E[Y])^2\, f_Y(y)\\[.5ex] 
+\end{align*}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>공분산과 피어슨 상관계수</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+Cov[X, Y] &amp;= \sum_{x}\sum_y (x-E[X])\, (y-E[Y]) \, f_{XY}(x, y)\\[1ex]
+Corr[X, Y] &amp;= \frac{Cov[X, Y]}{\sqrt{Var(X)\, Var(Y)}}\
+\end{align*}
+\end{split}\]</div>
+<p><strong>독립이면 무상관이다!</strong></p>
+<p>아래 식은 두 확률변수가 서로 독립이면 공분산이 0임을 증명한다.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+Cov[X, Y] &amp;= \sum_{x}\sum_y (x-E[X])\, (y-E[Y]) \, f_{XY}(x, y)\\[1ex]
+ &amp;= \sum_{x}\sum_y (x-E[X])\, (y-E[Y]) \, f_{X}(x)\, f_{Y}(y)\\[1ex]
+ &amp;= \sum_{x}\big( (x-E[X])\, f_{X}(x)\, \sum_y (y-E[Y]) \, f_{Y}(y)\big )\\[1ex]
+ &amp;= 0
+\end{align*}
+\end{split}\]</div>
+<p>위 수식에서 마지막줄이 0인 이유는 바로 윗줄에 포함된 아래 수식이 0으로 계산되기 때문이다.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\sum_y (y-E[Y]) \, f_{Y}(y) &amp;= \sum_y y \, f_{Y}(y) - \sum_y E[Y] \, f_{Y}(y) \\[.5ex]
+    &amp;= E[Y] - E[Y] \, \sum_y f_{Y}(y) \\[.5ex]
+    &amp;= E[Y] - E[Y] \\[.5ex]
+    &amp;= 0
+\end{align*}
+\end{split}\]</div>
+<p>실제로 공정한 주사위를 던진 결과와 불공정한 주사위를 던진 결과의 공분산은 0으로 계산된다.
+공분산이 0이면 피어슨 상관계수다 당연히 0이다.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span>의 기댓값: <span class="math notranslate nohighlight">\(E[X]\)</span></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">x</span> <span class="o">*</span> <span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
@@ -651,6 +782,9 @@ Corr[X, Y] &amp;= \frac{Cov[X, Y]}{\sqrt{Var_{XY}(X)\, Var_{XY}(Y)}}\
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Y\)</span>의 기댓값: <span class="math notranslate nohighlight">\(E[Y]\)</span></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">y</span> <span class="o">*</span> <span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
@@ -664,6 +798,9 @@ Corr[X, Y] &amp;= \frac{Cov[X, Y]}{\sqrt{Var_{XY}(X)\, Var_{XY}(Y)}}\
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>의 공분산</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="n">x</span><span class="o">-</span><span class="n">E_X</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">E_Y</span><span class="p">)</span><span class="o">*</span><span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
@@ -676,7 +813,10 @@ Corr[X, Y] &amp;= \frac{Cov[X, Y]}{\sqrt{Var_{XY}(X)\, Var_{XY}(Y)}}\
 </div>
 </div>
 </div>
-<p>공분산이 0이기에 상관계수도 0이다.</p>
+<p><strong>무상관이지만 독립이 아닐 수 있다!</strong></p>
+<p>(준비중 …)</p>
+<p>단, 두 정규분포의 결확 확률 분포의 경우에는 공분산이 0이면 두 분포가 서로 독립임의 의미한다.
+증명은 생략한다.</p>
 </section>
 </section>
 <section id="id5">
