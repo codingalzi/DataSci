@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -599,7 +599,7 @@ f_{XY}(x, y) = f_X(x) \cdot f_Y(y)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_Y</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">y</span><span class="o">/</span><span class="mi">21</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
@@ -612,8 +612,8 @@ f_{XY}(x, y) = f_X(x) \cdot f_Y(y)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="mi">21</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="mi">21</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
 </pre></div>
@@ -626,6 +626,57 @@ f_{XY}(x, y) = f_X(x) \cdot f_Y(y)
 <h3><span class="section-number">16.1.2. </span>독립성 대 무상관성<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 서로 독립이면 두 확률변수 사이에 어떠한 상관성도 존재하지 않는다.
 예를 들어 <a class="reference internal" href="twoD_data.html#ch-twod-data"><span class="std std-numref">8장</span></a>에서 설명한 공분산과 상관계수가 0으로 계산된다.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+E_{XY}[X] &amp;= \sum_{x}\sum_y x \, f_{XY}(x, y)\\[.5ex]
+E_{XY}[Y] &amp;= \sum_{x}\sum_y y \, f_{XY}(x, y)\\[.5ex]
+Var_{XY}(X) &amp;= E_{XY}[(X - E_{XY}[X])^2]\\[1ex]
+Var_{XY}(Y) &amp;= E_{XY}[(Y - E_{XY}[Y])^2]\\[1ex]
+Cov[X, Y] &amp;= E_{XY}[(X - E_{XY}[X])\,(Y-E_{XY}[Y])]\\[.5ex]
+ &amp;= \sum_{x}\sum_y (x-E_{XY}[X])\, (y-E_{XY}[Y]) \, f_{XY}(x, y)\\[1ex]
+Corr[X, Y] &amp;= \frac{Cov[X, Y]}{\sqrt{Var_{XY}(X)\, Var_{XY}(Y)}}\
+\end{align*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">x</span> <span class="o">*</span> <span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+<span class="n">E_X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.500000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">y</span> <span class="o">*</span> <span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+<span class="n">E_Y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.333333
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="n">x</span><span class="o">-</span><span class="n">E_X</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">E_Y</span><span class="p">)</span><span class="o">*</span><span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.000000
+</pre></div>
+</div>
+</div>
+</div>
+<p>공분산이 0이기에 상관계수도 0이다.</p>
 </section>
 </section>
 <section id="id5">
@@ -647,215 +698,343 @@ X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\m
 <span class="math notranslate nohighlight">\(X-Y\)</span>의 평균값과 분산은 두 확률변수 각각의 평균값의 차와 분산의 합으로 계산된다.
 <span class="math notranslate nohighlight">\(X+Y\)</span>와 <span class="math notranslate nohighlight">\(X-Y\)</span>의 분산이 두 확률변수 각각의 분산의 합으로 계산되는 이유를 직관적으로 설명하기 위해
 다음 두 예제를 이용한다.</p>
-<p><strong>예제: 신랑, 신부 체중의 합의 분포</strong></p>
+<p><strong>예제: 남자, 여자 체중의 합의 분포</strong></p>
 <p>해야 할 일: 아래 분포를 따라는 남녀 키 데이터를 생성해서 활용할 것.
 상호 독립이어야 함.</p>
-<ul>
-<li><p>전제</p>
-<ul class="simple">
-<li><p>신부의 체중 <span class="math notranslate nohighlight">\(X ∼ N(150,400)\)</span></p></li>
-<li><p>신랑의 체중 <span class="math notranslate nohighlight">\(Y ∼ N(190, 500)\)</span></p></li>
-</ul>
-<p>⇒ 신랑 + 신부의 체중 <span class="math notranslate nohighlight">\(∼ N(340,900)\ _{= N(150+190=340,\ \ 400+500,900)}\)</span></p>
-</li>
-</ul>
-<blockquote>
-<div><p><em>신랑과 신부의 체중은 상호 독립이라고 가정</em></p>
-</div></blockquote>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1"># 정규분포의 평균과 표준편차</span>
-<span class="n">mu_w</span><span class="p">,</span> <span class="n">sigma_w</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">20</span>
-<span class="n">mu_m</span><span class="p">,</span> <span class="n">sigma_m</span> <span class="o">=</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">22</span>
-
-<span class="c1"># x축 범위</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_w</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="n">mu_w</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_m</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="n">mu_m</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-
-<span class="c1"># 정규분포 공식을 이용한 y값 계산</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu_w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_w</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">mu_m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_m</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-
-<span class="c1"># 그래프 출력</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;bride&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;groom&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/44aa25c22be8482b1b66c322816caae079ac5c29760f5bb37dbdd779b374b347.png" src="_images/44aa25c22be8482b1b66c322816caae079ac5c29760f5bb37dbdd779b374b347.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 신랑 + 신부 </span>
-<span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">340</span><span class="p">,</span> <span class="mi">30</span> 
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-
-<span class="c1"># 그래프 출력</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/aa592503dde2b7b2a482dc3365c4a088643eec85e0bdeeb4ca6b2616c59d0812.png" src="_images/aa592503dde2b7b2a482dc3365c4a088643eec85e0bdeeb4ca6b2616c59d0812.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 전체 비교</span>
-<span class="n">mu_w</span><span class="p">,</span> <span class="n">sigma_w</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">20</span>
-<span class="n">mu_m</span><span class="p">,</span> <span class="n">sigma_m</span> <span class="o">=</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">22</span>
-<span class="n">mu_sum</span><span class="p">,</span> <span class="n">sigma_sum</span> <span class="o">=</span> <span class="mi">340</span><span class="p">,</span> <span class="mi">30</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_w</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="n">mu_w</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_m</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="n">mu_m</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_sum</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_sum</span><span class="p">,</span> <span class="n">mu_sum</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_sum</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-
-<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu_w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_w</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">mu_m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_m</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">y3</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_sum</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x3</span> <span class="o">-</span> <span class="n">mu_sum</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_sum</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-
-<span class="c1"># 그래프 출력</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;bride&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;groom&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/845e051105c4320914205909259125f45c8a30079c4b2cdfaae35d7571a3b73a.png" src="_images/845e051105c4320914205909259125f45c8a30079c4b2cdfaae35d7571a3b73a.png" />
-</div>
-</div>
-<p>“신랑 + 신부”의 모양이 보다 납작해진다. 이유는 분산이 커지기 때문이다</p>
-<p>연속데이터를 다루는 두 정규분포의 합도 연속데이터를 다루는 정규분포를 따른다.<br />
-또한, 새로운 정규분포의 기대치와 분산은 각각의 기대치 또는 분산을 이용하여 아래와 같이 구한다.</p>
-<ul class="simple">
-<li><p>전제 : <span class="math notranslate nohighlight">\(X ∼N(μ_x, 𝜎^2_x), Y ∼ N(μ_y, 𝜎_y^2)\ \ \ _{(서로\ 독립)}\)</span></p></li>
-<li><p>결론 :  <span class="math notranslate nohighlight">\(⇒ \begin{pmatrix} 
-E(X+Y) = μ_x+μ_y,\ \  Var(X+Y)=Var(X)+Var(Y) \\
-X+Y ∼N(μ_x+μ_y,\ \  𝜎_x^2+𝜎_y^2)
-\end{pmatrix}\)</span></p></li>
-</ul>
-<p>신부와 신랑의 체중의 합이 380 파운드 이하일 확률은?</p>
-<div class="math notranslate nohighlight">
-\[
-P(X+Y&lt;380)= P(Z&lt;\frac{380-340}{30})=P(Z&lt;1.33)=0.9082
-\]</div>
-<p><strong>예제: 결혼 중매 참여 남자, 여자의 키 차이</strong></p>
 <ul class="simple">
 <li><p>전제</p>
 <ul>
-<li><p>남자의 키 <span class="math notranslate nohighlight">\(X ∼ N(71, 20.25)\)</span></p></li>
-<li><p>여자의 키 <span class="math notranslate nohighlight">\(Y ∼ N(64,16)\)</span></p></li>
+<li><p>남자의 체중 <span class="math notranslate nohighlight">\(Y \sim N(71.2, 8.5^2)\)</span></p></li>
+<li><p>여자의 체중 <span class="math notranslate nohighlight">\(X \sim N(53.7, 6.3^2)\)</span></p></li>
 </ul>
 </li>
-<li><p>결론<br />
-⟹ 남자의 키와 여자의 키의 차이의 분포 <span class="math notranslate nohighlight">\(∼N(7, 36.25)_{=N(71-64, 20.25+16)}\)</span></p></li>
+<li><p>결론</p>
+<ul>
+<li><p>남자 + 여자의 체중 <span class="math notranslate nohighlight">\(\sim N(124.9, 10.58^2)\)</span></p></li>
+<li><p>단, 남자와 여자의 체중은 상호 독립이라고 가정한다.</p></li>
 </ul>
-<blockquote>
-<div><p>남자와 여자의 키는 상호 독립이라고 가정</p>
-</div></blockquote>
+</li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_w</span><span class="p">,</span> <span class="n">sigma_w</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span>
-<span class="n">mu_m</span><span class="p">,</span> <span class="n">sigma_m</span> <span class="o">=</span> <span class="mi">71</span><span class="p">,</span> <span class="mf">4.5</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">8.5</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">6.3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.580170
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_men</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="mf">71.2</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">)</span>
+<span class="n">X_wemen</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="mf">53.7</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">)</span>
+<span class="n">X_sum</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="mf">124.9</span><span class="p">,</span> <span class="mf">10.58</span><span class="p">)</span>
+<span class="n">X_diff</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="mf">17.5</span><span class="p">,</span> <span class="mf">10.58</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_men</span> <span class="o">=</span> <span class="n">X_men</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">data_wemen</span> <span class="o">=</span> <span class="n">X_wemen</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Men&#39;</span><span class="p">:</span> <span class="n">data_men</span><span class="p">,</span> <span class="s1">&#39;Wemen&#39;</span><span class="p">:</span><span class="n">data_wemen</span><span class="p">})</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_w</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="n">mu_w</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_m</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="n">mu_m</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu_w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_w</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">mu_m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_m</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Men</th>
+      <th>Wemen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>82.482049</td>
+      <td>58.560508</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>66.383688</td>
+      <td>54.541060</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>70.520752</td>
+      <td>56.189584</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>67.183047</td>
+      <td>59.024809</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>54.831566</td>
+      <td>53.376824</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>995</th>
+      <td>68.590987</td>
+      <td>45.792705</td>
+    </tr>
+    <tr>
+      <th>996</th>
+      <td>75.084614</td>
+      <td>56.315349</td>
+    </tr>
+    <tr>
+      <th>997</th>
+      <td>81.511496</td>
+      <td>56.323359</td>
+    </tr>
+    <tr>
+      <th>998</th>
+      <td>82.169376</td>
+      <td>55.234738</td>
+    </tr>
+    <tr>
+      <th>999</th>
+      <td>73.941220</td>
+      <td>56.396447</td>
+    </tr>
+  </tbody>
+</table>
+<p>1000 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Men+Wemen&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_men</span> <span class="o">+</span> <span class="n">data_wemen</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Men-Wemen&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_men</span> <span class="o">-</span> <span class="n">data_wemen</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Woman&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Man&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Men</th>
+      <th>Wemen</th>
+      <th>Men+Wemen</th>
+      <th>Men-Wemen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>82.482049</td>
+      <td>58.560508</td>
+      <td>141.042558</td>
+      <td>23.921541</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>66.383688</td>
+      <td>54.541060</td>
+      <td>120.924748</td>
+      <td>11.842628</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>70.520752</td>
+      <td>56.189584</td>
+      <td>126.710335</td>
+      <td>14.331168</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>67.183047</td>
+      <td>59.024809</td>
+      <td>126.207857</td>
+      <td>8.158238</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>54.831566</td>
+      <td>53.376824</td>
+      <td>108.208389</td>
+      <td>1.454742</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>995</th>
+      <td>68.590987</td>
+      <td>45.792705</td>
+      <td>114.383693</td>
+      <td>22.798282</td>
+    </tr>
+    <tr>
+      <th>996</th>
+      <td>75.084614</td>
+      <td>56.315349</td>
+      <td>131.399964</td>
+      <td>18.769265</td>
+    </tr>
+    <tr>
+      <th>997</th>
+      <td>81.511496</td>
+      <td>56.323359</td>
+      <td>137.834855</td>
+      <td>25.188137</td>
+    </tr>
+    <tr>
+      <th>998</th>
+      <td>82.169376</td>
+      <td>55.234738</td>
+      <td>137.404115</td>
+      <td>26.934638</td>
+    </tr>
+    <tr>
+      <th>999</th>
+      <td>73.941220</td>
+      <td>56.396447</td>
+      <td>130.337667</td>
+      <td>17.544773</td>
+    </tr>
+  </tbody>
+</table>
+<p>1000 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">data_sum</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_sum</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X_sum</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X_men</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+
+
+
+<span class="n">x_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="p">[</span><span class="mf">71.2</span><span class="p">,</span> <span class="mf">53.7</span><span class="p">,</span> <span class="mf">124.9</span><span class="p">])</span>
+<span class="n">x_ticks_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{men}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{wemen}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{sum}</span><span class="s1">$&#39;</span><span class="p">])</span> <span class="c1"># 실제로 보이는 눈금 기호</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x_ticks</span><span class="p">,</span> <span class="n">x_ticks_</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># a 눈금 색 지정</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># a 눈금 색 지정</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># a 눈금 색 지정</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Weight&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7dd29e75155275c521689ad270f90c7304fb5e4a1bc22cdda472520b5e591d30.png" src="_images/7dd29e75155275c521689ad270f90c7304fb5e4a1bc22cdda472520b5e591d30.png" />
+<img alt="_images/e9f2ad075dbf8d35d5c5ad9530ee904002ea4ab6fb1b1be296c1ac24f8fac2ce.png" src="_images/e9f2ad075dbf8d35d5c5ad9530ee904002ea4ab6fb1b1be296c1ac24f8fac2ce.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  남자 + 여자</span>
-<span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">6.02</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-
-<span class="c1"># 그래프 출력</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/75473a71c800d46a3caf93f600ff0c97337dd305f815625f0dd37f0a5a6926ae.png" src="_images/75473a71c800d46a3caf93f600ff0c97337dd305f815625f0dd37f0a5a6926ae.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 전체 비교</span>
-<span class="n">mu_w</span><span class="p">,</span> <span class="n">sigma_w</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">4</span>
-<span class="n">mu_m</span><span class="p">,</span> <span class="n">sigma_m</span> <span class="o">=</span> <span class="mi">71</span><span class="p">,</span> <span class="mf">4.5</span>
-<span class="n">mu_sum</span><span class="p">,</span> <span class="n">sigma_sum</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">6.02</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_w</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="n">mu_w</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_w</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_m</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="n">mu_m</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_m</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_sum</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_sum</span><span class="p">,</span> <span class="n">mu_sum</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">sigma_sum</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-
-<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu_w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_w</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">mu_m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_m</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">y3</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma_sum</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x3</span> <span class="o">-</span> <span class="n">mu_sum</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_sum</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-
-<span class="c1"># 그래프 출력</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Woman&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Man&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/d289b01520d4ca8e9bb6964a61bdca340ca23bda231635cbb4ef8407940ddbf7.png" src="_images/d289b01520d4ca8e9bb6964a61bdca340ca23bda231635cbb4ef8407940ddbf7.png" />
-</div>
-</div>
-<p>“남자 - 여자”의 모양이 보다 납작해진다. 이유는 분산이 커지기 때문이다.</p>
-<p>연속데이터를 다루는 두 정규분포의 차이도 연속데이터를 다루는 정규분포를 따른다.<br />
-또한, 새로운 정규분포의 기대치와 분산은 각각의 기대치 또는 분산을 이용하여 아래와 같이 구한다.</p>
+<p><strong>예제: 남자, 여자의 체중 차이</strong></p>
 <ul class="simple">
-<li><p>전제 : <span class="math notranslate nohighlight">\(X ∼N(μ_x, 𝜎^2_x), Y ∼ N(μ_y, 𝜎_y^2)\ \ \ _{(서로\ 독립)}\)</span></p></li>
-<li><p>결론 :  <span class="math notranslate nohighlight">\(⇒ \begin{pmatrix} 
-E(X-Y) = μ_x-μ_y,\ \  Var(X-Y)=Var(X)+Var(Y) \\
-X-Y ∼N(μ_x-μ_y,\ \  𝜎_x^2+𝜎_y^2)
-\end{pmatrix}\)</span></p></li>
+<li><p>전제</p>
+<ul>
+<li><p>남자의 체중 <span class="math notranslate nohighlight">\(Y \sim N(71.2, 8.5^2)\)</span></p></li>
+<li><p>여자의 체중 <span class="math notranslate nohighlight">\(X \sim N(53.7, 6.3^2)\)</span></p></li>
 </ul>
-<p>남자와 여자의 키의 차이가 5인치 이상일 확률은?</p>
-<div class="math notranslate nohighlight">
-\[
-P(X-Y&gt;5)= P(Z&gt;\frac{5-7}{6.02})=P(Z&gt;-0.33)=P(Z&lt;0.33)=0.6293
-\]</div>
-<p>주의사항: 정규분포 그래프는 평균을 중심으로 해서 좌우 대칭</p>
+</li>
+<li><p>결론</p>
+<ul>
+<li><p>남자 - 여자의 체중 <span class="math notranslate nohighlight">\(\sim N(17.5, 10.58^2)\)</span></p></li>
+<li><p>단, 남자와 여자의 체중은 상호 독립이라고 가정한다.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">data_diff</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_diff</span><span class="p">)</span>
+
+<span class="n">x_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="p">[</span><span class="mf">71.2</span><span class="p">,</span> <span class="mf">53.7</span><span class="p">,</span> <span class="mf">17.5</span><span class="p">])</span>
+<span class="n">x_ticks_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">(),</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{men}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{wemen}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{diff}</span><span class="s1">$&#39;</span><span class="p">])</span> <span class="c1"># 실제로 보이는 눈금 기호</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x_ticks</span><span class="p">,</span> <span class="n">x_ticks_</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># a 눈금 색 지정</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># a 눈금 색 지정</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span> <span class="c1"># a 눈금 색 지정</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Weight&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7ee69576c12cb2e95b7d7ccd4dcf9994784dfb20f12af29ed25502e87cb17aee.png" src="_images/7ee69576c12cb2e95b7d7ccd4dcf9994784dfb20f12af29ed25502e87cb17aee.png" />
+</div>
+</div>
 <p><strong>상호 독립성의 중요성: 피어슨  데이터셋</strong></p>
 <p><strong>주의사항</strong></p>
 <ul class="simple">
