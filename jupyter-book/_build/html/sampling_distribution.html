@@ -411,7 +411,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.1. 독립성과 상관성</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.1.1. 상호 독립성</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.1.1. 독립성</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">16.1.2. 독립성 대 무상관성</a></li>
 </ul>
 </li>
@@ -521,22 +521,23 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <section id="id2">
 <h2><span class="section-number">16.1. </span>독립성과 상관성<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <section id="id3">
-<h3><span class="section-number">16.1.1. </span>상호 독립성<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">16.1.1. </span>독립성<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 서로 어떤 영향도 끼치지 않을 때 상호 독립이라 한다.
 수식으로 표혀하면 다음 수식이 성립할 때 두 확률변수가 상호 독립이라 정의한다.</p>
 <div class="math notranslate nohighlight">
 \[
 f_{XY}(x, y) = f_X(x) \cdot f_Y(y)
 \]</div>
-<p>위 수식에서 <span class="math notranslate nohighlight">\(f_X\)</span>와 <span class="math notranslate nohighlight">\(f_Y\)</span> 는 각각 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>에 대한 주변 확률 밀도 함수를 가리키며
-다음과 같이 정의된다.</p>
+<p>위 수식에서 <span class="math notranslate nohighlight">\(f_X\)</span>와 <span class="math notranslate nohighlight">\(f_Y\)</span> 는 각각 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>에 대한 주변확률을 계산하는 함수를 가리킨다.
+<span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 이산확률변수인 경우 주변화률질량함수는 다음과 같이 정의된다.</p>
 <div class="math notranslate nohighlight">
 \[
-f_X(x) = \sum_y f_{XY}(x, y) \qquad f_Y(y) = \sum_x f_{XY}(x, y)
+f_X(x) = \sum_k f_{XY}(x, y_k) \qquad f_Y(y) = \sum_n f_{XY}(x_n, y)
 \]</div>
+<p><span class="math notranslate nohighlight">\(x_n\)</span>과 <span class="math notranslate nohighlight">\(y_k\)</span>는 각각 확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 가리킬 수 있는 유한개의 값을 나타낸다.</p>
 <p><strong>예제</strong></p>
 <p>예를 들어 <span class="math notranslate nohighlight">\(X\)</span>는 공정한 주사위를 던져서 나오는 값을 가리키는 확률변수라 하자.
-<span class="math notranslate nohighlight">\(X\)</span>의 확률 분포는 다음과 같다.</p>
+<span class="math notranslate nohighlight">\(X\)</span>의 확률분포는 다음과 같다.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>X</p></th>
@@ -560,7 +561,7 @@ f_X(x) = \sum_y f_{XY}(x, y) \qquad f_Y(y) = \sum_x f_{XY}(x, y)
 </tbody>
 </table>
 </div>
-<p>반면에 <span class="math notranslate nohighlight">\(Y\)</span>는 아래 확률 분포를 갖는 불공적한 주사위를 던져서 나오는 값을 가리키는 확률 변수라 하자.</p>
+<p>반면에 <span class="math notranslate nohighlight">\(Y\)</span>는 아래 확률분포를 갖는 불공적한 주사위를 던져서 나오는 값을 가리키는 확률 변수라 하자.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>Y</p></th>
@@ -585,7 +586,7 @@ f_X(x) = \sum_y f_{XY}(x, y) \qquad f_Y(y) = \sum_x f_{XY}(x, y)
 </table>
 </div>
 <p>공정한 주사위와 불공정한 주사위를 동시에 던져서 나오는 값의 튜플을 가리키는
-결합 확률변수 <span class="math notranslate nohighlight">\((X, Y)\)</span>의 결합 확률 질량 함수의 결합 확률 질량 함수는 다음과 같다.</p>
+결합확률변수 <span class="math notranslate nohighlight">\((X, Y)\)</span>의 결합확률질량함수의 결합확률질량함수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -597,9 +598,9 @@ f_X(x) = \sum_y f_{XY}(x, y) \qquad f_Y(y) = \sum_x f_{XY}(x, y)
 </div>
 </div>
 </div>
-<p>확률변수 각각에 대한 주변 확률 질량 함수를 <code class="docutils literal notranslate"><span class="pre">f_XY()</span></code>를 이용하여 정의해보자.</p>
+<p>확률변수 각각에 대한 주변확률질량함수를 <code class="docutils literal notranslate"><span class="pre">f_XY()</span></code>를 이용하여 정의해보자.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(X\)</span>에 대한 주변 확률 질량 함수</p></li>
+<li><p><span class="math notranslate nohighlight">\(X\)</span>에 대한 주변확률질량함수</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -611,7 +612,7 @@ f_X(x) = \sum_y f_{XY}(x, y) \qquad f_Y(y) = \sum_x f_{XY}(x, y)
 </div>
 </div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(Y\)</span>에 대한 주변 확률 질량 함수</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y\)</span>에 대한 주변확률질량함수</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -637,101 +638,15 @@ f_X(x) = \sum_y f_{XY}(x, y) \qquad f_Y(y) = \sum_x f_{XY}(x, y)
 </div>
 </div>
 </div>
-<p><strong>독립성의 다른 정의</strong></p>
-<p>다음이 성립한다.</p>
-<blockquote>
-<div><p>확률변수 각각에 대한 주변 확률 질량 함수가 개별 확률 질량 함수와 동일하면 두 확률변수는 상호 독립이다.</p>
-</div></blockquote>
-<p>위 성질을 이용하여 공정한 주사위와 불공정한 주사위를 동시에 던진 결과를 가리키는
-각각의 확률변수가 상호 독립임을 증명한다.</p>
-<p>먼저 공정한 주사위를 던져 나온 결과를 가리키는 확률변수 <span class="math notranslate nohighlight">\(X\)</span>의 확률 질량 함수는 다음과 같이 정의된다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_massX</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
-        <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>반면에 불공정한 주사위를 던져 나온 결과를 가리키는 확률변수 <span class="math notranslate nohighlight">\(Y\)</span>의 확률 질량 함수는 다음과 같이 정의된다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_massY</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">y</span><span class="o">/</span><span class="mi">21</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">f_X()</span></code> 함수와 <code class="docutils literal notranslate"><span class="pre">f_massX()</span></code> 함수가 동일함을 보인다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">([</span><span class="n">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)],</span> <span class="p">[</span><span class="n">f_massX</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<p>반면에 아래 코드는 <code class="docutils literal notranslate"><span class="pre">f_Y()</span></code> 함수와 <code class="docutils literal notranslate"><span class="pre">f_massY()</span></code> 함수가 동일함을 보인다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">([</span><span class="n">f_Y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)],</span> <span class="p">[</span><span class="n">f_massY</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>확률변수 각각에 대한 주변 확률 질량 함수와 개별 확률 질량 함수는 다르다!</strong></p>
-<p>(준비중 …)</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>X</p></th>
-<th class="head text-center"><p>Y</p></th>
-<th class="head text-center"><p>P</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p>A</p></td>
-<td class="text-center"><p>0</p></td>
-<td class="text-center"><p>0.1</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>A</p></td>
-<td class="text-center"><p>1</p></td>
-<td class="text-center"><p>0.2</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>B</p></td>
-<td class="text-center"><p>0</p></td>
-<td class="text-center"><p>0.3</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>B</p></td>
-<td class="text-center"><p>1</p></td>
-<td class="text-center"><p>0.4</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 </section>
 <section id="id4">
 <h3><span class="section-number">16.1.2. </span>독립성 대 무상관성<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 상호 독립이면 두 확률변수 사이에 어떠한 상관성도 존재하지 않는다.
-예를 들어, 결합 확률분포의 공분산과 상관계수도 0이 된다.
-여기서는 두 개의 이산 확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>로 구성된 결합 확률변수 <span class="math notranslate nohighlight">\((X, Y)\)</span>를
+예를 들어, 결합확률분포의 공분산과 상관계수도 0이 된다.
+여기서는 두 개의 이산 확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>로 구성된 결합확률변수 <span class="math notranslate nohighlight">\((X, Y)\)</span>를
 이용하여 독립성과 무상관성을 설명한다.</p>
-<p><span class="math notranslate nohighlight">\((X, Y)\)</span>의 확률 질량 함수를 <span class="math notranslate nohighlight">\(f_{XY}\)</span> 할 때 각 확률변수에 대한
-주변 확률 질량 함수, 기댓값, 분산과
+<p><span class="math notranslate nohighlight">\((X, Y)\)</span>의 확률질량함수를 <span class="math notranslate nohighlight">\(f_{XY}\)</span> 할 때 각 확률변수에 대한
+주변확률질량함수, 기댓값, 분산과
 두 확률변수의 선형 상관관계를 측정하는 공분산과 피어슨 상관계수는
 아래와 같이 정의된다.</p>
 <ul class="simple">
@@ -740,8 +655,8 @@ f_X(x) = \sum_y f_{XY}(x, y) \qquad f_Y(y) = \sum_x f_{XY}(x, y)
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-E[X] &amp;= \sum_x x\, f_X(x) = \sum_x x\, \sum_y f_{XY}(x, y)\\[.5ex] 
-E[Y]&amp;= \sum_y y\, f_Y(y) = \sum_y y\, \sum_x f_{XY}(x, y)\\[.5ex]
+E[X] &amp;= \sum_n x_n\, f_X(x_n) = \sum_n x_n\, \sum_k f_{XY}(x_n, y_k)\\[.5ex] 
+E[Y]&amp;= \sum_k y_k\, f_Y(y_k) = \sum_k y_k\, \sum_n f_{XY}(x_n, y_k)\\[.5ex]
 \end{align*}
 \end{split}\]</div>
 <ul class="simple">
@@ -750,8 +665,8 @@ E[Y]&amp;= \sum_y y\, f_Y(y) = \sum_y y\, \sum_x f_{XY}(x, y)\\[.5ex]
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-Var(X) &amp;= \sum_x (x-E[X])^2\, f_X(x)\\[.5ex] 
-Var(Y) &amp;= \sum_y (y-E[Y])^2\, f_Y(y)\\[.5ex] 
+Var(X) &amp;= \sum_n (x_n-E[X])^2\, f_X(x_n)\\[.5ex] 
+Var(Y) &amp;= \sum_k (y_k-E[Y])^2\, f_Y(y_k)\\[.5ex] 
 \end{align*}
 \end{split}\]</div>
 <ul class="simple">
@@ -760,7 +675,7 @@ Var(Y) &amp;= \sum_y (y-E[Y])^2\, f_Y(y)\\[.5ex]
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-Cov[X, Y] &amp;= \sum_{x}\sum_y (x-E[X])\, (y-E[Y]) \, f_{XY}(x, y)\\[1ex]
+Cov[X, Y] &amp;= \sum_n\sum_k (x_n-E[X])\, (y_k-E[Y]) \, f_{XY}(x_n, y_k)\\[1ex]
 Corr[X, Y] &amp;= \frac{Cov[X, Y]}{\sqrt{Var(X)\, Var(Y)}}\
 \end{align*}
 \end{split}\]</div>
@@ -769,9 +684,9 @@ Corr[X, Y] &amp;= \frac{Cov[X, Y]}{\sqrt{Var(X)\, Var(Y)}}\
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-Cov[X, Y] &amp;= \sum_{x}\sum_y (x-E[X])\, (y-E[Y]) \, f_{XY}(x, y)\\[1ex]
- &amp;= \sum_{x}\sum_y (x-E[X])\, (y-E[Y]) \, f_{X}(x)\, f_{Y}(y)\\[1ex]
- &amp;= \sum_{x}\big( (x-E[X])\, f_{X}(x)\, \sum_y (y-E[Y]) \, f_{Y}(y)\big )\\[1ex]
+Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[1ex]
+ &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_n(x_n)\, f_{Y}(y_k)\\[1ex]
+ &amp;= \sum_n\big( (x_n - E[X])\, f_n(x)\, \sum_k (y_k - E[Y]) \, f_{Y}(y_k)\big )\\[1ex]
  &amp;= 0
 \end{align*}
 \end{split}\]</div>
@@ -779,8 +694,8 @@ Cov[X, Y] &amp;= \sum_{x}\sum_y (x-E[X])\, (y-E[Y]) \, f_{XY}(x, y)\\[1ex]
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\sum_y (y-E[Y]) \, f_{Y}(y) &amp;= \sum_y y \, f_{Y}(y) - \sum_y E[Y] \, f_{Y}(y) \\[.5ex]
-    &amp;= E[Y] - E[Y] \, \sum_y f_{Y}(y) \\[.5ex]
+\sum_k (y_k-E[Y]) \, f_{Y}(y_k) &amp;= \sum_k y \, f_{Y}(y_k) - \sum_k E[Y] \, f_{Y}(y_k) \\[.5ex]
+    &amp;= E[Y] - E[Y] \, \sum_k f_{Y}(y_k) \\[.5ex]
     &amp;= E[Y] - E[Y] \\[.5ex]
     &amp;= 0
 \end{align*}
@@ -836,7 +751,7 @@ Cov[X, Y] &amp;= \sum_{x}\sum_y (x-E[X])\, (y-E[Y]) \, f_{XY}(x, y)\\[1ex]
 </div>
 <p><strong>무상관이지만 독립이 아닐 수 있다!</strong></p>
 <p>(준비중 …)</p>
-<p>단, 두 정규분포의 결확 확률 분포의 경우에는 공분산이 0이면 두 분포가 상호 독립임의 의미한다.
+<p>단, 두 정규분포의 결확 확률분포의 경우에는 공분산이 0이면 두 분포가 상호 독립임의 의미한다.
 증명은 생략한다.</p>
 </section>
 </section>
@@ -1006,28 +921,28 @@ X+Y \sim N(134.76, 14.96^2)
   <tbody>
     <tr>
       <th>0</th>
-      <td>77.130962</td>
-      <td>54.235537</td>
+      <td>64.324674</td>
+      <td>63.357087</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>55.917584</td>
-      <td>70.254136</td>
+      <td>28.979551</td>
+      <td>71.408221</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>84.153749</td>
-      <td>51.907622</td>
+      <td>94.347194</td>
+      <td>60.304222</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>63.605899</td>
-      <td>55.768740</td>
+      <td>71.269956</td>
+      <td>65.269945</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>64.212632</td>
-      <td>54.559700</td>
+      <td>79.505346</td>
+      <td>46.071701</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1036,28 +951,28 @@ X+Y \sim N(134.76, 14.96^2)
     </tr>
     <tr>
       <th>995</th>
-      <td>87.979959</td>
-      <td>50.394312</td>
+      <td>77.932395</td>
+      <td>75.684032</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>89.180885</td>
-      <td>46.863224</td>
+      <td>76.860792</td>
+      <td>39.921671</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>48.400830</td>
-      <td>62.336682</td>
+      <td>70.352520</td>
+      <td>63.280912</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>71.174967</td>
-      <td>63.039582</td>
+      <td>67.932152</td>
+      <td>44.137290</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>75.221061</td>
-      <td>66.703823</td>
+      <td>89.426111</td>
+      <td>56.598133</td>
     </tr>
   </tbody>
 </table>
@@ -1103,38 +1018,38 @@ X+Y \sim N(134.76, 14.96^2)
   <tbody>
     <tr>
       <th>0</th>
-      <td>77.130962</td>
-      <td>54.235537</td>
-      <td>131.366499</td>
-      <td>22.895424</td>
+      <td>64.324674</td>
+      <td>63.357087</td>
+      <td>127.681761</td>
+      <td>0.967586</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>55.917584</td>
-      <td>70.254136</td>
-      <td>126.171721</td>
-      <td>-14.336552</td>
+      <td>28.979551</td>
+      <td>71.408221</td>
+      <td>100.387772</td>
+      <td>-42.428670</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>84.153749</td>
-      <td>51.907622</td>
-      <td>136.061371</td>
-      <td>32.246127</td>
+      <td>94.347194</td>
+      <td>60.304222</td>
+      <td>154.651415</td>
+      <td>34.042972</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>63.605899</td>
-      <td>55.768740</td>
-      <td>119.374639</td>
-      <td>7.837159</td>
+      <td>71.269956</td>
+      <td>65.269945</td>
+      <td>136.539901</td>
+      <td>6.000011</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>64.212632</td>
-      <td>54.559700</td>
-      <td>118.772332</td>
-      <td>9.652932</td>
+      <td>79.505346</td>
+      <td>46.071701</td>
+      <td>125.577047</td>
+      <td>33.433646</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1145,38 +1060,38 @@ X+Y \sim N(134.76, 14.96^2)
     </tr>
     <tr>
       <th>995</th>
-      <td>87.979959</td>
-      <td>50.394312</td>
-      <td>138.374270</td>
-      <td>37.585647</td>
+      <td>77.932395</td>
+      <td>75.684032</td>
+      <td>153.616427</td>
+      <td>2.248364</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>89.180885</td>
-      <td>46.863224</td>
-      <td>136.044109</td>
-      <td>42.317660</td>
+      <td>76.860792</td>
+      <td>39.921671</td>
+      <td>116.782463</td>
+      <td>36.939120</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>48.400830</td>
-      <td>62.336682</td>
-      <td>110.737513</td>
-      <td>-13.935852</td>
+      <td>70.352520</td>
+      <td>63.280912</td>
+      <td>133.633431</td>
+      <td>7.071608</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>71.174967</td>
-      <td>63.039582</td>
-      <td>134.214549</td>
-      <td>8.135384</td>
+      <td>67.932152</td>
+      <td>44.137290</td>
+      <td>112.069442</td>
+      <td>23.794862</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>75.221061</td>
-      <td>66.703823</td>
-      <td>141.924884</td>
-      <td>8.517237</td>
+      <td>89.426111</td>
+      <td>56.598133</td>
+      <td>146.024243</td>
+      <td>32.827978</td>
     </tr>
   </tbody>
 </table>
@@ -1227,52 +1142,52 @@ X+Y \sim N(134.76, 14.96^2)
     </tr>
     <tr>
       <th>mean</th>
-      <td>76.522903</td>
-      <td>57.947404</td>
-      <td>134.470306</td>
-      <td>18.575499</td>
+      <td>76.509686</td>
+      <td>58.155568</td>
+      <td>134.665254</td>
+      <td>18.354117</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>11.902410</td>
-      <td>9.353328</td>
-      <td>14.961558</td>
-      <td>15.311956</td>
+      <td>12.305241</td>
+      <td>9.498373</td>
+      <td>15.485032</td>
+      <td>15.604162</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>39.558210</td>
-      <td>30.754208</td>
-      <td>84.450675</td>
-      <td>-27.183501</td>
+      <td>28.979551</td>
+      <td>26.035263</td>
+      <td>93.456421</td>
+      <td>-42.428670</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>68.441029</td>
-      <td>52.135758</td>
-      <td>124.231047</td>
-      <td>8.473148</td>
+      <td>68.267892</td>
+      <td>51.759642</td>
+      <td>124.155131</td>
+      <td>7.565794</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>76.674363</td>
-      <td>57.571990</td>
-      <td>134.402323</td>
-      <td>19.136726</td>
+      <td>76.681347</td>
+      <td>58.627507</td>
+      <td>135.090824</td>
+      <td>17.815871</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>84.316033</td>
-      <td>64.231851</td>
-      <td>144.734353</td>
-      <td>29.287082</td>
+      <td>84.854034</td>
+      <td>64.412561</td>
+      <td>146.149454</td>
+      <td>28.698484</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>117.696987</td>
-      <td>88.189148</td>
-      <td>186.212442</td>
-      <td>65.498735</td>
+      <td>119.685471</td>
+      <td>86.196387</td>
+      <td>183.448573</td>
+      <td>67.674169</td>
     </tr>
   </tbody>
 </table>
@@ -1311,7 +1226,7 @@ X+Y \sim N(134.76, 14.96^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/53836192ba4f1bfdc64332fd6d16ec8b3f8aa769b19c659f28f2e8a5a8490f7c.png" src="_images/53836192ba4f1bfdc64332fd6d16ec8b3f8aa769b19c659f28f2e8a5a8490f7c.png" />
+<img alt="_images/e3ccf0dbd78c990c9069512d9daf468539b3295bebdabe4a89f0a27fcc940e43.png" src="_images/e3ccf0dbd78c990c9069512d9daf468539b3295bebdabe4a89f0a27fcc940e43.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1344,7 +1259,7 @@ X+Y \sim N(134.76, 14.96^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dbaa8d8cce80cd6a7f72745581d6ecf5645757eb0b96ebd3579aaceb651e4d02.png" src="_images/dbaa8d8cce80cd6a7f72745581d6ecf5645757eb0b96ebd3579aaceb651e4d02.png" />
+<img alt="_images/8c2544f1bc0e72a60b23f2333718d8d82645314b8505f8ac6787f85b4951cdd2.png" src="_images/8c2544f1bc0e72a60b23f2333718d8d82645314b8505f8ac6787f85b4951cdd2.png" />
 </div>
 </div>
 </section>
@@ -1672,7 +1587,7 @@ memory usage: 17.0 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/97e6bfb311fc08b6bf37dba059e0eeb88a62a9da14eb40469093e032331af636.png" src="_images/97e6bfb311fc08b6bf37dba059e0eeb88a62a9da14eb40469093e032331af636.png" />
+<img alt="_images/80b2507b050bf29970335a7fdaa16d4c963c558dd207263b679cda66c761caae.png" src="_images/80b2507b050bf29970335a7fdaa16d4c963c558dd207263b679cda66c761caae.png" />
 </div>
 </div>
 </section>
@@ -1680,7 +1595,7 @@ memory usage: 17.0 KB
 <section id="id8">
 <h2><span class="section-number">16.3. </span>표본평균의 분포<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p><strong>독립동일분포</strong></p>
-<p>확률론에서 <strong>독립동일분포</strong>는 특정 확률 분포를 따르는 데이터셋에서 무작위로 표본을 독립적으로 여러 번 추출해서 얻어진 값들로 구성된 데이터를 가리키는 다차원 확률변수를 의미한다.
+<p>확률론에서 <strong>독립동일분포</strong>는 특정 확률분포를 따르는 데이터셋에서 무작위로 표본을 독립적으로 여러 번 추출해서 얻어진 값들로 구성된 데이터를 가리키는 다차원 확률변수를 의미한다.
 독립동일분포는 보통 ‘independently and identically distributed’의 표현의 줄임말인 <strong>iid</strong>로 불린다.</p>
 <p>예를 들어 동일한 주사위를 10 번 던져서 나온 값들로 구성된 튜플,
 무작위로 선택된 100명에게 물은 동일한 질문에 대한 답으로 구성된 튜플 등을
@@ -1693,7 +1608,7 @@ memory usage: 17.0 KB
 <p><strong>표본평균의 분포</strong></p>
 <p>독립동일분포를 따르는 확률변수 <span class="math notranslate nohighlight">\(X_1, X_2, \cdots, X_n\)</span>의 평균값이 따르는 분포가
 <strong>표본평균의 분포</strong>다.
-즉, 아래와 같이 정의된 확률변수 <span class="math notranslate nohighlight">\(\overline{X}\)</span>의 확률 분포를 가리킨다.</p>
+즉, 아래와 같이 정의된 확률변수 <span class="math notranslate nohighlight">\(\overline{X}\)</span>의 확률분포를 가리킨다.</p>
 <div class="math notranslate nohighlight">
 \[
 \overline{X} = \frac{X_1 + X_2 + \cdots + X_n}{n}
@@ -2176,29 +2091,29 @@ V(\overline{X}) &amp;= V \left( \frac{X_1 + X_2 + \cdots + X_n}{n} \right) \\[2e
   </thead>
   <tbody>
     <tr>
-      <th>15377</th>
-      <td>4.1116</td>
-      <td>187500.0</td>
+      <th>16102</th>
+      <td>2.9087</td>
+      <td>228200.0</td>
     </tr>
     <tr>
-      <th>282</th>
-      <td>5.9849</td>
-      <td>371000.0</td>
+      <th>202</th>
+      <td>1.4844</td>
+      <td>119400.0</td>
     </tr>
     <tr>
-      <th>5346</th>
-      <td>2.8106</td>
-      <td>184400.0</td>
+      <th>19281</th>
+      <td>4.1898</td>
+      <td>359100.0</td>
     </tr>
     <tr>
-      <th>12420</th>
-      <td>1.8589</td>
-      <td>144000.0</td>
+      <th>15575</th>
+      <td>2.4097</td>
+      <td>66000.0</td>
     </tr>
     <tr>
-      <th>8840</th>
-      <td>4.3182</td>
-      <td>252700.0</td>
+      <th>17911</th>
+      <td>1.0667</td>
+      <td>34200.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2206,29 +2121,29 @@ V(\overline{X}) &amp;= V \left( \frac{X_1 + X_2 + \cdots + X_n}{n} \right) \\[2e
       <td>...</td>
     </tr>
     <tr>
-      <th>16738</th>
-      <td>2.5804</td>
-      <td>216300.0</td>
+      <th>11447</th>
+      <td>3.0122</td>
+      <td>114700.0</td>
     </tr>
     <tr>
-      <th>15067</th>
-      <td>2.3887</td>
-      <td>337500.0</td>
+      <th>10921</th>
+      <td>5.8623</td>
+      <td>287800.0</td>
     </tr>
     <tr>
-      <th>13340</th>
-      <td>1.7062</td>
-      <td>86800.0</td>
+      <th>17830</th>
+      <td>3.5978</td>
+      <td>80600.0</td>
     </tr>
     <tr>
-      <th>17896</th>
-      <td>1.7292</td>
-      <td>61700.0</td>
+      <th>17941</th>
+      <td>2.3241</td>
+      <td>99200.0</td>
     </tr>
     <tr>
-      <th>8047</th>
-      <td>5.4359</td>
-      <td>194100.0</td>
+      <th>9756</th>
+      <td>3.6946</td>
+      <td>265500.0</td>
     </tr>
   </tbody>
 </table>
@@ -2251,28 +2166,28 @@ V(\overline{X}) &amp;= V \left( \frac{X_1 + X_2 + \cdots + X_n}{n} \right) \\[2e
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1번째 표본추출:
-median_income              3.679355
-median_house_value    193633.197763
+median_income              3.710130
+median_house_value    197194.966955
 dtype: float64
 
 2번째 표본추출:
-median_income              3.657730
-median_house_value    192268.378241
+median_income              3.682878
+median_house_value    192790.798170
 dtype: float64
 
 3번째 표본추출:
-median_income              3.686453
-median_house_value    194232.130147
+median_income              3.647413
+median_house_value    187759.328419
 dtype: float64
 
 4번째 표본추출:
-median_income              3.702366
-median_house_value    197300.254194
+median_income              3.615943
+median_house_value    189211.336045
 dtype: float64
 
 5번째 표본추출:
-median_income              3.683035
-median_house_value    193355.210981
+median_income              3.688556
+median_house_value    193514.692425
 dtype: float64
 </pre></div>
 </div>
@@ -2314,29 +2229,29 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>5212</th>
-      <td>3.3955</td>
-      <td>225000.0</td>
+      <th>14547</th>
+      <td>4.5032</td>
+      <td>168900.0</td>
     </tr>
     <tr>
-      <th>17995</th>
-      <td>6.8872</td>
-      <td>305200.0</td>
+      <th>13392</th>
+      <td>2.6477</td>
+      <td>53300.0</td>
     </tr>
     <tr>
-      <th>8700</th>
-      <td>5.1163</td>
-      <td>233200.0</td>
+      <th>6865</th>
+      <td>3.5938</td>
+      <td>141100.0</td>
     </tr>
     <tr>
-      <th>737</th>
-      <td>3.4722</td>
-      <td>135400.0</td>
+      <th>10175</th>
+      <td>2.6759</td>
+      <td>120600.0</td>
     </tr>
     <tr>
-      <th>11647</th>
-      <td>2.4554</td>
-      <td>89400.0</td>
+      <th>7252</th>
+      <td>3.2976</td>
+      <td>151200.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2344,29 +2259,29 @@ dtype: float64
       <td>...</td>
     </tr>
     <tr>
-      <th>6484</th>
-      <td>3.5875</td>
-      <td>309300.0</td>
+      <th>19000</th>
+      <td>1.6378</td>
+      <td>60300.0</td>
     </tr>
     <tr>
-      <th>11136</th>
-      <td>3.0870</td>
-      <td>196900.0</td>
+      <th>7467</th>
+      <td>4.9609</td>
+      <td>186700.0</td>
     </tr>
     <tr>
-      <th>19440</th>
-      <td>4.9234</td>
-      <td>241400.0</td>
+      <th>17822</th>
+      <td>2.0469</td>
+      <td>66800.0</td>
     </tr>
     <tr>
-      <th>5039</th>
-      <td>2.0917</td>
-      <td>99300.0</td>
+      <th>12198</th>
+      <td>1.3462</td>
+      <td>55900.0</td>
     </tr>
     <tr>
-      <th>8075</th>
-      <td>2.5504</td>
-      <td>151300.0</td>
+      <th>2845</th>
+      <td>1.7467</td>
+      <td>52400.0</td>
     </tr>
   </tbody>
 </table>
@@ -2397,7 +2312,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.676986
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.676708
 </pre></div>
 </div>
 </div>
@@ -2410,7 +2325,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.001269
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.001254
 </pre></div>
 </div>
 </div>
@@ -2500,7 +2415,7 @@ dtype: float64
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.1. 독립성과 상관성</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.1.1. 상호 독립성</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.1.1. 독립성</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">16.1.2. 독립성 대 무상관성</a></li>
 </ul>
 </li>
