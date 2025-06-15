@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'normal_distribution';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="16. 표본분포(준비중)" href="sampling_distribution.html" />
+    <link rel="next" title="16. 표본분포" href="sampling_distribution.html" />
     <link rel="prev" title="14. 기댓값과 분산" href="expected_values.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,7 +184,7 @@
 <li class="toctree-l1"><a class="reference internal" href="probability_continuous.html">13. 연속 확률 분포</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expected_values.html">14. 기댓값과 분산</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">15. 정규분포</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sampling_distribution.html">16. 표본분포(준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sampling_distribution.html">16. 표본분포</a></li>
 </ul>
 
     </div>
@@ -527,7 +527,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 <li><p>대학생들의 성적 평점의 분포</p></li>
 <li><p>초등학생들의 통학시간의 분포</p></li>
 </ul>
-<p>정규분포의 확률 밀도 함수는 아래 가우스 함수로 정의된다.
+<p>정규분포의 확률 밀도 함수는 아래 <strong>가우스 함수</strong><font size='2'>Gaussian function</font>로 정의된다.
 단, <span class="math notranslate nohighlight">\(\mu\)</span>는 평균값을, <span class="math notranslate nohighlight">\(\sigma\)</span>는 표준편차를 가리킨다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -569,7 +569,7 @@ f(x) = \frac{1}{\sigma \sqrt{2\pi}}\, \exp(-\frac{(x-\mu)^2}{2\sigma^2})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/53f25f3e4311f67405781c5e699b3998ecc21fc161cca45e9b3e3988b088858a.png" src="_images/53f25f3e4311f67405781c5e699b3998ecc21fc161cca45e9b3e3988b088858a.png" />
+<img alt="_images/8617ede209541d915a3d5c725a6533d21fcf0cb0321d55e46e38179d609c6aa8.png" src="_images/8617ede209541d915a3d5c725a6533d21fcf0cb0321d55e46e38179d609c6aa8.png" />
 </div>
 </div>
 <p>확률변수 <span class="math notranslate nohighlight">\(X\)</span>가 평균값이 <span class="math notranslate nohighlight">\(\mu\)</span>이고 분산이 <span class="math notranslate nohighlight">\(\sigma^2\)</span>인
@@ -637,7 +637,7 @@ X \sim N(\mu, \sigma^2) \quad \Longrightarrow \quad E[X] = \mu,\,\, V(X) = \sigm
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/de1ef42629de826a452f7b220e4910940a7b6c5471debe4d0a818945bfd92ca6.png" src="_images/de1ef42629de826a452f7b220e4910940a7b6c5471debe4d0a818945bfd92ca6.png" />
+<img alt="_images/a860f8260fb2e420c5e5ee90f329fb1f8ae767307302fc73a09fd7f07f01b949.png" src="_images/a860f8260fb2e420c5e5ee90f329fb1f8ae767307302fc73a09fd7f07f01b949.png" />
 </div>
 </div>
 </section>
@@ -683,7 +683,7 @@ X \sim N(\mu, \sigma^2) \quad \Longrightarrow \quad E[X] = \mu,\,\, V(X) = \sigm
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7ce7ec817da96d2ddb2f31eacfd5a34c3d7329bad242007554ed835626c295d5.png" src="_images/7ce7ec817da96d2ddb2f31eacfd5a34c3d7329bad242007554ed835626c295d5.png" />
+<img alt="_images/a68b1ec3a688a784cc4a057417c8e5ebdb1222d3a205ce2ed07fde2193d49683.png" src="_images/a68b1ec3a688a784cc4a057417c8e5ebdb1222d3a205ce2ed07fde2193d49683.png" />
 </div>
 </div>
 <p>위 그래프는 <code class="docutils literal notranslate"><span class="pre">a=-0.5</span></code>일 때의 <span class="math notranslate nohighlight">\(P(X \leq a)\)</span>를 보여주며 실제 계산은 <code class="docutils literal notranslate"><span class="pre">F_gaussian()</span></code> 함수를
@@ -695,7 +695,7 @@ X \sim N(\mu, \sigma^2) \quad \Longrightarrow \quad E[X] = \mu,\,\, V(X) = \sigm
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3085375387259869
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.308538
 </pre></div>
 </div>
 </div>
@@ -741,7 +741,7 @@ X \sim N(\mu, \sigma^2) \quad \Longrightarrow \quad E[X] = \mu,\,\, V(X) = \sigm
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2aeae88f4b3b8a9da640e3d80bc2cd8721028e95a674f42456dce8703c8bd068.png" src="_images/2aeae88f4b3b8a9da640e3d80bc2cd8721028e95a674f42456dce8703c8bd068.png" />
+<img alt="_images/2e7f3023826245862b20e5b08c7ef8d4809d00654105a5a92c798405c8eafe13.png" src="_images/2e7f3023826245862b20e5b08c7ef8d4809d00654105a5a92c798405c8eafe13.png" />
 </div>
 </div>
 <p>위 그래프는 <code class="docutils literal notranslate"><span class="pre">a=-1.5</span></code>이고 <code class="docutils literal notranslate"><span class="pre">b=0.5</span></code>일 때의 <span class="math notranslate nohighlight">\(P(a \leq X \leq b)\)</span>를 보여주며 실제 계산은 <code class="docutils literal notranslate"><span class="pre">F_gaussian()</span></code> 함수를
@@ -753,7 +753,7 @@ X \sim N(\mu, \sigma^2) \quad \Longrightarrow \quad E[X] = \mu,\,\, V(X) = \sigm
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.624655260005155
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.624655
 </pre></div>
 </div>
 </div>
@@ -873,7 +873,7 @@ memory usage: 17.0 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9f916dd53035b48b0b68ff75c47ad4ae020519fea2b408e3f29377bd6fead25e.png" src="_images/9f916dd53035b48b0b68ff75c47ad4ae020519fea2b408e3f29377bd6fead25e.png" />
+<img alt="_images/91d2b082d04235ac622ed42a9d6bd62ff9a56b844af2c85e6f2d87004225af04.png" src="_images/91d2b082d04235ac622ed42a9d6bd62ff9a56b844af2c85e6f2d87004225af04.png" />
 </div>
 </div>
 <p>그래프를 보면 평균값을 중심으로 거의 좌우 대칭을 이루는 분포를 따른다.
@@ -911,7 +911,7 @@ Name: Son, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>174.45797773654917
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>174.457978
 </pre></div>
 </div>
 </div>
@@ -927,7 +927,7 @@ Name: Son, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.153551714193274
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.153552
 </pre></div>
 </div>
 </div>
@@ -957,7 +957,7 @@ Name: Son, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/47105ac038d6dde77c96bf25b0004ee5e7295330c4799d38820b2e4891062f07.png" src="_images/47105ac038d6dde77c96bf25b0004ee5e7295330c4799d38820b2e4891062f07.png" />
+<img alt="_images/9e16eac1885f2ab20e8b0cf4cb712ef982566e1865fa9ce4885b586fee9e7f6f.png" src="_images/9e16eac1885f2ab20e8b0cf4cb712ef982566e1865fa9ce4885b586fee9e7f6f.png" />
 </div>
 </div>
 <p>표준편차가 7.15 정도로 1보다 많이 크기에 정규분포에 비해 보다 펑퍼짐한 봉우리로
@@ -989,7 +989,7 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.500000
 </pre></div>
 </div>
 </div>
@@ -1018,7 +1018,7 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/42171273a10f32fcf468ae9f4b7d63c04bb93b86f4740a66c00be13a3a2a8928.png" src="_images/42171273a10f32fcf468ae9f4b7d63c04bb93b86f4740a66c00be13a3a2a8928.png" />
+<img alt="_images/f2d21ac1555f7ba4094f02b1395a4286b2e850e5a4162b6d42c6c47ddc030bcb.png" src="_images/f2d21ac1555f7ba4094f02b1395a4286b2e850e5a4162b6d42c6c47ddc030bcb.png" />
 </div>
 </div>
 <p>우연히 선택된 아들 키가 180 이상일 확률 <span class="math notranslate nohighlight">\(P(X_{son} \geq 180)\)</span>의 계산은 <code class="docutils literal notranslate"><span class="pre">X_xon.cdf()</span></code> 함수를 이용한다.</p>
@@ -1029,7 +1029,7 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.21925162825832178
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.219252
 </pre></div>
 </div>
 </div>
@@ -1048,7 +1048,7 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.22170686456400743
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.221707
 </pre></div>
 </div>
 </div>
@@ -1081,7 +1081,7 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7c872b33e7bc257c7c976ea80cfb078d822ab493085ecae15f745e768579d45d.png" src="_images/7c872b33e7bc257c7c976ea80cfb078d822ab493085ecae15f745e768579d45d.png" />
+<img alt="_images/4d3f9b2178ce1580527006b9942993d77779df90329a4c588f984d3ba8c31c3e.png" src="_images/4d3f9b2178ce1580527006b9942993d77779df90329a4c588f984d3ba8c31c3e.png" />
 </div>
 </div>
 <p>아들 키를 가리키는 확률변수 <span class="math notranslate nohighlight">\(X_{son}\)</span>이 정규분포 <span class="math notranslate nohighlight">\(N(173.5, (5.17)^2)\)</span> 을 따를 때
@@ -1093,7 +1093,7 @@ X_{son} \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.14896729452543522
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.148967
 </pre></div>
 </div>
 </div>
@@ -1295,7 +1295,7 @@ X \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68.68424320336581
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68.684243
 </pre></div>
 </div>
 </div>
@@ -1338,7 +1338,7 @@ X \sim N(\mu_{son}, \sigma_{son}^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8ba57f4ebd9d2bca722a5c382a8979171e28158c97fd637d3c5c8fab8a258b59.png" src="_images/8ba57f4ebd9d2bca722a5c382a8979171e28158c97fd637d3c5c8fab8a258b59.png" />
+<img alt="_images/66337be67223182fa3b30e7a7adb5321876fa1f5bf9d05176efd25ca8b645fe9.png" src="_images/66337be67223182fa3b30e7a7adb5321876fa1f5bf9d05176efd25ca8b645fe9.png" />
 </div>
 </div>
 <p><strong>일반화</strong></p>
@@ -1382,7 +1382,7 @@ Z \sim N(0,1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7747231703735327
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.774723
 </pre></div>
 </div>
 </div>
@@ -1398,7 +1398,7 @@ Z \sim N(0,1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4736766692459267
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.473677
 </pre></div>
 </div>
 </div>
@@ -1465,7 +1465,7 @@ KDE 기법으로 추정된 확률 밀도 함수(pdf0의 그래프를 그린다.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fdacb798d30e88286610d82303101ac170d5c2e49bb479dfee9104c7c47ee475.png" src="_images/fdacb798d30e88286610d82303101ac170d5c2e49bb479dfee9104c7c47ee475.png" />
+<img alt="_images/ba12bf9429059b91bc4523c6626e5e12b76a4e1567ea9378799829e2c0ec9d2f.png" src="_images/ba12bf9429059b91bc4523c6626e5e12b76a4e1567ea9378799829e2c0ec9d2f.png" />
 </div>
 </div>
 <p>밀도 히스토그램과 확률 밀도 함수 모두 정규 분포와 거리가 있어 보인다.
@@ -1497,7 +1497,7 @@ KDE 기법으로 추정된 확률 밀도 함수의 그래프를 함께 그려보
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b00129213052decbb5b99c8a2859a81a7314ce3b8933b1fbff27687e20e69704.png" src="_images/b00129213052decbb5b99c8a2859a81a7314ce3b8933b1fbff27687e20e69704.png" />
+<img alt="_images/92974956b6b13d258606bcab432bba60dda208403a133357dd68260046510cbe.png" src="_images/92974956b6b13d258606bcab432bba60dda208403a133357dd68260046510cbe.png" />
 </div>
 </div>
 <p>두 함수의 그래프가 서로 조금 다르기는 하지만 평균값을 중심으로 좌우로 퍼져있는 정도와
@@ -1536,7 +1536,7 @@ t-분포에 대해서는 나중에 자세히 다룰 것이며 여기서는 정�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ae0d6176720317e8b5bfaf7e24c0a5a17044b2d5971a29c6bd06ac0826a96a48.png" src="_images/ae0d6176720317e8b5bfaf7e24c0a5a17044b2d5971a29c6bd06ac0826a96a48.png" />
+<img alt="_images/55039a87531493b8595503b80bab50d8c92c0c10d91ddf73cfe3b05cfbcde6e9.png" src="_images/55039a87531493b8595503b80bab50d8c92c0c10d91ddf73cfe3b05cfbcde6e9.png" />
 </div>
 </div>
 <div class="note admonition">
@@ -1589,7 +1589,7 @@ t-분포에 대해서는 나중에 자세히 다룰 것이며 여기서는 정�
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7053d7a76b433124545713739a75469122d4b8ed121530d9c570749f3b44a966.png" src="_images/7053d7a76b433124545713739a75469122d4b8ed121530d9c570749f3b44a966.png" />
+<img alt="_images/a3acac0dde3d9f1e9186b282d341e38b6dd7f0540722cdab558575db6e5f154c.png" src="_images/a3acac0dde3d9f1e9186b282d341e38b6dd7f0540722cdab558575db6e5f154c.png" />
 </div>
 </div>
 <p><strong>정규분포와 표준편차</strong></p>
@@ -1960,7 +1960,7 @@ X \sim B(12, 0.5)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8f2e2e641809610f50067dad5e2f7d56abf2da5c4a53bad668342bd8a8da8378.png" src="_images/8f2e2e641809610f50067dad5e2f7d56abf2da5c4a53bad668342bd8a8da8378.png" />
+<img alt="_images/f0b557ebd0b8260e039ce5e118bb084ad9d5bc6caf2504baa5057fc3ec3d9170.png" src="_images/f0b557ebd0b8260e039ce5e118bb084ad9d5bc6caf2504baa5057fc3ec3d9170.png" />
 </div>
 </div>
 <p>반면에 아래 코드는 <span class="math notranslate nohighlight">\(X\)</span>가 정규분포 <span class="math notranslate nohighlight">\(N(6, 3)\)</span>을 따른다고 가정했을 때의 확률 밀도 함수 그래프를 함께 그린다.
@@ -1980,7 +1980,7 @@ X \sim B(12, 0.5)
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x2</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;More area&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">5.27</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">),</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Extra area&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">5.27</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">),</span> 
             <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;facecolor&#39;</span><span class="p">:</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;headwidth&#39;</span><span class="p">:</span><span class="mi">8</span><span class="p">})</span>
 
 <span class="c1"># ax.hlines(0.23, 5.5, 6, color=&#39;gray&#39;, linestyle=&#39;solid&#39;, linewidth=3)</span>
@@ -1996,7 +1996,7 @@ X \sim B(12, 0.5)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6d4e36a46779f2b4737289eac8b04b315315a02ed18f2599fdce4e3eff62aa82.png" src="_images/6d4e36a46779f2b4737289eac8b04b315315a02ed18f2599fdce4e3eff62aa82.png" />
+<img alt="_images/9d78144d66c7be86191fac5b42021e27921e6691acd278ee32cbfa5dc1ca8b93.png" src="_images/9d78144d66c7be86191fac5b42021e27921e6691acd278ee32cbfa5dc1ca8b93.png" />
 </div>
 </div>
 <p>앞서 설명에 따라 이산 확률 분포에 대한 확률을 연속 확률 분포를 이용하여 계산하고자 할 때
@@ -2074,7 +2074,7 @@ X \sim B(12, 0.5)
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x2</span> <span class="o">&gt;=</span> <span class="mi">9</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;More area&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">8.8</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">9.1</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">),</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Extra area&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">8.8</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">9.1</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">),</span> 
             <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;facecolor&#39;</span><span class="p">:</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;headwidth&#39;</span><span class="p">:</span><span class="mi">8</span><span class="p">})</span>
 
 <span class="c1"># ax.hlines(0.23, 5.5, 6, color=&#39;gray&#39;, linestyle=&#39;solid&#39;, linewidth=3)</span>
@@ -2090,7 +2090,7 @@ X \sim B(12, 0.5)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5eb647d8ba5b80428185b2178376c9c8352b4d7f4acc50307265afaf22e9d6a9.png" src="_images/5eb647d8ba5b80428185b2178376c9c8352b4d7f4acc50307265afaf22e9d6a9.png" />
+<img alt="_images/7a8b3e6152f5f48c4b38ee623351d40635cc64ac41be7d3c5039fa00751f4d26.png" src="_images/7a8b3e6152f5f48c4b38ee623351d40635cc64ac41be7d3c5039fa00751f4d26.png" />
 </div>
 </div>
 <p>따라서 이번에도 연속성 보정을 적용하여
@@ -2151,9 +2151,9 @@ X \sim B(12, 0.5)
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">f_gaussian</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)),</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x2</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x2</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;More area&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">2.75</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">),</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Extra area&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">2.75</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">),</span> 
             <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;facecolor&#39;</span><span class="p">:</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;headwidth&#39;</span><span class="p">:</span><span class="mi">8</span><span class="p">})</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;More area&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">6.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">7.8</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">),</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Extra area&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">6.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">7.8</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">),</span> 
             <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;facecolor&#39;</span><span class="p">:</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;headwidth&#39;</span><span class="p">:</span><span class="mi">8</span><span class="p">})</span>
 
 <span class="c1"># ax.hlines(0.23, 5.5, 6, color=&#39;gray&#39;, linestyle=&#39;solid&#39;, linewidth=3)</span>
@@ -2169,7 +2169,7 @@ X \sim B(12, 0.5)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/927a6f52810e071ec89cb3b553abaa44d1ceddaf29d01fe534829de6f8581b56.png" src="_images/927a6f52810e071ec89cb3b553abaa44d1ceddaf29d01fe534829de6f8581b56.png" />
+<img alt="_images/595a1b67c8a849192fbdd28891ac9d0d842d7513a06a05ddeedfd03369cf1d03.png" src="_images/595a1b67c8a849192fbdd28891ac9d0d842d7513a06a05ddeedfd03369cf1d03.png" />
 </div>
 </div>
 <p>따라서 이번에도 연속성 보정을 적용하여
@@ -2406,7 +2406,7 @@ X_{bin} \sim N(8, 6.4)
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">16. </span>표본분포(준비중)</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>표본분포</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
