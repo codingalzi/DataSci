@@ -415,7 +415,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">16.1.2. 독립성 대 무상관성</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">16.2. 확률분포 연산과 선형변환</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">16.2. 확률변수 연산과 선형변환</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">16.2.1. 정규분포 합과 차</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">16.2.2. 독립성의 중요성</a></li>
 </ul>
@@ -1010,8 +1010,28 @@ Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[
 </section>
 </section>
 <section id="id5">
-<h2><span class="section-number">16.2. </span>확률분포 연산과 선형변환<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>(준비중…)</p>
+<h2><span class="section-number">16.2. </span>확률변수 연산과 선형변환<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p><strong>확률변수 합과 차</strong></p>
+<p><span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span> 두 개의 확률변수가 주어졌을 때 <span class="math notranslate nohighlight">\(X+Y\)</span>와 <span class="math notranslate nohighlight">\(X-Y\)</span>는 각각
+두 확률변수의 합과 차를 가리키는 확률변수다.
+즉, <span class="math notranslate nohighlight">\(X+Y\)</span>는 <span class="math notranslate nohighlight">\(X\)</span>가 가리키는 임의의 값과 <span class="math notranslate nohighlight">\(Y\)</span>가 가리키는 임의의 원소의 합을,
+<span class="math notranslate nohighlight">\(X-Y\)</span>는 <span class="math notranslate nohighlight">\(X\)</span>가 가리키는 임의의 값과 <span class="math notranslate nohighlight">\(Y\)</span>가 가리키는 임의의 원소의 차를 가리킨다.</p>
+<p>두 확률분포의 합의 분포와 차의 분포에 대한 확률함수를 직접 계산하기는 일반적으로 매우 어렵다.
+반면에 합과 차의 분포의 기댓값과 분산은 아래 수식으로 쉽게 계산된다.
+증명은 생략한다.</p>
+<div class="math notranslate nohighlight">
+\[
+E[X \pm Y] = E[X] \pm E[Y] \qquad V(X \pm Y) = V(X) \pm V(Y)
+\]</div>
+<p><strong>확률변수 선형변환</strong></p>
+<p>확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 임의의 실수 <span class="math notranslate nohighlight">\(a, b\)</span>가 주어졌을 때 <span class="math notranslate nohighlight">\(aX+b\)</span>는
+<span class="math notranslate nohighlight">\(X\)</span>가 가리키는 값을 <span class="math notranslate nohighlight">\(a\)</span>배한 다음에 <span class="math notranslate nohighlight">\(b\)</span>를 더해준 값들을 가리키는 확률변수다.
+선형변환된 확률분포의 기댓값과 분산은 다음과 같이 계산된다.
+증명은 생략한다.</p>
+<div class="math notranslate nohighlight">
+\[
+E[aX + b] = aE[X] + b \qquad V(aX + b) = a^2V(X)
+\]</div>
 <section id="id6">
 <h3><span class="section-number">16.2.1. </span>정규분포 합과 차<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>상호 독립인 확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 정규분포를 따른다고 가정한다.</p>
@@ -2673,7 +2693,7 @@ dtype: float64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">16.1.2. 독립성 대 무상관성</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">16.2. 확률분포 연산과 선형변환</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">16.2. 확률변수 연산과 선형변환</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">16.2.1. 정규분포 합과 차</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">16.2.2. 독립성의 중요성</a></li>
 </ul>
