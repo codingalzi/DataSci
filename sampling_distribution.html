@@ -420,12 +420,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">16.2.2. 독립성의 중요성</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">16.3. 표본평균의 분포</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">16.4. 중심극한정리</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">16.4.1. 큰 수의 법칙</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">16.3. 표본평균의 분포</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">16.3.1. 중심극한정리</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">16.3.2. 큰 수의 법칙</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">16.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">16.4. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -561,7 +561,7 @@ f_X(x) = \sum_k f_{XY}(x, y_k) \qquad f_Y(y) = \sum_n f_{XY}(x_n, y)
 </tbody>
 </table>
 </div>
-<p>반면에 <span class="math notranslate nohighlight">\(Y\)</span>는 아래 확률분포를 갖는 불공적한 주사위를 던져서 나오는 값을 가리키는 확률 변수라 하자.</p>
+<p>반면에 <span class="math notranslate nohighlight">\(Y\)</span>는 아래 확률분포를 갖는 불공정한 주사위를 던져서 나오는 값을 가리키는 확률 변수라 하자.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>Y</p></th>
@@ -585,8 +585,10 @@ f_X(x) = \sum_k f_{XY}(x, y_k) \qquad f_Y(y) = \sum_n f_{XY}(x_n, y)
 </tbody>
 </table>
 </div>
-<p>공정한 주사위와 불공정한 주사위를 동시에 던져서 나오는 값의 튜플을 가리키는
-결합확률변수 <span class="math notranslate nohighlight">\((X, Y)\)</span>의 결합확률질량함수의 결합확률질량함수는 다음과 같다.</p>
+<p>공정한 주사위와 불공정한 주사위를 동시에 던져서 나오는 값으로 구성된 <span class="math notranslate nohighlight">\((x, y)\)</span> 가 발생할 확률은
+단순히 <span class="math notranslate nohighlight">\(x\)</span>가 발생할 확률과 <span class="math notranslate nohighlight">\(y\)</span>가 발생할 확률의 곱이다.
+두 주사위의 결과 <span class="math notranslate nohighlight">\(x\)</span>와 <span class="math notranslate nohighlight">\(y\)</span>가 서로 어떤 영향도 주고받지 않기 때문에 각각의 경우가 발생할 확률을 곱한다.</p>
+<p><span class="math notranslate nohighlight">\(x\)</span>가 발생할 확률은 항상 1/6이고 <span class="math notranslate nohighlight">\(y\)</span>가 발생할 확률은 <span class="math notranslate nohighlight">\(y/21\)</span>이기게 결합확률질량함수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -675,8 +677,8 @@ Var(Y) &amp;= \sum_k (y_k-E[Y])^2\, f_Y(y_k)\\[.5ex]
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-Cov[X, Y] &amp;= \sum_n\sum_k (x_n-E[X])\, (y_k-E[Y]) \, f_{XY}(x_n, y_k)\\[1ex]
-Corr[X, Y] &amp;= \frac{Cov[X, Y]}{\sqrt{Var(X)\, Var(Y)}}\
+Cov(X, Y) &amp;= \sum_n\sum_k (x_n-E[X])\, (y_k-E[Y]) \, f_{XY}(x_n, y_k)\\[1ex]
+Corr(X, Y) &amp;= \frac{Cov(X, Y)}{\sqrt{Var(X)\, Var(Y)}}\
 \end{align*}
 \end{split}\]</div>
 <p><strong>독립이면 무상관이다!</strong></p>
@@ -684,7 +686,7 @@ Corr[X, Y] &amp;= \frac{Cov[X, Y]}{\sqrt{Var(X)\, Var(Y)}}\
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[1ex]
+Cov(X, Y) &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[1ex]
  &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_n(x_n)\, f_{Y}(y_k)\\[1ex]
  &amp;= \sum_n\big( (x_n - E[X])\, f_n(x)\, \sum_k (y_k - E[Y]) \, f_{Y}(y_k)\big )\\[1ex]
  &amp;= 0
@@ -735,11 +737,12 @@ Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[
 </div>
 </div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>의 공분산</p></li>
+<li><p><span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>의 공분산: <span class="math notranslate nohighlight">\(Cov(X, Y)\)</span></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="n">x</span><span class="o">-</span><span class="n">E_X</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">E_Y</span><span class="p">)</span><span class="o">*</span><span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Cov_XY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="n">x</span><span class="o">-</span><span class="n">E_X</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">E_Y</span><span class="p">)</span><span class="o">*</span><span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+<span class="n">Cov_XY</span>
 </pre></div>
 </div>
 </div>
@@ -750,7 +753,7 @@ Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[
 </div>
 </div>
 <p><strong>무상관이지만 독립이 아닐 수 있다!</strong></p>
-<p>아래 코드는 결합확률변수 <span class="math notranslate nohighlight">\(XY\)</span>를 간단하게 정의한다.</p>
+<p>결합확률변수 <span class="math notranslate nohighlight">\(XY\)</span>가 다음과 같이 정의된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
@@ -809,7 +812,27 @@ Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[
 </table>
 </div></div></div>
 </div>
-<p>네 가지 경우가 모두 한 번씩만 사용되기에 결합확률분포는 균등분포를 따른다.</p>
+<p>네 가지 경우가 모두 한 번씩만 사용되기에 <span class="math notranslate nohighlight">\(XY\)</span>는 균등분포를 따른다.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>XY</p></th>
+<th class="head text-center"><p>(1, 0)</p></th>
+<th class="head text-center"><p>(0, 1)</p></th>
+<th class="head text-center"><p>(-1, 0)</p></th>
+<th class="head text-center"><p>(0, -1)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>확률</p></td>
+<td class="text-center"><p>1/4</p></td>
+<td class="text-center"><p>1/4</p></td>
+<td class="text-center"><p>1/4</p></td>
+<td class="text-center"><p>1/4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>함수 <code class="docutils literal notranslate"><span class="pre">f_XY()</span></code> 가 <span class="math notranslate nohighlight">\(XY\)</span>의 결합확률질량함수를 가리킨다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -821,13 +844,39 @@ Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[
 </div>
 </div>
 </div>
-<p>먼저 공분산이 0임을 보인다.</p>
+<p>확률변수 각각에 대한 주변확률질량함수는 다음과 같다.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span>에 대한 주변확률질량함수</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">y_probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_probs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Y\)</span>에 대한 주변확률질량함수</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_Y</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">x_probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x_probs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 확률변수 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>의 공분산을 확인한다.
+먼저 각 확률변수에 대한 기댓값을 계산한다.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(X\)</span>의 기댓값: <span class="math notranslate nohighlight">\(E[X]\)</span></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">x</span> <span class="o">*</span> <span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">x</span> <span class="o">*</span> <span class="n">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
 <span class="n">E_X</span>
 </pre></div>
 </div>
@@ -843,7 +892,7 @@ Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">y</span> <span class="o">*</span> <span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">y</span> <span class="o">*</span> <span class="n">f_Y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
 <span class="n">E_Y</span>
 </pre></div>
 </div>
@@ -854,9 +903,7 @@ Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>의 공분산</p></li>
-</ul>
+<p>아래 코드는 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>의 공분산으로 0으로 계산한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="n">x</span><span class="o">-</span><span class="n">E_X</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">E_Y</span><span class="p">)</span><span class="o">*</span><span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
@@ -869,11 +916,13 @@ Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[
 </div>
 </div>
 </div>
-<p>균등분포를 따르기에 모든 경우의 확률이 1/4이다.
-이럴 때는 데이터프레임의 <code class="docutils literal notranslate"><span class="pre">cov()</span></code> 메서드를 이용하여 공분산을 확률을 무시한 채 바로 계산할 수 있다.</p>
+<p><strong>균등분포의 공분산</strong></p>
+<p><span class="math notranslate nohighlight">\(XY\)</span>가 균등분포를 따르기에
+데이터프레임의 <code class="docutils literal notranslate"><span class="pre">cov()</span></code> 메서드를 이용하여 공분산을 확률을 무시한 채 바로 계산할 수 있으며
+앞서 확인한 대로 두 확률변수의 공분산이 0으로 계산된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">XY</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">XY</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -903,18 +952,20 @@ Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[
   <tbody>
     <tr>
       <th>X</th>
-      <td>0.666667</td>
-      <td>0.000000</td>
+      <td>0.5</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>Y</th>
-      <td>0.000000</td>
-      <td>0.666667</td>
+      <td>0.0</td>
+      <td>0.5</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<p>공분산이 0이기에 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span> 사이에는 선형 상관관계가 없다.
+하지만 선형이 아닌 다른 상관관계가 있음을 아래 코드가 그리는 그래프가 보여준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 원의 중심과 반지름</span>
@@ -935,7 +986,9 @@ Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 <span class="c1"># 네 정수 좌표 산점도</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">points</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Integer points&quot;</span><span class="p">)</span>
+<span class="n">x_</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span> <span class="c1"># points의 x-좌표값들</span>
+<span class="n">y_</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span> <span class="c1"># points의 y-좌표값들</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_</span><span class="p">,</span> <span class="n">y_</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Integer points&quot;</span><span class="p">)</span>
 
 <span class="c1"># x-축을 그래프의 중앙(y=0)에 배치</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">((</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
@@ -949,6 +1002,7 @@ Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
 
+<span class="c1"># 눈금 위치 및 값 지정</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="o">-</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
@@ -963,38 +1017,18 @@ Cov[X, Y] &amp;= \sum_n\sum_k (x_n - E[X])\, (y_k - E[Y]) \, f_{XY}(x_n, y_k)\\[
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/db54d20779da2b1d1c268f02cfa05abfc35dbd75e27637357e4434a5c5076d81.png" src="_images/db54d20779da2b1d1c268f02cfa05abfc35dbd75e27637357e4434a5c5076d81.png" />
+<img alt="_images/03e5cc1f7b8e1b5604068ab06d10b225fbc88f7465c59c946daf5e30c2aa06af.png" src="_images/03e5cc1f7b8e1b5604068ab06d10b225fbc88f7465c59c946daf5e30c2aa06af.png" />
 </div>
 </div>
-<p>위 그래프에서 네 개의 빨강점은 <span class="math notranslate nohighlight">\((X, Y)\)</span>를 네 개의 좌표로 보았을 때 그려진 점들이다.
+<p>위 그래프에서 네 개의 빨강점은 <span class="math notranslate nohighlight">\(XY\)</span>가 가리킬 수 있는 네 개의 값을 네 개의 좌표로 보았을 때 그려진 점들이다.
 사실 네 개의 점은 반지름이 1인 원에 포함된 점들 중에서 좌표가 정수인 유일한 네 개의 점이다.
-이를 통해 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 가리키는 값들 사이에 상관성이 있음을 알 수 있다.</p>
-<p>실제로 주변확률질량함수를 이용하여 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 독립이 아님을 보일 수 있다.</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(X\)</span>에 대한 주변확률질량함수</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_X</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">y_probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_probs</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(Y\)</span>에 대한 주변확률질량함수</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_Y</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-    <span class="n">x_probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_XY</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x_probs</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>아래 코드가 두 확률변수의 독립성을 확인해준다</p>
+즉 다음이 성립한다.</p>
+<div class="math notranslate nohighlight">
+\[
+x^2 + y^2 = 1^2
+\]</div>
+<p>이를 통해 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 가리키는 값들 사이에 상관성이 있음을 알 수 있다.
+실제로 주변확률질량함수의 곱과 결합확률질량함수가 서로 다름을 아래 코드가 확인해준다,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_XY</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">f_X</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">f_Y</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1050,20 +1084,20 @@ X+Y \sim N(\mu_X+\mu_Y,\sigma_{X}^{2}+\sigma_{Y}^{2}) \qquad X-Y \sim N(\mu_X-\m
 <span class="math notranslate nohighlight">\(X+Y\)</span>와 <span class="math notranslate nohighlight">\(X-Y\)</span>의 분산이 두 확률변수 각각의 분산의 합으로 계산되는 이유를 직관적으로 설명하기 위해
 다음 두 예제를 이용한다.</p>
 <p><strong>예제: 남성, 여성 체중의 합의 분포</strong></p>
-<p>2024년도 기준 한국 20대 남성, 여성의 체중 분포 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>는 다음과 같다.</p>
+<p>한국 20대 남성, 여성의 체중 분포 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>는 다음과 같다고 가정한다.</p>
 <div class="math notranslate nohighlight">
 \[
 X \sim N(76.59, 11.73^2) \qquad Y \sim N(58.17, 9.28^2)
 \]</div>
-<p>남성과 여성의 체중은 상호 독립이라고 가정했을 때 남성과 여성의 체중의 합은
+<p>만약 남성과 여성의 체중이 상호 독립이면 남성과 여성의 체중의 합은
 다음 분포를 따라야 한다.</p>
 <div class="math notranslate nohighlight">
 \[
 X+Y \sim N(134.76, 14.96^2)
 \]</div>
 <p>위 사실을 코드로 확인해보기 위해 언급된
-평균값과 표준편차를 갖는 남성과 여성의 체중 데이터를
-각각 1천개씩 무작위로 생성한다.</p>
+평균값과 표준편차를 갖는 정규분포를 이용하여
+남성과 여성의 체중 데이터를 각각 1천개씩 무작위로 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
@@ -1094,42 +1128,17 @@ X+Y \sim N(134.76, 14.96^2)
 <span class="n">mu_diff</span> <span class="o">=</span> <span class="n">mu_men</span> <span class="o">-</span> <span class="n">mu_wemen</span>
 
 <span class="n">sigma_sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_men</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_wemen</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;평균값 합:&quot;</span><span class="p">,</span> <span class="n">mu_sum</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;평균값 합:&quot;</span><span class="p">,</span> <span class="n">mu_sum</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;평균값 차:&quot;</span><span class="p">,</span> <span class="n">mu_diff</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;분산 합의 제곱근:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">sigma_sum</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>평균값 합: 134.76
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;평균값 차:&quot;</span><span class="p">,</span> <span class="n">mu_diff</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>평균값 차: 18.42
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;분산 합의 제곱근:&quot;</span><span class="p">,</span> <span class="n">sigma_sum</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>분산 합의 제곱근: 14.956981647377923
+평균값 차: 18.42
+분산 합의 제곱근: 14.96
 </pre></div>
 </div>
 </div>
@@ -1148,20 +1157,20 @@ X+Y \sim N(134.76, 14.96^2)
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>남녀 각각 1천개 데이터 무작위 생성. 단, 지정된 정규분포 활용.</p></li>
-</ul>
+<p>지정된 정규분포를 이용하여 남녀 각각 1천 개 데이터 샘플을 무작위로 생성한다.
+<code class="docutils literal notranslate"><span class="pre">norm</span></code> 객체의 <code class="docutils literal notranslate"><span class="pre">rvs()</span></code> 메서드를 이용한다.
+<code class="docutils literal notranslate"><span class="pre">rvs()</span></code> 메서드는 누적분포함수의 역함수에 해당한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_men</span> <span class="o">=</span> <span class="n">X_men</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+
+<span class="n">data_men</span> <span class="o">=</span> <span class="n">X_men</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">data_wemen</span> <span class="o">=</span> <span class="n">Y_wemen</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>생성된 남녀 데이터</p></li>
-</ul>
+<p>생성된 남녀 데이터는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Men&#39;</span><span class="p">:</span> <span class="n">data_men</span><span class="p">,</span> <span class="s1">&#39;Wemen&#39;</span><span class="p">:</span><span class="n">data_wemen</span><span class="p">})</span>
@@ -1195,28 +1204,28 @@ X+Y \sim N(134.76, 14.96^2)
   <tbody>
     <tr>
       <th>0</th>
-      <td>64.324674</td>
-      <td>63.357087</td>
+      <td>79.830599</td>
+      <td>60.074171</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>28.979551</td>
-      <td>71.408221</td>
+      <td>54.835213</td>
+      <td>54.710194</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>94.347194</td>
-      <td>60.304222</td>
+      <td>83.908360</td>
+      <td>64.312568</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>71.269956</td>
-      <td>65.269945</td>
+      <td>90.024501</td>
+      <td>55.311428</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>79.505346</td>
-      <td>46.071701</td>
+      <td>88.756244</td>
+      <td>59.580689</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1225,37 +1234,35 @@ X+Y \sim N(134.76, 14.96^2)
     </tr>
     <tr>
       <th>995</th>
-      <td>77.932395</td>
-      <td>75.684032</td>
+      <td>79.400000</td>
+      <td>43.422549</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>76.860792</td>
-      <td>39.921671</td>
+      <td>94.674727</td>
+      <td>73.472021</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>70.352520</td>
-      <td>63.280912</td>
+      <td>72.251896</td>
+      <td>60.795651</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>67.932152</td>
-      <td>44.137290</td>
+      <td>59.569254</td>
+      <td>44.340925</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>89.426111</td>
-      <td>56.598133</td>
+      <td>74.087383</td>
+      <td>70.547387</td>
     </tr>
   </tbody>
 </table>
 <p>1000 rows × 2 columns</p>
 </div></div></div>
 </div>
-<ul class="simple">
-<li><p>남녀 데이터 합과 차 데이터 추가</p></li>
-</ul>
+<p>남녀 데이터의 합과 차를 추가한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Men+Wemen&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_men</span> <span class="o">+</span> <span class="n">data_wemen</span>
@@ -1292,38 +1299,38 @@ X+Y \sim N(134.76, 14.96^2)
   <tbody>
     <tr>
       <th>0</th>
-      <td>64.324674</td>
-      <td>63.357087</td>
-      <td>127.681761</td>
-      <td>0.967586</td>
+      <td>79.830599</td>
+      <td>60.074171</td>
+      <td>139.904770</td>
+      <td>19.756428</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>28.979551</td>
-      <td>71.408221</td>
-      <td>100.387772</td>
-      <td>-42.428670</td>
+      <td>54.835213</td>
+      <td>54.710194</td>
+      <td>109.545407</td>
+      <td>0.125018</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>94.347194</td>
-      <td>60.304222</td>
-      <td>154.651415</td>
-      <td>34.042972</td>
+      <td>83.908360</td>
+      <td>64.312568</td>
+      <td>148.220928</td>
+      <td>19.595792</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>71.269956</td>
-      <td>65.269945</td>
-      <td>136.539901</td>
-      <td>6.000011</td>
+      <td>90.024501</td>
+      <td>55.311428</td>
+      <td>145.335930</td>
+      <td>34.713073</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>79.505346</td>
-      <td>46.071701</td>
-      <td>125.577047</td>
-      <td>33.433646</td>
+      <td>88.756244</td>
+      <td>59.580689</td>
+      <td>148.336934</td>
+      <td>29.175555</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1334,47 +1341,45 @@ X+Y \sim N(134.76, 14.96^2)
     </tr>
     <tr>
       <th>995</th>
-      <td>77.932395</td>
-      <td>75.684032</td>
-      <td>153.616427</td>
-      <td>2.248364</td>
+      <td>79.400000</td>
+      <td>43.422549</td>
+      <td>122.822549</td>
+      <td>35.977451</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>76.860792</td>
-      <td>39.921671</td>
-      <td>116.782463</td>
-      <td>36.939120</td>
+      <td>94.674727</td>
+      <td>73.472021</td>
+      <td>168.146749</td>
+      <td>21.202706</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>70.352520</td>
-      <td>63.280912</td>
-      <td>133.633431</td>
-      <td>7.071608</td>
+      <td>72.251896</td>
+      <td>60.795651</td>
+      <td>133.047546</td>
+      <td>11.456245</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>67.932152</td>
-      <td>44.137290</td>
-      <td>112.069442</td>
-      <td>23.794862</td>
+      <td>59.569254</td>
+      <td>44.340925</td>
+      <td>103.910179</td>
+      <td>15.228329</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>89.426111</td>
-      <td>56.598133</td>
-      <td>146.024243</td>
-      <td>32.827978</td>
+      <td>74.087383</td>
+      <td>70.547387</td>
+      <td>144.634770</td>
+      <td>3.539996</td>
     </tr>
   </tbody>
 </table>
 <p>1000 rows × 4 columns</p>
 </div></div></div>
 </div>
-<ul class="simple">
-<li><p>생성된 데이터셋의 평균값, 표준편차 확인</p></li>
-</ul>
+<p>생성된 데이터셋의 평균값과 표준편차를 확인한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -1416,52 +1421,52 @@ X+Y \sim N(134.76, 14.96^2)
     </tr>
     <tr>
       <th>mean</th>
-      <td>76.509686</td>
-      <td>58.155568</td>
-      <td>134.665254</td>
-      <td>18.354117</td>
+      <td>76.841535</td>
+      <td>58.787949</td>
+      <td>135.629484</td>
+      <td>18.053586</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>12.305241</td>
-      <td>9.498373</td>
-      <td>15.485032</td>
-      <td>15.604162</td>
+      <td>11.952291</td>
+      <td>9.389426</td>
+      <td>14.921088</td>
+      <td>15.472502</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>28.979551</td>
-      <td>26.035263</td>
-      <td>93.456421</td>
-      <td>-42.428670</td>
+      <td>36.708812</td>
+      <td>23.967999</td>
+      <td>93.151749</td>
+      <td>-37.877773</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>68.267892</td>
-      <td>51.759642</td>
-      <td>124.155131</td>
-      <td>7.565794</td>
+      <td>69.057471</td>
+      <td>52.263616</td>
+      <td>124.968788</td>
+      <td>8.278447</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>76.681347</td>
-      <td>58.627507</td>
-      <td>135.090824</td>
-      <td>17.815871</td>
+      <td>76.948344</td>
+      <td>58.753895</td>
+      <td>135.646115</td>
+      <td>18.080370</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>84.854034</td>
-      <td>64.412561</td>
-      <td>146.149454</td>
-      <td>28.698484</td>
+      <td>84.615042</td>
+      <td>65.509813</td>
+      <td>145.498712</td>
+      <td>27.586009</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>119.685471</td>
-      <td>86.196387</td>
-      <td>183.448573</td>
-      <td>67.674169</td>
+      <td>120.078704</td>
+      <td>93.156649</td>
+      <td>180.354708</td>
+      <td>78.752267</td>
     </tr>
   </tbody>
 </table>
@@ -1500,7 +1505,7 @@ X+Y \sim N(134.76, 14.96^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e3ccf0dbd78c990c9069512d9daf468539b3295bebdabe4a89f0a27fcc940e43.png" src="_images/e3ccf0dbd78c990c9069512d9daf468539b3295bebdabe4a89f0a27fcc940e43.png" />
+<img alt="_images/449b991dee72136fb053cd38ffdf92d7a26b43a78e0576493c91b072ea59b899.png" src="_images/449b991dee72136fb053cd38ffdf92d7a26b43a78e0576493c91b072ea59b899.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1533,7 +1538,7 @@ X+Y \sim N(134.76, 14.96^2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8c2544f1bc0e72a60b23f2333718d8d82645314b8505f8ac6787f85b4951cdd2.png" src="_images/8c2544f1bc0e72a60b23f2333718d8d82645314b8505f8ac6787f85b4951cdd2.png" />
+<img alt="_images/0d21ff71c37c0c37f4466932ba4fdee62edd7f6a2c75b0974545686ef560ef94.png" src="_images/0d21ff71c37c0c37f4466932ba4fdee62edd7f6a2c75b0974545686ef560ef94.png" />
 </div>
 </div>
 </section>
@@ -1861,7 +1866,7 @@ memory usage: 17.0 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/80b2507b050bf29970335a7fdaa16d4c963c558dd207263b679cda66c761caae.png" src="_images/80b2507b050bf29970335a7fdaa16d4c963c558dd207263b679cda66c761caae.png" />
+<img alt="_images/97e6bfb311fc08b6bf37dba059e0eeb88a62a9da14eb40469093e032331af636.png" src="_images/97e6bfb311fc08b6bf37dba059e0eeb88a62a9da14eb40469093e032331af636.png" />
 </div>
 </div>
 </section>
@@ -1871,23 +1876,18 @@ memory usage: 17.0 KB
 <p><strong>독립동일분포</strong></p>
 <p>확률론에서 <strong>독립동일분포</strong>는 특정 확률분포를 따르는 데이터셋에서 무작위로 표본을 독립적으로 여러 번 추출해서 얻어진 값들로 구성된 데이터를 가리키는 다차원 확률변수를 의미한다.
 독립동일분포는 보통 ‘independently and identically distributed’의 표현의 줄임말인 <strong>iid</strong>로 불린다.</p>
-<p>예를 들어 동일한 주사위를 10 번 던져서 나온 값들로 구성된 튜플,
-무작위로 선택된 100명에게 물은 동일한 질문에 대한 답으로 구성된 튜플 등을
-가리키는 확률변수가 대표적인 독립동일분포다.
-단, 다음 사항에 주의해야 한다.</p>
-<ul class="simple">
-<li><p>주사위를 반복해서 던질 때 동일 조건에서 반복되어야 함.</p></li>
-<li><p>무작위로 선택된 사람의 답변이 다른 사람의 답변과 어떤 영향도 주고받지 않아야 함.</p></li>
-</ul>
+<p>예를 들어 동일한 주사위를 10 번 던져서 나온 값들로 구성된 튜플을 가리키는 iid는 <span class="math notranslate nohighlight">\((X_1, X_2, \dots, X_{10})\)</span>으로,
+무작위로 선택된 100명에게 물은 동일한 질문에 대한 답으로 구성된 튜플을 가리키는 iid는 <span class="math notranslate nohighlight">\((X_1, X_2, \dots, X_{100})\)</span>으로
+표기된다.</p>
 <p><strong>표본평균의 분포</strong></p>
-<p>독립동일분포를 따르는 확률변수 <span class="math notranslate nohighlight">\(X_1, X_2, \cdots, X_n\)</span>의 평균값이 따르는 분포가
+<p>독립동일분포인 다차원 확률변수 <span class="math notranslate nohighlight">\((X_1, X_2, \cdots, X_n)\)</span>의 평균값이 따르는 분포가
 <strong>표본평균의 분포</strong>다.
 즉, 아래와 같이 정의된 확률변수 <span class="math notranslate nohighlight">\(\overline{X}\)</span>의 확률분포를 가리킨다.</p>
 <div class="math notranslate nohighlight">
 \[
 \overline{X} = \frac{X_1 + X_2 + \cdots + X_n}{n}
 \]</div>
-<p>기댓값과 분산은 다음과 같이 계산된다.</p>
+<p><span class="math notranslate nohighlight">\(\overline{X}\)</span>의 기댓값과 분산은 다음과 같이 계산된다.</p>
 <ul class="simple">
 <li><p>표본평균의 기댓값</p></li>
 </ul>
@@ -1912,22 +1912,19 @@ V(\overline{X}) &amp;= V \left( \frac{X_1 + X_2 + \cdots + X_n}{n} \right) \\[2e
     &amp;= \frac{\sigma^2}{n}
 \end{align*}
 \end{split}\]</div>
-</section>
 <section id="id9">
-<h2><span class="section-number">16.4. </span>중심극한정리<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
-<p>확률변수 <span class="math notranslate nohighlight">\(X_1, X_2, \cdots, X_n\)</span>가 모두
-평균값이 <span class="math notranslate nohighlight">\(\mu\)</span>이고 표주편차가 <span class="math notranslate nohighlight">\(\sigma\)</span>인  분포를 따르고 상호 독립인
-독립동일분포라 하자.
+<h3><span class="section-number">16.3.1. </span>중심극한정리<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>확률변수 <span class="math notranslate nohighlight">\(X_1, X_2, \dots, X_n\)</span>이 서로 독립이고
+모두 기댓값이 <span class="math notranslate nohighlight">\(\mu\)</span>, 분산이 <span class="math notranslate nohighlight">\(\sigma^2\)</span>인 동일한 확률분포를 따른다고 가정하자.
 그러면 <span class="math notranslate nohighlight">\(n\)</span>이 충분히 클 때 표본평균 <span class="math notranslate nohighlight">\(\overline X\)</span>의 분포는 다음 정규분포를 따른다.</p>
 <div class="math notranslate nohighlight">
 \[
 \overline{X} \sim N \left( \mu, \frac{\sigma^2}{n} \right)
 \]</div>
-<p><strong>캘리포니아 주택가격 데이터셋</strong></p>
-<p>캘리포니아 주택가격 데이터셋을 계속해서 활용한다.</p>
-<ul class="simple">
-<li><p>캘리포니아 주택가격 데이터셋</p></li>
-</ul>
+<p><strong>예제: 캘리포니아 주택가격 데이터셋</strong></p>
+<p><a class="reference internal" href="sampling.html#ch-smapling"><span class="std std-numref">10장</span></a>에서 모집단과 표본을 설명할 때 사용한 캘리포니아 주택가격 데이터셋을 다시 활용하여
+표본평균의 분포를 확인한다.</p>
+<p>먼저 캘리포니아 주택가격 데이터셋을 불러온다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="o">+</span><span class="s2">&quot;california_housing.csv&quot;</span><span class="p">)</span>
@@ -2115,9 +2112,7 @@ V(\overline{X}) &amp;= V \left( \frac{X_1 + X_2 + \cdots + X_n}{n} \right) \\[2e
 <p>20640 rows × 10 columns</p>
 </div></div></div>
 </div>
-<ul class="simple">
-<li><p>가구중위소득과 주택중위가격만 활용</p></li>
-</ul>
+<p>가구중위소득과 주택중위가격만 활용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;median_income&#39;</span><span class="p">,</span> <span class="s1">&#39;median_house_value&#39;</span><span class="p">]]</span>
@@ -2209,9 +2204,7 @@ V(\overline{X}) &amp;= V \left( \frac{X_1 + X_2 + \cdots + X_n}{n} \right) \\[2e
 <p>20640 rows × 2 columns</p>
 </div></div></div>
 </div>
-<ul class="simple">
-<li><p>이상치 제거: 중위주택가격이 50만을 초과하는 경우 삭제. 이후 인덱스 초기화</p></li>
-</ul>
+<p>중위주택가격이 50만을 초과하는 경우는 삭제하고 인덱스를 초기화한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">house_value_max</span> <span class="o">=</span> <span class="n">housing</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="c1"># 500,001</span>
@@ -2312,25 +2305,24 @@ V(\overline{X}) &amp;= V \left( \frac{X_1 + X_2 + \cdots + X_n}{n} \right) \\[2e
 <p>19675 rows × 2 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_number</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">total_number</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19675
-</pre></div>
-</div>
-</div>
-</div>
 <p><strong>10% 표본추출</strong></p>
+<p>전체 데이터셋의 10%를 표본으로 추출한다.
+총 인덱스에서 무작위로 10%의 인덱스를 선택한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ten_percent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">total_number</span><span class="p">,</span> <span class="n">total_number</span><span class="o">//</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ten_percent</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">total_number</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">percent</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">sample_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_number</span> <span class="o">*</span> <span class="n">percent</span><span class="p">)</span>
+<span class="n">random_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">total_number</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>추출된 인덱스를 갖는 샘플만 선택하여 표본으로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">random_indices</span><span class="p">]</span>
 <span class="n">sampling</span>
 </pre></div>
 </div>
@@ -2365,29 +2357,29 @@ V(\overline{X}) &amp;= V \left( \frac{X_1 + X_2 + \cdots + X_n}{n} \right) \\[2e
   </thead>
   <tbody>
     <tr>
-      <th>16102</th>
-      <td>2.9087</td>
-      <td>228200.0</td>
+      <th>10863</th>
+      <td>6.1572</td>
+      <td>344000.0</td>
     </tr>
     <tr>
-      <th>202</th>
-      <td>1.4844</td>
-      <td>119400.0</td>
+      <th>2191</th>
+      <td>7.4201</td>
+      <td>229700.0</td>
     </tr>
     <tr>
-      <th>19281</th>
-      <td>4.1898</td>
-      <td>359100.0</td>
+      <th>13702</th>
+      <td>2.4821</td>
+      <td>140600.0</td>
     </tr>
     <tr>
-      <th>15575</th>
-      <td>2.4097</td>
-      <td>66000.0</td>
+      <th>406</th>
+      <td>8.8342</td>
+      <td>430500.0</td>
     </tr>
     <tr>
-      <th>17911</th>
-      <td>1.0667</td>
-      <td>34200.0</td>
+      <th>9529</th>
+      <td>3.7426</td>
+      <td>162700.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2395,81 +2387,95 @@ V(\overline{X}) &amp;= V \left( \frac{X_1 + X_2 + \cdots + X_n}{n} \right) \\[2e
       <td>...</td>
     </tr>
     <tr>
-      <th>11447</th>
-      <td>3.0122</td>
-      <td>114700.0</td>
+      <th>12936</th>
+      <td>3.2232</td>
+      <td>88300.0</td>
     </tr>
     <tr>
-      <th>10921</th>
-      <td>5.8623</td>
-      <td>287800.0</td>
+      <th>6778</th>
+      <td>3.6458</td>
+      <td>208100.0</td>
     </tr>
     <tr>
-      <th>17830</th>
-      <td>3.5978</td>
-      <td>80600.0</td>
+      <th>2969</th>
+      <td>2.5575</td>
+      <td>100200.0</td>
     </tr>
     <tr>
-      <th>17941</th>
-      <td>2.3241</td>
-      <td>99200.0</td>
+      <th>11636</th>
+      <td>3.1591</td>
+      <td>189700.0</td>
     </tr>
     <tr>
-      <th>9756</th>
-      <td>3.6946</td>
-      <td>265500.0</td>
+      <th>4002</th>
+      <td>3.4150</td>
+      <td>382500.0</td>
     </tr>
   </tbody>
 </table>
 <p>1967 rows × 2 columns</p>
 </div></div></div>
 </div>
-<p><strong>표본추출 반복</strong></p>
-<p>아래 코드는 무작위 추출을 5번 반복한다.</p>
+<p>선택된 표본의 평균값은 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">ten_percent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">total_number</span><span class="p">,</span> <span class="n">total_number</span><span class="o">//</span><span class="mi">10</span><span class="p">)</span>
-
-    <span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ten_percent</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">번째 표본추출:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">sampling</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-    <span class="nb">print</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampling</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1번째 표본추출:
-median_income              3.710130
-median_house_value    197194.966955
-dtype: float64
-
-2번째 표본추출:
-median_income              3.682878
-median_house_value    192790.798170
-dtype: float64
-
-3번째 표본추출:
-median_income              3.647413
-median_house_value    187759.328419
-dtype: float64
-
-4번째 표본추출:
-median_income              3.615943
-median_house_value    189211.336045
-dtype: float64
-
-5번째 표본추출:
-median_income              3.688556
-median_house_value    193514.692425
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income              3.670131
+median_house_value    192042.297407
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
+<p>모평균과 매우 유사하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampling</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income              3.676717
+median_house_value    192477.921017
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>표본추출 반복</strong></p>
+<p>아래 코드의 <code class="docutils literal notranslate"><span class="pre">X_income10p</span></code>와 <code class="docutils literal notranslate"><span class="pre">X_value10p</span></code>는 각각
+캘리포니아 데이터셋에서 무작위로 10%의 샘플을 선택하는 과정을
+1만번 반복할 때마다 계산된 중위소득 평균값과 중위주택가격의 평균값을 포함한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">sampling_count</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">X_income10p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sampling_count</span><span class="p">)</span>
+<span class="n">X_value10p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sampling_count</span><span class="p">)</span>
+
+<span class="n">total_number</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">percent</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">sample_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_number</span> <span class="o">*</span> <span class="n">percent</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sampling_count</span><span class="p">):</span>
+    <span class="n">random_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">total_number</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">)</span>
+    <span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">random_indices</span><span class="p">]</span>
+    <span class="n">X_income10p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling</span><span class="p">[</span><span class="s1">&#39;median_income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">X_value10p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<p>두 리스트를 모아 데이터프레임을 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_10p</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;중위소득 표본평균&#39;</span><span class="p">:</span><span class="n">X_income10p</span><span class="p">,</span> <span class="s1">&#39;중위주택가격 표본평균&#39;</span><span class="p">:</span><span class="n">X_value10p</span><span class="p">})</span>
+<span class="n">X_10p</span>
 </pre></div>
 </div>
 </div>
@@ -2492,40 +2498,35 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>median_income</th>
-      <th>median_house_value</th>
-    </tr>
-    <tr>
-      <th>district</th>
-      <th></th>
-      <th></th>
+      <th>중위소득 표본평균</th>
+      <th>중위주택가격 표본평균</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>14547</th>
-      <td>4.5032</td>
-      <td>168900.0</td>
+      <th>0</th>
+      <td>3.670131</td>
+      <td>192042.297407</td>
     </tr>
     <tr>
-      <th>13392</th>
-      <td>2.6477</td>
-      <td>53300.0</td>
+      <th>1</th>
+      <td>3.657893</td>
+      <td>193126.792069</td>
     </tr>
     <tr>
-      <th>6865</th>
-      <td>3.5938</td>
-      <td>141100.0</td>
+      <th>2</th>
+      <td>3.714175</td>
+      <td>194317.691917</td>
     </tr>
     <tr>
-      <th>10175</th>
-      <td>2.6759</td>
-      <td>120600.0</td>
+      <th>3</th>
+      <td>3.644522</td>
+      <td>192156.532791</td>
     </tr>
     <tr>
-      <th>7252</th>
-      <td>3.2976</td>
-      <td>151200.0</td>
+      <th>4</th>
+      <td>3.612762</td>
+      <td>190589.781393</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2533,102 +2534,298 @@ dtype: float64
       <td>...</td>
     </tr>
     <tr>
-      <th>19000</th>
-      <td>1.6378</td>
-      <td>60300.0</td>
+      <th>9995</th>
+      <td>3.653294</td>
+      <td>192425.470259</td>
     </tr>
     <tr>
-      <th>7467</th>
-      <td>4.9609</td>
-      <td>186700.0</td>
+      <th>9996</th>
+      <td>3.657381</td>
+      <td>190748.906965</td>
     </tr>
     <tr>
-      <th>17822</th>
-      <td>2.0469</td>
-      <td>66800.0</td>
+      <th>9997</th>
+      <td>3.662978</td>
+      <td>192748.601423</td>
     </tr>
     <tr>
-      <th>12198</th>
-      <td>1.3462</td>
-      <td>55900.0</td>
+      <th>9998</th>
+      <td>3.671054</td>
+      <td>192748.296390</td>
     </tr>
     <tr>
-      <th>2845</th>
-      <td>1.7467</td>
-      <td>52400.0</td>
+      <th>9999</th>
+      <td>3.681082</td>
+      <td>192780.071174</td>
     </tr>
   </tbody>
 </table>
-<p>1967 rows × 2 columns</p>
+<p>10000 rows × 2 columns</p>
 </div></div></div>
 </div>
-<p>아래 코드는 무작위 추출 10,000 반복하면서 표본평균을 모은다.</p>
+<p>모아진 표본평균 자체로 새로운 분포를 가지며 두 특성의 표본평균의 평균값과 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampling_count</span> <span class="o">=</span> <span class="mi">10000</span>
-
-<span class="n">income_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sampling_count</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sampling_count</span><span class="p">):</span>
-    <span class="n">ten_percent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">total_number</span><span class="p">,</span> <span class="n">total_number</span><span class="o">//</span><span class="mi">10</span><span class="p">)</span>
-
-    <span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ten_percent</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-    <span class="n">income_mean</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling</span><span class="p">[</span><span class="s1">&#39;median_income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>모아진 10,000개의 표본평균 자체로 새로운 분포를 가지며 표본평균의 평균값은 다음과 같다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">income_mean</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_10p</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.676708
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>중위소득 표본평균           3.676474
+중위주택가격 표본평균    192458.915808
+dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>표본평균의 분산이 매우 작다.</p>
+<p>두 특성 모두 모평균과 매우 유사하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">income_mean</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.001254
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income              3.676717
+median_house_value    192477.921017
+dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>모집단의 평균값과 표본평균의 평균값이 매우 유사하다.</p>
+<p>반면에 표본평균의 분산은 모분산을 표본의 크기인 <code class="docutils literal notranslate"><span class="pre">sample_size10</span></code>로 나눈 값과 유사하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="p">[</span><span class="s1">&#39;median_income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_10p</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.676717
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>중위소득 표본평균      1.239007e-03
+중위주택가격 표본평균    4.815000e+06
+dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">sample_size</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>median_income         1.253496e-03
+median_house_value    4.853612e+06
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드는 표본평균의 분포가 모평균을 평균값으로, 모분산을 샘플크기로 나눈 값을 분산으로 갖는 정규분포를 따름을 그래프로 보인다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># 구간별 밀도 히스토그램</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_10p</span><span class="p">[</span><span class="s1">&#39;중위소득 표본평균&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sample mus&#39;</span><span class="p">)</span>
+
+<span class="c1"># 모평균을 평균값으로 ,모분산을 샘플크기로 나눈 값을 분산으로 갖는 정규분포 그래프</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">housing</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">sample_size</span><span class="p">)</span>
+
+<span class="n">X10_normal</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.55</span><span class="p">,</span> <span class="mf">3.80</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X10_normal</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N(\mu, \sigma)$&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;median income&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/937d3d5e057b845b4b901e1234edabdb1c56c27bd83b450e14703cb0aa08d9e3.png" src="_images/937d3d5e057b845b4b901e1234edabdb1c56c27bd83b450e14703cb0aa08d9e3.png" />
+</div>
+</div>
+</section>
 <section id="id10">
-<h3><span class="section-number">16.4.1. </span>큰 수의 법칙<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<p>확률변수 <span class="math notranslate nohighlight">\(X_1, X_2, \cdots, X_n\)</span>가 모두
-평균값이 <span class="math notranslate nohighlight">\(\mu\)</span>이고 표주편차가 <span class="math notranslate nohighlight">\(\sigma\)</span>인  분포를 따르고 상호 독립인
-독립동일분포라 하자.
+<h3><span class="section-number">16.3.2. </span>큰 수의 법칙<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>확률변수 <span class="math notranslate nohighlight">\(X_1, X_2, \dots, X_n\)</span>이 서로 독립이고
+모두 기댓값이 <span class="math notranslate nohighlight">\(\mu\)</span>, 분산이 <span class="math notranslate nohighlight">\(\sigma^2\)</span>인 동일한 확률분포를 따른다고 가정하자.
 그러면 <span class="math notranslate nohighlight">\(n\)</span>이 증가할 때 표본평균 <span class="math notranslate nohighlight">\(\overline X\)</span>는 모평균 <span class="math notranslate nohighlight">\(\mu\)</span>에 수렴한다.</p>
-<p><strong>캘리포니아 주택가격 데이터셋</strong></p>
-<p>…</p>
+<p>캘리포니아 데이터셋에서 선택한 표본의 크기를 최대 30%까지 키울 때 표본평균의 변화를 살펴본다.
+아래 코드는 캘리포니아 데이터셋의 30% 정도 크기의 표본을 무작위로 선택한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">total_number</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">percent</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">sample_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_number</span> <span class="o">*</span> <span class="n">percent</span><span class="p">)</span>
+<span class="n">random_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">total_number</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">)</span>
+<span class="n">sampling</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">random_indices</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드는 인덱스 <code class="docutils literal notranslate"><span class="pre">i</span></code>가 1부터 1만까지 변할 때 슬라이싱을 이용하여
+두 특성에 대한 <code class="docutils literal notranslate"><span class="pre">i</span></code>개의 샘플의 평균값을 계산한다.
+즉, 누적 평균값을 계산하며 계산된 누적 평균값으로 구성된 데이터프레임을 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
+<span class="n">value_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sample_size</span><span class="p">):</span>
+    <span class="n">sampling_i</span> <span class="o">=</span> <span class="n">sampling</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">income_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling_i</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">value_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sampling_i</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>    
+
+<span class="n">sample_means</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;중위소득 표본평균&#39;</span><span class="p">:</span><span class="n">income_means</span><span class="p">,</span> <span class="s1">&#39;중위주택가격 표본평균&#39;</span><span class="p">:</span><span class="n">value_means</span><span class="p">})</span>
+<span class="n">sample_means</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>중위소득 표본평균</th>
+      <th>중위주택가격 표본평균</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.666700</td>
+      <td>122000.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.242150</td>
+      <td>141450.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.835800</td>
+      <td>212266.666667</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.749675</td>
+      <td>262175.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.584740</td>
+      <td>244940.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5897</th>
+      <td>3.678435</td>
+      <td>191343.048321</td>
+    </tr>
+    <tr>
+      <th>5898</th>
+      <td>3.678052</td>
+      <td>191342.752839</td>
+    </tr>
+    <tr>
+      <th>5899</th>
+      <td>3.677689</td>
+      <td>191319.898136</td>
+    </tr>
+    <tr>
+      <th>5900</th>
+      <td>3.677514</td>
+      <td>191316.031012</td>
+    </tr>
+    <tr>
+      <th>5901</th>
+      <td>3.677627</td>
+      <td>191329.599966</td>
+    </tr>
+  </tbody>
+</table>
+<p>5902 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>아래 코드는 중위소득 표본평균의 누적 평균이 표본의 크기가 커짐에 따라 중위소득 모평균에 수렴함을 보여준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span> <span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">sample_means</span><span class="p">[</span><span class="s1">&#39;중위소득 표본평균&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># 표본평균의 평균값</span>
+<span class="n">mu_population</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">mu_population</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Sample size&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Sample mean&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7302d832f078e30ade6eda0b08147f6536c77a61bf8ba71fb0c95444dce8bd14.png" src="_images/7302d832f078e30ade6eda0b08147f6536c77a61bf8ba71fb0c95444dce8bd14.png" />
+</div>
+</div>
+<p>반면에 아래 코드는 중위주택가격 표본평균의 누적 평균이 표본의 크기가 커짐에 따라 중위주택가격 모평균에 수렴함을 보여준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span> <span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">sample_means</span><span class="p">[</span><span class="s1">&#39;중위주택가격 표본평균&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:green&#39;</span><span class="p">)</span>
+
+<span class="c1"># 표본평균의 평균값</span>
+<span class="n">mu_population</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">mu_population</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Sample size&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Sample mean&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f5727a80282dc3646f6597a530176acba684d3204f3d304ffda4744f54c62491.png" src="_images/f5727a80282dc3646f6597a530176acba684d3204f3d304ffda4744f54c62491.png" />
+</div>
+</div>
 </section>
 </section>
 <section id="id11">
-<h2><span class="section-number">16.5. </span>연습문제<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">16.4. </span>연습문제<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/DataSci/blob/master/practices/practice-sampling_distribution.ipynb">(연습) 표본 분포</a></p>
 </section>
 </section>
@@ -2698,12 +2895,12 @@ dtype: float64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">16.2.2. 독립성의 중요성</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">16.3. 표본평균의 분포</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">16.4. 중심극한정리</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">16.4.1. 큰 수의 법칙</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">16.3. 표본평균의 분포</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">16.3.1. 중심극한정리</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">16.3.2. 큰 수의 법칙</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">16.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">16.4. 연습문제</a></li>
 </ul>
   </nav></div>
 
