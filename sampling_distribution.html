@@ -2630,7 +2630,7 @@ dtype: float64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
 <span class="c1"># 구간별 밀도 히스토그램</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_10p</span><span class="p">[</span><span class="s1">&#39;중위소득 표본평균&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Income sample means&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_10p</span><span class="p">[</span><span class="s1">&#39;중위소득 표본평균&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sample means&#39;</span><span class="p">)</span>
 
 <span class="c1"># 모평균을 평균값으로 ,모분산을 샘플크기로 나눈 값을 분산으로 갖는 정규분포 그래프</span>
 <span class="n">mu_income</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -2640,7 +2640,7 @@ dtype: float64
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.55</span><span class="p">,</span> <span class="mf">3.80</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X10_normal</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N(\mu_</span><span class="si">{income}</span><span class="s1">, \sigma_</span><span class="si">{income}</span><span class="s1">)$&#39;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Median income&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Median income sample mean&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -2650,7 +2650,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/164ce7d68dae7952ab56ac57576f3e1e5ecee694e032bdc7c063be9d26b3b9ae.png" src="_images/164ce7d68dae7952ab56ac57576f3e1e5ecee694e032bdc7c063be9d26b3b9ae.png" />
+<img alt="_images/d6a432791edeb1e2e40c56d08e54d67430567d4fd0fd2b07a1f7f59a77a3e2ce.png" src="_images/d6a432791edeb1e2e40c56d08e54d67430567d4fd0fd2b07a1f7f59a77a3e2ce.png" />
 </div>
 </div>
 <p>아래 코드는 중위주택가격 표본평균의 분포가
@@ -2663,7 +2663,7 @@ dtype: float64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
 <span class="c1"># 구간별 밀도 히스토그램</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_10p</span><span class="p">[</span><span class="s1">&#39;중위주택가격 표본평균&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;House value sample means&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_10p</span><span class="p">[</span><span class="s1">&#39;중위주택가격 표본평균&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sample means&#39;</span><span class="p">)</span>
 
 <span class="c1"># 모평균을 평균값으로 ,모분산을 샘플크기로 나눈 값을 분산으로 갖는 정규분포 그래프</span>
 <span class="n">mu_value</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -2673,7 +2673,7 @@ dtype: float64
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">185000</span><span class="p">,</span> <span class="mi">200000</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Y10_normal</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N(\mu_</span><span class="si">{value}</span><span class="s1">, \sigma_</span><span class="si">{value}</span><span class="s1">)$&#39;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Median house value&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Median house value sample mean&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -2683,7 +2683,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4dfc363a5db2b1e2430ead113aefc07457807575fedb49adc9f4656bdb1a87f9.png" src="_images/4dfc363a5db2b1e2430ead113aefc07457807575fedb49adc9f4656bdb1a87f9.png" />
+<img alt="_images/9f82f7775ef7cc2683e99b0eb282c6722fa5b35b1c456df5df793f4e86ce0674.png" src="_images/9f82f7775ef7cc2683e99b0eb282c6722fa5b35b1c456df5df793f4e86ce0674.png" />
 </div>
 </div>
 </section>
