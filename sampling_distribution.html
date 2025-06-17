@@ -178,9 +178,9 @@
 <li class="toctree-l1"><a class="reference internal" href="twoD_data.html">8. 2차원 데이터</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twoD_visualization.html">9. 2차원 데이터 시각화</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sampling.html">10. 모집단과 표본</a></li>
-<li class="toctree-l1"><a class="reference internal" href="probability.html">11. 확률 분포</a></li>
-<li class="toctree-l1"><a class="reference internal" href="probability_discrete.html">12. 이산 확률 분포</a></li>
-<li class="toctree-l1"><a class="reference internal" href="probability_continuous.html">13. 연속 확률 분포</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probability.html">11. 확률분포</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probability_discrete.html">12. 이산확률분포</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probability_continuous.html">13. 연속확률분포</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expected_values.html">14. 기댓값과 분산</a></li>
 <li class="toctree-l1"><a class="reference internal" href="normal_distribution.html">15. 정규분포</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">16. 표본분포</a></li>
@@ -529,7 +529,7 @@ Pandas 3.0 버전부터는 기본 옵션으로 지정된다.</p>
 f_{XY}(x, y) = f_X(x) \cdot f_Y(y)
 \]</div>
 <p>위 수식에서 <span class="math notranslate nohighlight">\(f_X\)</span>와 <span class="math notranslate nohighlight">\(f_Y\)</span> 는 각각 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>에 대한 주변확률을 계산하는 함수를 가리킨다.
-<span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 이산확률변수인 경우 주변화률질량함수는 다음과 같이 정의된다.</p>
+<span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>가 이산확률변수인 경우 주변확률질량함수는 다음과 같이 정의된다.</p>
 <div class="math notranslate nohighlight">
 \[
 f_X(x) = \sum_k f_{XY}(x, y_k) \qquad f_Y(y) = \sum_n f_{XY}(x_n, y)
@@ -2621,7 +2621,8 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>아래 코드는 표본평균의 분포가 모평균을 평균값으로, 모분산을 샘플크기로 나눈 값을 분산으로 갖는 정규분포를 따름을 그래프로 보인다.</p>
+<p>아래 코드는 중위소득 표본평균의 분포가
+전체 데이터셋의 중위소득의 평균값을 평균값으로, 모분산을 샘플크기로 나눈 값을 분산으로 갖는 정규분포를 따름을 그래프로 보인다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
@@ -2629,17 +2630,17 @@ dtype: float64
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
 <span class="c1"># 구간별 밀도 히스토그램</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_10p</span><span class="p">[</span><span class="s1">&#39;중위소득 표본평균&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sample mus&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_10p</span><span class="p">[</span><span class="s1">&#39;중위소득 표본평균&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Income sample means&#39;</span><span class="p">)</span>
 
 <span class="c1"># 모평균을 평균값으로 ,모분산을 샘플크기로 나눈 값을 분산으로 갖는 정규분포 그래프</span>
-<span class="n">mu</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">housing</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">sample_size</span><span class="p">)</span>
+<span class="n">mu_income</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sigma_income</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">housing</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">sample_size</span><span class="p">)</span>
 
-<span class="n">X10_normal</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+<span class="n">X10_normal</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_income</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma_income</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.55</span><span class="p">,</span> <span class="mf">3.80</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X10_normal</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N(\mu, \sigma)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X10_normal</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N(\mu_</span><span class="si">{income}</span><span class="s1">, \sigma_</span><span class="si">{income}</span><span class="s1">)$&#39;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;median income&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Median income&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -2649,7 +2650,40 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/937d3d5e057b845b4b901e1234edabdb1c56c27bd83b450e14703cb0aa08d9e3.png" src="_images/937d3d5e057b845b4b901e1234edabdb1c56c27bd83b450e14703cb0aa08d9e3.png" />
+<img alt="_images/164ce7d68dae7952ab56ac57576f3e1e5ecee694e032bdc7c063be9d26b3b9ae.png" src="_images/164ce7d68dae7952ab56ac57576f3e1e5ecee694e032bdc7c063be9d26b3b9ae.png" />
+</div>
+</div>
+<p>아래 코드는 중위주택가격 표본평균의 분포가
+전체 데이터셋의 중위주택가격의 평균값을 평균값으로,
+모분산을 샘플크기로 나눈 값을 분산으로 갖는 정규분포를 따름을 그래프로 보인다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># 구간별 밀도 히스토그램</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_10p</span><span class="p">[</span><span class="s1">&#39;중위주택가격 표본평균&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;House value sample means&#39;</span><span class="p">)</span>
+
+<span class="c1"># 모평균을 평균값으로 ,모분산을 샘플크기로 나눈 값을 분산으로 갖는 정규분포 그래프</span>
+<span class="n">mu_value</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sigma_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">housing</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">sample_size</span><span class="p">)</span>
+
+<span class="n">Y10_normal</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_value</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma_value</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">185000</span><span class="p">,</span> <span class="mi">200000</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Y10_normal</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N(\mu_</span><span class="si">{value}</span><span class="s1">, \sigma_</span><span class="si">{value}</span><span class="s1">)$&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Median house value&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4dfc363a5db2b1e2430ead113aefc07457807575fedb49adc9f4656bdb1a87f9.png" src="_images/4dfc363a5db2b1e2430ead113aefc07457807575fedb49adc9f4656bdb1a87f9.png" />
 </div>
 </div>
 </section>
